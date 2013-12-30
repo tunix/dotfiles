@@ -26,7 +26,7 @@
     lgf = log --graph --name-only
     ann = annotate
 [push]
-	default = matching
+	default = simple
 [merge]
     summary = true
 [branch]
