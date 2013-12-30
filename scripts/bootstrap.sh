@@ -36,3 +36,6 @@ ln -sf $DOTFILES_ROOT/settings/tmux.conf $HOME/.tmux.conf
 # environment related changes
 # TODO: server .zshrc changes
 # TODO: tmux.conf linux changes
+
+# enabling settings
+source $HOME/.zshrc
