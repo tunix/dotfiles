@@ -13,16 +13,16 @@ bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux pa
 '
 
 # deleting existing files first
-rm -rf $HOME/.bin/arch-packages-news.py
-rm -rf $HOME/.bin/genpwd
-rm -rf $HOME/.zshrc
-rm -rf $HOME/.ssh/authorized_keys
-rm -rf $HOME/.gitconfig
-rm -rf $HOME/.oh-my-zsh
-rm -rf $HOME/.vim*
-rm -rf $HOME/.isort.cfg
-rm -rf $HOME/.pythonrc
-rm -rf $HOME/.tmux.conf
+rm -rf $HOME/.bin/arch-packages-news.py &> /dev/null
+rm -rf $HOME/.bin/genpwd &> /dev/null
+rm -rf $HOME/.zshrc &> /dev/null
+rm -rf $HOME/.ssh/authorized_keys &> /dev/null
+rm -rf $HOME/.gitconfig &> /dev/null
+rm -rf $HOME/.oh-my-zsh &> /dev/null
+rm -rf $HOME/.vim* &> /dev/null
+rm -rf $HOME/.isort.cfg &> /dev/null
+rm -rf $HOME/.pythonrc &> /dev/null
+rm -rf $HOME/.tmux.conf &> /dev/null
 
 # resetting changes to these files
 git checkout .
