@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 DOTFILES_ROOT=$(pwd)
 
@@ -7,7 +7,7 @@ git submodule init
 git submodule update
 
 # installing scripts
-mkdir $HOME/.bin
+mkdir -p $HOME/.bin
 ln -sf $DOTFILES_ROOT/scripts/arch-packages-news.py $HOME/.bin/arch-packages-news.py
 ln -sf $DOTFILES_ROOT/scripts/generate-password.py $HOME/.bin/genpwd
 
@@ -18,7 +18,7 @@ ln -sf $DOTFILES_ROOT/settings/zshrc $HOME/.zshrc
 ln -sf $DOTFILES_ROOT/settings/ssh/authorized_keys $HOME/.ssh/authorized_keys
 
 # git
-mkdir $HOME/.git
+mkdir -p $HOME/.git
 ln -sf $DOTFILES_ROOT/settings/gitconfig $HOME/.git/gitconfig
 
 # oh-my-zsh
@@ -38,4 +38,6 @@ ln -sf $DOTFILES_ROOT/settings/tmux.conf $HOME/.tmux.conf
 # TODO: tmux.conf linux changes
 
 # enabling settings
-source $HOME/.zshrc
+source $HOME/.zshrc &> /dev/null
+
+echo "Environment successfully created!"
