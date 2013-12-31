@@ -4,13 +4,13 @@ DOTFILES_ROOT="$(pwd)"
 PLATFORM="$(uname)"
 SERVER_APPS_PATH="/srv/apps"
 SERVER_VENV_PATH="/srv/virtualenvs"
-OSX_TMUX_CHANGES=<<EOF
+OSX_TMUX_CHANGES='
 
 # clipboard
 set-option -g default-command "reattach-to-user-namespace -l zsh" # or bash...
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
-EOF
+'
 
 # deleting existing files first
 rm -rf $HOME/.bin/arch-packages-news.py
