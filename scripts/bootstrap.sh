@@ -18,8 +18,7 @@ ln -sf $DOTFILES_ROOT/settings/zshrc $HOME/.zshrc
 ln -sf $DOTFILES_ROOT/settings/ssh/authorized_keys $HOME/.ssh/authorized_keys
 
 # git
-mkdir -p $HOME/.git
-ln -sf $DOTFILES_ROOT/settings/gitconfig $HOME/.git/gitconfig
+ln -sf $DOTFILES_ROOT/settings/gitconfig $HOME/.gitconfig
 
 # oh-my-zsh
 ln -sf $DOTFILES_ROOT/settings/oh-my-zsh $HOME/.oh-my-zsh
