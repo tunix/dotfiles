@@ -1,44 +1,54 @@
-iab chlog <c-r>=strftime("%Y-%m-%d")<cr>  Alper KANAT  <alperkanat@raptiye.org><cr>
-map <F4> :set filetype=
-map <F5> :set syntax=
-map <F6> :let &background = ( &background == "dark" ? "light" : "dark" )<CR>
-map <F7> :set wrap<CR>:set textwidth=80<CR>
-map <F8> :vs<CR>:bn<CR>
-map <C-x> :qa!<CR>
-nnoremap <silent> <F9> :TlistToggle<CR>
-
-set nocompatible
-set hlsearch
-set incsearch
-set showmatch
-set ts=4
-set sts=4
-set sw=4
-set expandtab
-set backspace=indent,eol,start
-set fileencoding=utf-8
-set encoding=utf-8
-set history=50
-set showcmd
-set showmatch
-set title
-set wildmenu
-set nowrap
-set ai
-set nu
-set mouse=
-set nobackup
-set laststatus=2
-set background=dark
-set ruler
-set smarttab
-set smartindent
-
-colorscheme solarized
-
-if has("autocmd")
-    filetype plugin indent on
-endif
-
-filetype plugin on
 syn on
+filetype off
+filetype plugin indent on
+
+" Bundles
+source ~/.vim/bundles.vim
+
+" Generic
+set enc=utf-8
+set fencs=utf-8
+set nocp
+set acd
+set ai
+set si
+set cin
+set bg=dark
+set et
+set sta
+set sw=4
+set sts=4
+set ts=4
+set wig=*.pyc
+set ic
+set scs
+set hls
+set is
+set sr
+set hi=1000
+set ul=1000
+set noswf
+set nobk
+set nu
+set rnu
+set lsp=3
+set ls=2
+
+" Bindings
+map <C-s> :w<cr>
+map <C-x> :q<cr>
+map <C-q> :qa!<cr>
+
+" Subsettings
+let g:netrw_liststyle=3
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+let g:airline_detect_paste=1
+let g:airline_detect_modified=1
+
+" Theme
+colorscheme solarized
+let g:airline_theme="dark"
+
+" Shortcuts
+iab chlog <c-r>=strftime("%Y-%m-%d")<cr>  Alper Kanat  <alperkanat@raptiye.org><cr><cr>
