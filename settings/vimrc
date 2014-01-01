@@ -36,8 +36,11 @@ set ls=2
 
 " Bindings
 map <C-s> :w<cr>
-map <C-x> :q<cr>
+map <C-w> :q<cr>
 map <C-q> :qa!<cr>
+nmap <Tab> :CtrlPBuffer<cr>
+nmap gh <Plug>GitGutterNextHunk
+nmap gH <Plug>GitGutterPrevHunk
 
 " Subsettings
 let g:netrw_liststyle=3
@@ -45,6 +48,7 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
 let g:airline_detect_modified=1
+set guifont=Monaco\ for\ Powerline
 
 " Theme
 colorscheme solarized
