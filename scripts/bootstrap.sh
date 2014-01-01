@@ -72,3 +72,6 @@ fi
 source $HOME/.zshrc &> /dev/null
 
 # TODO: Mac related changes
+
+# installing vim bundles (assuming vim is already installed)
+vim +BundleInstall +qall
