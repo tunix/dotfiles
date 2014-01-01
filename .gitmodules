@@ -1,3 +1,6 @@
 [submodule "settings/oh-my-zsh"]
 	path = settings/oh-my-zsh
 	url = git@github.com:tunix/oh-my-zsh.git
+[submodule "settings/vim/bundle/vundle"]
+	path = settings/vim/bundle/vundle
+	url = git@github.com:gmarik/vundle.git
