@@ -70,3 +70,5 @@ fi
 
 # enabling settings
 source $HOME/.zshrc &> /dev/null
+
+# TODO: Mac related changes
