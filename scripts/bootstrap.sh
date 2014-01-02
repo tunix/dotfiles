@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 DOTFILES_ROOT="$(pwd)"
+HOSTNAME="$(hostname -s)"
 PLATFORM="$(uname)"
 SERVER_APPS_PATH="/srv/apps"
 SERVER_VENV_PATH="/srv/virtualenvs"
@@ -67,7 +68,7 @@ fi
 source $HOME/.zshrc &> /dev/null
 
 # server path definition changes
-if [[ in_array "$(hostname -s)" ${REMOTES[@]} ]]; then
+if [[ in_array $HOSTNAME ${REMOTES[@]} ]]; then
     sed -i -e 's|$HOME/projects|/srv/apps|g' settings/zshrc
     sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' settings/zshrc
 fi
