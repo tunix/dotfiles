@@ -68,7 +68,7 @@ fi
 source $HOME/.zshrc &> /dev/null
 
 # server path definition changes
-if [ in_array $HOSTNAME ${REMOTES[@]} ]; then
+if in_array $HOSTNAME ${REMOTES[@]}; then
     sed -i -e 's|$HOME/projects|/srv/apps|g' settings/zshrc
     sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' settings/zshrc
 fi
