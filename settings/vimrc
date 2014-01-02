@@ -5,6 +5,9 @@ filetype plugin indent on
 " Bundles
 source ~/.vim/bundles.vim
 
+" Change leader key
+let g:mapleader=","
+
 " Generic
 set noeb  " no beeps
 set bs=indent,eol,start  " Makes backspace key more powerful.
@@ -84,8 +87,6 @@ nnoremap <S-F> :set fullscreen!<cr>
 nnoremap t :set ft=
 
 " Subsettings
-let g:mapleader=","
-
 let g:netrw_liststyle=3
 
 let g:airline#extensions#tabline#enabled=1
