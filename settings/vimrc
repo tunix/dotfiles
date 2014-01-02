@@ -60,6 +60,10 @@ nnoremap <silent> <C-Right> <c-w>l
 nnoremap <silent> <C-Left> <c-w>h
 nnoremap <silent> <C-Up> <c-w>k
 nnoremap <silent> <C-Down> <c-w>j
+nnoremap <silent> <C-A-Left> :bp<cr>
+nnoremap <silent> <C-A-Right> :bn<cr>
+nmap <S-F> :set fullscreen!<cr>
+nmap t :set ft=
 
 " Subsettings
 let g:netrw_liststyle=3
@@ -69,7 +73,7 @@ let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
 let g:airline_detect_modified=1
 
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_max_height = 10
