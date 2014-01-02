@@ -52,7 +52,8 @@ set fdl=99
 
 " Bindings
 nnoremap <C-s> :w<cr>
-nnoremap <C-w> :bd<cr>
+nnoremap <C-w> :q<cr>
+nnoremap <C-x> :bd<cr>
 nnoremap <C-q> :qa!<cr>
 nnoremap <Tab> :CtrlPBuffer<cr>
 nnoremap gh <Plug>GitGutterNextHunk
