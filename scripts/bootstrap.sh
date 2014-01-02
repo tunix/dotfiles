@@ -18,13 +18,17 @@ REMOTES=("raptiye" "web1" "test1" "test2" "api1" "ci")
 rm -rf $HOME/.bin/arch-packages-news.py &> /dev/null
 rm -rf $HOME/.bin/genpwd &> /dev/null
 rm -rf $HOME/.zshrc &> /dev/null
-rm -rf $HOME/.ssh/authorized_keys &> /dev/null
 rm -rf $HOME/.gitconfig &> /dev/null
 rm -rf $HOME/.oh-my-zsh &> /dev/null
 rm -rf $HOME/.vim* &> /dev/null
 rm -rf $HOME/.isort.cfg &> /dev/null
 rm -rf $HOME/.pythonrc &> /dev/null
 rm -rf $HOME/.tmux.conf &> /dev/null
+
+# only delete .ssh/authorized_keys if USER isn't vagrant
+if [[ $USER != "vagrant" ]]; then
+    rm -rf $HOME/.ssh/authorized_keys &> /dev/null
+fi
 
 # resetting changes to these files
 git checkout .
@@ -41,8 +45,10 @@ ln -sf $DOTFILES_ROOT/scripts/generate-password.py $HOME/.bin/genpwd
 # zsh
 ln -sf $DOTFILES_ROOT/settings/zshrc $HOME/.zshrc
 
-# ssh
-ln -sf $DOTFILES_ROOT/settings/ssh/authorized_keys $HOME/.ssh/authorized_keys
+# only install .ssh/authorized_keys if USER isn't vagrant
+if [[ $USER != "vagrant" ]]; then
+    ln -sf $DOTFILES_ROOT/settings/ssh/authorized_keys $HOME/.ssh/authorized_keys
+fi
 
 # git
 ln -sf $DOTFILES_ROOT/settings/gitconfig $HOME/.gitconfig
