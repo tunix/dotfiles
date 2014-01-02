@@ -26,7 +26,7 @@ rm -rf $HOME/.pythonrc &> /dev/null
 rm -rf $HOME/.tmux.conf &> /dev/null
 
 # only delete .ssh/authorized_keys if in vagrant machine
-if [ -d /vagrant ]; then
+if [ ! -d /vagrant ]; then
     rm -rf $HOME/.ssh/authorized_keys &> /dev/null
 fi
 
@@ -46,7 +46,7 @@ ln -sf $DOTFILES_ROOT/scripts/generate-password.py $HOME/.bin/genpwd
 ln -sf $DOTFILES_ROOT/settings/zshrc $HOME/.zshrc
 
 # only install .ssh/authorized_keys if in vagrant machine
-if [ -d /vagrant ]; then
+if [ ! -d /vagrant ]; then
     ln -sf $DOTFILES_ROOT/settings/ssh/authorized_keys $HOME/.ssh/authorized_keys
 fi
 
