@@ -11,6 +11,7 @@ set-option -g default-command "reattach-to-user-namespace -l zsh" # or bash...
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 '
+REMOTES=("raptiye" "web1" "test1" "test2" "api1" "ci")
 
 # deleting existing files first
 rm -rf $HOME/.bin/arch-packages-news.py &> /dev/null
@@ -57,12 +58,6 @@ ln -sf $DOTFILES_ROOT/settings/isort.cfg $HOME/.isort.cfg
 ln -sf $DOTFILES_ROOT/settings/pythonrc $HOME/.pythonrc
 ln -sf $DOTFILES_ROOT/settings/tmux.conf $HOME/.tmux.conf
 
-# server path definition changes
-if [[ "$(hostname -s)" != pengu* ]]; then
-    sed -i -e 's|$HOME/projects|/srv/apps|g' settings/zshrc
-    sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' settings/zshrc
-fi
-
 # OSX tmux changes
 if [[ $PLATFORM == "Darwin" ]]; then
     echo $OSX_TMUX_CHANGES >> $HOME/.tmux.conf
@@ -70,5 +65,11 @@ fi
 
 # enabling settings
 source $HOME/.zshrc &> /dev/null
+
+# server path definition changes
+if [[ in_array "$(hostname -s)" ${REMOTES[@]} ]]; then
+    sed -i -e 's|$HOME/projects|/srv/apps|g' settings/zshrc
+    sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' settings/zshrc
+fi
 
 # TODO: Mac related changes
