@@ -9,7 +9,6 @@ source ~/.vim/bundles.vim
 set noeb  " no beeps
 set bs=indent,eol,start  " Makes backspace key more powerful.
 set spr  " Split vertical windows right to the current windows
-set sb  " Split horizontal windows below to the current windows
 set aw  " Automatically save before :next, :make etc.
 set ar  " Automatically reread changed files without asking me anything
 set sm  " Do not show matching brackets by flickering
@@ -74,6 +73,13 @@ nnoremap <A-Up>    "tdd{"tP
 inoremap <S-Return> <esc>O
 inoremap <C-Return> <esc>o
 
+" create new splits
+nnoremap <leader>s :sp<cr>
+nnoremap <leader>v :vs<cr>
+
+" source file
+nnoremap <leader>so :source %<cr>
+
 nnoremap <S-F> :set fullscreen!<cr>
 nnoremap t :set ft=
 
@@ -111,16 +117,3 @@ let g:airline_theme="dark"
 
 " Shortcuts
 iab chlog <c-r>=strftime("%Y-%m-%d")<cr>  Alper Kanat  <alperkanat@raptiye.org><cr><cr>
-
-if has("gui_macvim")
-    set guifont=Monaco\ for\ Powerline:h10
-    set guioptions-=m  " no menu
-    set guioptions-=T  " no toolbar
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=r  " no scrollbar
-    set guioptions-=R
-    set guicursor+=a:blinkon0
-    set guicursor=a:hor20-Cursor
-    inoremap <D-Return> <esc>o
-endif
