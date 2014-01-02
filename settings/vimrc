@@ -35,16 +35,16 @@ set lsp=3
 set ls=2
 
 " Bindings
-map <leader>s :w<cr>
-map <leader>w :bd<cr>
-map <leader>q :qa!<cr>
+map <C-s> :w<cr>
+map <C-w> :bd<cr>
+map <C-q> :qa!<cr>
 nmap <Tab> :CtrlPBuffer<cr>
 nmap gh <Plug>GitGutterNextHunk
 nmap gH <Plug>GitGutterPrevHunk
-nnoremap <silent> <leader>Right <c-w>l
-nnoremap <silent> <leader>Left <c-w>h
-nnoremap <silent> <leader>Up <c-w>k
-nnoremap <silent> <leader>Down <c-w>j
+nnoremap <silent> <C-Right> <c-w>l
+nnoremap <silent> <C-Left> <c-w>h
+nnoremap <silent> <C-Up> <c-w>k
+nnoremap <silent> <C-Down> <c-w>j
 
 " Subsettings
 let g:netrw_liststyle=3
