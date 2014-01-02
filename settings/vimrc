@@ -107,4 +107,6 @@ if has("gui_macvim")
     set guioptions-=L
     set guioptions-=r  " no scrollbar
     set guioptions-=R
+    set guicursor+=a:blinkon0
+    set guicursor=a:hor20-Cursor
 endif
