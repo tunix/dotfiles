@@ -13,6 +13,7 @@ set sb  " Split horizontal windows below to the current windows
 set aw  " Automatically save before :next, :make etc.
 set ar  " Automatically reread changed files without asking me anything
 set sm  " Do not show matching brackets by flickering
+set cul  " highlight current line
 set enc=utf-8
 set fencs=utf-8
 set nocp
@@ -39,6 +40,12 @@ set nobk
 set nu
 set rnu
 set ls=2
+set list
+set listchars=tab:▸\ ,eol:¬
+set wrap
+set textwidth=120
+set formatoptions=qrn1
+set colorcolumn=120
 
 " Bindings
 map <C-s> :w<cr>
@@ -83,4 +90,10 @@ iab chlog <c-r>=strftime("%Y-%m-%d")<cr>  Alper Kanat  <alperkanat@raptiye.org><
 
 if has("gui_macvim")
     set guifont=Monaco\ for\ Powerline:h10
+    set guioptions-=m  " no menu
+    set guioptions-=T  " no toolbar
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=r  " no scrollbar
+    set guioptions-=R
 endif
