@@ -77,6 +77,9 @@ nnoremap <A-Up>    "tdd{"tP
 inoremap <S-Return> <esc>O
 inoremap <C-Return> <esc>o
 
+" tabs
+inoremap <S-Tab> <C-o><<
+
 " create new splits
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>v :vs<cr>
@@ -119,3 +122,7 @@ let g:airline_theme="dark"
 
 " Shortcuts
 iab chlog <c-r>=strftime("%Y-%m-%d")<cr>  Alper Kanat  <alperkanat@raptiye.org><cr><cr>
+
+" Actions
+au BufWritePost .vimrc source %  " reload vimrc everytime it's updated
+au BufWritePre *.py Isort  " isort saved py files
