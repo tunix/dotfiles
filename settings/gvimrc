@@ -1,0 +1,14 @@
+if has("gui_macvim")
+    set guifont=Monaco\ for\ Powerline:h10
+    set guioptions-=m  " no menu
+    set guioptions-=T  " no toolbar
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=r  " no scrollbar
+    set guioptions-=R
+    set guicursor+=a:blinkon0
+    set guicursor=a:hor20-Cursor
+    inoremap <D-Return> <esc>o
+
+    let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+endif
