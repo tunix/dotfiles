@@ -51,10 +51,21 @@ set fdm=indent
 set fdl=99
 
 " Bindings
+" move windows around
+nnoremap <silent> <leader>h <C-w>h
+nnoremap <silent> <leader>H <C-w>H
+nnoremap <silent> <leader>l <C-w>l
+nnoremap <silent> <leader>L <C-w>L
+nnoremap <silent> <leader>j <C-w>j
+nnoremap <silent> <leader>J <C-w>J
+nnoremap <silent> <leader>k <C-w>k
+nnoremap <silent> <leader>K <C-w>K
+
 nnoremap <C-s> :w<cr>
 nnoremap <C-w> :q<cr>
 nnoremap <C-x> :bd<cr>
 nnoremap <C-q> :qa!<cr>
+nnoremap <C-t> :tabnew<cr>
 
 nnoremap <Tab> :CtrlPBuffer<cr>
 
@@ -138,3 +149,4 @@ iab chlog <c-r>=strftime("%Y-%m-%d")<cr>  Alper Kanat  <alperkanat@raptiye.org><
 " Actions
 au BufWritePost .vimrc source %  " reload vimrc everytime it's updated
 au BufWritePre *.py Isort  " isort saved py files
+au BufWritePre * :%s/\s\+$//
