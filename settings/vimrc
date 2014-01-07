@@ -16,39 +16,38 @@ set aw  " Automatically save before :next, :make etc.
 set ar  " Automatically reread changed files without asking me anything
 set sm  " Do not show matching brackets by flickering
 set cul  " highlight current line
-set enc=utf-8
-set fencs=utf-8
-set nocp
-set ai
-set si
-set cin
-set bg=dark
-set et
-set sta
-set sw=4
-set sts=4
-set ts=4
-set wig=*.pyc
-set ic
-set scs
-set hls
-set is
-set sr
-set hi=1000
-set ul=1000
-set noswf
-set nobk
-set nu
-set rnu
-set ls=2
-set list
-set listchars=tab:▸\ ,eol:¬
+set enc=utf-8  " set encoding to utf-8
+set fencs=utf-8  " set file encoding to utf-8
+set nocp  " no vi-compatibility
+set ai  " autoindent
+set si  " smartindent
+set bg=dark  " dark background
+set et  " use space instead of tab
+set sta  " smarttab
+set sw=4  " shiftwidth
+set sts=4  " soft tab stop
+set ts=4  " tab stop
+set wig=*.pyc  " ignore pyc files
+set ic  " ignore case in search patterns
+set scs  " override ignorecase if search pattern includes uppercase chars
+set hls  " highlight search patterns
+set is  " show pattern while searching
+set sr  " round indent to multiple of shiftwidth
+set hi=1000  " history
+set ul=1000  " undo history
+set noswf  " don't create swap files
+set nobk  " don't create backup files
+set nu  " show line numbers
+set rnu  " show relative line numbers
+set ls=2  " always show last status
+set list  " show hidden chars
+set listchars=tab:▸\ ,eol:¬  " how hidden chars are shown
 set wrap
-set textwidth=120
-set formatoptions=qrn1
-set colorcolumn=120
-set fdm=indent
-set fdl=99
+set textwidth=120  " wrap width
+set formatoptions=qrn1  " wrap formatting
+set colorcolumn=120  " wrap ruler
+set fdm=indent  " fold method
+set fdl=99  " fold level
 
 " Bindings
 " move windows around
@@ -116,7 +115,7 @@ let g:airline_detect_modified=1
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_max_height = 10
+let g:ctrlp_max_height = 20
 let g:ctrlp_switch_buffer = 'et'  " jump to a file if it's open already
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit=0
