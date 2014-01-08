@@ -135,6 +135,7 @@ let g:Tlist_File_Fold_Auto_Close=1
 let g:Tlist_Close_On_Select=1
 let g:Tlist_Process_File_Always=1
 let g:Tlist_WinWidth = 50
+let g:Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 
 " Theme
 colorscheme solarized
