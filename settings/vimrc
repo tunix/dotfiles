@@ -68,9 +68,6 @@ nnoremap <C-t> :tabnew<cr>
 
 nnoremap <Tab> :CtrlPBuffer<cr>
 
-nnoremap gh <Plug>GitGutterNextHunk
-nnoremap gH <Plug>GitGutterPrevHunk
-
 nnoremap <silent> <C-Right> <c-w>l
 nnoremap <silent> <C-Left> <c-w>h
 nnoremap <silent> <C-Up> <c-w>k
