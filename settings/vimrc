@@ -146,5 +146,5 @@ iab chlog <c-r>=strftime("%Y-%m-%d")<cr>  Alper Kanat  <alperkanat@raptiye.org><
 
 " Actions
 au BufWritePost .vimrc source %  " reload vimrc everytime it's updated
-au BufWritePre *.py Isort  " isort saved py files
+" au BufWritePre *.py Isort  " isort saved py files -- DOESN'T SUPPORT py3k, DISABLED FOR NOW
 au BufWritePre * FixWhitespace  " clear trailing white spaces
