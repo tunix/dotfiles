@@ -9,4 +9,5 @@ if has("gui_macvim")
     set guicursor+=a:blinkon0
     set guicursor=a:hor20-Cursor
     inoremap <D-Return> <esc>o
+    nnoremap <D-j> !python -m json.tool<cr>
 endif

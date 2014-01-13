@@ -60,30 +60,40 @@ nnoremap <silent> <leader>J <C-w>J
 nnoremap <silent> <leader>k <C-w>k
 nnoremap <silent> <leader>K <C-w>K
 
-nnoremap <C-s> :w<cr>
-nnoremap <C-w> :q<cr>
-nnoremap <C-x> :bd<cr>
-nnoremap <C-q> :qa!<cr>
-nnoremap <C-t> :tabnew<cr>
+noremap <C-s> :w<cr>
+noremap <C-w> :q<cr>
+noremap <C-x> :bd<cr>
+noremap <C-q> :qa!<cr>
+noremap <C-t> :tabnew<cr>
 
 nnoremap <Tab> :CtrlPBuffer<cr>
 
 nnoremap gh <Plug>GitGutterNextHunk
 nnoremap gH <Plug>GitGutterPrevHunk
 
-nnoremap <silent> <C-Right> <c-w>l
-nnoremap <silent> <C-Left> <c-w>h
-nnoremap <silent> <C-Up> <c-w>k
-nnoremap <silent> <C-Down> <c-w>j
-nnoremap <silent> <C-A-Left> :bp<cr>
-nnoremap <silent> <C-A-Right> :bn<cr>
+" json prettifier using python
+noremap <leader>pj :%!python -m json.tool<cr>
+
+" window moving
+nnoremap <silent> <leader>- <C-w>-
+nnoremap <silent> <leader>+ <C-w>+
+nnoremap <silent> <leader>< <C-w><
+nnoremap <silent> <leader>> <C-w>>
+
+" cursor moving
+noremap <silent> <C-Right> <c-w>l
+noremap <silent> <C-Left> <c-w>h
+noremap <silent> <C-Up> <c-w>k
+noremap <silent> <C-Down> <c-w>j
+noremap <silent> <C-A-Left> :bp<cr>
+noremap <silent> <C-A-Right> :bn<cr>
 
 " Move lines around.
 " We use <t> as the temporary register.
-nnoremap <C-A-Up>    "tddk"tP
-nnoremap <C-A-Down>  "tdd"tp
-nnoremap <A-Down>  "tdd}"tp
-nnoremap <A-Up>    "tdd{"tP
+noremap <C-A-Up>    "tddk"tP
+noremap <C-A-Down>  "tdd"tp
+noremap <A-Down>  "tdd}"tp
+noremap <A-Up>    "tdd{"tP
 
 " sublime like enters
 inoremap <S-Return> <esc>O
@@ -103,7 +113,7 @@ nnoremap <S-F> :set fullscreen!<cr>
 nnoremap t :set ft=
 
 " taglist toggle
-nnoremap <silent> <C-l> :TlistToggle<cr>
+noremap <silent> <C-l> :TlistToggle<cr>
 
 " Subsettings
 let g:netrw_liststyle=3
@@ -137,6 +147,10 @@ let g:Tlist_Process_File_Always=1
 let g:Tlist_WinWidth = 50
 let g:Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
 " Theme
 colorscheme solarized
 let g:airline_theme="dark"
@@ -146,5 +160,6 @@ iab chlog <c-r>=strftime("%Y-%m-%d")<cr>  Alper Kanat  <alperkanat@raptiye.org><
 
 " Actions
 au BufWritePost .vimrc source %  " reload vimrc everytime it's updated
+au BufWritePost .gvimrc source %  " reload vimrc everytime it's updated
 " au BufWritePre *.py Isort  " isort saved py files -- DOESN'T SUPPORT py3k, DISABLED FOR NOW
 au BufWritePre * FixWhitespace  " clear trailing white spaces
