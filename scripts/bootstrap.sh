@@ -41,7 +41,7 @@ git submodule update
 # installing scripts
 mkdir -p $HOME/.bin
 ln -sf $DOTFILES_ROOT/scripts/arch-packages-news.py $HOME/.bin/arch-packages-news.py
-ln -sf $DOTFILES_ROOT/scripts/generate-password.py $HOME/.bin/genpwd
+ln -sf $DOTFILES_ROOT/scripts/generate_password.py $HOME/.bin/genpwd
 
 # zsh
 ln -sf $DOTFILES_ROOT/settings/zshrc $HOME/.zshrc
