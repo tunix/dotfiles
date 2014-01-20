@@ -81,10 +81,10 @@ nnoremap <silent> <leader>< <C-w><
 nnoremap <silent> <leader>> <C-w>>
 
 " cursor moving
-noremap <silent> <C-Right> <c-w>l
-noremap <silent> <C-Left> <c-w>h
-noremap <silent> <C-Up> <c-w>k
-noremap <silent> <C-Down> <c-w>j
+noremap <silent> <leader><Right> <c-w>l
+noremap <silent> <leader><Left> <c-w>h
+noremap <silent> <leader><Up> <c-w>k
+noremap <silent> <leader><Down> <c-w>j
 noremap <silent> <C-A-Left> :bp<cr>
 noremap <silent> <C-A-Right> :bn<cr>
 

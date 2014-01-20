@@ -8,6 +8,12 @@ if has("gui_macvim")
     set guioptions-=R
     set guicursor+=a:blinkon0
     set guicursor=a:hor20-Cursor
+
     inoremap <D-Return> <esc>o
     nnoremap <D-j> !python -m json.tool<cr>
+
+    noremap <silent> <C-Right> <c-w>l
+    noremap <silent> <C-Left> <c-w>h
+    noremap <silent> <C-Up> <c-w>k
+    noremap <silent> <C-Down> <c-w>j
 endif
