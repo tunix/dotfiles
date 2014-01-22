@@ -12,7 +12,11 @@ set-option -g default-command "reattach-to-user-namespace -l zsh" # or bash...
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 '
-REMOTES=("raptiye" "web1" "test1" "test2" "test3" "api1" "api2" "api3" "ci")
+REMOTES=(
+    "raptiye" "web1" "test1" "test2"
+    "test3" "api1" "api2" "api3"
+    "ci" "calculon" "leela" "bender"
+)
 
 # deleting existing files first
 rm -rf $HOME/.bin/arch-packages-news.py &> /dev/null
