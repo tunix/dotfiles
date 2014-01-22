@@ -67,9 +67,13 @@ ln -sf $DOTFILES_ROOT/settings/isort.cfg $HOME/.isort.cfg
 ln -sf $DOTFILES_ROOT/settings/pythonrc $HOME/.pythonrc
 ln -sf $DOTFILES_ROOT/settings/tmux.conf $HOME/.tmux.conf
 
-# OSX tmux changes
+# OSX changes
 if [[ $PLATFORM == "Darwin" ]]; then
+    # tmux
     echo $OSX_TMUX_CHANGES >> $HOME/.tmux.conf
+
+    # vim ctags
+    sed -i -e 's|/usr/bin/ctags|/usr/local/bin/ctags|g' $DOTFILES_ROOT/settings/vimrc
 fi
 
 # enabling settings
@@ -77,8 +81,8 @@ source $HOME/.zshrc &> /dev/null
 
 # server path definition changes
 if in_array $HOSTNAME ${REMOTES[@]}; then
-    sed -i -e 's|$HOME/projects|/srv/apps|g' settings/zshrc
-    sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' settings/zshrc
+    sed -i -e 's|$HOME/projects|/srv/apps|g' $DOTFILES_ROOT/settings/zshrc
+    sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' $DOTFILES_ROOT/settings/zshrc
 fi
 
 # TODO: Mac related changes
