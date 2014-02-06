@@ -13,9 +13,7 @@ bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 '
 REMOTES=(
-    "raptiye" "web1" "test1" "test2"
-    "test3" "api1" "api2" "api3"
-    "ci" "calculon" "leela" "bender"
+    "calculon" "leela" "bender"
 )
 
 # deleting existing files first
@@ -84,7 +82,7 @@ fi
 source $HOME/.zshrc &> /dev/null
 
 # server path definition changes
-if in_array $HOSTNAME ${REMOTES[@]}; then
+if ! in_array $HOSTNAME ${REMOTES[@]}; then
     sed -i -e 's|$HOME/projects|/srv/apps|g' $DOTFILES_ROOT/settings/zshrc
     sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' $DOTFILES_ROOT/settings/zshrc
 fi
