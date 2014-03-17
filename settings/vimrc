@@ -110,6 +110,7 @@ nnoremap <leader>v :vs<cr>
 nnoremap <leader>so :source %<cr>
 
 nnoremap <S-F> :set fullscreen!<cr>
+nnoremap <S-T> :set bg=
 nnoremap t :set ft=
 
 " taglist toggle
