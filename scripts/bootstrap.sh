@@ -79,7 +79,7 @@ fi
 source $HOME/.zshrc &> /dev/null
 
 # server path definition changes
-if [ ! -d /vagrant ]; then
+if [[ $PLATFORM != "Darwin" && ! -d /vagrant ]]; then
     sed -i -e 's|$HOME/projects|/srv/apps|g' $DOTFILES_ROOT/settings/zshrc
     sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' $DOTFILES_ROOT/settings/zshrc
 fi
