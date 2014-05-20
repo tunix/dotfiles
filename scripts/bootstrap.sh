@@ -23,6 +23,7 @@ rm -rf $HOME/.gvimrc &> /dev/null
 rm -rf $HOME/.isort.cfg &> /dev/null
 rm -rf $HOME/.pythonrc &> /dev/null
 rm -rf $HOME/.tmux.conf &> /dev/null
+rm -rf $HOME/.hgrc &> /dev/null
 
 # only delete .ssh/authorized_keys if in vagrant machine
 if [ ! -d /vagrant ]; then
@@ -52,6 +53,9 @@ fi
 
 # git
 ln -sf $DOTFILES_ROOT/settings/gitconfig $HOME/.gitconfig
+
+# mercurial
+ln -sf $DOTFILES_ROOT/settings/hgrc $HOME/.hgrc
 
 # oh-my-zsh
 ln -sf $DOTFILES_ROOT/settings/oh-my-zsh $HOME/.oh-my-zsh
