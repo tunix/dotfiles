@@ -1,2 +1,5 @@
+[ui]
+username = Alper Kanat <alper.kanat@monitise.com>
+
 [extensions]
 hgflow = /usr/local/lib/python2.7/site-packages/hgflow.py
