@@ -70,6 +70,10 @@ plugins=(
     docker
     jump
     systemd
+    mercurial
+    mvn
+    gradle
+    jsontools
 )
 
 source $ZSH/oh-my-zsh.sh
