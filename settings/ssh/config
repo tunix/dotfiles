@@ -1,3 +1,13 @@
+Host penguhome
+    Hostname home.alperkan.at
+    Port 443
+    User tunix
+
+Host raptiye
+    Hostname raptiye.org
+    Port 443
+    User tunix
+
 Host calculon
     ProxyCommand ssh -q tunix@bender.butigo.com nc ip-10-0-5-17.eu-west-1.compute.internal 22
 
