@@ -15,5 +15,9 @@ Host leela
     ProxyCommand ssh -q tunix@bender.butigo.com nc ip-10-0-5-16.eu-west-1.compute.internal 22
 
 Host butigo
-    HostName butigo.com
+    Hostname butigo.com
+    User tunix
+
+Host ozoncons
+    Hostname ozoncons.com
     User tunix
