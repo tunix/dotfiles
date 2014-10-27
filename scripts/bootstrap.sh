@@ -45,13 +45,15 @@ ln -sf $DOTFILES_ROOT/scripts/generate_password.py $HOME/.bin/genpwd
 # zsh
 ln -sf $DOTFILES_ROOT/settings/zshrc $HOME/.zshrc
 
-# only install .ssh/authorized_keys if in vagrant machine
+# only install .ssh/authorized_keys if not in vagrant machine
 if [ ! -d /vagrant ]; then
     ln -sf $DOTFILES_ROOT/settings/ssh/authorized_keys $HOME/.ssh/authorized_keys
-    ln -sf $DOTFILES_ROOT/settings/ssh/config $HOME/.ssh/config
+    ln -sf $DOTFILES_ROOT/settings/ssh/config_apilous $HOME/.ssh/config_apilous
+    ln -sf $DOTFILES_ROOT/settings/ssh/config_home $HOME/.ssh/config_home
+    ln -sf $DOTFILES_ROOT/settings/ssh/config_raptiye $HOME/.ssh/config_raptiye
 fi
 
-# git
+# git
 ln -sf $DOTFILES_ROOT/settings/gitconfig $HOME/.gitconfig
 
 # mercurial
@@ -89,4 +91,6 @@ if [[ $PLATFORM != "Darwin" && ! -d /vagrant ]]; then
     sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' $DOTFILES_ROOT/settings/zshrc
 fi
 
-# TODO: Mac related changes
+# merge ssh configs
+cat $HOME/.ssh/config_* > $HOME/.ssh/config
+
