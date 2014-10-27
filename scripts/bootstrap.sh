@@ -25,7 +25,7 @@ rm -rf $HOME/.pythonrc &> /dev/null
 rm -rf $HOME/.tmux.conf &> /dev/null
 rm -rf $HOME/.hgrc &> /dev/null
 
-# only delete .ssh/authorized_keys if in vagrant machine
+# only delete .ssh/authorized_keys if not in vagrant machine
 if [ ! -d /vagrant ]; then
     rm -rf $HOME/.ssh/authorized_keys &> /dev/null
 fi
@@ -93,4 +93,3 @@ fi
 
 # merge ssh configs
 cat $HOME/.ssh/config_* > $HOME/.ssh/config
-
