@@ -1,0 +1,4 @@
+Host penguhome
+    Hostname home.alperkan.at
+    Port 443
+    User tunix
