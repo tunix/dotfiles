@@ -69,6 +69,7 @@ ln -sf $DOTFILES_ROOT/settings/gvimrc $HOME/.gvimrc
 ln -sf $DOTFILES_ROOT/settings/isort.cfg $HOME/.isort.cfg
 ln -sf $DOTFILES_ROOT/settings/pythonrc $HOME/.pythonrc
 ln -sf $DOTFILES_ROOT/settings/tmux.conf $HOME/.tmux.conf
+ln -sf $DOTFILES_ROOT/settings/editorconfig $HOME/.editorconfig
 
 # OSX changes
 if [[ $PLATFORM == "Darwin" ]]; then
