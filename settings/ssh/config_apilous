@@ -1,3 +1,7 @@
+Host router
+    Hostname router.raptiye.org
+    User core
+
 Host ozoncons
     Hostname ozoncons.com
     User tunix
