@@ -66,7 +66,6 @@ plugins=(
     pip
     redis-cli
     rsync
-    virtualenvwrapper
     docker
     jump
     systemd
@@ -74,6 +73,7 @@ plugins=(
     mvn
     gradle
     jsontools
+    pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
