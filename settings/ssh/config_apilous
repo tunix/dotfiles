@@ -1,7 +1,3 @@
 Host router
-    Hostname router.raptiye.org
+    Hostname router.apilo.us
     User core
-
-Host ozoncons
-    Hostname ozoncons.com
-    User tunix
