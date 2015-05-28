@@ -1,5 +1,5 @@
 if has("gui_macvim")
-    set guifont=Monaco\ for\ Powerline:h10
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
     set guioptions-=m  " no menu
     set guioptions-=T  " no toolbar
     set guioptions-=l
@@ -8,6 +8,8 @@ if has("gui_macvim")
     set guioptions-=R
     set guicursor+=a:blinkon0
     set guicursor=a:hor20-Cursor
+
+    colorscheme solarized
 
     inoremap <D-Return> <esc>o
     nnoremap <D-j> !python -m json.tool<cr>
