@@ -25,6 +25,7 @@
     lgg = log --graph
     lgf = log --graph --name-only
     ann = annotate
+    ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ >> .gitignore ;}; gi"
 [push]
     default = tracking
 [merge]
