@@ -15,6 +15,7 @@ bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux pa
 # deleting existing files first
 rm -rf $HOME/.bin/arch-packages-news.py &> /dev/null
 rm -rf $HOME/.bin/genpwd &> /dev/null
+rm -rf $HOME/.bin/imgcat &> /dev/null
 rm -rf $HOME/.zshrc &> /dev/null
 rm -rf $HOME/.gitconfig &> /dev/null
 rm -rf $HOME/.oh-my-zsh &> /dev/null
@@ -41,6 +42,7 @@ git submodule update
 mkdir -p $HOME/.bin
 ln -sf $DOTFILES_ROOT/scripts/arch-packages-news.py $HOME/.bin/arch-packages-news.py
 ln -sf $DOTFILES_ROOT/scripts/generate_password.py $HOME/.bin/genpwd
+ln -sf $DOTFILES_ROOT/scripts/imgcat $HOME/.bin/imgcat
 
 # zsh
 ln -sf $DOTFILES_ROOT/settings/zshrc $HOME/.zshrc
