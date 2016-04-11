@@ -39,7 +39,7 @@ set hi=1000  " history
 set ul=1000  " undo history
 set noswf  " don't create swap files
 set nobk  " don't create backup files
-set nu  " show line numbers
+" set nu  " show line numbers
 set rnu  " show relative line numbers
 set ls=2  " always show last status
 set list  " show hidden chars
@@ -111,7 +111,6 @@ nnoremap <leader>v :vs<cr>
 " source file
 nnoremap <leader>so :source %<cr>
 
-nnoremap <S-F> :set fullscreen!<cr>
 nnoremap <S-T> :set bg=
 nnoremap t :set ft=
 

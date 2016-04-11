@@ -13,6 +13,7 @@ if has("gui_macvim")
 
     inoremap <D-Return> <esc>o
     nnoremap <D-j> !python -m json.tool<cr>
+    nnoremap <S-F> :set fullscreen!<cr>
 
     noremap <silent> <C-Right> <c-w>l
     noremap <silent> <C-Left> <c-w>h
