@@ -2,7 +2,7 @@ syn on
 filetype off
 filetype plugin indent on
 
-colorscheme hybrid
+colorscheme solarized
 
 " Bundles
 source ~/.vim/bundles.vim

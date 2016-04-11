@@ -9,8 +9,6 @@ if has("gui_macvim")
     set guicursor+=a:blinkon0
     set guicursor=a:hor20-Cursor
 
-    colorscheme solarized
-
     inoremap <D-Return> <esc>o
     nnoremap <D-j> !python -m json.tool<cr>
     nnoremap <S-F> :set fullscreen!<cr>
