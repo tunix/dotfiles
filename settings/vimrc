@@ -2,6 +2,8 @@ syn on
 filetype off
 filetype plugin indent on
 
+colorscheme mod8
+
 " Bundles
 source ~/.vim/bundles.vim
 
