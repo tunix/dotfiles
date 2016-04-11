@@ -70,8 +70,8 @@ noremap <C-t> :tabnew<cr>
 
 nnoremap <Tab> :CtrlPBuffer<cr>
 
-nnoremap gh <Plug>GitGutterNextHunk
-nnoremap gH <Plug>GitGutterPrevHunk
+nnoremap gh :GitGutterNextHunk<cr>
+nnoremap gH :GitGutterPrevHunk<cr>
 
 " json prettifier using python
 noremap <leader>pj :%!python -m json.tool<cr>
