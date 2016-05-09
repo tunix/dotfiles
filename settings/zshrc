@@ -74,6 +74,7 @@ plugins=(
     gradle
     jsontools
     pyenv
+    heroku
 )
 
 source $ZSH/oh-my-zsh.sh
