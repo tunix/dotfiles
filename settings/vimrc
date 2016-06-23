@@ -164,3 +164,7 @@ au BufWritePost .vimrc source %  " reload vimrc everytime it's updated
 au BufWritePost .gvimrc source %  " reload vimrc everytime it's updated
 au BufWritePre *.py Isort  " isort saved py files -- DOESN'T SUPPORT py3k, DISABLED FOR NOW
 au BufWritePre * FixWhitespace  " clear trailing white spaces
+
+if executable("ag")
+    let g:ackprg = "ag --vimgrep"
+endif

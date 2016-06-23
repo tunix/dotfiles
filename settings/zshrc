@@ -40,41 +40,31 @@ plugins=(
     profiles
     git
     git-flow
-    django
     extract
     history-substring-search
     npm
     osx
-    python
     ssh-agent
-    sublime
-    svn
     urltools
     tmux
     motd
     vagrant
-    debian
     encode64
     brew
     bower
     copydir
     copyfile
     colored-man
-    coffee
     command-not-found
     cp
-    pip
-    redis-cli
     rsync
     docker
     jump
     systemd
-    mercurial
     mvn
     gradle
     jsontools
     pyenv
-    heroku
 )
 
 source $ZSH/oh-my-zsh.sh
