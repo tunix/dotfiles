@@ -3,6 +3,7 @@ filetype off
 filetype plugin indent on
 
 colorscheme solarized
+let g:solarized_termtrans=1
 
 " Bundles
 source ~/.vim/bundles.vim
