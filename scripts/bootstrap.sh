@@ -52,7 +52,6 @@ if [ ! -d /vagrant ]; then
     ln -sf $DOTFILES_ROOT/settings/ssh/authorized_keys $HOME/.ssh/authorized_keys
     ln -sf $DOTFILES_ROOT/settings/ssh/config_apilous $HOME/.ssh/config_apilous
     ln -sf $DOTFILES_ROOT/settings/ssh/config_home $HOME/.ssh/config_home
-    ln -sf $DOTFILES_ROOT/settings/ssh/config_raptiye $HOME/.ssh/config_raptiye
 fi
 
 # git
