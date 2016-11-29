@@ -120,6 +120,7 @@ noremap <silent> <C-l> :TlistToggle<cr>
 
 " Subsettings
 let g:netrw_liststyle=3
+let g:netrw_keepdir= 0
 
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
@@ -148,11 +149,15 @@ let g:Tlist_File_Fold_Auto_Close=1
 let g:Tlist_Close_On_Select=1
 let g:Tlist_Process_File_Always=1
 let g:Tlist_WinWidth = 50
-let g:Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let g:Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+
+let vim_markdown_preview_toggle=1
+let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
 
 " Theme
 let g:airline_theme="dark"
