@@ -149,7 +149,7 @@ let g:Tlist_File_Fold_Auto_Close=1
 let g:Tlist_Close_On_Select=1
 let g:Tlist_Process_File_Always=1
 let g:Tlist_WinWidth = 50
-let g:Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let g:Tlist_Ctags_Cmd = "/usr/bin/ctags"
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
