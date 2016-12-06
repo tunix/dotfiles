@@ -118,6 +118,10 @@ nnoremap t :set ft=
 " taglist toggle
 noremap <silent> <C-l> :TlistToggle<cr>
 
+" Copy & Paste from macOS Clipboard
+noremap <leader>c :.w !pbcopy<cr><cr>
+noremap <leader>p :r !pbpaste<cr>
+
 " Subsettings
 let g:netrw_liststyle=3
 let g:netrw_keepdir= 0
