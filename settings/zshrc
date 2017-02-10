@@ -26,10 +26,10 @@ COMPLETION_WAITING_DOTS="true"
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 # enable tmux autostart
-ZSH_TMUX_AUTOSTART="true"
+# ZSH_TMUX_AUTOSTART="true"
 
 # disable tmux autoquit
-ZSH_TMUX_AUTOQUIT="false"
+# ZSH_TMUX_AUTOQUIT="false"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
