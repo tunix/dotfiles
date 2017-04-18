@@ -36,7 +36,6 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 plugins=(
     profiles
     git
-    git-flow
     extract
     history-substring-search
     npm
@@ -44,14 +43,11 @@ plugins=(
     ssh-agent
     urltools
     tmux
-    motd
-    vagrant
     encode64
     brew
-    bower
     copydir
     copyfile
-    colored-man
+    colored-man-pages
     command-not-found
     cp
     rsync
@@ -62,7 +58,6 @@ plugins=(
     gradle
     jsontools
     pyenv
-    colored-man-pages
     kubectl
 )
 
