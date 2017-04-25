@@ -5,20 +5,13 @@ PLATFORM="$(uname)"
 SERVER_APPS_PATH="/srv/apps"
 SERVER_VENV_PATH="/srv/virtualenvs"
 OSX_TMUX_CHANGES='
-# clipboard
-set -g default-shell $SHELL
-set -g default-command "reattach-to-user-namespace -l ${SHELL}"
-
 # Use vim keybindings in copy mode
 setw -g mode-keys vi
 
-# Setup 'v' to begin selection as in Vim
-bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
-
-# Update default binding of `Enter` to also use copy-pipe
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"'
+# Setup "v" to begin selection as in Vim
+bind-key -Tcopy-mode-vi "v" send -X begin-selection
+bind-key -Tcopy-mode-vi "y" send -X copy-selection
+'
 
 # deleting existing files first
 rm -rf $HOME/.bin/arch-packages-news.py &> /dev/null
