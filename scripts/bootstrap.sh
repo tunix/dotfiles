@@ -51,6 +51,7 @@ ln -sf $DOTFILES_ROOT/settings/zshrc $HOME/.zshrc
 # only install .ssh/authorized_keys if not in vagrant machine
 if [ ! -d /vagrant ]; then
     ln -sf $DOTFILES_ROOT/settings/ssh/authorized_keys $HOME/.ssh/authorized_keys
+    ln -sf $DOTFILES_ROOT/settings/ssh/id_rsa.pub $HOME/.ssh/id_rsa.pub
     ln -sf $DOTFILES_ROOT/settings/ssh/config_apilous $HOME/.ssh/config_apilous
     ln -sf $DOTFILES_ROOT/settings/ssh/config_home $HOME/.ssh/config_home
 fi
