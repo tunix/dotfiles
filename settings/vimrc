@@ -64,10 +64,10 @@ nnoremap <silent> <leader>k <C-w>k
 nnoremap <silent> <leader>K <C-w>K
 
 noremap <C-s> :w<cr>
-noremap <C-w> :q<cr>
+noremap <C-w> :hide<cr>
 noremap <C-x> :bd<cr>
 noremap <C-q> :qa!<cr>
-noremap <C-t> :tabnew<cr>
+noremap <C-n> :tabnew<cr>
 
 nnoremap <Tab> :CtrlPBuffer<cr>
 
@@ -109,8 +109,8 @@ inoremap <S-Tab> <C-o><<
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>v :vs<cr>
 
-" source file
-nnoremap <leader>so :source %<cr>
+" go to tag
+nnoremap <C-g> <C-]>
 
 nnoremap <S-T> :set bg=
 nnoremap t :set ft=
