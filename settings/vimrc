@@ -67,7 +67,7 @@ noremap <C-s> :w<cr>
 noremap <C-w> :hide<cr>
 noremap <C-x> :bd<cr>
 noremap <C-q> :qa!<cr>
-noremap <C-n> :tabnew<cr>
+nnoremap <leader>n :tabnew<cr>
 
 nnoremap <Tab> :CtrlPBuffer<cr>
 
@@ -143,9 +143,6 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(exe|so|dll)$',
     \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
     \ }
-
-let g:syntastic_check_on_open=1
-let g:syntastic_python_checkers=['flake8']
 
 let g:Tlist_Exit_OnlyWindow=1
 let g:Tlist_GainFocus_On_ToggleOpen=1
