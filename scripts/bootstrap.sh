@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 DOTFILES_ROOT="$(pwd)"
 PLATFORM="$(uname)"
