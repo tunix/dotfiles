@@ -1,25 +1,36 @@
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle "gmarik/vundle"
+set nocp  " no vi-compatibility
+filetype off
 
-" Bundles
-Bundle "tpope/vim-vinegar"
-Bundle "tpope/vim-fugitive"
-Bundle "kien/ctrlp.vim"
-Bundle "bling/vim-airline"
-Bundle "airblade/vim-gitgutter"
-Bundle "terryma/vim-multiple-cursors"
-Bundle "tomtom/tcomment_vim"
-Bundle "mattn/emmet-vim"
-Bundle "taglist.vim"
-Bundle "bronson/vim-trailing-whitespace"
-Bundle "danro/rename.vim"
-Bundle "nathanaelkane/vim-indent-guides"
-Bundle "editorconfig/editorconfig-vim"
-Bundle "mileszs/ack.vim"
-Bundle "JamshedVesuna/vim-markdown-preview"
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" Themes
+Plugin 'dracula/vim'
+
+" Plugins
+Plugin 'tpope/vim-vinegar'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'taglist.vim'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'danro/rename.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " syntax highlighting
-Bundle "elzr/vim-json"
-Bundle "groenewege/vim-less"
-Bundle "digitaltoad/vim-pug"
+Plugin 'elzr/vim-json'
+Plugin 'groenewege/vim-less'
+Plugin 'digitaltoad/vim-pug'
+
+call vundle#end()
+
+filetype plugin indent on
