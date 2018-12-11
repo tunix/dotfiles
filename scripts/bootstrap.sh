@@ -2,8 +2,6 @@
 
 DOTFILES_ROOT="$(pwd)"
 PLATFORM="$(uname)"
-SERVER_APPS_PATH="/srv/apps"
-SERVER_VENV_PATH="/srv/virtualenvs"
 OSX_TMUX_CHANGES='
 # Use vim keybindings in copy mode
 setw -g mode-keys vi
@@ -14,12 +12,10 @@ bind-key -Tcopy-mode-vi "y" send -X copy-selection
 '
 
 # deleting existing files first
-rm -rf $HOME/.bin/arch-packages-news.py &> /dev/null
 rm -rf $HOME/.bin/genpwd &> /dev/null
-rm -rf $HOME/.bin/imgcat &> /dev/null
 rm -rf $HOME/.zshrc &> /dev/null
+rm -rf $HOME/.oh-my-zsh-custom &> /dev/null
 rm -rf $HOME/.gitconfig &> /dev/null
-rm -rf $HOME/.oh-my-zsh &> /dev/null
 rm -rf $HOME/.vim* &> /dev/null
 rm -rf $HOME/.gvimrc &> /dev/null
 rm -rf $HOME/.isort.cfg &> /dev/null
@@ -35,18 +31,13 @@ fi
 # resetting changes to these files
 git checkout .
 
-# initializing submodules
-git submodule init
-git submodule update
-
 # installing scripts
 mkdir -p $HOME/.bin
-ln -sf $DOTFILES_ROOT/scripts/arch-packages-news.py $HOME/.bin/arch-packages-news.py
 ln -sf $DOTFILES_ROOT/scripts/generate_password.py $HOME/.bin/genpwd
-ln -sf $DOTFILES_ROOT/scripts/imgcat $HOME/.bin/imgcat
 
 # zsh
 ln -sf $DOTFILES_ROOT/settings/zshrc $HOME/.zshrc
+ln -sf $DOTFILES_ROOT/additions/oh-my-zsh/custom $HOME/.oh-my-zsh-custom
 
 # only install .ssh/authorized_keys if not in vagrant machine
 if [ ! -d /vagrant ]; then
@@ -61,9 +52,6 @@ ln -sf $DOTFILES_ROOT/settings/gitconfig $HOME/.gitconfig
 
 # mercurial
 ln -sf $DOTFILES_ROOT/settings/hgrc $HOME/.hgrc
-
-# oh-my-zsh
-ln -sf $DOTFILES_ROOT/settings/oh-my-zsh $HOME/.oh-my-zsh
 
 # vim
 ln -sf $DOTFILES_ROOT/settings/vim $HOME/.vim
@@ -87,12 +75,6 @@ fi
 
 # enabling settings
 source $HOME/.zshrc &> /dev/null
-
-# server path definition changes
-if [[ $PLATFORM != "Darwin" && ! -d /vagrant ]]; then
-    sed -i -e 's|$HOME/projects|/srv/apps|g' $DOTFILES_ROOT/settings/zshrc
-    sed -i -e 's|$HOME/.virtualenvs|/srv/virtualenvs|g' $DOTFILES_ROOT/settings/zshrc
-fi
 
 # merge ssh configs
 cat $HOME/.ssh/config_* > $HOME/.ssh/config

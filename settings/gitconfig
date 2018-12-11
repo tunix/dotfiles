@@ -11,7 +11,6 @@
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
     pager = less -FXRS
     editor = vim
-    excludesfile = /home/tunix/.gitignore
     autocrlf = false
 [alias]
     st = status
@@ -25,7 +24,6 @@
     lgg = log --graph
     lgf = log --graph --name-only
     ann = annotate
-    ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ >> .gitignore ;}; gi"
 [push]
     default = tracking
 [merge]
