@@ -64,6 +64,10 @@ ln -sf $DOTFILES_ROOT/settings/pythonrc $HOME/.pythonrc
 ln -sf $DOTFILES_ROOT/settings/tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES_ROOT/settings/editorconfig $HOME/.editorconfig
 
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+fi
+
 # OSX changes
 if [[ $PLATFORM == "Darwin" ]]; then
     # tmux
