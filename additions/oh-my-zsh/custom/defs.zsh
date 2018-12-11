@@ -1,0 +1,3 @@
+export EDITOR=vim
+export VISUAL=vim
+export NODE_REPL_HISTORY_SIZE=100000
