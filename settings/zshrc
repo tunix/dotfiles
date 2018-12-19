@@ -33,13 +33,14 @@ plugins=(
     history-substring-search
     httpie
     iwhois
+    mvn
     osx
     rsync
     ssh-agent
     sudo
     tmux
-    vundle
     urltools
+    vundle
 )
 
 source $ZSH/oh-my-zsh.sh
