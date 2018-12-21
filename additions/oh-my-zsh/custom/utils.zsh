@@ -1,3 +1,4 @@
+# in_array "foo" "${array[@]}"
 in_array() {
     local hay needle=$1
     shift
