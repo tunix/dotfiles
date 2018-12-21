@@ -40,6 +40,7 @@ set formatoptions=qrn1  " wrap formatting
 set colorcolumn=120  " wrap ruler
 set fdm=indent  " fold method
 set fdl=99  " fold level
+set guicursor=a:hor20-Cursor " change cursor to underscore
 
 syn on
 color dracula

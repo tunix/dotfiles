@@ -22,6 +22,7 @@ rm -rf $HOME/.isort.cfg &> /dev/null
 rm -rf $HOME/.pythonrc &> /dev/null
 rm -rf $HOME/.tmux.conf &> /dev/null
 rm -rf $HOME/.hgrc &> /dev/null
+rm -rf $HOME/.config/nvim &> /dev/null
 
 # only delete .ssh/authorized_keys if not in vagrant machine
 if [ ! -d /vagrant ]; then
@@ -57,6 +58,10 @@ ln -sf $DOTFILES_ROOT/settings/hgrc $HOME/.hgrc
 ln -sf $DOTFILES_ROOT/settings/vim $HOME/.vim
 ln -sf $DOTFILES_ROOT/settings/vimrc $HOME/.vimrc
 ln -sf $DOTFILES_ROOT/settings/gvimrc $HOME/.gvimrc
+
+# nvim
+mkdir -p $HOME/.config
+ln -sf $DOTFILES_ROOT/settings/nvim $HOME/.config/nvim
 
 # others
 ln -sf $DOTFILES_ROOT/settings/isort.cfg $HOME/.isort.cfg
