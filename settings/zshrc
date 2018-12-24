@@ -12,7 +12,6 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 zstyle :omz:plugins:ssh-agent identities id_rsa commencis.pri
 zstyle :omz:plugins:ssh-agent lifetime 4h
 
-ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOQUIT="false"
 ZSH_TMUX_FIXTERM="true"
 
