@@ -32,6 +32,7 @@ plugins=(
     history-substring-search
     httpie
     iwhois
+    kubectl
     mvn
     osx
     rsync
