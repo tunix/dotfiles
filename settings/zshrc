@@ -9,7 +9,7 @@ ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
 
 # ssh-agent forwarding
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa commencis.pri
+zstyle :omz:plugins:ssh-agent identities id_rsa
 zstyle :omz:plugins:ssh-agent lifetime 4h
 
 ZSH_TMUX_AUTOQUIT="false"
