@@ -31,7 +31,6 @@ plugins=(
     gitignore
     history-substring-search
     httpie
-    iwhois
     kubectl
     mvn
     osx
