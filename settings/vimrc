@@ -72,6 +72,7 @@ nnoremap gH :GitGutterPrevHunk<cr>
 
 " json prettifier using python
 noremap <leader>pj :%!jq --indent 4 ''<cr>
+noremap <leader>psj :.!jq --indent 4 ''<cr>
 
 " window moving
 nnoremap <silent> <leader>- <C-w>-
