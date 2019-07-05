@@ -1,4 +1,4 @@
-export COMMENCIS_HOME="$HOME/Google Drive File Stream/My Drive/Documents/corporate/commencis"
+export COMMENCIS_HOME="$HOME/Cloud/Google/Documents/corporate/commencis"
 
 if [[ -d $COMMENCIS_HOME ]]; then
     source $COMMENCIS_HOME/init.sh
