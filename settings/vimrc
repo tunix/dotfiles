@@ -116,9 +116,9 @@ nnoremap t :set ft=
 noremap <silent> <C-l> :TlistToggle<cr>
 
 " Copy & Paste from macOS Clipboard
-noremap <leader>c :.w !pbcopy<cr><cr>
-noremap <leader>p :r !pbpaste<cr>
-noremap <leader>ac :%w !pbcopy<cr><cr>
+noremap <leader>c :.w !xclip -selection clipboard<cr><cr>
+noremap <leader>p :r !xclip -o -selection clipboard<cr>
+noremap <leader>ac :%w !xclip -selection clipboard<cr><cr>
 
 " Subsettings
 let g:netrw_liststyle=3
