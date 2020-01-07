@@ -17,9 +17,6 @@ rm -rf $HOME/.zshrc &> /dev/null
 rm -rf $HOME/.oh-my-zsh-custom &> /dev/null
 rm -rf $HOME/.gitconfig &> /dev/null
 rm -rf $HOME/.vim* &> /dev/null
-rm -rf $HOME/.gvimrc &> /dev/null
-rm -rf $HOME/.isort.cfg &> /dev/null
-rm -rf $HOME/.pythonrc &> /dev/null
 rm -rf $HOME/.tmux.conf &> /dev/null
 rm -rf $HOME/.hgrc &> /dev/null
 rm -rf $HOME/.config/nvim &> /dev/null
@@ -57,15 +54,12 @@ ln -sf $DOTFILES_ROOT/settings/hgrc $HOME/.hgrc
 # vim
 ln -sf $DOTFILES_ROOT/settings/vim $HOME/.vim
 ln -sf $DOTFILES_ROOT/settings/vimrc $HOME/.vimrc
-ln -sf $DOTFILES_ROOT/settings/gvimrc $HOME/.gvimrc
 
 # nvim
 mkdir -p $HOME/.config
 ln -sf $DOTFILES_ROOT/settings/nvim $HOME/.config/nvim
 
 # others
-ln -sf $DOTFILES_ROOT/settings/isort.cfg $HOME/.isort.cfg
-ln -sf $DOTFILES_ROOT/settings/pythonrc $HOME/.pythonrc
 ln -sf $DOTFILES_ROOT/settings/tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES_ROOT/settings/editorconfig $HOME/.editorconfig
 
