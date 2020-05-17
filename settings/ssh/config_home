@@ -1,8 +1,0 @@
-Host home
-    Hostname home.alperkan.at
-    Port 2222
-    User tunix
-
-Host penguhome
-    Hostname penguhome.local
-    User tunix

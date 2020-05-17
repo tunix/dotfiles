@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 #
-# @author: Alper KANAT <alperkanat@raptiye.org>
+# @author: Alper Kanat <me@alperkan.at>
 
 from random import sample
 import string

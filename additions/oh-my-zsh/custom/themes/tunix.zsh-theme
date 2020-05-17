@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 #          FILE:  tunix.zsh-theme
 #   DESCRIPTION:  oh-my-zsh theme file.
-#        AUTHOR:  Alper Kanat (alperkanat@raptiye.org)
+#        AUTHOR:  Alper Kanat (me@alperkan.at)
 #       VERSION:  1.0
 #    SCREENSHOT:  http://cl.ly/KjX0
 # ------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
 dotfiles
 ========
 
-my personal dot files that anyone may benefit from
+my personal dot files

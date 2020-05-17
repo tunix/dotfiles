@@ -17,7 +17,6 @@ ZSH_TMUX_FIXTERM="true"
 
 plugins=(
     aws
-    brew
     colored-man-pages
     common-aliases
     copydir
