@@ -26,6 +26,9 @@ ln -sf $DOTFILES_ROOT/additions/oh-my-zsh/custom $HOME/.oh-my-zsh-custom
 # git
 ln -sf $DOTFILES_ROOT/settings/gitconfig $HOME/.gitconfig
 
+# ssh
+ln -sf $DOTFILES_ROOT/settings/ssh/id_rsa.pub $HOME/.ssh/id_rsa.pub
+
 # vim
 ln -sf $DOTFILES_ROOT/settings/vim $HOME/.vim
 ln -sf $DOTFILES_ROOT/settings/vimrc $HOME/.vimrc
@@ -42,5 +45,9 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
     git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 fi
 
+# run zsh configuration before below command
+exec zsh
+
 # merge ssh configs
 cat $HOME/.ssh/config_* > $HOME/.ssh/config
+cat $HOME/.ssh/*.pub > $HOME/.ssh/authorized_keys
