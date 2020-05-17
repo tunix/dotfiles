@@ -47,6 +47,7 @@ plugins=(
     urltools
     vundle
     zrp
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
