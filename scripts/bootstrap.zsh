@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 DOTFILES_ROOT="$(pwd)"
 
@@ -13,8 +13,8 @@ rm -rf $HOME/.tmux.conf &> /dev/null
 rm -rf $HOME/.editorconfig &> /dev/null
 rm -rf $HOME/.ssh &> /dev/null
 
-# resetting changes to these files
-git checkout .
+mkdir -p $HOME/.ssh
+chmod 700 $HOME/.ssh
 
 # installing scripts
 ln -sf $DOTFILES_ROOT/scripts/generate_password.py $HOME/.local/bin/genpwd
@@ -46,7 +46,7 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 # run zsh configuration before below command
-exec zsh
+source $HOME/.zshrc
 
 # merge ssh configs
 cat $HOME/.ssh/config_* > $HOME/.ssh/config
