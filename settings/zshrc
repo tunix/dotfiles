@@ -2,10 +2,13 @@ export PATH="$HOME/.bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="tunix"
+ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
+
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
-ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
+
+ZSH_TMUX_AUTOSTART="true"
 
 # ssh-agent forwarding
 zstyle :omz:plugins:ssh-agent agent-forwarding on
@@ -16,29 +19,35 @@ ZSH_TMUX_AUTOQUIT="false"
 ZSH_TMUX_FIXTERM="true"
 
 plugins=(
-    aws
+    cargo
     colored-man-pages
+    command-not-found
     common-aliases
     copydir
     copyfile
+    cp
+    direnv
     docker
     docker-compose
-    doctl
     encode64
     extract
     git
     gitignore
+    gradle
     history-substring-search
     httpie
     kubectl
+    mosh
     mvn
-    osx
     rsync
+    rust
     ssh-agent
     sudo
     tmux
+    ubuntu
     urltools
     vundle
+    zrp
 )
 
 source $ZSH/oh-my-zsh.sh
