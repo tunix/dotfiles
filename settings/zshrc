@@ -7,9 +7,9 @@ ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
 
-ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOQUIT="false"
 ZSH_TMUX_FIXTERM="true"
+ZSH_TMUX_UNICODE="true"
 
 # ssh-agent forwarding
 zstyle :omz:plugins:ssh-agent agent-forwarding on
