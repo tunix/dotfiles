@@ -33,6 +33,7 @@ plugins=(
     extract
     git
     gitignore
+    git-flow
     gradle
     history-substring-search
     httpie
