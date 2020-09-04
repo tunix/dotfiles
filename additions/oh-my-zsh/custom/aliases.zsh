@@ -6,3 +6,4 @@ alias open="xdg-open"
 alias gpt="git tag -l | xargs git tag -d && git fetch -t" # prune local tags & fetch remote tags
 alias gradle="LC_ALL=C gradle"
 alias df="df -x squashfs"
+alias bat="batcat"
