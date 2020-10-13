@@ -115,7 +115,7 @@ nnoremap t :set ft=
 " taglist toggle
 noremap <silent> <C-l> :TlistToggle<cr>
 
-" Copy & Paste from macOS Clipboard
+" Copy & Paste from clipboard
 noremap <leader>c :.w !xclip -selection clipboard<cr><cr>
 noremap <leader>p :r !xclip -o -selection clipboard<cr>
 noremap <leader>ac :%w !xclip -selection clipboard<cr><cr>
