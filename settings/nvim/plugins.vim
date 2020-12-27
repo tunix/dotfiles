@@ -14,6 +14,7 @@ call plug#begin()
     Plug 'ryanoasis/vim-devicons'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    Plug 'tpope/vim-commentary'
 
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()

@@ -21,6 +21,8 @@ if has('persistent_undo')
     set undodir=~/.cache/nvim
 endif
 
+let g:mapleader=","
+
 " use alt+hjkl to move between split/vsplit panels
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
@@ -35,3 +37,11 @@ nnoremap <A-Up> :resize +2<CR>
 nnoremap <A-Down> :resize -2<CR>
 nnoremap <A-Left> :vertical resize +2<CR>
 nnoremap <A-Right> :vertical resize -2<CR>
+
+noremap <C-s> :w<cr>
+noremap <C-w> :hide<cr>
+noremap <C-x> :bd<cr>
+noremap <C-q> :qa!<cr>
+
+nnoremap <leader>n :tabnew<cr>
+nnoremap <Tab> :Buffers<cr>
