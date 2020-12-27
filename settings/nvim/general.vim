@@ -1,5 +1,3 @@
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
-
 set gcr=         " disable cursor styling
 set cul          " highlight current line
 set nu           " show line number

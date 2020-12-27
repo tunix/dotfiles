@@ -14,6 +14,8 @@ call plug#begin()
     Plug 'ryanoasis/vim-devicons'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " Automatically install missing plugins on startup

@@ -1,3 +1,6 @@
+" enable providers
+source $HOME/.config/nvim/providers.vim
+
 " Enable plugins
 source $HOME/.config/nvim/plugins.vim
 
