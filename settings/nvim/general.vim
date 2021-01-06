@@ -1,20 +1,24 @@
-set gcr=         " disable cursor styling
-set cul          " highlight current line
-set nu           " show line number
-set rnu          " show relative numbers
-set tw=120       " wrap width 120
-set cc=120       " show wrap column
-set sb spr       " split to the right & below
-set si           " smartindent
-set et           " use space instead of tab
-set sw=4         " shiftwidth
-set sts=4        " soft tab stop
-set ts=4         " tab stop
-set sr           " round indent to multiple of shiftwidth
-set ic           " ignore case in search patterns
-set scs          " override ignorecase if search pattern includes uppercase chars
-set ph           " max no of items to show in the popup menus
-set lz           " lazyredraw
+set gcr=   " disable cursor styling
+set cul    " highlight current line
+set nu     " show line number
+set rnu    " show relative numbers
+set tw=120 " wrap width 120
+set cc=120 " show wrap column
+set sb spr " split to the right & below
+set si     " smartindent
+set et     " use space instead of tab
+set sw=4   " shiftwidth
+set sts=4  " soft tab stop
+set ts=4   " tab stop
+set sr     " round indent to multiple of shiftwidth
+set ic     " ignore case in search patterns
+set scs    " override ignorecase if search pattern includes uppercase chars
+set ph=10  " max no of items to show in the popup menus
+set lz     " lazyredraw
+set cole=2 " nicer markdown rendering
+
+" Source (reload configuration)
+nnoremap <silent> <F5> :source $MYVIMRC<CR>
 
 if has('persistent_undo')
     set undofile
