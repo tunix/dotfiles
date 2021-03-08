@@ -15,22 +15,16 @@ DISABLE_MAGIC_FUNCTIONS=true
 
 # ssh-agent forwarding
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa
+zstyle :omz:plugins:ssh-agent identities id_rsa commencis.pri teknotel-dev.pri teknotel-test.pri ks-ykb.pri
 zstyle :omz:plugins:ssh-agent lifetime 4h
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 plugins=(
-    cargo
     colored-man-pages
     command-not-found
     common-aliases
-    copydir
     copyfile
-    cp
-    direnv
-    docker
-    docker-compose
     encode64
     extract
     git
@@ -38,19 +32,12 @@ plugins=(
     git-flow
     gradle
     history-substring-search
-    httpie
-    kubectl
-    mosh
-    mvn
-    rsync
-    rust
     ssh-agent
     sudo
     tmux
-    ubuntu
     urltools
-    vundle
     zrp
+    # zsh-syntax-highlighting
     zsh-autosuggestions
 )
 

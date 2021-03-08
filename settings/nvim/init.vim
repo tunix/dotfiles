@@ -10,3 +10,4 @@ source $HOME/.config/nvim/colorize.vim
 source $HOME/.config/nvim/nerdtree.vim
 source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/tabular.vim
+source $HOME/.config/nvim/markdown-preview.vim

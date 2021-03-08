@@ -18,6 +18,7 @@ call plug#begin()
     Plug 'ervandew/supertab'
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
