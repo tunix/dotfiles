@@ -7,8 +7,8 @@ let g:NERDTreeWinSize = 60
 " Toggle
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
-" https://github.com/preservim/nerdtree/wiki/F.A.Q.#how-can-i-make-sure-vim-does-not-open-files-and-other-buffers-on-nerdtree-window
-" If more than one window and previous buffer was NERDTree, go back to it.
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 let g:plug_window = 'noautocmd vertical topleft new'

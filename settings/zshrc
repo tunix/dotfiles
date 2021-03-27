@@ -37,8 +37,6 @@ plugins=(
     tmux
     urltools
     zrp
-    # zsh-syntax-highlighting
-    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh

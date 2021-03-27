@@ -10,15 +10,28 @@ call plug#begin()
     Plug 'tpope/vim-sensible'
     Plug 'dracula/vim'
 
-    Plug 'scrooloose/nerdtree'
+    " navigation
+    Plug 't9md/vim-choosewin'
+    Plug 'weilbith/nerdtree_choosewin-plugin'
+
+    " nerdtree
+    Plug 'preservim/nerdtree'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'xuyuanp/nerdtree-git-plugin'
+
+    " search
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+
+    " markdown
+    Plug 'godlygeek/tabular'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
     Plug 'tpope/vim-commentary'
     Plug 'ervandew/supertab'
-    Plug 'godlygeek/tabular'
-    Plug 'plasticboy/vim-markdown'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()

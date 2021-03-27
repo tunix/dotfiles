@@ -16,6 +16,7 @@ set scs    " override ignorecase if search pattern includes uppercase chars
 set ph=10  " max no of items to show in the popup menus
 set lz     " lazyredraw
 set cole=2 " nicer markdown rendering
+set aw     " automatically save before :next, :make etc
 
 " Source (reload configuration)
 nnoremap <silent> <F5> :source $MYVIMRC<CR>
@@ -27,15 +28,33 @@ endif
 
 let g:mapleader=","
 
-" use alt+hjkl to move between split/vsplit panels
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+" Automatically resize screens to be equally the same
+autocmd VimResized * wincmd =
+
+" Center the screen
+nnoremap <space> zz
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Same when moving up and down
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+
+" use ctrl+arrows to move between split/vsplit panels
+tnoremap <C-Left> <C-\><C-n><C-w>h
+tnoremap <C-Down> <C-\><C-n><C-w>j
+tnoremap <C-Up> <C-\><C-n><C-w>k
+tnoremap <C-Right> <C-\><C-n><C-w>l
+nnoremap <C-Left> <C-w>h
+nnoremap <C-Down> <C-w>j
+nnoremap <C-Up> <C-w>k
+nnoremap <C-Right> <C-w>l
+
+nnoremap <S-Left> :tabprevious<cr>
+nnoremap <S-Right> :tabnext<cr>
 
 nnoremap <A-Up> :resize +2<CR> 
 nnoremap <A-Down> :resize -2<CR>
@@ -47,5 +66,11 @@ noremap <C-w> :hide<cr>
 noremap <C-x> :bd<cr>
 noremap <C-q> :qa!<cr>
 
-nnoremap <leader>n :tabnew<cr>
+" Close all but the current one
+nnoremap <leader>w :only<CR>
+
+nnoremap <C-t> :tabnew<cr>
+nnoremap <leader>s :new<cr>
+nnoremap <leader>v :vnew<cr>
+
 nnoremap <Tab> :Buffers<cr>
