@@ -15,7 +15,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 
 # ssh-agent forwarding
 # zstyle :omz:plugins:ssh-agent agent-forwarding on
-# zstyle :omz:plugins:ssh-agent identities id_rsa commencis.pri teknotel-dev.pri teknotel-
+# zstyle :omz:plugins:ssh-agent identities id_rsa
 # zstyle :omz:plugins:ssh-agent lifetime 4h
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
