@@ -9,6 +9,7 @@ endif
 call plug#begin()
     Plug 'tpope/vim-sensible'
     Plug 'dracula/vim'
+    Plug 'arcticicestudio/nord-vim'
 
     " navigation
     Plug 't9md/vim-choosewin'

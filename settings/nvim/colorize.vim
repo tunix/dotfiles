@@ -4,4 +4,4 @@ endif
 
 syntax enable
 
-colorscheme dracula
+colorscheme nord
