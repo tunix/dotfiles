@@ -74,3 +74,7 @@ nnoremap <leader>s :new<cr>
 nnoremap <leader>v :vnew<cr>
 
 nnoremap <Tab> :Buffers<cr>
+
+augroup filetypedetect
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
