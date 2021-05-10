@@ -19,10 +19,15 @@ background_opacity: 0.95
 
 mouse:
     hide_when_typing: true
-    url:
-        modifiers: Control
-        launcher:
-            program: firefox
+
+hints:
+    enabled:
+        - regex: "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+            [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+          command: firefox
+          mouse:
+              enabled: true
+              mods: Control
 
 cursor:
     style: Underline
