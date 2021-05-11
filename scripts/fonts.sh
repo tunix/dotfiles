@@ -10,18 +10,16 @@ else
     echo "Found fonts dir $fonts_dir"
 fi
 
-for type in Bold Light Medium Regular Retina; do
-    file_path="$fonts_dir/FiraCode-${type}.ttf"
-    file_url="https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-${type}.ttf?raw=true"
+file_path="$fonts_dir/Fira_Code_Retina_Nerd_Font_Complete.ttf"
+file_url="https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Retina/complete/Fira%20Code%20Retina%20Nerd%20Font%20Complete.ttf?raw=true"
 
-    if [ ! -e "${file_path}" ]; then
-        echo "wget -O $file_path $file_url"
+if [ ! -e "${file_path}" ]; then
+    echo "wget -O $file_path $file_url"
 
-        wget -O "${file_path}" "${file_url}"
-    else
-        echo "Found existing file $file_path"
-    fi
-done
+    wget -O "${file_path}" "${file_url}"
+else
+    echo "Found existing file $file_path"
+fi
 
 echo "fc-cache -f"
 
