@@ -9,10 +9,10 @@ shell:
         - --login
 
 font:
-    size: 10
+    size: 9
 
     normal:
-        family: FiraCode
+        family: FiraCode Nerd Font
         style: Retina
 
 background_opacity: 0.95
@@ -23,8 +23,9 @@ mouse:
 hints:
     enabled:
         - regex: "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
-            [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+              [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
           command: firefox
+          post_processing: true
           mouse:
               enabled: true
               mods: Control
