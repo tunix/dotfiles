@@ -30,3 +30,7 @@
     summary = true
 [branch]
     autosetupmerge = true
+[pull]
+	rebase = false
+[gitreview]
+	username = kanata

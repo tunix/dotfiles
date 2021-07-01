@@ -17,3 +17,11 @@ myip() {
 weather() {
     curl http://wttr\.in/$1\?m
 }
+
+git_slow() {
+    # disables ZSH's git prompt functions which cause issue for big projects
+
+    git config oh-my-zsh.hide-info 1   # git_prompt_info
+    git config oh-my-zsh.hide-status 1 # git_prompt_status
+    git config oh-my-zsh.hide-dirty 1  # parse_git_dirty
+}
