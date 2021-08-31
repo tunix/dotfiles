@@ -1,4 +1,5 @@
 #!/bin/zsh
+# vim:set ft=zsh et sw=4:
 
 source "$(dirname $0)"/common.sh
 
@@ -63,5 +64,3 @@ echo "Harnessing SSH configuration..."
 
 cat $HOME/.ssh/config_* > $HOME/.ssh/config
 cat $HOME/.ssh/*.pub > $HOME/.ssh/authorized_keys
-
-# vim:set ft=zsh et sw=4:
