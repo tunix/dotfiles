@@ -35,6 +35,8 @@ call plug#begin()
     Plug 'ervandew/supertab'
 
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " Automatically install missing plugins on startup
