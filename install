@@ -1,0 +1,49 @@
+#!/bin/bash
+# vim:set ft=bash et sw=4:
+
+source scripts/common.bash
+
+case "$(uname -i)" in
+
+    x86_64) ARCH=amd64;;
+    armv6l) ARCH=armhf;;
+    *) die "Unknown architecture. Aborting."
+
+esac
+
+export ARCH=$ARCH
+export DOTFILES_ROOT=$(getDotFilesRoot)
+
+case "$(uname -s)" in
+
+    Linux*) source $DOTFILES_ROOT/scripts/linux/install.bash;;
+    Darwin*) source $DOTFILES_ROOT/scripts/mac/install.bash;;
+    *) die "Unknown machine type. Aborting."
+
+esac
+
+separator
+
+install settings/alacritty
+install settings/editorconfig
+install settings/fish
+install settings/git
+install settings/nvim
+install settings/ssh
+install settings/tmux
+
+separator
+
+clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+
+separator
+
+# merge ssh configs
+echo "Harnessing SSH configuration..."
+
+# TODO: error handling
+
+cat $HOME/.ssh/config_* > $HOME/.ssh/config
+cat $HOME/.ssh/*.pub > $HOME/.ssh/authorized_keys
+
+echo "Installation Complete!"
