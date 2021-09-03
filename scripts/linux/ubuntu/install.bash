@@ -44,7 +44,7 @@ fi
 source $DOTFILES_ROOT/scripts/linux/ubuntu/ppa.bash
 
 sudo apt update \
-    && sudo apt install $APT_FLAGS ${PACKAGES[@]}
+    && sudo apt install $APT_FLAGS ${CORE_PACKAGES[@]}
 
 for package in ${MANUAL_PACKAGES[@]}; do
 

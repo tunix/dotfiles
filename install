@@ -3,24 +3,47 @@
 
 source scripts/common.bash
 
-case "$(uname -i)" in
+case "$(uname -s)" in
 
-    x86_64) ARCH=amd64;;
-    armv6l) ARCH=armhf;;
-    *) die "Unknown architecture. Aborting."
+    Linux*)
+      PLATFORM="linux"
+
+      case "$(uname -i)" in
+
+          x86_64) ARCH=amd64;;
+          armv6l) ARCH=armhf;;
+          *) die "Unknown architecture. Aborting."
+
+      esac
+
+      ;;
+
+    Darwin*)
+      PLATFORM="mac"
+
+      case "$(uname -m)" in
+
+          x86_64) ARCH=amd64;;
+          armv6l) ARCH=armhf;;
+          *) die "Unknown architecture. Aborting."
+
+      esac
+
+      ;;
+
+    *) die "Unknown machine type. Aborting."
 
 esac
 
 export ARCH=$ARCH
+export PLATFORM=$PLATFORM
 export DOTFILES_ROOT=$(getDotFilesRoot)
 
-case "$(uname -s)" in
-
-    Linux*) source $DOTFILES_ROOT/scripts/linux/install.bash;;
-    Darwin*) source $DOTFILES_ROOT/scripts/mac/install.bash;;
-    *) die "Unknown machine type. Aborting."
-
-esac
+if [[ "$PLATFORM" == "linux" ]]; then
+    source $DOTFILES_ROOT/scripts/linux/install.bash
+elif [[ "$PLATFORM" == "mac" ]]; then
+    source $DOTFILES_ROOT/scripts/mac/install.bash
+fi
 
 separator
 
