@@ -43,8 +43,6 @@ clone() {
 
     if [ ! -d "$2" ]; then
         git clone $1 "$2" &> /dev/null
-    else
-        # TODO: update
     fi
 }
 
