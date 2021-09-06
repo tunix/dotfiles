@@ -3,22 +3,26 @@
 
 DISTRIBUTION=$(lsb_release -is)
 
-case "$DISTRIBUTION" in
+if ask "Continue package installation?"; then
+    case "$DISTRIBUTION" in
 
-    Pop|Ubuntu)
-        source $DOTFILES_ROOT/scripts/linux/ubuntu/install.bash
-        ;;
+        Pop|Ubuntu)
+            source $DOTFILES_ROOT/scripts/linux/ubuntu/install.bash
+            ;;
 
-    Raspbian)
-        source $DOTFILES_ROOT/scripts/linux/raspbian/install.bash
-        ;;
+        Raspbian)
+            source $DOTFILES_ROOT/scripts/linux/raspbian/install.bash
+            ;;
 
-    *) die "Unknown distribution. Aborting."
+        *) die "Unknown distribution. Aborting."
 
-esac
+    esac
 
-clone https://github.com/arcticicestudio/nord-dircolors.git /tmp/nord-dircolors \
-    && cp /tmp/nord-dircolors/src/dir_colors $HOME/.dir_colors
+    clone https://github.com/arcticicestudio/nord-dircolors.git /tmp/nord-dircolors \
+        && cp /tmp/nord-dircolors/src/dir_colors $HOME/.dir_colors
 
-source $DOTFILES_ROOT/scripts/linux/fonts.bash
-source $DOTFILES_ROOT/scripts/linux/theme.bash
+    source $DOTFILES_ROOT/scripts/linux/fonts.bash
+    source $DOTFILES_ROOT/scripts/linux/theme.bash
+else
+    echo "Continuing without installating packages..."
+fi

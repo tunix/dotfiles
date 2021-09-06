@@ -43,7 +43,7 @@ echo "Harnessing SSH configuration..."
 
 # TODO: error handling
 
-cat $HOME/.ssh/config_* > $HOME/.ssh/config
+cat $HOME/.ssh/config_* > $HOME/.ssh/config 2>/dev/null
 cat $HOME/.ssh/*.pub > $HOME/.ssh/authorized_keys
 
 echo "Installation Complete!"

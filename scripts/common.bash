@@ -1,6 +1,17 @@
 #!/bin/bash
 # vim:set ft=bash et sw=4:
 
+ask() {
+    while true; do
+        read -p "$* [y/N]: " yn
+
+        case $yn in
+            [Yy]*) return 0;;  
+            *) return  1;;
+        esac
+    done
+}
+
 die() {
     echo "$@"
 
@@ -41,10 +52,9 @@ clone() {
 
     mkdir -p "$(dirname $2)"
 
+    # TODO: update
     if [ ! -d "$2" ]; then
         git clone $1 "$2" &> /dev/null
-    else
-        # TODO: update
     fi
 }
 
