@@ -32,6 +32,9 @@ install settings/nvim
 install settings/ssh
 install settings/tmux
 
+# fish + tide workaround
+cp settings/fish/.config/fish/fish_variables.orig settings/fish/.config/fish/fish_variables
+
 separator
 
 clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
