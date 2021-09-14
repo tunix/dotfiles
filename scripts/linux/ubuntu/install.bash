@@ -23,6 +23,7 @@ CORE_PACKAGES=(
     containerd.io
     tailscale
     flatpak
+    libsecret-dev
 )
 
 # TODO: pipewire
@@ -60,3 +61,4 @@ done
 
 source $DOTFILES_ROOT/scripts/linux/ubuntu/snap.bash
 source $DOTFILES_ROOT/scripts/linux/ubuntu/flatpak.bash
+source $DOTFILES_ROOT/scripts/linux/ubuntu/git.bash

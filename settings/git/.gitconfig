@@ -32,5 +32,5 @@
     autosetupmerge = true
 [pull]
 	rebase = false
-[gitreview]
-	username = kanata
+[include]
+    path = ~/.gitconfig.inc
