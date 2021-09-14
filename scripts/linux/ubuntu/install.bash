@@ -23,7 +23,7 @@ CORE_PACKAGES=(
     containerd.io
     tailscale
     flatpak
-    libsecret-dev
+    libsecret-1-dev
 )
 
 # TODO: pipewire
