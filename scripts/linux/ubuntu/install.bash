@@ -28,6 +28,7 @@ CORE_PACKAGES=(
 
 # TODO: pipewire
 # TODO: kvm/virt-manager
+# TODO: rust & go (gopath + path)
 
 GUI_PACKAGES=(
     caffeine
