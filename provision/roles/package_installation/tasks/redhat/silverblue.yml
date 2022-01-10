@@ -1,0 +1,13 @@
+- name: Install packages for Fedora Silverblue
+  rpm_ostree_pkg:
+    name:
+      - uptimed
+      - tailscale
+
+- name: Install GUI packages for Fedora Silverblue
+  rpm_ostree_pkg:
+    name:
+      - caffeine
+  when: ansible_env.DISPLAY is defined
+
+# TODO: overgrive

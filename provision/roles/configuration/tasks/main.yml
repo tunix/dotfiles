@@ -1,0 +1,10 @@
+- name: Gather the package facts
+  package_facts:
+    manager: auto
+
+- name: Configure dircolors
+  include_tasks: dir_colors.yml
+
+- name: Configure fonts
+  include_tasks: fonts.yml
+  when: "'fontconfig' in ansible_facts.packages"

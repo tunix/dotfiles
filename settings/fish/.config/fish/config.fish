@@ -27,10 +27,10 @@ if status is-interactive
 
     # A nicer ls that also shows the git status of files
     # (but not hidden files)
-    abbr --add --global ll "exa -lh --git"
+    abbr --add --global ll "exa -lh"
 
     # Same nicer ls but in tree view.
-    abbr --add --global lt "exa -lh --git --all --tree"
+    abbr --add --global lt "exa -lh --all --tree"
 
     # lc = line count
     abbr --add --global lc "wc -l"

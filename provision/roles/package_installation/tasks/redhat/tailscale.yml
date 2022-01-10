@@ -1,0 +1,4 @@
+- name: Ensure that tailscale repo is configured
+  yum_repository:
+    name: tailscale-stable
+    baseurl: https://pkgs.tailscale.com/stable/fedora/$basearch
