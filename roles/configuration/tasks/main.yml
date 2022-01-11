@@ -1,0 +1,43 @@
+- name: Gather the package facts
+  package_facts:
+    manager: auto
+
+- name: Configure dircolors
+  include_tasks: dir_colors.yml
+
+- name: Configure fonts
+  include_tasks: fonts.yml
+  when: "'fontconfig' in ansible_facts.packages"
+
+- name: Configure alacritty
+  file:
+    src: "{{ role_path }}/files/alacritty"
+    dest: $HOME/.config/alacritty
+    state: link
+
+- name: Configure editorconfig
+  file:
+    src: "{{ role_path }}/files/editorconfig/editorconfig"
+    dest: $HOME/.editorconfig
+    state: link
+
+- name: Configure fish
+  include_tasks: fish.yml
+
+- name: Configure git
+  file:
+    src: "{{ role_path }}/files/git/gitconfig"
+    dest: $HOME/.gitconfig
+    state: link
+
+- name: Configure neovim
+  file:
+    src: "{{ role_path }}/files/nvim"
+    dest: $HOME/.config/nvim
+    state: link
+
+- name: Configure ssh
+  include_tasks: ssh.yml
+
+- name: Configure tmux
+  include_tasks: tmux.yml

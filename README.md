@@ -9,10 +9,9 @@ TODO
 
 ### Installation
 
-```
-$ sudo apt update \
-  sudo apt install ansible
+Please install `ansible` in order to proceed.
 
+```
 $ ansible-galaxy collection install community.general
 
 $ ansible-playbook -K -i hosts provision.yml

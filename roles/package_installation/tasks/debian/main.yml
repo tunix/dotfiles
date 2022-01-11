@@ -1,0 +1,49 @@
+- name: Ensure that all packages are up-to-date
+  apt:
+    upgrade: true
+    update_cache: true
+
+- name: Configure PPA of fish shell
+  include_tasks: fish_shell.yml
+
+- name: Configure PPA of tailscale
+  include_tasks: tailscale.yml
+
+# for GUI only
+# TODO: pipewire
+# TODO: teamviewer
+
+- name: Ensure that packages are installed
+  apt:
+    name:
+      - language-pack-tr
+      - tmux
+      - neofetch
+      - neovim
+      - exa
+      - jq
+      - silversearcher-ag
+      - uptimed
+      - bat
+      - stow
+      - fish
+      - tailscale
+
+- name: Ensure that desktop packages are installed
+  apt:
+    name:
+      - snapd
+      - flatpak
+      - podman
+      - caffeine
+  when: ansible_env.DISPLAY is defined
+
+- name: Ensure that overgrive is installed
+  apt:
+    deb: https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.10_all.deb
+  when: ansible_env.DISPLAY is defined
+
+- name: Ensure that package cache is clean
+  apt:
+    autoclean: true
+    autoremove: true
