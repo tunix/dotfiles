@@ -15,58 +15,20 @@
     method: user
     name: com.github.miguelmota.Cointop
 
+# ansible 2.10 cannot accept lists inside flatpak plugin
 - name: Install GUI flatpaks
   flatpak:
     method: user
-    name:
-      - com.belmoussaoui.Decoder
-      - com.belmoussaoui.Obfuscate
-      - com.discordapp.Discord
-      - com.getpostman.Postman
-      - com.github.gi_lom.dialect
-      - com.github.huluti.Curtail
-      - com.github.joseexposito.touche
-      - com.github.rafostar.Clapper
-      - com.github.tchx84.Flatseal
-      - com.gitlab.newsflash
-      - com.slack.Slack
-      - com.spotify.Client
-      - com.valvesoftware.Steam
-      - de.haeckerfelix.Shortwave
-      - dev.geopjr.Hashbrown
-      - fr.handbrake.ghb
-      - in.bharatkalluri.splash
-      - io.github.seadve.Kooha
-      - io.webtorrent.WebTorrent
-      - org.gimp.GIMP
-      - org.gnome.Boxes
-      - org.gnome.Characters
-      - org.gnome.Cheese
-      - org.gnome.Connections
-      - org.gnome.DejaDup
-      - org.gnome.Mahjongg
-      - org.gnome.Maps
-      - org.gnome.Mines
-      - org.gnome.SoundRecorder
-      - org.gnome.Weather
-      - org.gnome.clocks
-      - org.gnome.gitlab.YaLTeR.VideoTrimmer
-      - org.gnome.gitlab.somas.Apostrophe
-      - org.remmina.Remmina
-      - org.signal.Signal
-      - org.telegram.desktop
-      - org.videolan.VLC
-      - us.zoom.Zoom
+    name: "{{ item }}"
+  loop: "{{ flatpak_packages }}"
   when: ansible_env.DISPLAY is defined
 
+# ansible 2.10 cannot accept lists inside flatpak plugin
 - name: Install Developer Tools
   flatpak:
     method: user
-    name:
-      - org.freedesktop.Sdk.Extension.node14//21.08
-      - org.freedesktop.Sdk.Extension.openjdk11//21.08
-      - org.freedesktop.Sdk.Extension.openjdk8//21.08
-      - com.jetbrains.IntelliJ-IDEA-Ultimate
+    name: "{{ item }}"
+  loop: "{{ developer_tools }}"
   when: ansible_env.DISPLAY is defined
 
 - name: Install Brave
@@ -76,8 +38,10 @@
     remote: flathub-beta
   when: ansible_env.DISPLAY is defined
 
+# ansible 2.10 throws an error when package is already installed
 - name: Install 1Password
   flatpak:
     method: user
     name: https://downloads.1password.com/linux/flatpak/1Password.flatpakref
   when: ansible_env.DISPLAY is defined
+  ignore_errors: true
