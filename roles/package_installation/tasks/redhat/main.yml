@@ -26,6 +26,3 @@
       - gnome-shell-extension-pop-shell
       - gnome-shell-extension-pop-shell-shortcut-overrides
   when: ansible_env.DISPLAY is defined
-
-# TODO: overgrive
-# TODO: Ensure that package cache is clean

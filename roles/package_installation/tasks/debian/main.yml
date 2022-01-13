@@ -37,6 +37,8 @@
       - podman
       - caffeine
       - gnome-tweaks
+      - gnome-session
+      - alacritty
   when: ansible_env.DISPLAY is defined
 
 - name: Ensure that overgrive is installed

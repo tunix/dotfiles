@@ -16,3 +16,6 @@
 
 - name: Configure dconf keys
   include_tasks: dconf.yml
+
+- name: Configure gsettings keys
+  include_tasks: gsettings.yml
