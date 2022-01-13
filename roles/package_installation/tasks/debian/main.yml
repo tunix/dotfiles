@@ -36,6 +36,7 @@
       - flatpak
       - podman
       - caffeine
+      - gnome-tweaks
   when: ansible_env.DISPLAY is defined
 
 - name: Ensure that overgrive is installed

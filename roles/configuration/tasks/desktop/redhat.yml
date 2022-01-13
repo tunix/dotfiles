@@ -1,0 +1,7 @@
+# TODO: install extensions
+
+- name: Disable Background Logo Extension
+  command: gnome-extensions disable background-logo@fedorahosted.org
+
+- name: Enable app indicator extension
+  command: gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com

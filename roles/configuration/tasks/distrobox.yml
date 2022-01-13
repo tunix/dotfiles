@@ -1,0 +1,4 @@
+- name: Install distrobox
+  shell: curl -sSf https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- -p $HOME/.local/bin
+  creates: $HOME/.local/bin/distrobox
+  warn: false

@@ -1,0 +1,58 @@
+- name: Enable 24h clock format
+  command: dconf write /org/gnome/desktop/interface/clock-format "'24h'"
+
+- name: Show date in clock
+  command: dconf write /org/gnome/desktop/interface/clock-show-date "true"
+
+- name: Show weekday in clock
+  command: dconf write /org/gnome/desktop/interface/clock-show-weekday "true"
+
+- name: Set text scaling factor
+  command: dconf write /org/gnome/desktop/interface/text-scaling-factor "1.0"
+
+- name: Set repeat for keyboard
+  command: dconf write /org/gnome/desktop/peripherals/keyboard/repeat "true"
+
+- name: Set repeat interval for keyboard
+  command: dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval "uint32 30"
+
+- name: Disable natural scrolling for mouse
+  command: dconf write /org/gnome/desktop/peripherals/mouse/natural-scroll "false"
+
+- name: Enable touchpad
+  command: dconf write /org/gnome/desktop/peripherals/touchpad/send-events "true"
+
+- name: Enable tap-to-click for touchpad
+  command: dconf write /org/gnome/desktop/peripherals/touchpad/tap-to-click "true"
+
+- name: Enable natural scrolling for touchpad
+  command: dconf write /org/gnome/desktop/peripherals/touchpad/natural-scroll "true"
+
+- name: Enable two finger scrolling for touchpad
+  command: /org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled "true"
+
+- name: Disable touchpad while typing
+  command: /org/gnome/desktop/peripherals/touchpad/disable-while-typing "true"
+
+- name: Disable over amplification
+  command: dconf write /org/gnome/desktop/sound/allow-volume-above-100-percent "false"
+
+- name: Enable system event sounds
+  command: dconf write /org/gnome/desktop/sound/event-sounds "true"
+
+- name: Show minimize & close buttons for windows
+  command: dconf write /org/gnome/desktop/wm/preferences/button-layout "'appmenu:minimize,close'"
+
+# TODO: key bindings
+
+- name: Key binding for Switch to Workspace 1
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-1 "['<Super>1']"
+
+- name: Key binding for Switch to Workspace 2
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-2 "['<Super>2']"
+
+- name: Key binding for Switch to Workspace 3
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-3 "['<Super>3']"
+
+- name: Key binding for Switch to Workspace 4
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-4 "['<Super>4']"

@@ -5,6 +5,27 @@
   include_tasks: silverblue.yml
   when: ansible_pkg_mgr == "atomic_container"
 
-- name: Install Fedora packages
-  include_tasks: fedora.yml
+- name: Install packages
+  dnf:
+    name:
+      - glibc-langpack-tr
+      - tmux
+      - neofetch
+      - neovim
+      - exa
+      - jq
+      - silversearcher-ag
+      - bat
+      - fish
   when: ansible_pkg_mgr == "dnf"
+
+- name: Install GUI packages
+  dnf:
+    name:
+      - caffeine
+      - gnome-shell-extension-pop-shell
+      - gnome-shell-extension-pop-shell-shortcut-overrides
+  when: ansible_env.DISPLAY is defined
+
+# TODO: overgrive
+# TODO: Ensure that package cache is clean

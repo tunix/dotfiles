@@ -7,7 +7,12 @@
 - name: Install GUI packages for Fedora Silverblue
   rpm_ostree_pkg:
     name:
-      - caffeine
+      - gnome-tweaks
+      - gnome-shell-extension-appindicator
+      - gnome-shell-extension-caffeine
+      - gnome-shell-extension-pop-shell
+      - gnome-shell-extension-pop-shell-shortcut-overrides
+      - gnome-shell-extension-sound-output-device-chooser
   when: ansible_env.DISPLAY is defined
 
 # TODO: overgrive

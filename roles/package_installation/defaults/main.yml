@@ -12,6 +12,7 @@ flatpak_packages:
   - com.mattjakeman.ExtensionManager
   - com.slack.Slack
   - com.spotify.Client
+  - com.system76.Popsicle
   - com.valvesoftware.Steam
   - de.haeckerfelix.Shortwave
   - dev.geopjr.Hashbrown
@@ -25,6 +26,7 @@ flatpak_packages:
   - org.gnome.Cheese
   - org.gnome.Connections
   - org.gnome.DejaDup
+  - org.gnome.Extensions
   - org.gnome.Mahjongg
   - org.gnome.Maps
   - org.gnome.Mines

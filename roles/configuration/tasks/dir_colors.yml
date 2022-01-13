@@ -9,5 +9,3 @@
     path: $HOME/.bashrc
     block: |
       test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
-
-# TODO: fish (may not be needed)
