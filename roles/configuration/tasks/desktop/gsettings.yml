@@ -1,0 +1,5 @@
+- name: Set max screencast limit to unlimited
+  command: gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 0
+
+- name: Adjust volume in smaller steps
+  command: gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 2

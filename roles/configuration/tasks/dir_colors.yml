@@ -1,0 +1,11 @@
+- name: Install Nord dircolors
+  get_url:
+    url: https://github.com/arcticicestudio/nord-dircolors/releases/download/v0.2.0/dir_colors
+    dest: $HOME/.dir_colors
+    mode: '0664'
+
+- name: Configure bash to enable dircolors
+  blockinfile:
+    path: $HOME/.bashrc
+    block: |
+      test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)

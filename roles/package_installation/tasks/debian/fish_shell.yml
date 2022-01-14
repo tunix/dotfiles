@@ -1,0 +1,4 @@
+- name: Ensure that fish-shell ppa is configured
+  apt_repository:
+    repo: ppa:fish-shell/release-3
+    filename: fish-shell

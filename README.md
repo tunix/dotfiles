@@ -9,6 +9,10 @@ TODO
 
 ### Installation
 
+Please install `ansible` in order to proceed.
+
 ```
-$ ./install
+$ ansible-galaxy collection install community.general
+
+$ ansible-playbook -K -i hosts provision.yml
 ```

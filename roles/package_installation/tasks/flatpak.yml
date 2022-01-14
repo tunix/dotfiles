@@ -1,0 +1,47 @@
+- name: Ensure that flathub repository is configured
+  flatpak_remote:
+    name: flathub
+    method: user
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+- name: Ensure that flathub-beta repository is configured
+  flatpak_remote:
+    name: flathub-beta
+    method: user
+    flatpakrepo_url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+
+- name: Install CLI flatpaks
+  flatpak:
+    method: user
+    name: com.github.miguelmota.Cointop
+
+# ansible 2.10 cannot accept lists inside flatpak plugin
+- name: Install GUI flatpaks
+  flatpak:
+    method: user
+    name: "{{ item }}"
+  loop: "{{ flatpak_packages }}"
+  when: ansible_env.DISPLAY is defined
+
+# ansible 2.10 cannot accept lists inside flatpak plugin
+- name: Install Developer Tools
+  flatpak:
+    method: user
+    name: "{{ item }}"
+  loop: "{{ developer_tools }}"
+  when: ansible_env.DISPLAY is defined
+
+- name: Install Brave
+  flatpak:
+    method: user
+    name: com.brave.Browser
+    remote: flathub-beta
+  when: ansible_env.DISPLAY is defined
+
+# ansible 2.10 throws an error when package is already installed
+- name: Install 1Password
+  flatpak:
+    method: user
+    name: https://downloads.1password.com/linux/flatpak/1Password.flatpakref
+  when: ansible_env.DISPLAY is defined
+  ignore_errors: true

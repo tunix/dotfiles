@@ -1,0 +1,21 @@
+- name: Configure desktop for Debian
+  include_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+
+- name: Configure desktop for RedHat
+  include_tasks: redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Enable user extensions support
+  dconf:
+    key: /org/gnome/shell/disable-user-extensions
+    value: "false"
+
+- name: Enable sound input & output extension
+  command: gnome-extensions enable sound-output-device-chooser@kgshank.net
+
+- name: Configure dconf keys
+  include_tasks: dconf.yml
+
+- name: Configure gsettings keys
+  include_tasks: gsettings.yml

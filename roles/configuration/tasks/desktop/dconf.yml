@@ -1,0 +1,148 @@
+- name: Enable 24h clock format
+  command: dconf write /org/gnome/desktop/interface/clock-format "'24h'"
+
+- name: Show date in clock
+  command: dconf write /org/gnome/desktop/interface/clock-show-date "true"
+
+- name: Show weekday in clock
+  command: dconf write /org/gnome/desktop/interface/clock-show-weekday "true"
+
+- name: Set text scaling factor
+  command: dconf write /org/gnome/desktop/interface/text-scaling-factor "1.0"
+
+- name: Set repeat for keyboard
+  command: dconf write /org/gnome/desktop/peripherals/keyboard/repeat "true"
+
+- name: Set repeat interval for keyboard
+  command: dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval "uint32 30"
+
+- name: Disable natural scrolling for mouse
+  command: dconf write /org/gnome/desktop/peripherals/mouse/natural-scroll "false"
+
+- name: Enable touchpad
+  command: dconf write /org/gnome/desktop/peripherals/touchpad/send-events "true"
+
+- name: Enable tap-to-click for touchpad
+  command: dconf write /org/gnome/desktop/peripherals/touchpad/tap-to-click "true"
+
+- name: Enable natural scrolling for touchpad
+  command: dconf write /org/gnome/desktop/peripherals/touchpad/natural-scroll "true"
+
+- name: Enable two finger scrolling for touchpad
+  command: /org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled "true"
+
+- name: Disable touchpad while typing
+  command: /org/gnome/desktop/peripherals/touchpad/disable-while-typing "true"
+
+- name: Disable over amplification
+  command: dconf write /org/gnome/desktop/sound/allow-volume-above-100-percent "false"
+
+- name: Enable system event sounds
+  command: dconf write /org/gnome/desktop/sound/event-sounds "true"
+
+- name: Show minimize & close buttons for windows
+  command: dconf write /org/gnome/desktop/wm/preferences/button-layout "'appmenu:minimize,close'"
+
+# TODO: key bindings
+
+- name: Key binding for Switch to Workspace 1
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-1 "['<Super>1']"
+
+- name: Key binding for Switch to Workspace 2
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-2 "['<Super>2']"
+
+- name: Key binding for Switch to Workspace 3
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-3 "['<Super>3']"
+
+- name: Key binding for Switch to Workspace 4
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-4 "['<Super>4']"
+
+- name: Center new windows
+  command: dconf write /org/gnome/mutter/center-new-windows "true"
+
+- name: Enable night light
+  command: dconf write /org/gnome/settings-daemon/plugins/color/active "true"
+
+- name: Disable power button action
+  command: dconf write /org/gnome/settings-daemon/plugins/power/power-button-action "nothing"
+
+- name: Enable automatic location for weather
+  command: dconf write /org/gnome/shell/weather/automatic-location "true"
+
+- name: Weather locations
+  command: dconf write /org/gnome/shell/weather/locations "[<(uint32 2, <('İzmir, Türkiye', '', false, [(0.67046357386984812, 0.47374190788000986)], [(0.670387510675717, 0.47371744010922612)])>)>]"
+
+- name: World clocks locations
+  command: dconf write /org/gnome/shell/world-clocks/locations "[<(uint32 2, <('San Francisco', 'KOAK', true, [(0.65832848982162007, -2.133408063190589)], [(0.659296885757089, -2.1366218601153339)])>)>, <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>, <(uint32 2, <('Berlin', 'EDDT', true, [(0.91746141594945008, 0.23241968454167572)], [(0.91658875132345297, 0.23387411976724018)])>)>, <(uint32 2, <('Amsterdam', 'EHAM', true, [(0.91280719879303418, 0.083194033496160544)], [(0.91367986341903151, 0.085812027374152042)])>)>]"
+
+- name: Disable down arrow for clipboard indicator
+  command: dconf write /org/gnome/shell/extensions/clipboard-indicator/disable-down-arrow "true"
+
+- name: Set history size of clipboard indicator
+  command: dconf write /org/gnome/shell/extensions/clipboard-indicator/history-size 200
+
+- name: Move selected item to top of clipboard indicator
+  command: dconf write /org/gnome/shell/extensions/clipboard-indicator/move-item-first "true"
+
+- name: Hide applications button in Pop Shell
+  command: dconf write /org/gnome/shell/extensions/pop-cosmic/show-applications-button "false"
+
+- name: Hide workspaces button in Pop Shell
+  command: dconf write /org/gnome/shell/extensions/pop-cosmic/show-workspaces-button "false"
+
+- name: Night switcher on-demand
+  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/always-enable-ondemand "true"
+
+- name: Night switcher on-demand button placement
+  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/ondemand-button-placement "'menu'"
+
+- name: Night switcher on-demand time
+  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/ondemand-time "'night'"
+
+- name: Night switcher manual mode
+  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/manual-time-source "true"
+
+- name: Night switcher time source
+  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/time-source "'ondemand'"
+
+- name: Night switcher follow disable
+  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/nightlight-follow-disable "false"
+
+- name: Activate launcher with Super+Space
+  command: dconf write /org/gnome/shell/extensions/pop-shell/activate-launcher "['<Super>space']"
+
+- name: Enable tiling
+  command: dconf write /org/gnome/shell/extensions/pop-shell/tile-by-default "true"
+
+- name: Disable tiling hint
+  command: dconf write /org/gnome/shell/extensions/pop-shell/active-hint "false"
+
+- name: Enable smart gaps
+  command: dconf write /org/gnome/shell/extensions/pop-shell/smart-gaps "true"
+
+- name: Disable snapping windows to grids
+  command: dconf write /org/gnome/shell/extensions/pop-shell/snap-to-grid "false"
+
+- name: Tiling gap inner
+  command: dconf write /org/gnome/shell/extensions/pop-shell/gap-inner "uint32 2"
+
+- name: Tiling gap outer
+  command: dconf write /org/gnome/shell/extensions/pop-shell/gap-outer "uint32 2"
+
+- name: Hide window titles
+  command: dconf write /org/gnome/shell/extensions/pop-shell/show-title "false"
+
+- name: Alphabetize vitals
+  command: dconf write /org/gnome/shell/extensions/vitals/alphabetize "true"
+
+- name: Shown vitals
+  command: dconf write /org/gnome/shell/extensions/vitals/hot-sensors "['_processor_average_', '_memory_usage_', '__network-download_max__', '__network-upload_max__']"
+
+- name: Vitals position in panel
+  command: dconf write /org/gnome/shell/extensions/vitals/position-in-panel 2
+
+- name: Hide storage in vitals
+  command: dconf write /org/gnome/shell/extensions/vitals/show-storage "false"
+
+- name: Show system vitals
+  command: dconf write /org/gnome/shell/extensions/vitals/show-system  "true"
