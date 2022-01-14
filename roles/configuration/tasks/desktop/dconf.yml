@@ -100,13 +100,13 @@
   command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/ondemand-time "'night'"
 
 - name: Night switcher manual mode
-  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/manual-time-source "false"
+  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/manual-time-source "true"
 
 - name: Night switcher time source
-  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/time-source "'nightlight'"
+  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/time-source "'ondemand'"
 
 - name: Night switcher follow disable
-  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/nightlight-follow-disable "true"
+  command: dconf write /org/gnome/shell/extensions/nightthemeswitcher/time/nightlight-follow-disable "false"
 
 - name: Activate launcher with Super+Space
   command: dconf write /org/gnome/shell/extensions/pop-shell/activate-launcher "['<Super>space']"
