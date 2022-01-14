@@ -23,14 +23,14 @@ if status is-interactive
     abbr --add --global rm "rm -I"
 
     # A nicer ls that also shows the git status of files
-    abbr --add --global l "exa -lh --git --all"
+    abbr --add --global l "exa -lh --all --group-directories-first"
 
     # A nicer ls that also shows the git status of files
     # (but not hidden files)
-    abbr --add --global ll "exa -lh"
+    abbr --add --global ll "exa -lh --group-directories-first"
 
     # Same nicer ls but in tree view.
-    abbr --add --global lt "exa -lh --all --tree"
+    abbr --add --global lt "exa -lh --all --tree --group-directories-first"
 
     # lc = line count
     abbr --add --global lc "wc -l"

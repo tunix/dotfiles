@@ -33,6 +33,7 @@ call plug#begin()
 
     Plug 'tpope/vim-commentary'
     Plug 'ervandew/supertab'
+    Plug 'mattn/emmet-vim'
 
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
