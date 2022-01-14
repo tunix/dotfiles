@@ -50,5 +50,5 @@
   include_tasks: distrobox.yml
 
 - name: Configure desktop
-  include_tasks: desktop.yml
+  include_tasks: desktop/main.yml
   when: ansible_env.DISPLAY is defined

@@ -13,6 +13,9 @@
       - gnome-shell-extension-pop-shell
       - gnome-shell-extension-pop-shell-shortcut-overrides
       - gnome-shell-extension-sound-output-device-chooser
+      - python3-psutil
+      - python3-google-api-client
+      - python3-oauth2client
   when: ansible_env.DISPLAY is defined
 
 - name: Install overgrive for Fedora Silverblue

@@ -39,6 +39,7 @@
       - gnome-tweaks
       - gnome-session
       - alacritty
+      - python3-psutil
   when: ansible_env.DISPLAY is defined
 
 - name: Ensure that overgrive is installed
