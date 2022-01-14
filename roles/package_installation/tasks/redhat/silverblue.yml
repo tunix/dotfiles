@@ -15,4 +15,7 @@
       - gnome-shell-extension-sound-output-device-chooser
   when: ansible_env.DISPLAY is defined
 
-# TODO: overgrive
+- name: Install overgrive for Fedora Silverblue
+  rpm_ostree_pkg:
+    name: https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.10.noarch.rpm
+  when: ansible_env.DISPLAY is defined
