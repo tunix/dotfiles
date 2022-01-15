@@ -1,6 +1,6 @@
 - name: Install system76 packages if necessary
   include_tasks: system76.yml
-  when: ansible_board_vendor == "System76"
+  when: ansible_board_vendor is defined and ansible_board_vendor == "System76"
 
 - name: Configure YUM repo of tailscale
   include_tasks: tailscale.yml
