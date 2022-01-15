@@ -116,7 +116,7 @@
 - name: Set key binding custom0's binding
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
-    value: "<Super>t"
+    value: "['<Super>t']"
 
 - name: Set key binding custom0's command to alacritty
   dconf:
