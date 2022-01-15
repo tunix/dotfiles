@@ -121,12 +121,12 @@
 - name: Set key binding custom0's command to alacritty
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
-    value: "alacritty"
+    value: "'alacritty'"
 
 - name: Set key binding custom0's name
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
-    value: "Launch alacritty"
+    value: "'Launch alacritty'"
 
 - name: Set max screencast limit to unlimited
   dconf:
