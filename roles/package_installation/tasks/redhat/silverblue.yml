@@ -1,6 +1,10 @@
+# rpm_ostree_pkg module cannot alter base packages
 - name: Remove some packages from Fedora Silverblue
-  community.general.rpm_ostree_pkg:
-    name:
+  command:
+    argv:
+      - rpm-ostree
+      - overrides
+      - remove
       - gnome-extensions-app
       - gnome-shell-extension-apps-menu
       - gnome-shell-extension-launch-new-instance
@@ -8,7 +12,6 @@
       - gnome-shell-extension-window-list
       - gnome-shell-extension-background-logo
       - firefox
-    state: absent
   notify:
     - Restart system
 
