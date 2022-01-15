@@ -1,0 +1,11 @@
+- name: Copy avatar
+  copy:
+    src: avatar.jpg
+    dest: "/var/lib/AccountsService/icons/{{ ansible_user_id }}"
+    force: true
+
+- name: Set avatar
+  lineinfile:
+    path: "/var/lib/AccountsService/users/{{ ansible_user_id }}"
+    regexp: "^Icon="
+    line: "Icon=/var/lib/AccountsService/icons/{{ ansible_user_id }}"

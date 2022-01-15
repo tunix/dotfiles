@@ -314,3 +314,23 @@
   dconf:
     key: "/org/gnome/desktop/input-sources/per-window"
     value: "false"
+
+- name: Automatically empty trash
+  dconf:
+    key: "/org/gnome/desktop/privacy/remove-old-trash-files"
+    value: "true"
+
+- name: Automatically delete temporary files
+  dconf:
+    key: "/org/gnome/desktop/privacy/remove-old-temp-files"
+    value: "true"
+
+- name: Set maximum age for old & temporary files
+  dconf:
+    key: "/org/gnome/desktop/privacy/old-files-age"
+    value: "uint32 3"
+
+- name: Sorf folders first in Files
+  dconf:
+    key: "/org/gtk/settings/file-chooser/sort-directories-first"
+    value: "true"
