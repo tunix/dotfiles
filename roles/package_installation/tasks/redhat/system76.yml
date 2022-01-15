@@ -1,0 +1,48 @@
+- name: Enable system76 repo
+  yum_repository:
+    name: system76
+    description: system76
+    baseurl: https://download.copr.fedorainfracloud.org/results/szydell/system76/fedora-$releasever-$basearch
+    gpgkey: https://download.copr.fedorainfracloud.org/results/szydell/system76/pubkey.gpg
+
+- name: Install system76 packages
+  dnf:
+    name:
+      - system76-driver
+      - firmware-manager
+      - system76-keyboard-configurator
+      - system76-dkms
+      - system76-acpi-dkms
+  notify:
+    - Restart system
+
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Enable firmware daemon
+  systemd:
+    name: system76-firmware-daemon
+    enabled: true
+
+- name: Enable power-wake
+  systemd:
+    name: system76-power-wake
+    enabled: true
+
+- name: Enable power daemon
+  systemd:
+    name: system76-power
+    enabled: true
+    state: started
+
+- name: Enable DKMS
+  systemd:
+    name: dkms
+    enabled: true
+  notify:
+    - Restart system
+
+- name: Flush handlers
+  meta: flush_handlers
+
+# TODO: install system76-power GNOME extension
