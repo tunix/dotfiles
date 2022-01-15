@@ -95,7 +95,7 @@
 
 - name: Set custom key bindings
   dconf:
-    key: "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
     value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 
 - name: Set key binding for launching default browser
@@ -105,7 +105,7 @@
 
 - name: Set key binding for launching calculator
   dconf:
-    key: "org/gnome/settings-daemon/plugins/media-keys/calculator"
+    key: "/org/gnome/settings-daemon/plugins/media-keys/calculator"
     value: "['<Super>c']"
 
 - name: Set key binding for launching terminal
@@ -115,17 +115,17 @@
 
 - name: Set key binding custom0's binding
   dconf:
-    key: "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
     value: "<Super>t"
 
 - name: Set key binding custom0's command to alacritty
   dconf:
-    key: "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
     value: "alacritty"
 
 - name: Set key binding custom0's name
   dconf:
-    key: "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
     value: "Launch alacritty"
 
 - name: Set max screencast limit to unlimited
@@ -155,12 +155,12 @@
 
 - name: Set sleep inactive battery timeout
   dconf:
-    key: "org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-timeout"
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-timeout"
     value: "900"
 
 - name: Set sleep inactive battery type
   dconf:
-    key: "org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-type"
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-type"
     value: "suspend"
 
 - name: Set favourite apps for Pop!_OS
