@@ -3,3 +3,4 @@
     name: tailscale-stable
     description: tailscale-stable
     baseurl: https://pkgs.tailscale.com/stable/fedora/$basearch
+    gpgcheck: false

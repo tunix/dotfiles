@@ -1,12 +1,15 @@
 - name: Install packages for Fedora Silverblue
-  rpm_ostree_pkg:
+  community.general.rpm_ostree_pkg:
     name:
       - uptimed
       - tailscale
+  notify:
+    - Restart system
 
 - name: Install GUI packages for Fedora Silverblue
-  rpm_ostree_pkg:
+  community.general.rpm_ostree_pkg:
     name:
+      - caffeine
       - gnome-tweaks
       - gnome-shell-extension-appindicator
       - gnome-shell-extension-caffeine
@@ -17,8 +20,12 @@
       - python3-google-api-client
       - python3-oauth2client
   when: ansible_env.DISPLAY is defined
+  notify:
+    - Restart system
 
 - name: Install overgrive for Fedora Silverblue
-  rpm_ostree_pkg:
+  community.general.rpm_ostree_pkg:
     name: https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.10.noarch.rpm
   when: ansible_env.DISPLAY is defined
+  notify:
+    - Restart system

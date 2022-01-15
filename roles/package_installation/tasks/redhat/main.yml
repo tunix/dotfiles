@@ -18,11 +18,3 @@
       - bat
       - fish
   when: ansible_pkg_mgr == "dnf"
-
-- name: Install GUI packages
-  dnf:
-    name:
-      - caffeine
-      - gnome-shell-extension-pop-shell
-      - gnome-shell-extension-pop-shell-shortcut-overrides
-  when: ansible_env.DISPLAY is defined
