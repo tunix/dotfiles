@@ -161,7 +161,7 @@
 - name: Set sleep inactive battery type
   dconf:
     key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-type"
-    value: "suspend"
+    value: "'suspend'"
 
 - name: Set favourite apps for Pop!_OS
   dconf:
