@@ -1,3 +1,17 @@
+- name: Remove some packages from Fedora Silverblue
+  community.general.rpm_ostree_pkg:
+    name:
+      - gnome-extensions-app
+      - gnome-shell-extension-apps-menu
+      - gnome-shell-extension-launch-new-instance
+      - gnome-shell-extension-places-menu
+      - gnome-shell-extension-window-list
+      - gnome-shell-extension-background-logo
+      - firefox
+    state: absent
+  notify:
+    - Restart system
+
 - name: Install packages for Fedora Silverblue
   community.general.rpm_ostree_pkg:
     name:
@@ -12,10 +26,8 @@
       - caffeine
       - gnome-tweaks
       - gnome-shell-extension-appindicator
-      - gnome-shell-extension-caffeine
       - gnome-shell-extension-pop-shell
-      - gnome-shell-extension-pop-shell-shortcut-overrides
-      - gnome-shell-extension-sound-output-device-chooser
+      # - gnome-shell-extension-sound-output-device-chooser # broken for GNOME 41
       - python3-psutil
       - python3-google-api-client
       - python3-oauth2client
