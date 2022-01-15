@@ -29,3 +29,6 @@
   when: ansible_env.DISPLAY is defined
   notify:
     - Restart system
+
+- name: Flush handlers
+  meta: flush_handlers
