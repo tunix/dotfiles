@@ -93,6 +93,51 @@
     key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4"
     value: "['<Super>4']"
 
+- name: Set custom key bindings
+  dconf:
+    key: "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+    value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+
+- name: Set key binding for launching default browser
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/www"
+    value: "['<Super>b']"
+
+- name: Set key binding for launching calculator
+  dconf:
+    key: "org/gnome/settings-daemon/plugins/media-keys/calculator"
+    value: "['<Super>c']"
+
+- name: Set key binding for launching terminal
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/terminal"
+    value: "['<Super>t']"
+
+- name: Set key binding custom0's binding
+  dconf:
+    key: "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
+    value: "<Super>t"
+
+- name: Set key binding custom0's command to alacritty
+  dconf:
+    key: "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
+    value: "alacritty"
+
+- name: Set key binding custom0's name
+  dconf:
+    key: "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
+    value: "Launch alacritty"
+
+- name: Set max screencast limit to unlimited
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/max-screencast-length"
+    value: "uint32 0"
+
+- name: Adjust volume in smaller steps
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/volume-step"
+    value: "2"
+
 - name: Center new windows
   dconf:
     key: "/org/gnome/mutter/center-new-windows"
@@ -107,6 +152,28 @@
   dconf:
     key: "/org/gnome/settings-daemon/plugins/power/power-button-action"
     value: "'nothing'"
+
+- name: Set sleep inactive battery timeout
+  dconf:
+    key: "org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-timeout"
+    value: "900"
+
+- name: Set sleep inactive battery type
+  dconf:
+    key: "org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-type"
+    value: "suspend"
+
+- name: Set favourite apps for Pop!_OS
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "['com.brave.Browser.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'com.alacritty.Alacritty.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
+  when: "'Pop' in ansible_distribution"
+
+- name: Set favourite apps for Fedora
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "['com.brave.Browser.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'com.alacritty.Alacritty.desktop', 'org.gnome.Software.desktop', 'gnome-control-center.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
+  when: "'Fedora' in ansible_distribution"
 
 - name: Enable automatic location for weather
   dconf:
@@ -242,3 +309,8 @@
   dconf:
     key: "/org/gnome/shell/extensions/vitals/show-system"
     value: "true"
+
+- name: Use same input source for all windows
+  dconf:
+    key: "/org/gnome/desktop/input-sources/per-window"
+    value: "false"
