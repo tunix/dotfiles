@@ -1,5 +1,4 @@
-- name: Provision
-  hosts: local
+- hosts: all
   roles:
     - package_installation
     - configuration

@@ -14,5 +14,5 @@ Please install `ansible` in order to proceed.
 ```
 $ ansible-galaxy collection install community.general
 
-$ ansible-playbook -K -i hosts provision.yml
+$ ansible-playbook -K main.yml
 ```
