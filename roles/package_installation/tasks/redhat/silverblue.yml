@@ -3,7 +3,7 @@
   command:
     argv:
       - rpm-ostree
-      - overrides
+      - override
       - remove
       - gnome-extensions-app
       - gnome-shell-extension-apps-menu
