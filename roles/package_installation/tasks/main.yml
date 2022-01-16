@@ -13,7 +13,3 @@
   when: ansible_os_family == "RedHat"
 
 - include_tasks: flatpak.yml
-
-# TODO: snaps (bpytop, httpie, yq, hugo, gradle, kubectl, k9s)
-# TODO: rust
-# TODO: go
