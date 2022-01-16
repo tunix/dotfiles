@@ -19,4 +19,6 @@
     gnome_extension_info: "{{ item.json }}"
   loop: "{{ r_gnome_extension_info.results }}"
 
-# TODO: disable extensions
+- name: Disable extensions
+  command: "gnome-extensions disable -q {{ item }}"
+  loop: "{{ disabled_extensions }}"
