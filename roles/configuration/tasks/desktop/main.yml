@@ -6,4 +6,6 @@
 
 - name: Configure avatar
   include_tasks: avatar.yml
-  become: true
+  args:
+    apply:
+      become: true
