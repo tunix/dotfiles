@@ -1,19 +1,4 @@
-# rpm_ostree_pkg module cannot alter base packages
-- name: Remove some packages from Fedora Silverblue
-  command:
-    argv:
-      - rpm-ostree
-      - override
-      - remove
-      - gnome-extensions-app
-      - gnome-shell-extension-apps-menu
-      - gnome-shell-extension-launch-new-instance
-      - gnome-shell-extension-places-menu
-      - gnome-shell-extension-window-list
-      - gnome-shell-extension-background-logo
-      - firefox
-  notify:
-    - Restart system
+# TODO: package removal from base
 
 - name: Install packages for Fedora Silverblue
   community.general.rpm_ostree_pkg:
@@ -28,9 +13,7 @@
     name:
       - caffeine
       - gnome-tweaks
-      - gnome-shell-extension-appindicator
       - gnome-shell-extension-pop-shell
-      # - gnome-shell-extension-sound-output-device-chooser # broken for GNOME 41
       - python3-psutil
       - python3-google-api-client
       - python3-oauth2client

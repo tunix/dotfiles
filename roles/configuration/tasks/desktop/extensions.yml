@@ -1,0 +1,22 @@
+- name: Parse GNOME Shell version
+  shell: gnome-shell --version | sed 's/[^0-9.]*\([0-9.]*\).*/\1/'
+  register: r_gnome_shell_version_output
+  changed_when: false
+
+- set_fact:
+    gnome_shell_version: "{{ r_gnome_shell_version_output.stdout }}"
+
+- name: Get GNOME Shell extension info
+  uri:
+    url: "https://extensions.gnome.org/extension-info/?pk={{ item }}&shell_version={{ gnome_shell_version }}"
+    return_content: yes
+  loop: "{{ shell_extension_ids }}"
+  register: r_gnome_extension_info
+
+- name: Install extension
+  include_tasks: install_extension.yml
+  vars:
+    gnome_extension_info: "{{ item.json }}"
+  loop: "{{ r_gnome_extension_info.results }}"
+
+# TODO: disable extensions
