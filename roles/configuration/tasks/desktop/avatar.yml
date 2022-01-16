@@ -1,6 +1,6 @@
 - name: Copy avatar
   copy:
-    src: avatar.jpg
+    src: avatar/avatar.jpg
     dest: "/var/lib/AccountsService/icons/{{ ansible_user_id }}"
     force: true
 
