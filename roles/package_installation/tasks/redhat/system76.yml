@@ -38,6 +38,7 @@
     state: started
 
 - name: Enable firmware notifier
+  become: false
   systemd:
     scope: user
     name: com.system76.FirmwareManager.Notify.timer
