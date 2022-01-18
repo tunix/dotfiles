@@ -19,9 +19,9 @@
 - name: Flush handlers
   meta: flush_handlers
 
-- name: Enable firmware daemon
+- name: Enable power daemon
   systemd:
-    name: system76-firmware-daemon
+    name: system76-power
     enabled: true
     state: started
 
@@ -31,9 +31,16 @@
     enabled: true
     state: started
 
-- name: Enable power daemon
+- name: Enable firmware daemon
   systemd:
-    name: system76-power
+    name: system76-firmware-daemon
+    enabled: true
+    state: started
+
+- name: Enable firmware notifier
+  systemd:
+    scope: user
+    name: com.system76.FirmwareManager.Notify.timer
     enabled: true
     state: started
 
