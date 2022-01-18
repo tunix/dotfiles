@@ -14,7 +14,7 @@
 
 - name: "Include Mac related tasks"
   include_tasks: mac/main.yml
-  when: ansible_os_family == "Darwin"
+  when: ansible_system == "Darwin"
 
 - include_tasks: flatpak.yml
-  when: ansible_os_family != "Darwin"
+  when: ansible_system == "Linux"

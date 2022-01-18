@@ -1,0 +1,61 @@
+vars:
+  open_cmd: xdg-open
+  shell: /usr/bin/fish
+
+- name: Gather the package facts
+  package_facts:
+    manager: auto
+
+- name: Configure dircolors
+  include_tasks: ../common/dir_colors.yml
+
+- name: Configure fonts
+  include_tasks: ../common/fonts.yml
+  vars:
+    font_dir: "{{ ansible_user_dir }}/.local/share/fonts"
+  when: "'fontconfig' in ansible_facts.packages"
+
+- name: Configure alacritty
+  include_tasks: ../common/alacritty.yml
+  when: "'alacritty' in ansible_facts.packages"
+
+- name: Configure editorconfig
+  file:
+    src: "{{ role_path }}/files/editorconfig/editorconfig"
+    dest: "{{ ansible_user_dir }}/.editorconfig"
+    state: link
+    force: true
+
+- name: Configure fish
+  include_tasks: ../common/fish.yml
+  vars:
+    alias_bat: batcat
+    abbr_pbcopy: xsel --clipboard --input
+    abbr_pbpaste: xsel --clipboard --output
+    abbr_open: "{{ open_cmd }}"
+  when: "'fish' in ansible_facts.packages"
+
+- name: Configure git
+  file:
+    src: "{{ role_path }}/files/git/gitconfig"
+    dest: "{{ ansible_user_dir }}/.gitconfig"
+    state: link
+    force: true
+
+- name: Configure neovim
+  include_tasks: ../common/nvim.yml
+  when: "'neovim' in ansible_facts.packages"
+
+- name: Configure ssh
+  include_tasks: ../common/ssh.yml
+
+- name: Configure tmux
+  include_tasks: ../common/tmux.yml
+  when: "'tmux' in ansible_facts.packages"
+
+- name: Configure distrobox
+  include_tasks: ../common/distrobox.yml
+
+- name: Configure desktop
+  include_tasks: desktop/main.yml
+  when: ansible_env.DISPLAY is defined

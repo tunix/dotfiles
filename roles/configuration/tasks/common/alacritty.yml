@@ -1,0 +1,10 @@
+- name: Create config directory
+  file:
+    path: "{{ ansible_user_dir }}/.config/alacritty"
+    state: directory
+    recurse: true
+
+- name: Install configuration file
+  template:
+    src: alacritty/alacritty.yml.j2
+    dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.yml"

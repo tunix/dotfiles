@@ -1,0 +1,2 @@
+- name: Set default browser
+  command: xdg-settings set default-web-browser com.brave.Brave.desktop

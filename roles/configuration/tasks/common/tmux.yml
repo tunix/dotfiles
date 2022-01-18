@@ -1,0 +1,10 @@
+- name: Place tmux configuration
+  template:
+    src: tmux/tmux.conf.j2
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
+
+- name: Install tpm
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ ansible_user_dir }}/.tmux/plugins/tpm"
+    update: true

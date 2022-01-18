@@ -42,9 +42,4 @@
     scope: user
     name: com.system76.FirmwareManager.Notify.timer
     enabled: true
-    state: started
-
-- name: Flush handlers
-  meta: flush_handlers
-
-# TODO: install system76-power GNOME extension
+    state: startedƒ

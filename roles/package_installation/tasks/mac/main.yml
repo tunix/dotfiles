@@ -1,25 +1,22 @@
 - name: Enable taps
   homebrew_tap:
     name:
-      - homebrew/bundle
       - homebrew/cask
-      - homebrew/cask-versions
-      - homebrew/core
-      - homebrew/services
 
 - name: Install packages
   homebrew:
     name:
-      - homebrew/cask/alacritty
       - bat
-      - homebrew/cask/caffeine
+      - bpytop
       - direnv
       - exa
       - fish
       - fzf
       - htop
-      - jetbrains-toolbox
       - jq
+      - k9s
+      - kubectx
+      - kubernetes-cli
       - neovim
       - podman
       - tailscale
@@ -29,5 +26,21 @@
       - watch
       - wget
       - z
+    update_homebrew: true
+    upgrade_all: true
+
+- name: Install GUI applications
+  homebrew_cask:
+    name:
+      - 1password
+      - alacritty
+      - brave-browser
+      - caffeine
+      - jetbrains-toolbox
+      - lens
+      - mos
+      - multipass
+      - telegram
+      - visual-studio-code
     update_homebrew: true
     upgrade_all: true

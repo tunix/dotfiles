@@ -143,10 +143,20 @@
     key: "/org/gnome/mutter/center-new-windows"
     value: "true"
 
-- name: Enable night light
+- name: Enable night light core
   dconf:
     key: "/org/gnome/settings-daemon/plugins/color/active"
     value: "true"
+
+- name: Enable night light
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
+    value: "true"
+
+- name: Set night light last coordinates
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-last-coordinates"
+    value: "(37.198701439884815, 28.3674)"
 
 - name: Disable power button action
   dconf:
@@ -209,6 +219,16 @@
   dconf:
     key: "/org/gnome/shell/extensions/clipboard-indicator/move-item-first"
     value: "true"
+
+- name: Set toggle shortcut for clipboard indicator
+  dconf:
+    key: "/org/gnome/shell/extensions/clipboard-indicator/toggle-menu"
+    value: "['F9']"
+
+- name: Set clear history shortcut for clipboard indicator
+  dconf:
+    key: "/org/gnome/shell/extensions/clipboard-indicator/clear-history"
+    value: "['F10']"
 
 - name: Hide applications button in Pop Shell
   dconf:
@@ -338,4 +358,9 @@
 - name: Sorf folders first in Files
   dconf:
     key: "/org/gtk/settings/file-chooser/sort-directories-first"
+    value: "true"
+
+- name: Enable automatic timezone
+  dconf:
+    key: "/org/gnome/desktop/datetime/automatic-timezone"
     value: "true"

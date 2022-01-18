@@ -1,3 +1,12 @@
+alacritty:
+  font_size: 9
+
+commands:
+  ls:
+    params: "-I"
+  exa:
+    params: "-lh --group-directories-first"
+
 shell_extension_ids:
   - 615  # app indicator
   - 779  # clipboard indicator
@@ -5,6 +14,10 @@ shell_extension_ids:
   - 1625 # soft brightness
   - 906  # sound input & output device chooser
   - 1460 # vitals
+  - 517  # caffeine
+
+enabled_extensions:
+  - pop-shell@system76.com
 
 disabled_extensions:
   - apps-menu@gnome-shell-extensions.gcampax.github.com

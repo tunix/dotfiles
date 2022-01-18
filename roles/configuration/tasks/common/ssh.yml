@@ -1,7 +1,7 @@
 - name: Copy ssh configuration
   copy:
     src: files/ssh/
-    dest: $HOME/.ssh
+    dest: "{{ ansible_user_dir }}/.ssh"
 
 # TODO: merge all config_* files into $HOME/.ssh/config
 # TODO: append all public keys into $HOME/.ssh/authorized_keys

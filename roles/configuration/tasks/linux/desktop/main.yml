@@ -9,3 +9,6 @@
   args:
     apply:
       become: true
+
+- name: Configure XDG
+  include_tasks: xdg.yml

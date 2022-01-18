@@ -11,7 +11,6 @@
 - name: Install GUI packages for Fedora Silverblue
   community.general.rpm_ostree_pkg:
     name:
-      - caffeine
       - gnome-tweaks
       - gnome-shell-extension-pop-shell
       - python3-psutil

@@ -17,7 +17,7 @@ set -g renumber-windows on
 
 # set xterm properly
 # set -g default-terminal "tmux-256color"
-set -g default-shell "/usr/bin/fish"
+set -g default-shell "{{ shell }}"
 
 # set terminal emulator window title
 set -g set-titles on
@@ -31,7 +31,7 @@ setw -g monitor-activity on
 set -g visual-activity on
 
 # reload file changes
-bind R source-file $HOME/.tmux.conf
+bind R source-file {{ ansible_user_dir }}/.tmux.conf
 
 # status bar
 set -g status on
@@ -49,4 +49,4 @@ set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'arcticicestudio/nord-tmux'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run '$HOME/.tmux/plugins/tpm/tpm'
+run '{{ ansible_user_dir }}/.tmux/plugins/tpm/tpm'

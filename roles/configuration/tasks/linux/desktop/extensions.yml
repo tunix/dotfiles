@@ -19,6 +19,12 @@
     gnome_extension_info: "{{ item.json }}"
   loop: "{{ r_gnome_extension_info.results }}"
 
+- name: Enable extensions
+  command: "gnome-extensions enable -q {{ item }}"
+  loop: "{{ enabled_extensions }}"
+
 - name: Disable extensions
   command: "gnome-extensions disable -q {{ item }}"
   loop: "{{ disabled_extensions }}"
+
+# TODO: install system76-power GNOME extension
