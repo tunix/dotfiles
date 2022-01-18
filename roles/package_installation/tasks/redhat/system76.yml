@@ -11,8 +11,6 @@
       - system76-driver
       - firmware-manager
       - system76-keyboard-configurator
-      - system76-dkms
-      - system76-acpi-dkms
   notify:
     - Restart system
 
@@ -34,13 +32,6 @@
     name: system76-power
     enabled: true
     state: started
-
-- name: Enable DKMS
-  systemd:
-    name: dkms
-    enabled: true
-  notify:
-    - Restart system
 
 - name: Flush handlers
   meta: flush_handlers
