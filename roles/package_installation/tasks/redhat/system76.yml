@@ -43,4 +43,4 @@
     scope: user
     name: com.system76.FirmwareManager.Notify.timer
     enabled: true
-    state: startedƒ
+    state: started
