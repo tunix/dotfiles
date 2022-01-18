@@ -9,6 +9,8 @@
   community.general.rpm_ostree_pkg:
     name:
       - system76-driver
+      - system76-firmware
+      - system76-power
       - firmware-manager
       - system76-keyboard-configurator
   notify:
@@ -21,11 +23,13 @@
   systemd:
     name: system76-firmware-daemon
     enabled: true
+    state: started
 
 - name: Enable power-wake
   systemd:
     name: system76-power-wake
     enabled: true
+    state: started
 
 - name: Enable power daemon
   systemd:
