@@ -14,6 +14,7 @@ flatpak_packages:
   - com.spotify.Client
   - com.system76.Popsicle
   - com.valvesoftware.Steam
+  - com.visualstudio.code
   - de.haeckerfelix.Shortwave
   - dev.geopjr.Hashbrown
   - fr.handbrake.ghb

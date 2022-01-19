@@ -1,3 +1,12 @@
+- name: Check if running inside a container
+  stat:
+    path: /run/.containerenv
+  register: _container_check
+
+- name: Set container check result
+  set_fact:
+    inside_container: _container_check.stat.exists
+
 - name: Include Debian related tasks
   include_tasks: debian/main.yml
   args:
@@ -12,9 +21,10 @@
       become: true
   when: ansible_os_family == "RedHat"
 
-- name: "Include Mac related tasks"
+- name: Include Mac related tasks
   include_tasks: mac/main.yml
   when: ansible_system == "Darwin"
 
-- include_tasks: flatpak.yml
-  when: ansible_system == "Linux"
+- name: Include Flatpak tasks
+  include_tasks: flatpak.yml
+  when: ansible_system == "Linux" and not inside_container
