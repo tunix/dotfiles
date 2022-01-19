@@ -1,2 +1,2 @@
 - name: Restart system
-  reboot:
+  command: systemctl reboot

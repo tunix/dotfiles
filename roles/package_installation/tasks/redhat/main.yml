@@ -9,7 +9,14 @@
   include_tasks: tailscale.yml
   when: not inside_container
 
-- name: Install Fedora Silverblue packages
+- name: Configure YUM repo of globalprotect-openconnect
+  yum_repository:
+    name: globalprotect-openconnect
+    description: globalprotect-openconnect
+    baseurl: https://download.copr.fedorainfracloud.org/results/yuezk/globalprotect-openconnect/fedora-$releasever-$basearch/
+    gpgkey: https://download.copr.fedorainfracloud.org/results/yuezk/globalprotect-openconnect/pubkey.gpg
+
+- name: Install packages
   include_tasks: silverblue.yml
   when: ansible_pkg_mgr == "atomic_container"
 
@@ -26,3 +33,9 @@
       - bat
       - fish
   when: ansible_pkg_mgr == "dnf"
+
+- name: Install GUI packages
+  dnf:
+    name:
+      - globalprotect-openconnect
+  when: ansible_pkg_mgr == "dnf" and ansible_env.DISPLAY is defined

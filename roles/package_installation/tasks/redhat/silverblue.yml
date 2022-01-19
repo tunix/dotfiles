@@ -16,6 +16,7 @@
       - python3-psutil
       - python3-google-api-client
       - python3-oauth2client
+      - globalprotect-openconnect
   when: ansible_env.DISPLAY is defined
   notify:
     - Restart system

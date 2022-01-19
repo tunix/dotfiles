@@ -4,10 +4,18 @@
     update_cache: true
 
 - name: Configure PPA of fish shell
-  include_tasks: fish_shell.yml
+  apt_repository:
+    repo: ppa:fish-shell/release-3
+    filename: fish-shell
 
 - name: Configure PPA of tailscale
   include_tasks: tailscale.yml
+  when: not inside_container
+
+- name: Configure PPA of globalprotect-openconnect
+  apt_repository:
+    repo: ppa:yuezk/globalprotect-openconnect
+    filename: globalprotect-openconnect
 
 # for GUI only
 # TODO: pipewire
@@ -40,6 +48,7 @@
       - gnome-session
       - alacritty
       - python3-psutil
+      - globalprotect-openconnect
   when: ansible_env.DISPLAY is defined
 
 - name: Ensure that overgrive is installed
