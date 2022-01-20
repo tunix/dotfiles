@@ -1,0 +1,10 @@
+- name: "Ensure that {{ item.name }} key is configured"
+  apt_key:
+    url: "{{ item.key }}"
+  when: "'key' in item"
+  loop: "{{ repos }}"
+
+- name: "Ensure that {{ item.name }} repo is enabled"
+  apt_repository:
+    repo: "{{ item.repo }}"
+    filename: "{{ item.name }}"

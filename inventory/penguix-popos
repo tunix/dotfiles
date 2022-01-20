@@ -1,0 +1,37 @@
+all:
+  hosts:
+    penguix:
+      repos:
+        - name: fish-shell
+          repo: ppa:fish-shell/release-3
+        
+        - name: tailscale
+          repo: "deb https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
+          key: "https://pkgs.tailscale.com/stable/ubuntu/{{ ansible_distribution_release }}.gpg"
+
+        - name: globalprotect-openconnect
+          repo: ppa:yuezk/globalprotect-openconnect
+
+      packages:
+        - language-pack-tr
+        - tmux
+        - neofetch
+        - neovim
+        - exa
+        - jq
+        - silversearcher-ag
+        - uptimed
+        - bat
+        - stow
+        - fish
+        - tailscale
+        - snapd
+        - flatpak
+        - podman
+        - caffeine
+        - gnome-tweaks
+        - alacritty
+        - globalprotect-openconnect
+      
+      external_packages:
+        - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.10_all.deb

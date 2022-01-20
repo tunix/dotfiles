@@ -1,0 +1,8 @@
+- name: "Ensure that {{ item.name }} repo is enabled"
+  yum_repository:
+    name: "{{ item.name }}"
+    description: "{{ item.name }}"
+    baseurl: "{{ item.repo }}"
+    gpgkey: "{{ item.key }}"
+    gpgcheck: "true if item.key is defined else false"
+  loop: "{{ repos }}"

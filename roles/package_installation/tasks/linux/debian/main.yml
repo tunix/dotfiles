@@ -1,0 +1,21 @@
+- name: Ensure that all packages are up-to-date
+  apt:
+    upgrade: true
+    update_cache: true
+
+- include_tasks: repo.yml
+
+- name: "Ensure that {{ item }} are installed"
+  apt:
+    name: "{{ item }}"
+  loop: "{{ packages }}"
+
+- name: "Ensure that {{ item }} is installed"
+  apt:
+    deb: "{{ item }}"
+  loop: "{{ external_packages }}"
+
+- name: Ensure that package cache is clean
+  apt:
+    autoclean: true
+    autoremove: true

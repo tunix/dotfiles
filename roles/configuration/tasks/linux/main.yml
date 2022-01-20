@@ -55,8 +55,7 @@
 
 - name: Configure distrobox
   include_tasks: ../common/distrobox.yml
-  when: not inside_container
 
 - name: Configure desktop
   include_tasks: desktop/main.yml
-  when: ansible_env.DISPLAY is defined and not inside_container
+  when: ansible_env.DISPLAY is defined

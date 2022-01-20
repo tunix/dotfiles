@@ -1,8 +1,0 @@
-- name: Ensure that tailscale apt key is configured
-  apt_key:
-    url: "https://pkgs.tailscale.com/stable/ubuntu/{{ ansible_distribution_release }}.gpg"
-
-- name: Ensure that tailscale ppa is configured
-  apt_repository:
-    repo: "deb https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
-    filename: tailscale

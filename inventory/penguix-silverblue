@@ -1,0 +1,25 @@
+all:
+  hosts:
+    penguix:
+      repos:
+        - name: tailscale
+          repo: "https://pkgs.tailscale.com/stable/fedora/$basearch"
+
+        - name: globalprotect-openconnect
+          repo: https://download.copr.fedorainfracloud.org/results/yuezk/globalprotect-openconnect/fedora-$releasever-$basearch/
+          key: https://download.copr.fedorainfracloud.org/results/yuezk/globalprotect-openconnect/pubkey.gpg
+
+      packages:
+        - alacritty
+        - fish
+        - uptimed
+        - tailscale
+        - gnome-tweaks
+        - gnome-shell-extension-pop-shell
+        - python3-psutil
+        - python3-google-api-client
+        - python3-oauth2client
+        - globalprotect-openconnect
+      
+      external_packages:
+        - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.10.noarch.rpm
