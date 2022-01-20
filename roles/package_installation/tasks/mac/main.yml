@@ -1,46 +1,18 @@
-- name: Enable taps
+- name: Ensure that repos are enabled
   homebrew_tap:
-    name:
-      - homebrew/cask
+    name: "{{ item }}"
+  loop: "{{ repos }}"
 
-- name: Install packages
+- name: Ensure that packages are installed
   homebrew:
-    name:
-      - bat
-      - bpytop
-      - direnv
-      - exa
-      - fish
-      - fzf
-      - htop
-      - jq
-      - k9s
-      - kubectx
-      - kubernetes-cli
-      - neovim
-      - podman
-      - tailscale
-      - the_silver_searcher
-      - tmux
-      - uptimed
-      - watch
-      - wget
-      - z
+    name: "{{ item }}"
     update_homebrew: true
     upgrade_all: true
+  loop: "{{ packages }}"
 
 - name: Install GUI applications
   homebrew_cask:
-    name:
-      - 1password
-      - alacritty
-      - brave-browser
-      - caffeine
-      - jetbrains-toolbox
-      - lens
-      - mos
-      - multipass
-      - telegram
-      - visual-studio-code
+    name: "{{ item }}"
     update_homebrew: true
     upgrade_all: true
+  loop: "{{ gui_packages }}"

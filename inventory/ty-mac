@@ -1,0 +1,45 @@
+all:
+  hosts:
+    penguix:
+      ansible_connection: local
+
+      open_cmd: open
+      shell: /usr/local/bin/fish
+      fontconfig: false
+
+      repos:
+        - homebrew/cask
+
+      packages:
+        - bat
+        - bpytop
+        - direnv
+        - exa
+        - fish
+        - fzf
+        - htop
+        - jq
+        - k9s
+        - kubectx
+        - kubernetes-cli
+        - neovim
+        - podman
+        - tailscale
+        - the_silver_searcher
+        - tmux
+        - uptimed
+        - watch
+        - wget
+        - z
+      
+      gui_packages:
+        - 1password
+        - alacritty
+        - brave-browser
+        - caffeine
+        - jetbrains-toolbox
+        - lens
+        - mos
+        - multipass
+        - telegram
+        - visual-studio-code

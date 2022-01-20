@@ -1,10 +1,10 @@
 - name: Install system76 packages if necessary
   include_tasks: system76.yml
-  when: ansible_system_vendor is defined and ansible_system_vendor == "System76"
+  when: system76.enabled
 
 - include_tasks: repo.yml
 
-- name: "Ensure that {{ item }} are installed"
+- name: Ensure that packages are installed
   community.general.rpm_ostree_pkg:
     name: "{{ item }}"
   when: ansible_pkg_mgr == "atomic_container"
@@ -12,7 +12,7 @@
   notify:
     - Restart system
 
-- name: "Ensure that {{ item }} are installed"
+- name: Ensure that packages are installed
   community.general.rpm_ostree_pkg:
     name: "{{ item }}"
   when: ansible_pkg_mgr == "atomic_container"
@@ -20,13 +20,13 @@
   notify:
     - Restart system
 
-- name: "Ensure that {{ item }} is installed"
+- name: Ensure that packages are installed
   dnf:
     name: "{{ item }}"
   when: ansible_pkg_mgr == "dnf"
   loop: "{{ packages }}"
 
-- name: "Ensure that {{ item }} is installed"
+- name: Ensure that packages are installed
   dnf:
     name: "{{ item }}"
   when: ansible_pkg_mgr == "dnf"

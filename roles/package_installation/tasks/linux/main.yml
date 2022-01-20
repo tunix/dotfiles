@@ -12,5 +12,5 @@
       become: true
   when: ansible_os_family == "RedHat"
 
-  - name: Include Flatpak tasks
+- name: Include Flatpak tasks
   include_tasks: linux/flatpak.yml

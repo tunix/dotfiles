@@ -1,6 +1,13 @@
 all:
   hosts:
     penguix:
+      ansible_connection: local
+
+      shell: /usr/bin/fish
+
+      system76:
+        enabled: true
+
       repos:
         - name: tailscale
           repo: "https://pkgs.tailscale.com/stable/fedora/$basearch"
@@ -23,3 +30,23 @@ all:
       
       external_packages:
         - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.10.noarch.rpm
+
+      shell_extension_ids:
+        - 615  # app indicator
+        - 779  # clipboard indicator
+        - 2236 # night time switcher
+        - 1625 # soft brightness
+        - 906  # sound input & output device chooser
+        - 1460 # vitals
+        - 517  # caffeine
+
+      enabled_extensions:
+        - pop-shell@system76.com
+
+      disabled_extensions:
+        - apps-menu@gnome-shell-extensions.gcampax.github.com
+        - background-logo@fedorahosted.org
+        - launch-new-instance@gnome-shell-extensions.gcampax.github.com
+        - places-menu@gnome-shell-extensions.gcampax.github.com
+        - user-theme@gnome-shell-extensions.gcampax.github.com
+        - window-list@gnome-shell-extensions.gcampax.github.com

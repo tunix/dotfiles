@@ -1,3 +1,6 @@
+system76:
+  enabled: false
+
 flatpak_packages:
   - com.belmoussaoui.Decoder
   - com.belmoussaoui.Obfuscate

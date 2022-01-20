@@ -3,16 +3,22 @@ dotfiles
 
 my personal dot files
 
-### Features
+## Features
+
+#### Package Installation
 
 TODO
 
-### Installation
+#### Configuration
+
+TODO
+
+## Installation
 
 Please install `ansible` in order to proceed.
 
 ```
 $ ansible-galaxy collection install community.general
 
-$ ansible-playbook -K main.yml
+$ ansible-playbook -K -i inventory/penguix-popos main.yml
 ```

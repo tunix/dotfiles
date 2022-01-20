@@ -1,3 +1,8 @@
+open_cmd: xdg-open
+shell: /bin/bash
+fontconfig: true
+distrobox: true
+
 alacritty:
   font_size: 9
 
@@ -7,22 +12,5 @@ commands:
   exa:
     params: "-lh --group-directories-first"
 
-shell_extension_ids:
-  - 615  # app indicator
-  - 779  # clipboard indicator
-  - 2236 # night time switcher
-  - 1625 # soft brightness
-  - 906  # sound input & output device chooser
-  - 1460 # vitals
-  - 517  # caffeine
-
-enabled_extensions:
-  - pop-shell@system76.com
-
-disabled_extensions:
-  - apps-menu@gnome-shell-extensions.gcampax.github.com
-  - background-logo@fedorahosted.org
-  - launch-new-instance@gnome-shell-extensions.gcampax.github.com
-  - places-menu@gnome-shell-extensions.gcampax.github.com
-  - user-theme@gnome-shell-extensions.gcampax.github.com
-  - window-list@gnome-shell-extensions.gcampax.github.com
+desktop:
+  enabled: true

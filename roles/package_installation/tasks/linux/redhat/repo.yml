@@ -1,4 +1,4 @@
-- name: "Ensure that {{ item.name }} repo is enabled"
+- name: Ensure that repos are enabled
   yum_repository:
     name: "{{ item.name }}"
     description: "{{ item.name }}"
