@@ -210,6 +210,11 @@
     key: "/org/gnome/shell/extensions/clipboard-indicator/clear-history"
     value: "['F10']"
 
+- name: Set Pop Cosmic overlay key action
+  dconf:
+    key: "/org/gnome/shell/extensions/pop-cosmic/overlay-key-action"
+    value: "'WORKSPACES'"
+
 - name: Hide applications button in Pop Shell
   dconf:
     key: "/org/gnome/shell/extensions/pop-cosmic/show-applications-button"
@@ -349,3 +354,33 @@
   dconf:
     key: "/org/gnome/shell/extensions/appindicator/tray-pos"
     value: "'left'"
+
+- name: Set dash-to-dock max icon size
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
+    value: "36"
+
+- name: Set dash-to-dock as fixed
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
+    value: "false"
+
+- name: Set dash-to-dock extend height
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
+    value: "false"
+
+- name: Set dash-to-dock hide setting
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/intellihide"
+    value: "true"
+
+- name: Set dash-to-dock manual hide setting
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/manualhide"
+    value: "false"
+
+- name: Set dash-to-dock for multi-monitor
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/multi-monitor"
+    value: "true"

@@ -36,6 +36,7 @@ all:
         - gnome-tweaks
         - alacritty
         - globalprotect-openconnect
+        - python3-psutil
       
       external_packages:
         - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.10_all.deb
