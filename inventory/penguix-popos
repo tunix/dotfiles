@@ -3,6 +3,9 @@ all:
     penguix:
       ansible_connection: local
 
+      work:
+        ty: true
+
       shell: /usr/bin/fish
 
       repos:
