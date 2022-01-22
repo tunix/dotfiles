@@ -38,7 +38,7 @@ all:
         - 1625 # soft brightness
         - 906  # sound input & output device chooser
         - 1460 # vitals
-        - 517  # caffeine
+        - 4135 # espresso
 
       enabled_extensions:
         - pop-shell@system76.com

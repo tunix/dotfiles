@@ -1,20 +1,13 @@
-- set_fact:
-    open_cmd: open
-    shell: /usr/local/bin/fish
-
 - name: Configure dircolors
   include_tasks: ../common/dir_colors.yml
 
 - name: Configure fonts
   include_tasks: ../common/fonts.yml
-  vars:
-    font_dir: "{{ ansible_user_dir }}/Library/Fonts"
+  when: fontconfig
 
 - name: Configure alacritty
   include_tasks: ../common/alacritty.yml
-  vars:
-    alacritty:
-      font_size: 13
+  when: "'alacritty' in packages"
 
 - name: Configure editorconfig
   file:
@@ -25,6 +18,7 @@
 
 - name: Configure fish
   include_tasks: ../common/fish.yml
+  when: "'fish' in packages"
 
 - name: Configure git
   file:
@@ -35,9 +29,11 @@
 
 - name: Configure neovim
   include_tasks: ../common/nvim.yml
+  when: "'neovim' in packages"
 
 - name: Configure ssh
   include_tasks: ../common/ssh.yml
 
 - name: Configure tmux
   include_tasks: ../common/tmux.yml
+  when: "'tmux' in packages"

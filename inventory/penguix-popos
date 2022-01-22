@@ -34,7 +34,6 @@ all:
         - silversearcher-ag
         - uptimed
         - bat
-        - stow
         - fish
         - tailscale
         - snapd

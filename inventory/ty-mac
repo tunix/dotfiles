@@ -6,6 +6,10 @@ all:
       open_cmd: open
       shell: /usr/local/bin/fish
       fontconfig: false
+      font_dir: "{{ ansible_user_dir }}/Library/Fonts"
+
+      alacritty:
+        font_size: 13
 
       repos:
         - homebrew/cask

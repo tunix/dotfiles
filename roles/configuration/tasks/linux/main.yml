@@ -3,8 +3,6 @@
 
 - name: Configure fonts
   include_tasks: ../common/fonts.yml
-  vars:
-    font_dir: "{{ ansible_user_dir }}/.local/share/fonts"
   when: fontconfig
 
 - name: Configure alacritty
