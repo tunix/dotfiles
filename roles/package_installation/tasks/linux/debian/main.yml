@@ -1,9 +1,9 @@
+- include_tasks: repo.yml
+
 - name: Ensure that all packages are up-to-date
   apt:
     upgrade: true
     update_cache: true
-
-- include_tasks: repo.yml
 
 - name: Ensure that packages are installed
   apt:
