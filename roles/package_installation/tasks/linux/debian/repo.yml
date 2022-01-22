@@ -1,3 +1,10 @@
+- name: Ensure that Turkish mirror is used for Ubuntu
+  replace:
+    path: "{{ item.path }}"
+    regexp: "{{ item.pattern }}"
+    replace: "{{ item.url }}"
+  loop: "{{ mirrors }}"
+
 - name: Ensure that repo keys are configured
   apt_key:
     url: "{{ item.key }}"

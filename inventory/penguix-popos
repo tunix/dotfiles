@@ -8,6 +8,11 @@ all:
 
       shell: /usr/bin/fish
 
+      mirrors:
+        - path: /etc/apt/sources.list.d/system.sources
+          pattern: http://us.archive.ubuntu.com
+          url: http://tr.archive.ubuntu.com
+
       repos:
         - name: fish-shell
           repo: ppa:fish-shell/release-3
@@ -35,7 +40,6 @@ all:
         - snapd
         - flatpak
         - podman
-        - caffeine
         - gnome-tweaks
         - alacritty
         - globalprotect-openconnect
@@ -50,3 +54,4 @@ all:
         - 1625 # soft brightness
         - 906  # sound input & output device chooser
         - 1460 # vitals
+        - 4135 # espresso
