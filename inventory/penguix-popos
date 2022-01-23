@@ -48,7 +48,6 @@ all:
         - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.10_all.deb
 
       shell_extension_ids:
-        - 779  # clipboard indicator
         - 2236 # night time switcher
         - 1625 # soft brightness
         - 906  # sound input & output device chooser

@@ -33,7 +33,6 @@ all:
 
       shell_extension_ids:
         - 615  # app indicator
-        - 779  # clipboard indicator
         - 2236 # night time switcher
         - 1625 # soft brightness
         - 906  # sound input & output device chooser
