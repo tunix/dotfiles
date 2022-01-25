@@ -4,22 +4,31 @@ if status is-interactive
     # Aliases
     #
 
-    {% if alias_bat is defined and alias_bat %}
+    {% if alias_bat is defined %}
     alias bat "{{ alias_bat }}"
+    {% endif %}
+    {% if alias_k9s is defined %}
+    alias k9s "{{ alias_k9s }}"
+    {% endif %}
+    {% if alias_kubectx is defined %}
+    alias kubectx "{{ alias_kubectx }}"
+    {% endif %}
+    {% if alias_kubectl is defined %}
+    alias kubectl "{{ alias_kubectl }}"
     {% endif %}
 
     #
     # Abbreviations
     #
 
-    {% if abbr_pbcopy is defined and abbr_pbcopy %}
+    {% if abbr_pbcopy is defined %}
     abbr --add --global pbcopy "{{ abbr_pbcopy }}"
     {% endif %}
-    {% if abbr_pbpaste is defined and abbr_pbpaste %}
+    {% if abbr_pbpaste is defined %}
     abbr --add --global pbpaste "{{ abbr_pbpaste }}"
     {% endif %}
 
-    {% if abbr_open is defined and abbr_open %}
+    {% if abbr_open is defined %}
     # Open files in their associated apps from Terminal.
     abbr --add --global open "{{ abbr_open }} &>/dev/null"
     {% endif %}

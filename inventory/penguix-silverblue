@@ -5,6 +5,15 @@ all:
 
       shell: /usr/bin/fish
 
+      alias_bat: batcat
+      alias_k9s: distrobox enter k9s -- k9s
+      alias_kubectx: distrobox enter kube -- kubectx
+      alias_kubectl: distrobox enter kube -- kubectl
+
+      abbr_open: "{{ open_cmd }}"
+      abbr_pbcopy: xsel --clipboard --input
+      abbr_pbpaste: xsel --clipboard --output
+
       system76:
         enabled: true
 

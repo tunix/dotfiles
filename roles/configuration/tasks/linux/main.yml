@@ -18,11 +18,6 @@
 
 - name: Configure fish
   include_tasks: ../common/fish.yml
-  vars:
-    alias_bat: batcat
-    abbr_pbcopy: xsel --clipboard --input
-    abbr_pbpaste: xsel --clipboard --output
-    abbr_open: "{{ open_cmd }}"
   when: "'fish' in packages"
 
 - name: Configure git
