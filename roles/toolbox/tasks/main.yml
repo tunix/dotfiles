@@ -1,0 +1,11 @@
+- name: Build tool container
+  containers.podman.podman_image:
+    name: "{{ item }}"
+    path: "{{ role_path }}/files/podman/{{ item }}"
+  loop: "{{ toolboxes }}"
+  when: toolboxes is defined
+
+- name: Create distrobox for tool
+  command: "distrobox create -i {{ item }} {{ item }}"
+  loop: "{{ toolboxes }}"
+  when: toolboxes is defined

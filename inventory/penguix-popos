@@ -8,11 +8,15 @@ all:
 
       shell: /usr/bin/fish
 
+      toolboxes:
+        - tools
+        - k8s
+
       abbr_open: "{{ open_cmd }}"
       abbr_pbcopy: xsel --clipboard --input
       abbr_pbpaste: xsel --clipboard --output
       abbr_bat: batcat
-      abbr_k9s: distrobox enter -H k8s -- k9s
+      abbr_k9s: distrobox enter k8s -- k9s
       abbr_kubectx: distrobox enter -H k8s -- kubectx
       abbr_kubectl: distrobox enter -H k8s -- kubectl
 
@@ -34,15 +38,7 @@ all:
 
       packages:
         - language-pack-tr
-        - tmux
-        - neofetch
-        - neovim
-        - exa
-        - jq
-        - silversearcher-ag
         - uptimed
-        - bat
-        - fish
         - tailscale
         - snapd
         - flatpak

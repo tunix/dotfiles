@@ -43,12 +43,20 @@ Executes work related tasks such as:
 * Configuring special git configuration per directory
 * Configuring k8s configuration
 
+#### Toolbox
+
+Creates tooling containers:
+
+* `tool` container for general purpose CLI tools
+* `k8s` container for kubernetes CLI tools
+
 ## Installation
 
 Please install `ansible` in order to proceed.
 
 ```
 $ ansible-galaxy collection install community.general
+$ ansible-galaxy collection install containers.podman
 
 $ ansible-playbook -K -i inventory/penguix-popos main.yml
 ```

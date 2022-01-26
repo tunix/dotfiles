@@ -5,6 +5,10 @@ all:
 
       shell: /usr/bin/fish
 
+      toolboxes:
+        - tools
+        - k8s
+
       abbr_open: "{{ open_cmd }}"
       abbr_pbcopy: xsel --clipboard --input
       abbr_pbpaste: xsel --clipboard --output
@@ -26,7 +30,6 @@ all:
 
       packages:
         - alacritty
-        - fish
         - uptimed
         - tailscale
         - gnome-tweaks
