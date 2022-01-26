@@ -6,11 +6,19 @@ all:
       work:
         ty: true
 
-      shell: /usr/bin/fish
+      shell:
+        command: distrobox
+        args:
+          - enter
+          - tools
+          - --
+          - /usr/bin/fish
 
       toolboxes:
         - tools
         - k8s
+
+      alias_vim: nvim
 
       abbr_open: "{{ open_cmd }}"
       abbr_pbcopy: xsel --clipboard --input

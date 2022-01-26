@@ -1,5 +1,10 @@
 open_cmd: xdg-open
-shell: /bin/bash
+
+shell:
+  command: /bin/bash
+  args:
+    - --login
+
 fontconfig: true
 distrobox: true
 

@@ -59,4 +59,6 @@ $ ansible-galaxy collection install community.general
 $ ansible-galaxy collection install containers.podman
 
 $ ansible-playbook -K -i inventory/penguix-popos main.yml
+$ ansible-playbook -i inventory/penguix-popos work.yml
+$ ansible-playbook -i inventory/penguix-popos toolbox.yml
 ```

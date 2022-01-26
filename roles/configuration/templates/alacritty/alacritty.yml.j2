@@ -4,9 +4,9 @@ window:
         lines: 55
 
 shell:
-    program: {{ shell }}
+    program: {{ shell.command }}
     args:
-        - --login
+      {{ shell.args }}
 
 font:
     size: {{ alacritty.font_size }}
