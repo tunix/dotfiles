@@ -8,14 +8,13 @@ all:
 
       shell: /usr/bin/fish
 
-      alias_bat: batcat
-      alias_k9s: distrobox enter k9s -- k9s
-      alias_kubectx: distrobox enter kube -- kubectx
-      alias_kubectl: distrobox enter kube -- kubectl
-
       abbr_open: "{{ open_cmd }}"
       abbr_pbcopy: xsel --clipboard --input
       abbr_pbpaste: xsel --clipboard --output
+      abbr_bat: batcat
+      abbr_k9s: distrobox enter -H k8s -- k9s
+      abbr_kubectx: distrobox enter -H k8s -- kubectx
+      abbr_kubectl: distrobox enter -H k8s -- kubectl
 
       mirrors:
         - path: /etc/apt/sources.list.d/system.sources
@@ -61,4 +60,4 @@ all:
         - 1625 # soft brightness
         - 906  # sound input & output device chooser
         - 1460 # vitals
-        - 4135 # espresso
+        - 517  # caffeine
