@@ -7,7 +7,6 @@
 
 - name: Configure alacritty
   include_tasks: ../common/alacritty.yml
-  when: "'alacritty' in packages"
 
 - name: Configure editorconfig
   file:
@@ -18,7 +17,6 @@
 
 - name: Configure fish
   include_tasks: ../common/fish.yml
-  when: "'fish' in packages"
 
 - name: Configure git
   file:
@@ -29,14 +27,12 @@
 
 - name: Configure neovim
   include_tasks: ../common/nvim.yml
-  when: "'neovim' in packages"
 
 - name: Configure ssh
   include_tasks: ../common/ssh.yml
 
 - name: Configure tmux
   include_tasks: ../common/tmux.yml
-  when: "'tmux' in packages"
 
 - name: Configure distrobox
   include_tasks: ../common/distrobox.yml
