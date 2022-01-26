@@ -12,4 +12,6 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposi
         jq \
         the_silver_searcher \
         bat \
-        fish
+        fish \
+        git \
+        openssh
