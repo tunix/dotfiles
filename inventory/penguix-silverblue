@@ -1,3 +1,5 @@
+# vim: ft=yaml
+
 all:
   hosts:
     penguix:
@@ -11,9 +13,11 @@ all:
           - --
           - /usr/bin/fish
 
+      tmux:
+        shell: /usr/bin/fish
+
       toolboxes:
         - tools
-        - k8s
 
       alias_vim: nvim
 

@@ -5,6 +5,9 @@ shell:
   args:
     - --login
 
+tmux:
+  shell: /bin/bash
+
 fontconfig: true
 distrobox: true
 
