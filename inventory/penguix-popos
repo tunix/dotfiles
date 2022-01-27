@@ -16,7 +16,6 @@ all:
 
       toolboxes:
         - tools
-        - k8s
 
       alias_vim: nvim
 
