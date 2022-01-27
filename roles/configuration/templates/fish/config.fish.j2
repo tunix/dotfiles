@@ -4,8 +4,20 @@ if status is-interactive
     # Aliases
     #
 
+    {% if alias_bat is defined %}
+    alias bat "{{ alias_bat }}"
+    {% endif %}
     {% if alias_vim is defined %}
     alias vim "{{ alias_vim }}"
+    {% endif %}
+    {% if alias_k9s is defined %}
+    alias k9s "{{ alias_k9s }}"
+    {% endif %}
+    {% if alias_kubectx is defined %}
+    alias kubectx "{{ alias_kubectx }}"
+    {% endif %}
+    {% if alias_kubectl is defined %}
+    alias kubectl "{{ alias_kubectl }}"
     {% endif %}
 
     #
@@ -43,18 +55,5 @@ if status is-interactive
 
     # Find out what’s running on port X
     abbr --add --global port "lsof -i"
-
-    {% if abbr_bat is defined %}
-    abbr --add --global bat "{{ abbr_bat }}"
-    {% endif %}
-    {% if abbr_k9s is defined %}
-    abbr --add --global k9s "{{ abbr_k9s }}"
-    {% endif %}
-    {% if abbr_kubectx is defined %}
-    abbr --add --global kubectx "{{ abbr_kubectx }}"
-    {% endif %}
-    {% if abbr_kubectl is defined %}
-    abbr --add --global kubectl "{{ abbr_kubectl }}"
-    {% endif %}
 
 end

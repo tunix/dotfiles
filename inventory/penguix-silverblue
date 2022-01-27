@@ -17,14 +17,6 @@ all:
 
       alias_vim: nvim
 
-      abbr_open: "{{ open_cmd }}"
-      abbr_pbcopy: xsel --clipboard --input
-      abbr_pbpaste: xsel --clipboard --output
-      abbr_bat: batcat
-      abbr_k9s: distrobox enter k9s -- k9s
-      abbr_kubectx: distrobox enter kube -- kubectx
-      abbr_kubectl: distrobox enter kube -- kubectl
-
       system76:
         enabled: true
 
