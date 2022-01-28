@@ -37,7 +37,6 @@ all:
         - uptimed
         - tailscale
         - gnome-tweaks
-        - gnome-shell-extension-pop-shell
         - python3-psutil
         - python3-google-api-client
         - python3-oauth2client
@@ -51,11 +50,7 @@ all:
         - 2236 # night time switcher
         - 1625 # soft brightness
         - 906  # sound input & output device chooser
-        - 1460 # vitals
-        - 4135 # espresso
-
-      enabled_extensions:
-        - pop-shell@system76.com
+        - 518  # caffeine
 
       disabled_extensions:
         - apps-menu@gnome-shell-extensions.gcampax.github.com
