@@ -2,6 +2,15 @@
   copy:
     src: files/ssh/
     dest: "{{ ansible_user_dir }}/.ssh"
+    directory_mode: 0700
+    mode: 0600
 
-# TODO: merge all config_* files into $HOME/.ssh/config
-# TODO: append all public keys into $HOME/.ssh/authorized_keys
+- name: Create authorized_keys
+  blockinfile:
+    path: "{{ ansible_user_dir }}/.ssh/authorized_keys"
+    create: true
+    mode: 0600
+    marker: ""
+    block: "{{ lookup('file', '{{ item }}') }}"
+  with_fileglob:
+    - "{{ ansible_user_dir }}/.ssh/*.pub"

@@ -8,5 +8,6 @@
   blockinfile:
     path: "{{ ansible_user_dir }}/.bashrc"
     create: true
+    marker: ""
     block: |
       test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)

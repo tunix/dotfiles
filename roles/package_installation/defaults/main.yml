@@ -17,6 +17,7 @@ flatpak_packages:
   - com.github.rafostar.Clapper
   - com.github.tchx84.Flatseal
   - com.gitlab.newsflash
+  - com.logseq.Logseq
   - com.mattjakeman.ExtensionManager
   - com.slack.Slack
   - com.spotify.Client
@@ -29,6 +30,7 @@ flatpak_packages:
   - in.bharatkalluri.splash
   - io.github.seadve.Kooha
   - io.webtorrent.WebTorrent
+  - md.obsidian.Obsidian
   - org.gimp.GIMP
   - org.gnome.Boxes
   - org.gnome.Characters
@@ -49,7 +51,6 @@ flatpak_packages:
   - us.zoom.Zoom
 
 developer_tools:
-  - org.freedesktop.Sdk.Extension.node14//21.08
-  - org.freedesktop.Sdk.Extension.openjdk11//21.08
-  - org.freedesktop.Sdk.Extension.openjdk8//21.08
   - com.jetbrains.IntelliJ-IDEA-Ultimate
+  - org.freedesktop.Sdk.Extension.node14//21.08
+  - org.freedesktop.Sdk.Extension.rust-stable//21.08
