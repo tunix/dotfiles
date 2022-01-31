@@ -71,7 +71,7 @@
 - name: Show minimize & close buttons for windows
   dconf:
     key: "/org/gnome/desktop/wm/preferences/button-layout"
-    value: "'appmenu:minimize,close'"
+    value: "'appmenu:minimize,maximize,close'"
 
 - name: Key binding for Switch to Workspace 1
   dconf:
