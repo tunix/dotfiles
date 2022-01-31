@@ -38,7 +38,7 @@ if status is-interactive
 
     # Make rm a little safer (have it prompt once when deleting
     # more than three files or when deleting recursively).
-    abbr --add --global rm "rm {{ commands.ls.params }}"
+    abbr --add --global rm "rm {{ commands.rm.params }}"
 
     # A nicer ls that also shows the git status of files
     abbr --add --global l "exa {{ commands.exa.params }} --all"

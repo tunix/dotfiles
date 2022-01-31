@@ -5,6 +5,7 @@
 
 - name: Install distrobox
   shell: "curl -sSf https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- -p {{ ansible_user_dir }}/.local/bin"
+  ignore_errors: true
   args:
     creates: "{{ ansible_user_dir }}/.local/bin/distrobox"
     warn: false

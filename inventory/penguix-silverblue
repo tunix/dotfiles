@@ -5,6 +5,9 @@ all:
     penguix:
       ansible_connection: local
 
+      work:
+        ty: true
+
       shell:
         command: distrobox
         args:
@@ -20,6 +23,12 @@ all:
         - tools
 
       alias_vim: nvim
+
+      commands:
+        rm:
+          params: "-i"
+        exa:
+          params: "-lh --group-directories-first"
 
       system76:
         enabled: true
@@ -48,12 +57,12 @@ all:
         - 2236 # night time switcher
         - 1625 # soft brightness
         - 906  # sound input & output device chooser
-        - 518  # caffeine
+        - 517  # caffeine
+        - 1460 # vitals
 
       disabled_extensions:
         - apps-menu@gnome-shell-extensions.gcampax.github.com
         - background-logo@fedorahosted.org
         - launch-new-instance@gnome-shell-extensions.gcampax.github.com
         - places-menu@gnome-shell-extensions.gcampax.github.com
-        - user-theme@gnome-shell-extensions.gcampax.github.com
         - window-list@gnome-shell-extensions.gcampax.github.com

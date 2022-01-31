@@ -9,6 +9,7 @@
        --dest org.gnome.Shell.Extensions \
        --object-path /org/gnome/Shell/Extensions \
        --method org.gnome.Shell.Extensions.InstallRemoteExtension \
+       --timeout 60 \
        "{{ gnome_extension_info.uuid }}"
   when: r_gnome_extension_check_existing.stat.exists == False
   ignore_errors: yes

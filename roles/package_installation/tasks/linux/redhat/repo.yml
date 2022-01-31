@@ -3,6 +3,6 @@
     name: "{{ item.name }}"
     description: "{{ item.name }}"
     baseurl: "{{ item.repo }}"
-    gpgkey: "{{ item.key }}"
-    gpgcheck: "true if item.key is defined else false"
+    gpgkey: "{{ item.key if item.key is defined else '' }}"
+    gpgcheck: "{{ item.key is defined }}"
   loop: "{{ repos }}"

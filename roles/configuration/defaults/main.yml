@@ -17,7 +17,7 @@ alacritty:
   font_size: 9
 
 commands:
-  ls:
+  rm:
     params: "-I"
   exa:
     params: "-lh --group-directories-first"
