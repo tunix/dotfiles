@@ -34,9 +34,7 @@ all:
 
       packages:
         - alacritty
-        - uptimed
         - tailscale
-        - gnome-tweaks
         - python3-psutil
         - python3-google-api-client
         - python3-oauth2client

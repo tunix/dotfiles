@@ -10,7 +10,6 @@
     name:
       - system76-driver
       - system76-firmware
-      - system76-power
       - firmware-manager
       - system76-keyboard-configurator
   notify:
@@ -18,18 +17,6 @@
 
 - name: Flush handlers
   meta: flush_handlers
-
-- name: Enable power daemon
-  systemd:
-    name: system76-power
-    enabled: true
-    state: started
-
-- name: Enable power-wake
-  systemd:
-    name: system76-power-wake
-    enabled: true
-    state: started
 
 - name: Enable firmware daemon
   systemd:
