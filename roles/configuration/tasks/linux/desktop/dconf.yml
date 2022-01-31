@@ -290,10 +290,10 @@
     key: "/org/gnome/shell/extensions/pop-shell/gap-outer"
     value: "uint32 2"
 
-- name: Hide window titles
+- name: Configure window titles
   dconf:
     key: "/org/gnome/shell/extensions/pop-shell/show-title"
-    value: "false"
+    value: "true"
 
 - name: Alphabetize vitals
   dconf:
