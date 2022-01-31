@@ -2,6 +2,7 @@ FROM alpine
 
 RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
     && apk add --no-cache \
+        curl \
         tmux \
         neofetch \
         httpie \
@@ -18,4 +19,6 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposi
         podman \
         kubectx \
         kubectl \
-        k9s
+        k9s \
+        bind-tools \
+        inetutils-telnet
