@@ -48,9 +48,12 @@ all:
         - python3-google-api-client
         - python3-oauth2client
         - globalprotect-openconnect
-      
+
       external_packages:
         - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.10.noarch.rpm
+
+      enabled_services:
+        - tailscaled.service
 
       shell_extension_ids:
         - 615  # app indicator
