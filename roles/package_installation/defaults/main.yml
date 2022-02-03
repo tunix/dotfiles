@@ -45,6 +45,7 @@ flatpak_packages:
   - org.gnome.clocks
   - org.gnome.gitlab.YaLTeR.VideoTrimmer
   - org.gnome.gitlab.somas.Apostrophe
+  - org.libreoffice.LibreOffice
   - org.remmina.Remmina
   - org.telegram.desktop
   - org.videolan.VLC
