@@ -53,7 +53,7 @@ all:
         - python3-psutil
       
       external_packages:
-        - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.10_all.deb
+        - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive_3.3.13_all.deb
 
       shell_extension_ids:
         - 2236 # night time switcher

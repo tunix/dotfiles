@@ -50,7 +50,7 @@ all:
         - globalprotect-openconnect
 
       external_packages:
-        - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.10.noarch.rpm
+        - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.13.noarch.rpm
 
       enabled_services:
         - tailscaled.service
