@@ -45,12 +45,7 @@ all:
         - alacritty
         - tailscale
         - python3-psutil
-        - python3-google-api-client
-        - python3-oauth2client
         - globalprotect-openconnect
-
-      external_packages:
-        - https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.13.noarch.rpm
 
       enabled_services:
         - tailscaled.service
