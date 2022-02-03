@@ -10,10 +10,11 @@
     name: "{{ item }}"
   loop: "{{ packages }}"
 
-- name: Ensure that packages is installed
+- name: Ensure that packages are installed
   apt:
     deb: "{{ item }}"
   loop: "{{ external_packages }}"
+  when: external_packages is defined
 
 - name: Ensure that package cache is clean
   apt:

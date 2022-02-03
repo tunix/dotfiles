@@ -10,7 +10,7 @@
     path: "{{ ansible_user_dir }}/.ssh/authorized_keys"
     create: true
     mode: 0600
-    marker: ""
+    marker: "# {mark} MAIN"
     block: "{{ lookup('file', '{{ item }}') }}"
   with_fileglob:
     - "{{ ansible_user_dir }}/.ssh/*.pub"

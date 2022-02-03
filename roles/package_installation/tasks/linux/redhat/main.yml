@@ -15,7 +15,7 @@
 - name: Ensure that packages are installed
   community.general.rpm_ostree_pkg:
     name: "{{ item }}"
-  when: ansible_pkg_mgr == "atomic_container"
+  when: ansible_pkg_mgr == "atomic_container" and external_packages is defined
   loop: "{{ external_packages }}"
   notify:
     - Restart system
@@ -29,7 +29,7 @@
 - name: Ensure that packages are installed
   dnf:
     name: "{{ item }}"
-  when: ansible_pkg_mgr == "dnf"
+  when: ansible_pkg_mgr == "dnf" and external_packages is defined
   loop: "{{ external_packages }}"
 
 - name: Flush handlers

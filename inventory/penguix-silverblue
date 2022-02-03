@@ -64,3 +64,62 @@ all:
         - launch-new-instance@gnome-shell-extensions.gcampax.github.com
         - places-menu@gnome-shell-extensions.gcampax.github.com
         - window-list@gnome-shell-extensions.gcampax.github.com
+
+      flatpak_repos:
+        - name: flathub
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        - name: flathub-beta
+          url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+
+      flatpak_packages:
+        - name: com.belmoussaoui.Decoder
+        - name: com.belmoussaoui.Obfuscate
+        - name: com.brave.Browser
+          repo: flathub-beta
+        - name: com.discordapp.Discord
+        - name: com.getpostman.Postman
+        - name: com.github.gi_lom.dialect
+        - name: com.github.huluti.Curtail
+        - name: com.github.joseexposito.touche
+        - name: com.github.miguelmota.Cointop
+        - name: com.github.rafostar.Clapper
+        - name: com.github.tchx84.Flatseal
+        - name: com.gitlab.newsflash
+        - name: com.jetbrains.IntelliJ-IDEA-Ultimate
+        - name: com.logseq.Logseq
+        - name: com.mattjakeman.ExtensionManager
+        - name: com.spotify.Client
+        - name: com.system76.Popsicle
+        - name: com.valvesoftware.Steam
+        - name: com.visualstudio.code
+        - name: de.haeckerfelix.Shortwave
+        - name: dev.geopjr.Hashbrown
+        - name: fr.handbrake.ghb
+        - name: in.bharatkalluri.splash
+        - name: io.github.seadve.Kooha
+        - name: io.webtorrent.WebTorrent
+        - name: md.obsidian.Obsidian
+        - name: org.freedesktop.Sdk.Extension.node14//21.08
+        - name: org.freedesktop.Sdk.Extension.rust-stable//21.08
+        - name: org.gimp.GIMP
+        - name: org.gnome.Boxes
+        - name: org.gnome.Characters
+        - name: org.gnome.Cheese
+        - name: org.gnome.Connections
+        - name: org.gnome.DejaDup
+        - name: org.gnome.Mahjongg
+        - name: org.gnome.Maps
+        - name: org.gnome.Mines
+        - name: org.gnome.SoundRecorder
+        - name: org.gnome.Weather
+        - name: org.gnome.clocks
+        - name: org.gnome.gitlab.YaLTeR.VideoTrimmer
+        - name: org.gnome.gitlab.somas.Apostrophe
+        - name: org.libreoffice.LibreOffice
+        - name: org.remmina.Remmina
+        - name: org.telegram.desktop
+        - name: org.videolan.VLC
+        - name: us.zoom.Zoom
+
+      external_flatpak_packages:
+        - name: https://downloads.1password.com/linux/flatpak/1Password.flatpakref
