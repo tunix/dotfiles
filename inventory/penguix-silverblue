@@ -21,6 +21,7 @@ all:
 
       toolboxes:
         - tools
+        - document-scanner
 
       alias_vim: nvim
 

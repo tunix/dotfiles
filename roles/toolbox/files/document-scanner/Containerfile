@@ -1,0 +1,5 @@
+FROM fedora-toolbox
+
+RUN dnf install -y \
+    simple-scan \
+    sane-backends-drivers-scanners
