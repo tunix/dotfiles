@@ -22,7 +22,17 @@ all:
       toolboxes:
         - tools
 
-      alias_vim: nvim
+      aliases:
+        vim: nvim
+
+      abbrs:
+        open: xdg-open &> /dev/null
+        rm: rm -i
+        l: exa -lh --group-directories-first --all
+        ll: exa -lh --group-directories-first
+        lt: exa -lh --group-directories-first --all --tree
+        lc: wc -l
+        port: lsof -i
 
       mirrors:
         - path: /etc/apt/sources.list.d/system.sources

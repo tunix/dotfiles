@@ -5,7 +5,15 @@ all:
     penguix:
       ansible_connection: local
 
-      open_cmd: open
+      abbrs:
+        open: open
+        rm: rm -i
+        l: exa -lh --group-directories-first --all
+        ll: exa -lh --group-directories-first
+        lt: exa -lh --group-directories-first --all --tree
+        lc: wc -l
+        port: lsof -i
+
       fontconfig: false
       font_dir: "{{ ansible_user_dir }}/Library/Fonts"
 
