@@ -355,6 +355,41 @@
     key: "/org/gnome/shell/extensions/appindicator/tray-pos"
     value: "'left'"
 
+- name: Set horizontal icon margin for Tray Icons Reloaded
+  dconf:
+    key: "/org/gnome/shell/extensions/trayIconsReloaded/icon-margin-horizontal"
+    value: "0"
+
+- name: Set horizontal icon padding for Tray Icons Reloaded
+  dconf:
+    key: "/org/gnome/shell/extensions/trayIconsReloaded/icon-padding-horizontal"
+    value: "5"
+
+- name: Set icon size for Tray Icons Reloaded
+  dconf:
+    key: "/org/gnome/shell/extensions/trayIconsReloaded/icon-size"
+    value: "20"
+
+- name: Set icon limit for Tray Icons Reloaded
+  dconf:
+    key: "/org/gnome/shell/extensions/trayIconsReloaded/icons-limit"
+    value: "8"
+
+- name: Set tray margin left for Tray Icons Reloaded
+  dconf:
+    key: "/org/gnome/shell/extensions/trayIconsReloaded/tray-margin-left"
+    value: "10"
+
+- name: Set tray margin right for Tray Icons Reloaded
+  dconf:
+    key: "/org/gnome/shell/extensions/trayIconsReloaded/tray-margin-right"
+    value: "0"
+
+- name: Set tray position for Tray Icons Reloaded
+  dconf:
+    key: "/org/gnome/shell/extensions/trayIconsReloaded/tray-position"
+    value: "'left'"
+
 - name: Set dash-to-dock max icon size
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
