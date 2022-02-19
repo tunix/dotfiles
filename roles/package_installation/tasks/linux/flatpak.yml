@@ -23,3 +23,9 @@
   loop: "{{ external_flatpak_packages }}"
   when: external_flatpak_packages is defined
   ignore_errors: true
+
+- name: Override flatpaks
+  command: "flatpak override --{{ item.method | default('user') }} {{ item.params | join(' ') }} {{ item.name }}"
+  loop: "{{ flatpak_overrides }}"
+  when: flatpak_overrides is defined
+

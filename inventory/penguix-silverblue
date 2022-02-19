@@ -129,3 +129,9 @@ all:
 
       external_flatpak_packages:
         - name: https://downloads.1password.com/linux/flatpak/1Password.flatpakref
+
+      flatpak_overrides:
+        - name: com.brave.Browser
+          params: 
+            - --filesystem=~/.local/share/applications
+            - --filesystem=~/.local/share/icons
