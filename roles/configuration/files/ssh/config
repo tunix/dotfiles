@@ -7,4 +7,6 @@ Host *
   IdentityFile ~/.ssh/id_rsa
   Compression yes
   ControlMaster auto
+  ServerAliveInterval 5
+  ServerAliveCountMax 1
 
