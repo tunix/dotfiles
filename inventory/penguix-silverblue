@@ -52,6 +52,7 @@ all:
         - tailscale
         - python3-psutil
         - globalprotect-openconnect
+        - distrobox
 
       enabled_services:
         - tailscaled.service
