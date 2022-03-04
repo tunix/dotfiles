@@ -47,8 +47,8 @@ Executes work related tasks such as:
 
 Creates tooling containers:
 
-* `tool` container for general purpose CLI tools
-* `k8s` container for kubernetes CLI tools
+* `tools` container for general purpose CLI tools
+* `document-scanner` container for scanning documents
 
 ## Installation
 
