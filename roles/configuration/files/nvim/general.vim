@@ -75,6 +75,18 @@ nnoremap <leader>v :vnew<cr>
 
 nnoremap <Tab> :Buffers<cr>
 
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 augroup filetypedetect
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
