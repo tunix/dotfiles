@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Document Scanner
-Comment=Make a digital copy of your photos and documents
-Keywords=scan;scanner;flatbed;adf;
-Categories=GNOME;GTK;Graphics;Scanning;
-Exec=distrobox enter document-scanner -- simple-scan
-Icon=document-scanner
-Terminal=false

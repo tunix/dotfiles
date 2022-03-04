@@ -20,8 +20,10 @@ all:
         shell: /usr/bin/fish
 
       toolboxes:
-        - tools
-        - document-scanner
+        - name: tools
+        - name: document-scanner
+          expose:
+            - simple-scan
 
       aliases:
         vim: nvim
@@ -133,6 +135,6 @@ all:
 
       flatpak_overrides:
         - name: com.brave.Browser
-          params: 
+          params:
             - --filesystem=~/.local/share/applications
             - --filesystem=~/.local/share/icons

@@ -1,51 +1,17 @@
 - name: Build tool container
   containers.podman.podman_image:
-    name: "{{ item }}"
-    path: "{{ role_path }}/files/{{ item }}"
+    name: "{{ item.name }}"
+    path: "{{ role_path }}/files/{{ item.name }}"
   loop: "{{ toolboxes }}"
   when: toolboxes is defined
 
 - name: Create distrobox for tool
-  command: "distrobox create -i {{ item }} {{ item }}"
+  command: "distrobox create -i {{ item.name }} {{ item.name }}"
   loop: "{{ toolboxes }}"
   when: toolboxes is defined
 
-- name: Check if app has icon file
-  stat:
-    path: "{{ role_path }}/files/{{ item }}/{{ item }}.svg"
-  register: app_icon_file
-  loop: "{{ toolboxes }}"
-  when: toolboxes is defined
-
-- name: Check if app has desktop file
-  stat:
-    path: "{{ role_path }}/files/{{ item }}/{{ item }}.desktop"
-  register: desktop_file
-  loop: "{{ toolboxes }}"
-  when: toolboxes is defined
-
-- name: Create app icons directory
-  file:
-    path: "{{ ansible_user_dir }}/.local/share/icons/hicolor/scalable/apps"
-    state: directory
-    recurse: true
-
-- name: Create applications directory
-  file:
-    path: "{{ ansible_user_dir }}/.local/share/applications"
-    state: directory
-    recurse: true
-
-- name: Install app icon file
-  copy:
-    src: "files/{{ item.item }}/{{ item.item }}.svg"
-    dest: "{{ ansible_user_dir }}/.local/share/icons/hicolor/scalable/apps/{{ item.item }}.svg"
-  when: item.stat.exists
-  with_items: "{{ app_icon_file.results }}"
-
-- name: Install desktop file
-  copy:
-    src: "files/{{ item.item }}/{{ item.item }}.desktop"
-    dest: "{{ ansible_user_dir }}/.local/share/applications/{{ item.item }}.desktop"
-  when: item.stat.exists
-  with_items: "{{ desktop_file.results }}"
+- name: Expose apps
+  command: "distrobox enter {{ item.0.name }} -- distrobox-export --app {{ item.1 }}"
+  with_subelements:
+    - "{{ toolboxes | selectattr('expose', 'defined') | list }}"
+    - expose
