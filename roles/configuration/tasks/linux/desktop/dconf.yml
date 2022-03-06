@@ -255,6 +255,21 @@
     key: "/org/gnome/shell/extensions/nightthemeswitcher/time/nightlight-follow-disable"
     value: "false"
 
+- name: Night switcher commands
+  dconf:
+    key: "/org/gnome/shell/extensions/nightthemeswitcher/commands/enabled"
+    value: "true"
+
+- name: Night switcher sunrise command
+  dconf:
+    key: "/org/gnome/shell/extensions/nightthemeswitcher/commands/sunrise"
+    value: "'~/.local/bin/theme_switcher.sh light'"
+
+- name: Night switcher sunset command
+  dconf:
+    key: "/org/gnome/shell/extensions/nightthemeswitcher/commands/sunset"
+    value: "'~/.local/bin/theme_switcher.sh dark'"
+
 - name: Activate launcher with Super+Space
   dconf:
     key: "/org/gnome/shell/extensions/pop-shell/activate-launcher"
