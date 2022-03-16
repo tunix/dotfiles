@@ -36,5 +36,3 @@ RUN curl -L $(curl -Ls https://api.github.com/repos/ahmetb/kubectx/releases/late
 RUN curl -L $(curl -Ls https://api.github.com/repos/derailed/k9s/releases/latest | jq -r '.assets[] | select(.name == "k9s_Linux_x86_64.tar.gz") | .browser_download_url') -o /tmp/k9s.tar.gz \
     && tar zxvf /tmp/k9s.tar.gz -C /usr/local/bin k9s \
     && chmod +x /usr/local/bin/k9s
-
-# TODO: install lunarvim

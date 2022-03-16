@@ -6,9 +6,15 @@
   when: toolboxes is defined
 
 - name: Create distrobox for tool
-  command: "distrobox create -i {{ item.name }} {{ item.name }}"
+  command: "distrobox create -i {{ item.name }} {{ item.name }} {% if 'hook' in item %}--init-hooks {{ item.hook }}{% endif %}"
   loop: "{{ toolboxes }}"
   when: toolboxes is defined
+
+- name: Execute user hooks
+  command: "distrobox enter {{ item.0.name }} -- {{ item.1 }}"
+  with_subelements:
+    - "{{ toolboxes | selectattr('user_hooks', 'defined') | list }}"
+    - user_hooks
 
 - name: Expose apps
   command: "distrobox enter {{ item.0.name }} -- distrobox-export --app {{ item.1 }}"
