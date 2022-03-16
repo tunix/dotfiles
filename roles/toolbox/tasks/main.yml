@@ -6,7 +6,7 @@
   when: toolboxes is defined
 
 - name: Create distrobox for tool
-  command: "distrobox create -i {{ item.name }} {{ item.name }} {% if 'hook' in item %}--init-hooks {{ item.hook }}{% endif %}"
+  command: "distrobox create -i {{ item.name }} {{ item.name }}"
   loop: "{{ toolboxes }}"
   when: toolboxes is defined
 

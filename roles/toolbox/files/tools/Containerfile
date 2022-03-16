@@ -21,8 +21,6 @@ RUN dnf install -y \
   npm \
   cargo
 
-RUN ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
-
 # kubectl
 RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/local/bin/kubectl \
   && chmod +x /usr/local/bin/kubectl
