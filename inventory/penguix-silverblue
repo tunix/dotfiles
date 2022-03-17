@@ -22,7 +22,6 @@ all:
       toolboxes:
         - name: tools
           user_hooks:
-            - sudo ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
             - curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh -o /tmp/install.sh
             - chmod +x /tmp/install.sh
             - /tmp/install.sh --no-install-dependencies
