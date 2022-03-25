@@ -2,8 +2,11 @@
 
 all:
   hosts:
-    penguix:
+    C02FH3VPMD6R:
       ansible_connection: local
+
+      work:
+        ty: true
 
       abbrs:
         open: open

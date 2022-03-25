@@ -1,5 +1,6 @@
 if status is-interactive
 
+    {% if aliases is defined %}
     #
     # Aliases
     #
@@ -9,7 +10,9 @@ if status is-interactive
     alias {{ alias }} "{{ command }}"
 
     {% endfor %}
+    {% endif %}
 
+    {% if abbrs is defined %}
     #
     # Abbreviations
     #
@@ -17,5 +20,6 @@ if status is-interactive
     {% for abbr, command in abbrs.items() %}
     abbr --add --global {{ abbr }} "{{ command }}"
     {% endfor %}
+    {% endif %}
 
 end

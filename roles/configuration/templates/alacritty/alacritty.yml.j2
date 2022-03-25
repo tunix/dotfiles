@@ -7,8 +7,10 @@ window:
 
 shell:
     program: {{ shell.command }}
+    {% if "args" in shell %}
     args:
       {{ shell.args }}
+    {% endif %}
 
 font:
     size: {{ alacritty.font_size }}
