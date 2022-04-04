@@ -28,6 +28,12 @@ all:
         - name: document-scanner
           expose:
             - simple-scan
+        - name: lens
+          expose:
+            - lens
+        - name: beekeeper
+          expose:
+            - beekeeper-studio
 
       aliases:
         vim: nvim
