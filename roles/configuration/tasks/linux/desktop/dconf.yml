@@ -118,6 +118,51 @@
     key: "/org/gnome/settings-daemon/plugins/media-keys/volume-step"
     value: "2"
 
+- name: Set alacritty tools custom key binding
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
+    value: "'<Super>t'"
+
+- name: Set alacritty tools custom key command
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
+    value: "'alacritty'"
+
+- name: Set alacritty tools custom key name
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
+    value: "'Alacritty Tools'"
+
+- name: Set alacritty host custom key binding
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding"
+    value: "'<Primary><Alt>t'"
+
+- name: Set alacritty host custom key command
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command"
+    value: "'alacritty -e /bin/bash'"
+
+- name: Set alacritty host custom key name
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name"
+    value: "'Alacritty Host'"
+
+- name: Set 1Password custom key binding
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding"
+    value: "'<Primary><Shift>space'"
+
+- name: Set 1Password custom key command
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command"
+    value: "'flatpak run com.onepassword.OnePassword --quick-access'"
+
+- name: Set alacritty host custom key name
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name"
+    value: "'1Password Quick Access'"
+
 - name: Center new windows
   dconf:
     key: "/org/gnome/mutter/center-new-windows"
