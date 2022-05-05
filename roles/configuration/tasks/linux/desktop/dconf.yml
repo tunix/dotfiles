@@ -163,6 +163,11 @@
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name"
     value: "'1Password Quick Access'"
 
+- name: Set custom key bindings
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+    value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
+
 - name: Center new windows
   dconf:
     key: "/org/gnome/mutter/center-new-windows"
