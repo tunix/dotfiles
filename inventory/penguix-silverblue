@@ -65,6 +65,7 @@ all:
         - python3-psutil
         - globalprotect-openconnect
         - distrobox
+        - gnome-extensions-app
 
       enabled_services:
         - tailscaled.service
