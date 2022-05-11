@@ -206,13 +206,13 @@
 - name: Set favourite apps for Pop!_OS
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['com.brave.Browser.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'com.alacritty.Alacritty.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
+    value: "['com.brave.Browser.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'com.alacritty.Alacritty.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'com.jetbrains.IntelliJ-IDEA-Community.desktop']"
   when: "'Pop' in ansible_distribution"
 
 - name: Set favourite apps for Fedora
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['com.brave.Browser.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'Alacritty.desktop', 'org.gnome.Software.desktop', 'gnome-control-center.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
+    value: "['com.brave.Browser.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'Alacritty.desktop', 'org.gnome.Software.desktop', 'org.gnome.Settings.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'com.jetbrains.IntelliJ-IDEA-Community.desktop']"
   when: "'Fedora' in ansible_distribution"
 
 - name: Enable automatic location for weather
