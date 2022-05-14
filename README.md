@@ -26,7 +26,7 @@ Configures:
 * editorconfig
 * fish
 * git
-* neovim
+* lunarvim
 * ssh
 * tmux
 * distrobox
