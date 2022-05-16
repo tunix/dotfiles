@@ -89,6 +89,8 @@ all:
       flatpak_repos:
         - name: flathub
           url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        - name: flathub-beta
+          url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 
       flatpak_packages:
         - name: ar.xjuan.Cambalache
@@ -119,6 +121,7 @@ all:
         - name: io.webtorrent.WebTorrent
         - name: md.obsidian.Obsidian
         - name: net.lutris.Lutris
+          repo: flathub-beta
         - name: org.fedoraproject.MediaWriter
         - name: org.gimp.GIMP
         - name: org.gnome.Boxes
