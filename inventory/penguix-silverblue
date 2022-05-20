@@ -75,7 +75,6 @@ all:
         - 3193 # blur my shell
         - 517  # caffeine
         - 906  # sound input & output device chooser
-        - 3960 # transparent top bar
         - 2890 # tray icons reloaded
         - 1460 # vitals
 
