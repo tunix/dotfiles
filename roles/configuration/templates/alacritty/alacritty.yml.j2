@@ -1,7 +1,9 @@
 #jinja2: lstrip_blocks: "True"
 
 window:
+    {% if ansible_system == "Linux" %}
     decorations: none
+    {% endif %}
     opacity: 0.95
     dimensions:
         columns: 200

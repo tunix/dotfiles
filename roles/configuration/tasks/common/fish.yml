@@ -1,15 +1,16 @@
 - name: Place fish configuration
-  file:
+  copy:
     src: "{{ role_path }}/files/fish"
-    dest: "{{ ansible_user_dir }}/.config/fish"
-    state: link
+    dest: "{{ ansible_user_dir }}/.config"
+    directory_mode: 0700
+    mode: 0600
 
-- name: Render fish config
+- name: Render fish abbrevations
   template:
-    src: fish/config.fish.j2
-    dest: "{{ ansible_user_dir }}/.config/fish/config.fish"
+    src: fish/abbr.fish.j2
+    dest: "{{ ansible_user_dir }}/.config/fish/conf.d/abbr.fish"
 
-- name: Place fish variables
+- name: Render fish aliases
   template:
-    src: fish/fish_variables.j2
-    dest: "{{ ansible_user_dir }}/.config/fish/fish_variables"
+    src: fish/alias.fish.j2
+    dest: "{{ ansible_user_dir }}/.config/fish/conf.d/alias.fish"

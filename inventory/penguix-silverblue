@@ -14,7 +14,7 @@ all:
           - enter
           - tools
           - --
-          - /usr/bin/fish
+          - /usr/bin/fish -l
 
       tmux:
         shell: /usr/bin/fish

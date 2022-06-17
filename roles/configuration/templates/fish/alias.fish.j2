@@ -1,0 +1,15 @@
+if status is-interactive
+
+    {% if aliases is defined %}
+    #
+    # Aliases
+    #
+
+    {% for alias, command in aliases.items() %}
+
+    alias {{ alias }} "{{ command }}"
+
+    {% endfor %}
+    {% endif %}
+
+end

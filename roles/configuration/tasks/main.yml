@@ -1,10 +1,31 @@
-- name: Configure Linux
-  include_tasks: linux/main.yml
-  when: ansible_system == "Linux"
+- name: Configure dircolors
+  include_tasks: common/dir_colors.yml
 
-- name: Configure Mac
-  include_tasks: mac/main.yml
-  when: ansible_system == "Darwin"
+- name: Configure fonts
+  include_tasks: common/fonts.yml
+  when: fontconfig
+
+- name: Configure alacritty
+  include_tasks: common/alacritty.yml
+
+- name: Configure editorconfig
+  copy:
+    src: "{{ role_path }}/files/editorconfig/editorconfig"
+    dest: "{{ ansible_user_dir }}/.editorconfig"
+
+- name: Configure fish
+  include_tasks: common/fish.yml
+
+- name: Configure git
+  copy:
+    src: "{{ role_path }}/files/git/gitconfig"
+    dest: "{{ ansible_user_dir }}/.gitconfig"
+
+- name: Configure ssh
+  include_tasks: common/ssh.yml
+
+- name: Configure tmux
+  include_tasks: common/tmux.yml
 
 - name: Create .m2/settings.xml
   copy:
@@ -19,3 +40,11 @@
     dest: "{{ ansible_user_dir }}/.local/bin/"
     directory_mode: 0700
     mode: 0755
+
+- name: Configure Linux
+  include_tasks: linux/main.yml
+  when: ansible_system == "Linux"
+
+- name: Configure Mac
+  include_tasks: mac/main.yml
+  when: ansible_system == "Darwin"
