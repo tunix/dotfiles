@@ -27,6 +27,9 @@
 - name: Configure tmux
   include_tasks: common/tmux.yml
 
+- name: Configure lvim
+  include_tasks: common/lvim.yml
+
 - name: Create .m2/settings.xml
   copy:
     src: files/m2/
