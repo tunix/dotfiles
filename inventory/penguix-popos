@@ -9,17 +9,18 @@ all:
         ty: true
 
       shell:
-        command: distrobox
+        command: toolbox
         args:
-          - enter
+          - run
+          - -c
           - tools
-          - --
-          - /usr/bin/fish -l
+          - /usr/bin/fish
+          - -l
 
       tmux:
         shell: /usr/bin/fish
 
-      toolboxes:
+      tools:
         - tools
 
       abbrs:

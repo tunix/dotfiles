@@ -49,6 +49,7 @@ Creates tooling containers:
 
 * `tools` container for general purpose CLI tools
 * `document-scanner` container for scanning documents
+* `lens` container for k8s management
 
 ## Installation
 
@@ -60,5 +61,5 @@ $ ansible-galaxy collection install containers.podman
 
 $ ansible-playbook -K -i inventory/penguix-popos main.yml
 $ ansible-playbook -i inventory/penguix-popos work.yml
-$ ansible-playbook -i inventory/penguix-popos toolbox.yml
+$ ansible-playbook -i inventory/penguix-popos tools.yml
 ```

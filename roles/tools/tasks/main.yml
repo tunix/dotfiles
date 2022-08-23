@@ -2,22 +2,22 @@
   containers.podman.podman_image:
     name: "{{ item.name }}"
     path: "{{ role_path }}/files/{{ item.name }}"
-  loop: "{{ toolboxes }}"
-  when: toolboxes is defined
+  loop: "{{ tools }}"
+  when: tools is defined
 
-- name: Create box for containers
+- name: Create box from image
   command: "toolbox create -i {{ item.name }} {{ item.name }}"
-  loop: "{{ toolboxes }}"
-  when: toolboxes is defined
+  loop: "{{ tools }}"
+  when: tools is defined
 
-- name: Execute user hooks for containers
+- name: Execute user hooks for tools
   command: "toolbox run -c {{ item.0.name }} -- {{ item.1 }}"
   with_subelements:
-    - "{{ toolboxes | selectattr('user_hooks', 'defined') | list }}"
+    - "{{ tools | selectattr('user_hooks', 'defined') | list }}"
     - user_hooks
 
 # - name: Expose apps of tools
 #   command: "distrobox enter {{ item.0.name }} -- distrobox-export --app {{ item.1 }}"
 #   with_subelements:
-#     - "{{ toolboxes | selectattr('expose', 'defined') | list }}"
+#     - "{{ tools | selectattr('expose', 'defined') | list }}"
 #     - expose

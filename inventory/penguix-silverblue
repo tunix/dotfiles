@@ -10,17 +10,18 @@ all:
         askria: true
 
       shell:
-        command: distrobox
+        command: toolbox
         args:
-          - enter
+          - run
+          - -c
           - tools
-          - --
-          - /usr/bin/fish -l
+          - /usr/bin/fish
+          - -l
 
       tmux:
         shell: /usr/bin/fish
 
-      toolboxes:
+      tools:
         - name: tools
           user_hooks:
             - curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh -o /tmp/install.sh
@@ -28,12 +29,8 @@ all:
             - /tmp/install.sh --no-install-dependencies
             - test -d $HOME/.config/lvim.old && cp $HOME/.config/lvim.old/config.lua $HOME/.config/lvim/
             - rm -rf $HOME/.config/lvim.old
-        - name: document-scanner
-          expose:
-            - simple-scan
+        - name: scanner
         - name: lens
-          expose:
-            - lens
 
       aliases:
         podman: podman --remote
