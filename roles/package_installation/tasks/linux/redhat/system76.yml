@@ -13,7 +13,7 @@
       - firmware-manager
       - system76-keyboard-configurator
   notify:
-    - Restart system
+    - End playbook
 
 - name: Flush handlers
   meta: flush_handlers

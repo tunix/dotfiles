@@ -1,2 +1,2 @@
-- name: Restart system
-  command: systemctl reboot
+- name: End playbook
+  meta: end_play

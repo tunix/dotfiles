@@ -74,11 +74,11 @@ all:
       shell_extension_ids:
         - 3193 # blur my shell
         - 517  # caffeine
-        - 906  # sound input & output device chooser
+        # - 906  # sound input & output device chooser
         - 2890 # tray icons reloaded
         - 1460 # vitals
         - 1319 # GSConnect
-        - 4033 # X11 Gestures
+        # - 4033 # X11 Gestures
 
       disabled_extensions:
         - apps-menu@gnome-shell-extensions.gcampax.github.com
