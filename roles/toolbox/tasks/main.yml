@@ -5,19 +5,19 @@
   loop: "{{ toolboxes }}"
   when: toolboxes is defined
 
-- name: Create distrobox for containers
-  command: "distrobox create -i {{ item.name }} {{ item.name }}"
+- name: Create box for containers
+  command: "toolbox create -i {{ item.name }} {{ item.name }}"
   loop: "{{ toolboxes }}"
   when: toolboxes is defined
 
 - name: Execute user hooks for containers
-  command: "distrobox enter {{ item.0.name }} -- {{ item.1 }}"
+  command: "toolbox run -c {{ item.0.name }} -- {{ item.1 }}"
   with_subelements:
     - "{{ toolboxes | selectattr('user_hooks', 'defined') | list }}"
     - user_hooks
 
-- name: Expose apps of tools
-  command: "distrobox enter {{ item.0.name }} -- distrobox-export --app {{ item.1 }}"
-  with_subelements:
-    - "{{ toolboxes | selectattr('expose', 'defined') | list }}"
-    - expose
+# - name: Expose apps of tools
+#   command: "distrobox enter {{ item.0.name }} -- distrobox-export --app {{ item.1 }}"
+#   with_subelements:
+#     - "{{ toolboxes | selectattr('expose', 'defined') | list }}"
+#     - expose

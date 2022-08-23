@@ -34,9 +34,6 @@ all:
         - name: lens
           expose:
             - lens
-        - name: beekeeper
-          expose:
-            - beekeeper-studio
 
       aliases:
         podman: podman --remote

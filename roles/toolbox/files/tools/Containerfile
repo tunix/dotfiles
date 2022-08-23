@@ -23,19 +23,9 @@ RUN dnf install -y \
   cargo \
   asciinema
 
-# kubectl
-RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/local/bin/kubectl \
-  && chmod +x /usr/local/bin/kubectl
+COPY installers /installers
 
-# kubectx
-RUN curl -L $(curl -Ls https://api.github.com/repos/ahmetb/kubectx/releases/latest | jq -r '.assets[] | select(.name == "kubectx") | .browser_download_url') -o /usr/local/bin/kubectx \
-  && chmod +x /usr/local/bin/kubectx
-
-# kubenvs
-RUN curl -L $(curl -Ls https://api.github.com/repos/ahmetb/kubectx/releases/latest | jq -r '.assets[] | select(.name == "kubens") | .browser_download_url') -o /usr/local/bin/kubens \
-  && chmod +x /usr/local/bin/kubens
-
-# k9s
-RUN curl -L $(curl -Ls https://api.github.com/repos/derailed/k9s/releases/latest | jq -r '.assets[] | select(.name == "k9s_Linux_x86_64.tar.gz") | .browser_download_url') -o /tmp/k9s.tar.gz \
-  && tar zxvf /tmp/k9s.tar.gz -C /usr/local/bin k9s \
-  && chmod +x /usr/local/bin/k9s
+RUN /installers/install_kubectl.sh
+RUN /installers/install_kubectx.sh
+RUN /installers/install_kubens.sh
+RUN /installers/install_k9s.sh

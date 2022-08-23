@@ -1,4 +1,6 @@
 FROM registry.fedoraproject.org/fedora-toolbox:36
 
+ARG LENS_VERSION=6.0.1-latest.20220810.2
+
 RUN dnf install -y \
-  https://api.k8slens.dev/binaries/Lens-5.4.4-latest.20220325.1.x86_64.rpm
+  https://api.k8slens.dev/binaries/Lens-${LENS_VERSION}.x86_64.rpm
