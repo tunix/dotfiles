@@ -14,6 +14,8 @@ ENV CARGO_HOME=/cargo \
   RUSTUP_HOME=/rustup \
   PATH=/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+RUN env >> /etc/environment
+
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 
 RUN chgrp -R wheel /cargo /rustup \

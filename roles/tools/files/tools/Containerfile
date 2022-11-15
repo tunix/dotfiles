@@ -4,11 +4,13 @@ RUN dnf install -y \
   @development-tools \
   gcc-c++ \
   glibc-langpack-tr \
+  moreutils \
   tmux \
   neofetch \
   httpie \
   neovim \
   htop \
+  btop \
   exa \
   jq \
   the_silver_searcher \

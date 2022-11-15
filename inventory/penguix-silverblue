@@ -30,7 +30,6 @@ all:
             - test -d $HOME/.config/lvim.old && cp $HOME/.config/lvim.old/config.lua $HOME/.config/lvim/
             - rm -rf $HOME/.config/lvim.old
         - name: scanner
-        - name: lens
 
       aliases:
         podman: podman --remote
@@ -57,28 +56,22 @@ all:
 
       packages:
         - langpacks-tr
-        - alacritty
         - tailscale
         - python3-psutil # necessary for modifying dconf
         - globalprotect-openconnect
-        - distrobox
-        - gnome-extensions-app
-        - gnome-console
         - openssl
         - moby-engine
-        - touchegg
 
       enabled_services:
         - tailscaled.service
 
       shell_extension_ids:
+        - 615  # AppIndicator and KStatusNotifierItem Support
         - 3193 # blur my shell
         - 517  # caffeine
-        # - 906  # sound input & output device chooser
-        - 2890 # tray icons reloaded
-        - 1460 # vitals
         - 1319 # GSConnect
-        # - 4033 # X11 Gestures
+        - 545  # Hide Top Bar
+        - 1460 # vitals
 
       disabled_extensions:
         - apps-menu@gnome-shell-extensions.gcampax.github.com
@@ -94,21 +87,16 @@ all:
           url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 
       flatpak_packages:
+        - name: app.drey.Dialect
         - name: ar.xjuan.Cambalache
         - name: com.belmoussaoui.Decoder
         - name: com.belmoussaoui.Obfuscate
-        - name: com.bitstower.Markets
         - name: com.brave.Browser
         - name: com.discordapp.Discord
         - name: com.getpostman.Postman
-        - name: com.github.gi_lom.dialect
         - name: com.github.huluti.Curtail
-        - name: com.github.miguelmota.Cointop
-        - name: com.github.rafostar.Clapper
         - name: com.github.tchx84.Flatseal
         - name: com.gitlab.newsflash
-        - name: com.google.Chrome
-        - name: com.jetbrains.IntelliJ-IDEA-Community
         - name: com.mattjakeman.ExtensionManager
         - name: com.slack.Slack
         - name: com.spotify.Client
@@ -119,7 +107,6 @@ all:
         - name: de.haeckerfelix.Fragments
         - name: de.haeckerfelix.Shortwave
         - name: fr.handbrake.ghb
-        - name: io.webtorrent.WebTorrent
         - name: md.obsidian.Obsidian
         - name: net.lutris.Lutris
           repo: flathub-beta
@@ -128,6 +115,8 @@ all:
         - name: org.gnome.Boxes
         - name: org.gnome.Boxes.Extension.OsinfoDb
         - name: org.gnome.Builder
+        - name: org.gnome.Calculator
+        - name: org.gnome.Calendar
         - name: org.gnome.Characters
         - name: org.gnome.Cheese
         - name: org.gnome.clocks
@@ -142,9 +131,11 @@ all:
         - name: org.gnome.Todo
         - name: org.gnome.Weather
         - name: org.libreoffice.LibreOffice
+        - name: org.mozilla.firefox
         - name: org.remmina.Remmina
         - name: org.telegram.desktop
         - name: org.videolan.VLC
+        - name: org.wezfurlong.wezterm
         - name: us.zoom.Zoom
 
       external_flatpak_packages:
