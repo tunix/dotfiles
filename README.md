@@ -59,7 +59,7 @@ Please install `ansible` in order to proceed.
 $ ansible-galaxy collection install community.general
 $ ansible-galaxy collection install containers.podman
 
-$ ansible-playbook -K -i inventory/penguix-popos main.yml
-$ ansible-playbook -i inventory/penguix-popos work.yml
-$ ansible-playbook -i inventory/penguix-popos tools.yml
+$ ansible-playbook -K -i inventory/penguix-silverblue main.yml
+$ ansible-playbook -i inventory/penguix-silverblue work.yml
+$ ansible-playbook -i inventory/penguix-silverblue tools.yml
 ```

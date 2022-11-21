@@ -47,23 +47,16 @@ all:
         enabled: true
 
       repos:
-        - name: tailscale
-          repo: "https://pkgs.tailscale.com/stable/fedora/$basearch"
-
         - name: globalprotect-openconnect
           repo: https://download.copr.fedorainfracloud.org/results/yuezk/globalprotect-openconnect/fedora-$releasever-$basearch/
           key: https://download.copr.fedorainfracloud.org/results/yuezk/globalprotect-openconnect/pubkey.gpg
 
       packages:
         - langpacks-tr
-        - tailscale
         - python3-psutil # necessary for modifying dconf
         - globalprotect-openconnect
         - openssl
         - moby-engine
-
-      enabled_services:
-        - tailscaled.service
 
       shell_extension_ids:
         - 615  # AppIndicator and KStatusNotifierItem Support
@@ -72,6 +65,13 @@ all:
         - 1319 # GSConnect
         - 545  # Hide Top Bar
         - 1460 # vitals
+
+      enabled_extensions:
+        - appindicatorsupport@rgcjonas.gmail.com
+        - blur-my-shell@aunetx
+        - caffeine@patapon.info
+        - gsconnect@andyholmes.github.io
+        - Vitals@CoreCoding.com
 
       disabled_extensions:
         - apps-menu@gnome-shell-extensions.gcampax.github.com
@@ -116,10 +116,13 @@ all:
         - name: org.gnome.Boxes.Extension.OsinfoDb
         - name: org.gnome.Builder
         - name: org.gnome.Calculator
+          method: system
         - name: org.gnome.Calendar
+          method: system
         - name: org.gnome.Characters
         - name: org.gnome.Cheese
         - name: org.gnome.clocks
+          method: system
         - name: org.gnome.Connections
         - name: org.gnome.DejaDup
         - name: org.gnome.gitlab.YaLTeR.VideoTrimmer
@@ -127,11 +130,16 @@ all:
         - name: org.gnome.Mines
         - name: org.gnome.seahorse.Application
         - name: org.gnome.SoundRecorder
+          method: system
         - name: org.gnome.TextEditor
+          method: system
         - name: org.gnome.Todo
         - name: org.gnome.Weather
+          method: system
         - name: org.libreoffice.LibreOffice
+          method: system
         - name: org.mozilla.firefox
+          method: system
         - name: org.remmina.Remmina
         - name: org.telegram.desktop
         - name: org.videolan.VLC
