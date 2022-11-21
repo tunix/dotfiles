@@ -16,8 +16,5 @@
     - "{{ tools | selectattr('user_hooks', 'defined') | list }}"
     - user_hooks
 
-# - name: Expose apps of tools
-#   command: "distrobox enter {{ item.0.name }} -- distrobox-export --app {{ item.1 }}"
-#   with_subelements:
-#     - "{{ tools | selectattr('expose', 'defined') | list }}"
-#     - expose
+# TODO: place icons (optional)
+# TODO: place desktop files (optional)
