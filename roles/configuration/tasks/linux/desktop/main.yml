@@ -12,13 +12,3 @@
 
 - name: Configure XDG
   include_tasks: xdg.yml
-
-- name: Create touchegg config directory
-  file:
-    path: "{{ ansible_user_dir }}/.config/touchegg"
-    state: directory
-
-- name: Install touchegg config
-  copy:
-    src: files/touchegg/touchegg.conf
-    dest: "{{ ansible_user_dir }}/.config/touchegg/touchegg.conf"

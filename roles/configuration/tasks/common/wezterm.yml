@@ -1,0 +1,10 @@
+- name: Create config directory
+  file:
+    path: "{{ ansible_user_dir }}/.config/wezterm"
+    state: directory
+    recurse: true
+
+- name: Install configuration file
+  copy:
+    src: "{{ role_path }}/files/wezterm/wezterm.lua"
+    dest: "{{ ansible_user_dir }}/.config/wezterm/wezterm.lua"

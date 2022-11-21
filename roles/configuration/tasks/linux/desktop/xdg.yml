@@ -1,3 +1,3 @@
 - name: Set default browser
-  command: xdg-settings set default-web-browser com.brave.Browser.desktop
+  command: xdg-settings set default-web-browser com.mozilla.firefox.desktop
   ignore_errors: true

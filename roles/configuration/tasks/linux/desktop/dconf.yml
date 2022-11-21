@@ -18,6 +18,11 @@
     key: "/org/gnome/desktop/interface/text-scaling-factor"
     value: "1.0"
 
+- name: Disable hot corners
+  dconf:
+    key: "/org/gnome/desktop/interface/enable-hot-corners"
+    value: "false"
+
 - name: Set repeat for keyboard
   dconf:
     key: "/org/gnome/desktop/peripherals/keyboard/repeat"
@@ -73,26 +78,6 @@
     key: "/org/gnome/desktop/wm/preferences/button-layout"
     value: "'appmenu:minimize,maximize,close'"
 
-- name: Key binding for Switch to Workspace 1
-  dconf:
-    key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1"
-    value: "['<Super>1']"
-
-- name: Key binding for Switch to Workspace 2
-  dconf:
-    key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2"
-    value: "['<Super>2']"
-
-- name: Key binding for Switch to Workspace 3
-  dconf:
-    key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-3"
-    value: "['<Super>3']"
-
-- name: Key binding for Switch to Workspace 4
-  dconf:
-    key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4"
-    value: "['<Super>4']"
-
 - name: Set key binding for launching default browser
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/www"
@@ -118,35 +103,35 @@
     key: "/org/gnome/settings-daemon/plugins/media-keys/volume-step"
     value: "2"
 
-- name: Set alacritty tools custom key binding
+- name: Set tools shell custom key binding
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
     value: "'<Super>t'"
 
-- name: Set alacritty tools custom key command
+- name: Set tools shell custom key command
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
-    value: "'alacritty'"
+    value: "'flatpak run --branch=stable --arch=x86_64 --command=wezterm org.wezfurlong.wezterm start toolbox run -c tools /usr/bin/fish -l'"
 
-- name: Set alacritty tools custom key name
+- name: Set tools shell custom key name
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
-    value: "'Alacritty Tools'"
+    value: "'Tools Shell'"
 
-- name: Set alacritty host custom key binding
+- name: Set host shell custom key binding
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding"
     value: "'<Primary><Alt>t'"
 
-- name: Set alacritty host custom key command
+- name: Set host shell custom key command
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command"
-    value: "'alacritty -e /bin/bash'"
+    value: "'flatpak run --branch=stable --arch=x86_64 --command=wezterm org.wezfurlong.wezterm'"
 
-- name: Set alacritty host custom key name
+- name: Set host shell custom key name
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name"
-    value: "'Alacritty Host'"
+    value: "'Host Shell'"
 
 - name: Set 1Password custom key binding
   dconf:
@@ -158,7 +143,7 @@
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command"
     value: "'flatpak run com.onepassword.OnePassword --quick-access'"
 
-- name: Set alacritty host custom key name
+- name: Set 1Password custom key name
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name"
     value: "'1Password Quick Access'"
@@ -167,6 +152,11 @@
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
     value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
+
+- name: Show workspaces on all monitors
+  dconf:
+    key: "/org/gnome/mutter/workspaces-only-on-primary"
+    value: "false"
 
 - name: Center new windows
   dconf:
@@ -183,11 +173,6 @@
     key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
     value: "true"
 
-- name: Set night light last coordinates
-  dconf:
-    key: "/org/gnome/settings-daemon/plugins/color/night-light-last-coordinates"
-    value: "(37.198701439884815, 28.3674)"
-
 - name: Disable power button action
   dconf:
     key: "/org/gnome/settings-daemon/plugins/power/power-button-action"
@@ -203,16 +188,10 @@
     key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-type"
     value: "'suspend'"
 
-- name: Set favourite apps for Pop!_OS
-  dconf:
-    key: "/org/gnome/shell/favorite-apps"
-    value: "['com.brave.Browser.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'com.alacritty.Alacritty.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'md.obsidian.Obsidian.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
-  when: "'Pop' in ansible_distribution"
-
 - name: Set favourite apps for Fedora
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['com.brave.Browser.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'Alacritty.desktop', 'org.gnome.Software.desktop', 'org.gnome.Settings.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'md.obsidian.Obsidian.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
+    value: "['com.mozilla.firefox', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'org.wezfurlong.wezterm.desktop', 'org.gnome.Software.desktop', 'org.gnome.Settings.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'md.obsidian.Obsidian.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
   when: "'Fedora' in ansible_distribution"
 
 - name: Enable automatic location for weather
@@ -220,145 +199,10 @@
     key: "/org/gnome/shell/weather/automatic-location"
     value: "true"
 
-- name: Weather locations
-  dconf:
-    key: "/org/gnome/shell/weather/locations"
-    value: "[<(uint32 2, <('İzmir, Türkiye', '', false, [(0.67046357386984812, 0.47374190788000986)], [(0.670387510675717, 0.47371744010922612)])>)>]"
-
-- name: World clocks locations
-  dconf:
-    key: "/org/gnome/shell/world-clocks/locations"
-    value: "[<(uint32 2, <('San Francisco', 'KOAK', true, [(0.65832848982162007, -2.133408063190589)], [(0.659296885757089, -2.1366218601153339)])>)>, <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>, <(uint32 2, <('Berlin', 'EDDT', true, [(0.91746141594945008, 0.23241968454167572)], [(0.91658875132345297, 0.23387411976724018)])>)>, <(uint32 2, <('Amsterdam', 'EHAM', true, [(0.91280719879303418, 0.083194033496160544)], [(0.91367986341903151, 0.085812027374152042)])>)>]"
-
 - name: Enable user extensions support
   dconf:
     key: "/org/gnome/shell/disable-user-extensions"
     value: "false"
-
-- name: Disable down arrow for clipboard indicator
-  dconf:
-    key: "/org/gnome/shell/extensions/clipboard-indicator/disable-down-arrow"
-    value: "true"
-
-- name: Set history size of clipboard indicator
-  dconf:
-    key: "/org/gnome/shell/extensions/clipboard-indicator/history-size"
-    value: "200"
-
-- name: Move selected item to top of clipboard indicator
-  dconf:
-    key: "/org/gnome/shell/extensions/clipboard-indicator/move-item-first"
-    value: "true"
-
-- name: Set toggle shortcut for clipboard indicator
-  dconf:
-    key: "/org/gnome/shell/extensions/clipboard-indicator/toggle-menu"
-    value: "['F9']"
-
-- name: Set clear history shortcut for clipboard indicator
-  dconf:
-    key: "/org/gnome/shell/extensions/clipboard-indicator/clear-history"
-    value: "['F10']"
-
-- name: Set Pop Cosmic overlay key action
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-cosmic/overlay-key-action"
-    value: "'WORKSPACES'"
-
-- name: Hide applications button in Pop Shell
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-cosmic/show-applications-button"
-    value: "false"
-
-- name: Hide workspaces button in Pop Shell
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-cosmic/show-workspaces-button"
-    value: "false"
-
-- name: Night switcher on-demand
-  dconf:
-    key: "/org/gnome/shell/extensions/nightthemeswitcher/time/always-enable-ondemand"
-    value: "true"
-
-- name: Night switcher on-demand button placement
-  dconf:
-    key: "/org/gnome/shell/extensions/nightthemeswitcher/time/ondemand-button-placement"
-    value: "'menu'"
-
-- name: Night switcher on-demand time
-  dconf:
-    key: "/org/gnome/shell/extensions/nightthemeswitcher/time/ondemand-time"
-    value: "'night'"
-
-- name: Night switcher manual mode
-  dconf:
-    key: "/org/gnome/shell/extensions/nightthemeswitcher/time/manual-time-source"
-    value: "true"
-
-- name: Night switcher time source
-  dconf:
-    key: "/org/gnome/shell/extensions/nightthemeswitcher/time/time-source"
-    value: "'ondemand'"
-
-- name: Night switcher follow disable
-  dconf:
-    key: "/org/gnome/shell/extensions/nightthemeswitcher/time/nightlight-follow-disable"
-    value: "false"
-
-- name: Night switcher commands
-  dconf:
-    key: "/org/gnome/shell/extensions/nightthemeswitcher/commands/enabled"
-    value: "true"
-
-- name: Night switcher sunrise command
-  dconf:
-    key: "/org/gnome/shell/extensions/nightthemeswitcher/commands/sunrise"
-    value: "'~/.local/bin/theme_switcher.sh light'"
-
-- name: Night switcher sunset command
-  dconf:
-    key: "/org/gnome/shell/extensions/nightthemeswitcher/commands/sunset"
-    value: "'~/.local/bin/theme_switcher.sh dark'"
-
-- name: Activate launcher with Super+Space
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-shell/activate-launcher"
-    value: "['<Super>space']"
-
-- name: Enable tiling
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-shell/tile-by-default"
-    value: "true"
-
-- name: Disable tiling hint
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-shell/active-hint"
-    value: "false"
-
-- name: Enable smart gaps
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-shell/smart-gaps"
-    value: "true"
-
-- name: Disable snapping windows to grids
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-shell/snap-to-grid"
-    value: "false"
-
-- name: Tiling gap inner
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-shell/gap-inner"
-    value: "uint32 2"
-
-- name: Tiling gap outer
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-shell/gap-outer"
-    value: "uint32 2"
-
-- name: Configure window titles
-  dconf:
-    key: "/org/gnome/shell/extensions/pop-shell/show-title"
-    value: "true"
 
 - name: Alphabetize vitals
   dconf:
@@ -368,7 +212,7 @@
 - name: Shown vitals
   dconf:
     key: "/org/gnome/shell/extensions/vitals/hot-sensors"
-    value: "['_processor_average_', '_memory_usage_', '__network-download_max__', '__network-upload_max__']"
+    value: "['_processor_average_', '_memory_usage_', '__network-rx_max__', '__network-tx_max__']"
 
 - name: Vitals position in panel
   dconf:
@@ -384,11 +228,6 @@
   dconf:
     key: "/org/gnome/shell/extensions/vitals/show-system"
     value: "true"
-
-- name: Use same input source for all windows
-  dconf:
-    key: "/org/gnome/desktop/input-sources/per-window"
-    value: "false"
 
 - name: Automatically empty trash
   dconf:
@@ -410,6 +249,16 @@
     key: "/org/gtk/settings/file-chooser/sort-directories-first"
     value: "true"
 
+- name: Sorf folders first in Files
+  dconf:
+    key: "/org/gtk/gtk4/settings/file-chooser/sort-directories-first"
+    value: "true"
+
+- name: Sorf folders first in Files
+  dconf:
+    key: "/org/gtk/gtk4/settings/file-chooser/sort-order"
+    value: "'ascending'"
+
 - name: Enable automatic timezone
   dconf:
     key: "/org/gnome/desktop/datetime/automatic-timezone"
@@ -420,67 +269,12 @@
     key: "/org/gnome/shell/extensions/appindicator/tray-pos"
     value: "'left'"
 
-- name: Set horizontal icon margin for Tray Icons Reloaded
+- name: Set icon size in Nautilus
   dconf:
-    key: "/org/gnome/shell/extensions/trayIconsReloaded/icon-margin-horizontal"
-    value: "0"
+    key: "/org/gnome/nautilus/icon-view/default-zoom-level"
+    value: "'small'"
 
-- name: Set horizontal icon padding for Tray Icons Reloaded
+- name: Set icon size in Nautilus
   dconf:
-    key: "/org/gnome/shell/extensions/trayIconsReloaded/icon-padding-horizontal"
-    value: "5"
-
-- name: Set icon size for Tray Icons Reloaded
-  dconf:
-    key: "/org/gnome/shell/extensions/trayIconsReloaded/icon-size"
-    value: "20"
-
-- name: Set icon limit for Tray Icons Reloaded
-  dconf:
-    key: "/org/gnome/shell/extensions/trayIconsReloaded/icons-limit"
-    value: "8"
-
-- name: Set tray margin left for Tray Icons Reloaded
-  dconf:
-    key: "/org/gnome/shell/extensions/trayIconsReloaded/tray-margin-left"
-    value: "10"
-
-- name: Set tray margin right for Tray Icons Reloaded
-  dconf:
-    key: "/org/gnome/shell/extensions/trayIconsReloaded/tray-margin-right"
-    value: "0"
-
-- name: Set tray position for Tray Icons Reloaded
-  dconf:
-    key: "/org/gnome/shell/extensions/trayIconsReloaded/tray-position"
-    value: "'left'"
-
-- name: Set dash-to-dock max icon size
-  dconf:
-    key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
-    value: "36"
-
-- name: Set dash-to-dock as fixed
-  dconf:
-    key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
-    value: "false"
-
-- name: Set dash-to-dock extend height
-  dconf:
-    key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
-    value: "false"
-
-- name: Set dash-to-dock hide setting
-  dconf:
-    key: "/org/gnome/shell/extensions/dash-to-dock/intellihide"
-    value: "true"
-
-- name: Set dash-to-dock manual hide setting
-  dconf:
-    key: "/org/gnome/shell/extensions/dash-to-dock/manualhide"
-    value: "false"
-
-- name: Set dash-to-dock for multi-monitor
-  dconf:
-    key: "/org/gnome/shell/extensions/dash-to-dock/multi-monitor"
-    value: "true"
+    key: "/org/gnome/nautilus/window-state/initial-size"
+    value: "(1096, 703)"
