@@ -22,14 +22,13 @@ Configures:
 * some defaults (such as open command or shell)
 * dir_colors
 * fonts
-* alacritty
+* terminal (alacritty, wezterm, etc.)
 * editorconfig
 * fish
 * git
 * lunarvim
 * ssh
 * tmux
-* distrobox
 * desktop
   * avatar
   * dconf
@@ -42,6 +41,7 @@ Executes work related tasks such as:
 * Placing SSH keys
 * Configuring special git configuration per directory
 * Configuring k8s configuration
+* Configuring systemd unit files
 
 #### Toolbox
 
@@ -49,7 +49,7 @@ Creates tooling containers:
 
 * `tools` container for general purpose CLI tools
 * `document-scanner` container for scanning documents
-* `lens` container for k8s management
+* `rust` container for developing with rust
 
 ## Installation
 

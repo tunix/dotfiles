@@ -1,7 +1,3 @@
-- name: Configure distrobox
-  include_tasks: ../common/distrobox.yml
-  when: distrobox
-
 - name: Configure desktop
   include_tasks: desktop/main.yml
   when: desktop.enabled

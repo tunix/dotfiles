@@ -191,7 +191,7 @@
 - name: Set favourite apps for Fedora
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['com.mozilla.firefox', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'org.wezfurlong.wezterm.desktop', 'org.gnome.Software.desktop', 'org.gnome.Settings.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'md.obsidian.Obsidian.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
+    value: "['org.mozilla.firefox.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'org.wezfurlong.wezterm.desktop', 'org.gnome.Software.desktop', 'org.gnome.Settings.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'md.obsidian.Obsidian.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
   when: "'Fedora' in ansible_distribution"
 
 - name: Enable automatic location for weather

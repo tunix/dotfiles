@@ -11,7 +11,7 @@
 
 - name: Configure wezterm
   include_tasks: common/wezterm.yml
-  when: "flatpak_packages | selectattr('name', 'org.wezfurlong.wezterm') | list | length > 0"
+  when: flatpak_packages | selectattr("name", "equalto", "org.wezfurlong.wezterm") | list | length > 0
 
 - name: Configure editorconfig
   copy:
