@@ -78,6 +78,11 @@
     key: "/org/gnome/desktop/wm/preferences/button-layout"
     value: "'appmenu:minimize,maximize,close'"
 
+- name: Set key binding for launching file explorer
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/home"
+    value: "['<Super>f']"
+
 - name: Set key binding for launching default browser
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/www"
