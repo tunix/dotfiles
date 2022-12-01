@@ -30,6 +30,7 @@ all:
             - test -d $HOME/.config/lvim.old && cp $HOME/.config/lvim.old/config.lua $HOME/.config/lvim/
             - rm -rf $HOME/.config/lvim.old
         - name: scanner
+        - name: rust
 
       aliases:
         podman: podman --remote

@@ -25,4 +25,4 @@ RUN /usr/libexec/openssh/sshd-keygen rsa \
   && /usr/libexec/openssh/sshd-keygen ecdsa \
   && /usr/libexec/openssh/sshd-keygen ed25519
 
-COPY vscode_ssh_config.conf /etc/ssh/sshd_config.d/vscode.conf
+COPY ssh_config.conf /etc/ssh/sshd_config.d/dev.conf
