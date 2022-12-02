@@ -14,7 +14,7 @@ ENV CARGO_HOME=/cargo \
   RUSTUP_HOME=/rustup \
   PATH=/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-RUN env >> /etc/environment
+COPY environment /etc/environment
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 
@@ -25,4 +25,4 @@ RUN /usr/libexec/openssh/sshd-keygen rsa \
   && /usr/libexec/openssh/sshd-keygen ecdsa \
   && /usr/libexec/openssh/sshd-keygen ed25519
 
-COPY ssh_config.conf /etc/ssh/sshd_config.d/dev.conf
+COPY ssh_config.conf /etc/ssh/sshd_config.d/00-dev.conf
