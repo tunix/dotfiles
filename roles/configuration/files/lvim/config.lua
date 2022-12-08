@@ -29,6 +29,7 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
+vim.opt.shell = "/bin/sh"
 vim.opt.termguicolors = true
 vim.opt.hidden = true
 vim.opt.hlsearch = true
