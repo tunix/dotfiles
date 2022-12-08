@@ -40,12 +40,12 @@ set -g status-justify "centre"
 bind '"' split-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 
-bind -n C-Space copy-mode
+# bind -n C-Space copy-mode
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tmux-plugins/tmux-copycat'
+# set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'arcticicestudio/nord-tmux'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
