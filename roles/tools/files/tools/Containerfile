@@ -23,7 +23,9 @@ RUN dnf install -y \
   nodejs \
   npm \
   cargo \
-  asciinema
+  asciinema \
+  ripgrep \
+  fzf
 
 COPY installers /installers
 
