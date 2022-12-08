@@ -43,4 +43,4 @@ vim.opt.tabstop = 4
 vim.opt.relativenumber = true
 vim.opt.wrap = true
 vim.opt.textwidth = 120
-vim.opt.colorcolumn = 120
+vim.opt.colorcolumn = "120"
