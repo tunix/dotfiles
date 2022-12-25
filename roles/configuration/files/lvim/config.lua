@@ -7,14 +7,23 @@
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.relativenumber = true
+vim.opt.termguicolors = true
+vim.opt.hidden = true
+vim.opt.hlsearch = true
+vim.opt.smartcase = true
+vim.opt.smartindent = true
+-- vim.opt.guicursor = ""
+vim.opt.writebackup = false
+vim.opt.expandtab = true
+vim.opt.wrap = true
+vim.opt.textwidth = 120
+vim.opt.colorcolumn = "120"
+vim.opt.icm = "nosplit"
 
 -- general
 lvim.log.level = "info"
-lvim.format_on_save = {
-    enabled = true,
-    pattern = "*.lua",
-    timeout = 1000,
-}
+lvim.format_on_save = true
+
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -26,7 +35,7 @@ lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
+lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
@@ -45,6 +54,8 @@ lvim.builtin.treesitter.auto_install = true
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
 
 -- -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
+
+lvim.lsp.diagnostics.virtual_text = false
 
 -- --- disable automatic installation of servers
 -- lvim.lsp.installer.setup.automatic_installation = false
@@ -96,6 +107,9 @@ lvim.plugins = {
         "folke/trouble.nvim",
         cmd = "TroubleToggle",
     },
+    {
+        "editorconfig/editorconfig-vim"
+    }
 }
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
@@ -111,15 +125,3 @@ lvim.transparent_window = true
 
 lvim.builtin.nvimtree.setup.view.width = 50
 lvim.builtin.treesitter.highlight.enabled = true
-
-vim.opt.termguicolors = true
-vim.opt.hidden = true
-vim.opt.hlsearch = true
-vim.opt.smartcase = true
-vim.opt.smartindent = true
--- vim.opt.guicursor = ""
-vim.opt.writebackup = false
-vim.opt.expandtab = true
-vim.opt.wrap = true
-vim.opt.textwidth = 120
-vim.opt.colorcolumn = "120"
