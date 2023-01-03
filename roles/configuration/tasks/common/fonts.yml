@@ -1,13 +1,13 @@
 - name: Create fonts directory
   file:
-    path: "{{ font_dir }}"
+    path: "{{ fontconfig.font_dir }}"
     state: directory
     recurse: true
 
 - name: Download Fire Code
   get_url:
     url: https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Retina/complete/Fira%20Code%20Retina%20Nerd%20Font%20Complete.ttf?raw=true
-    dest: "{{ font_dir }}/Fira_Code_Retina_Nerd_Font_Complete.ttf"
+    dest: "{{ fontconfig.font_dir }}/Fira_Code_Retina_Nerd_Font_Complete.ttf"
     mode: '0664'
   notify:
     - Update font cache

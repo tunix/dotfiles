@@ -3,16 +3,17 @@
     name: "{{ item }}"
   loop: "{{ repos }}"
 
+- name: Ensure that fonts are installed
+  homebrew_cask:
+    name: "{{ item }}"
+  loop: "{{ fonts }}"
+
 - name: Ensure that packages are installed
   homebrew:
     name: "{{ item }}"
-    update_homebrew: true
-    upgrade_all: true
   loop: "{{ packages }}"
 
 - name: Install GUI applications
   homebrew_cask:
     name: "{{ item }}"
-    update_homebrew: true
-    upgrade_all: true
   loop: "{{ gui_packages }}"

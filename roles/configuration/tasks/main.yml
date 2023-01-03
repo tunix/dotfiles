@@ -1,17 +1,9 @@
 - name: Configure dircolors
   include_tasks: common/dir_colors.yml
 
-- name: Configure fonts
-  include_tasks: common/fonts.yml
-  when: fontconfig
-
 - name: Configure alacritty
   include_tasks: common/alacritty.yml
   when: "'alacritty' in packages"
-
-- name: Configure wezterm
-  include_tasks: common/wezterm.yml
-  when: flatpak_packages | selectattr("name", "equalto", "org.wezfurlong.wezterm") | list | length > 0
 
 - name: Configure editorconfig
   copy:

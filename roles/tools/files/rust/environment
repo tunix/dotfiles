@@ -1,3 +1,0 @@
-CARGO_HOME=/cargo
-RUSTUP_HOME=/rustup
-PATH=/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

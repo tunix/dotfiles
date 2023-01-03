@@ -17,9 +17,6 @@ all:
         lc: wc -l
         port: lsof -i
 
-      fontconfig: false
-      font_dir: "{{ ansible_user_dir }}/Library/Fonts"
-
       shell:
         command: /usr/local/bin/fish
         args:
@@ -28,26 +25,31 @@ all:
       tmux:
         shell: /usr/local/bin/fish
 
-      alacritty:
-        font_size: 13
-
       repos:
         - homebrew/cask
+        - homebrew/cask-fonts
+
+      fonts:
+        - font-fira-code-nerd-font
 
       packages:
+        - asciinema
         - bat
-        - bpytop
+        - btop
         - direnv
         - exa
         - fish
         - fzf
-        - htop
         - jq
         - k9s
         - kubectx
         - kubernetes-cli
+        - neovim
+        - node@18
         - podman
-        - tailscale
+        - podman-compose
+        - ripgrep
+        - rustup-init
         - the_silver_searcher
         - tmux
         - uptimed
@@ -57,12 +59,15 @@ all:
       
       gui_packages:
         - 1password
-        - alacritty
         - brave-browser
         - caffeine
         - jetbrains-toolbox
-        - lens
-        - mos
-        - multipass
-        - telegram
+        - postman
+        - obsidian
+        - scroll-reverser
+        - spotify
+        - tailscale
+        - telegram-desktop
         - visual-studio-code
+        - wezterm
+        - zoom

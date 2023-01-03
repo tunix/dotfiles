@@ -9,6 +9,6 @@ return {
   initial_rows = 55,
 
   font = wezterm.font "FiraCode Nerd Font",
-  font_size = 9,
+  font_size = 12,
   default_cursor_style = "BlinkingUnderline",
 }

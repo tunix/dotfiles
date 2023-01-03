@@ -8,13 +8,12 @@ shell:
 tmux:
   shell: /bin/bash
 
-fontconfig: true
-distrobox: true
-
-font_dir: "{{ ansible_user_dir }}/.local/share/fonts"
+fontconfig:
+  enabled: false
+  font_dir: "{{ ansible_user_dir }}/.local/share/fonts"
 
 alacritty:
-  font_size: 9
+  font_size: 12
 
 commands:
   rm:
@@ -23,4 +22,4 @@ commands:
     params: "-lh --group-directories-first"
 
 desktop:
-  enabled: true
+  enabled: false
