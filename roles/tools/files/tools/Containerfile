@@ -1,31 +1,30 @@
 FROM registry.fedoraproject.org/fedora-toolbox:37
 
 RUN dnf install -y \
-  @development-tools \
-  gcc-c++ \
-  glibc-langpack-tr \
-  moreutils \
-  tmux \
-  neofetch \
-  httpie \
-  neovim \
-  htop \
-  btop \
-  exa \
-  jq \
-  the_silver_searcher \
-  bat \
-  fish \
-  podman \
-  podman-compose \
-  bind-utils \
-  telnet \
-  nodejs \
-  npm \
-  cargo \
-  asciinema \
-  ripgrep \
-  fzf
+    @development-tools \
+    gcc-c++ \
+    glibc-langpack-tr \
+    moreutils \
+    tmux \
+    neofetch \
+    httpie \
+    neovim \
+    htop \
+    btop \
+    exa \
+    jq \
+    the_silver_searcher \
+    bat \
+    fish \
+    podman \
+    podman-compose \
+    bind-utils \
+    telnet \
+    nodejs \
+    npm \
+    asciinema \
+    ripgrep \
+    fzf
 
 COPY installers /installers
 
@@ -33,3 +32,4 @@ RUN /installers/install_kubectl.sh
 RUN /installers/install_kubectx.sh
 RUN /installers/install_kubens.sh
 RUN /installers/install_k9s.sh
+RUN /installers/install_rust.sh
