@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export ARCHITECTURE=$(uname -m)
 export KERNEL=$(uname -s)

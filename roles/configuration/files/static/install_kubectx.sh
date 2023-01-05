@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ARCHITECTURE=$(uname -m)
 KERNEL=$(uname -s)
