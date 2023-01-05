@@ -12,13 +12,5 @@
       become: true
   when: ansible_os_family == "RedHat"
 
-- name: Enable systemd services
-  systemd:
-    name: "{{ item }}"
-    enabled: true
-    state: started
-  loop: "{{ enabled_services }}"
-  when: enabled_services is defined
-
 - name: Include Flatpak tasks
   include_tasks: linux/flatpak.yml

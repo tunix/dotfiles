@@ -1,6 +1,13 @@
 open_cmd: xdg-open
 
 shell:
+  font:
+    size: 9
+    face: FiraCode Nerd Font
+  window:
+    width: 200
+    height: 55
+    opacity: 0.95
   command: /bin/bash
   args:
     - --login
@@ -11,9 +18,6 @@ tmux:
 fontconfig:
   enabled: false
   font_dir: "{{ ansible_user_dir }}/.local/share/fonts"
-
-alacritty:
-  font_size: 12
 
 commands:
   rm:

@@ -2,12 +2,8 @@
 
 all:
   hosts:
-    penguix:
+    local:
       ansible_connection: local
-
-      work:
-        ty: true
-        askria: true
 
       shell:
         command: toolbox
@@ -21,7 +17,8 @@ all:
       tmux:
         shell: /usr/bin/fish
 
-      fontconfig: true
+      fontconfig:
+        enabled: true
 
       desktop:
         enabled: true
@@ -67,15 +64,22 @@ all:
         - 615  # AppIndicator and KStatusNotifierItem Support
         - 3193 # blur my shell
         - 517  # caffeine
+        - 1873 # Disable unredirect fullscreen windows
         - 1319 # GSConnect
-        - 545  # Hide Top Bar
+        - 545  # hide top bar
+        - 2236 # night theme switcher
+        - 2182 # no annoyance v2
         - 1460 # vitals
 
       enabled_extensions:
         - appindicatorsupport@rgcjonas.gmail.com
         - blur-my-shell@aunetx
         - caffeine@patapon.info
+        - unredirect@vaina.lt
         - gsconnect@andyholmes.github.io
+        - hidetopbar@mathieu.bidon.ca
+        - nightthemeswitcher@romainvigier.fr
+        - noannoyance@daase.net
         - Vitals@CoreCoding.com
 
       disabled_extensions:
@@ -84,6 +88,14 @@ all:
         - launch-new-instance@gnome-shell-extensions.gcampax.github.com
         - places-menu@gnome-shell-extensions.gcampax.github.com
         - window-list@gnome-shell-extensions.gcampax.github.com
+
+      static_packages:
+        - k9s
+        - kubectl
+        - kubectx
+        - kubens
+        - rust
+        - zellij
 
       flatpak_repos:
         - name: flathub

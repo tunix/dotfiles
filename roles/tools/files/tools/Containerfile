@@ -25,11 +25,3 @@ RUN dnf install -y \
     asciinema \
     ripgrep \
     fzf
-
-COPY installers /installers
-
-RUN /installers/install_kubectl.sh
-RUN /installers/install_kubectx.sh
-RUN /installers/install_kubens.sh
-RUN /installers/install_k9s.sh
-RUN /installers/install_rust.sh

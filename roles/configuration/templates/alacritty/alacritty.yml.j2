@@ -4,10 +4,10 @@ window:
     {% if ansible_system == "Linux" %}
     decorations: none
     {% endif %}
-    opacity: 0.95
+    opacity: {{ shell.window.opacity }}
     dimensions:
-        columns: 200
-        lines: 55
+        columns: {{ shell.window.width }}
+        lines: {{ shell.window.height }}
 
 shell:
     program: {{ shell.command }}
@@ -17,11 +17,10 @@ shell:
     {% endif %}
 
 font:
-    size: {{ alacritty.font_size }}
+    size: {{ shell.font.size }}
 
     normal:
-        family: FiraCode Nerd Font
-        style: Retina
+        family: {{ shell.font.face }}
 
 mouse:
     hide_when_typing: true

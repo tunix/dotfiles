@@ -41,6 +41,9 @@
     directory_mode: 0700
     mode: 0755
 
+- name: Install static packages
+  include_tasks: common/static_packages.yml
+
 - name: Configure Linux
   include_tasks: linux/main.yml
   when: ansible_system == "Linux"

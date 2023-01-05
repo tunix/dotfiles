@@ -1,4 +1,4 @@
 - hosts: all
   roles:
-    - package_installation
     - configuration
+    - work
