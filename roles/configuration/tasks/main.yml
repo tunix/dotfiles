@@ -24,6 +24,9 @@
 - name: Configure tmux
   include_tasks: common/tmux.yml
 
+- name: Configure zellij
+  include_tasks: common/zellij.yml
+
 - name: Configure lvim
   include_tasks: common/lvim.yml
 
