@@ -1,0 +1,6 @@
+- name: Copy configuration
+  copy:
+    src: files/zellij/
+    dest: "{{ ansible_user_dir }}/.config/zellij"
+    directory_mode: 0700
+    mode: 0600

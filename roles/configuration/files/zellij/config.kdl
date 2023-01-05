@@ -1,0 +1,6 @@
+simplified_ui true
+default_shell "fish"
+pane_frames false
+theme "nord"
+copy_on_select false
+// default_layout "compact"
