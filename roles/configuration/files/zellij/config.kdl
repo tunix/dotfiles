@@ -3,4 +3,8 @@ default_shell "fish"
 pane_frames false
 theme "nord"
 copy_on_select false
-// default_layout "compact"
+default_layout "compact"
+
+keybinds {
+    unbind "Ctrl q"
+}
