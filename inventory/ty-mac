@@ -53,11 +53,13 @@ all:
         - fzf
         - httpie
         - jq
-        - k9s
+        - k10s
         - kubectx
         - kubernetes-cli
         - neovim
         - node@18
+        - openjdk@11
+        - openjdk@17
         - podman
         - podman-compose
         - ripgrep
