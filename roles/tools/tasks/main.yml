@@ -1,12 +1,5 @@
-- name: Build tool containers
-  containers.podman.podman_image:
-    name: "{{ item.name }}"
-    path: "{{ role_path }}/files/{{ item.name }}"
-  loop: "{{ tools }}"
-  when: tools is defined
-
 - name: Create box from image
-  command: "toolbox create -i {{ item.name }} {{ item.name }}"
+  command: "toolbox create -i {{ item.image }} {{ item.name }}"
   loop: "{{ tools }}"
   when: tools is defined
 

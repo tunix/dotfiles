@@ -25,6 +25,7 @@ all:
 
       tools:
         - name: tools
+          image: ghcr.io/tunix/pengutool
           user_hooks:
             - curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh -o /tmp/install.sh
             - chmod +x /tmp/install.sh
@@ -32,6 +33,7 @@ all:
             - test -d $HOME/.config/lvim.old && cp $HOME/.config/lvim.old/config.lua $HOME/.config/lvim/
             - rm -rf $HOME/.config/lvim.old
         - name: scanner
+          image: ghcr.io/tunix/scanner
 
       aliases:
         podman: podman --remote
