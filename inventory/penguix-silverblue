@@ -10,7 +10,7 @@ all:
         args:
           - run
           - -c
-          - tools
+          - pengutool
           - /usr/bin/fish
           - -l
 
@@ -24,7 +24,7 @@ all:
         enabled: true
 
       tools:
-        - name: tools
+        - name: pengutool
           image: ghcr.io/tunix/pengutool
           user_hooks:
             - curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh -o /tmp/install.sh
