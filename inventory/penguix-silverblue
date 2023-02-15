@@ -96,6 +96,7 @@ all:
         - kubectl
         - kubectx
         - kubens
+        - nvm
         - rust
         - zellij
 
