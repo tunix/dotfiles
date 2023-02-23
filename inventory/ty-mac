@@ -39,6 +39,7 @@ all:
         - kubectl
         - kubectx
         - kubens
+        - nvm
         - rust
         - zellij
 
@@ -53,9 +54,6 @@ all:
         - fzf
         - httpie
         - jq
-        - k10s
-        - kubectx
-        - kubernetes-cli
         - neovim
         - node@18
         - openjdk@11
