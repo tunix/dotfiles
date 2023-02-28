@@ -74,8 +74,9 @@ all:
         - brave-browser
         - caffeine
         - jetbrains-toolbox
-        - postman
+        - libreoffice
         - obsidian
+        - postman
         - scroll-reverser
         - spotify
         - tailscale
