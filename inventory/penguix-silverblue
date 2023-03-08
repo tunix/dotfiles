@@ -71,6 +71,7 @@ all:
         - 545  # hide top bar
         - 2236 # night theme switcher
         - 2182 # no annoyance v2
+        - 5278 # pano
         - 1460 # vitals
 
       enabled_extensions:
