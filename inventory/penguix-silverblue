@@ -93,6 +93,7 @@ all:
         - window-list@gnome-shell-extensions.gcampax.github.com
 
       static_packages:
+        - kind
         - k9s
         - kubectl
         - kubectx
