@@ -1,0 +1,14 @@
+- name: Ensure that repos are enabled
+  homebrew_tap:
+    name: "{{ item }}"
+  loop: "{{ brew.repos }}"
+
+- name: Ensure that packages are installed
+  homebrew:
+    name: "{{ item }}"
+  loop: "{{ brew.packages }}"
+
+- name: Ensure that casks are installed
+  homebrew_cask:
+    name: "{{ item }}"
+  loop: "{{ brew.casks }}"

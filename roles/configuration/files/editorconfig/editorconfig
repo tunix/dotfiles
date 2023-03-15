@@ -1,13 +1,160 @@
-# editorconfig.org
 root = true
 
+#General
 [*]
+
+# Use 4 spaces for indentation[1]
 indent_style = space
 indent_size = 4
+
+# Always use the Unix-style line endings
 end_of_line = lf
+
+# Use the UTF-8 character encoding
 charset = utf-8
+
+# Remove trailing whitespace from all lines
 trim_trailing_whitespace = true
+
+# specifies a newline should be inserted at the end of files that are saved
 insert_final_newline = true
 
-[*.{yml,yaml}]
+[*.{json,yml,yaml}]
 indent_size = 2
+
+
+# Java files
+[*.java]
+
+# Limit all lines to 120 characters[2]
+max_line_length = 120
+
+# Treat tab characters as 4 spaces
+tab_width = 4
+
+# sets continuation indent size to 4 spaces
+ij_continuation_indent_size = 4
+
+# determines whether the opening brace for a class should be placed on a new line.[3]
+ij_java_class_brace_style = end_of_line
+
+# specifies whether there should be a space between the class declaration and the opening brace[3]
+ij_java_space_before_class_left_brace = true
+
+# specifies there should be a space between the method declaration and the opening brace[3]
+ij_java_space_before_method_left_brace = true
+
+# specifies the number of blank lines that should be inserted after import statements[4]
+ij_java_blank_lines_after_imports = 1
+
+# specifies the number of blank lines that should be inserted after the package declaration[4]
+ij_java_blank_lines_after_package = 1
+
+# specifies the number of blank lines that should be inserted before and after class declarations[4]
+ij_java_blank_lines_around_class = 1
+
+# specifies the number of blank lines that should be inserted before the closing brace of a class declaration[4]
+ij_java_blank_lines_before_class_end = 0
+
+# specifies the number of blank lines that should be inserted before import statements[4]
+ij_java_blank_lines_before_imports = 1
+
+# specifies the number of blank lines that should be inserted before the body of a method[4]
+ij_java_blank_lines_before_method_body = 0
+
+# specifies the number of blank lines that should be inserted before the package declaration[4]
+ij_java_blank_lines_before_package = 1
+
+# specifies the number of blank lines that should be inserted before and after method declarations[4]
+ij_java_blank_lines_around_method = 1
+
+# specifies a space should be inserted after a comma[3]
+ij_java_space_after_comma = true
+
+# specifies the preferred layout for import statements[4]
+ij_java_imports_layout = $*, |, java.**, |, javax.**, |, *
+
+# specifies static import statements should be grouped together and formatted separately from regular import statements[4]
+ij_java_layout_static_imports_separately = true
+
+# specifies whether single-class import statements should be used in preference to import on demand[5]
+ij_java_use_single_class_imports = true
+
+# specifies whether formatter tags should be enabled
+ij_formatter_tags_enabled = true
+
+# specifies whether multiline method parameters should be aligned
+ij_java_align_multiline_parameters = false
+
+# specifies whether multiline try-with-resources statements should be aligned
+ij_java_align_multiline_resources = false
+
+# specifies the preferred wrapping style for assignment statements
+ij_java_assignment_wrap = normal
+
+#the number of blank lines that should be inserted before and after field declarations[4]
+ij_java_blank_lines_around_field = 0
+
+#the number of blank lines that should be inserted before and after field declarations in interface definitions[4]
+ij_java_blank_lines_around_field_in_interface = 0
+
+# specifies a new line should be inserted after the left parenthesis in method calls
+ij_java_call_parameters_new_line_after_left_paren = true
+
+# specifies the right parenthesis in method calls should be placed on a new line
+ij_java_call_parameters_right_paren_on_new_line = true
+
+# specifies the preferred wrapping style for method calls
+ij_java_call_parameters_wrap = on_every_item
+
+# specifies the number of blank lines that should be inserted after the class header[4]
+ij_java_blank_lines_after_class_header = 0
+
+# specifies the preferred wrapping style for class annotations
+ij_java_class_annotation_wrap = on_every_item
+
+# specifies local variables should be automatically marked as final when they are initialized
+ij_java_generate_final_locals = true
+
+# specifies method parameters should be automatically marked as final
+ij_java_generate_final_parameters = true
+
+# specifies the number of blank lines that should be preserved before the closing brace[4]
+ij_java_keep_blank_lines_before_right_brace = 0
+
+# specifies the maximum number of blank lines that should be preserved within Java code blocks
+ij_java_keep_blank_lines_in_code = 1
+
+# specifies the maximum number of blank lines that should be preserved within Java declarations
+ij_java_keep_blank_lines_in_declarations = 1
+
+# specifies control statements (such as if, for, while) should not be kept on a single line in Java code[1]
+ij_java_keep_control_statement_in_one_line = false
+
+# specifies comments that start in the first column should not be preserved in their original position
+ij_java_keep_first_column_comment = false
+
+# specifies that these settings should be wrapped according to other rules in editorconfig
+ij_java_method_call_chain_wrap = normal
+ij_java_method_parameters_wrap = normal
+ij_java_extends_keyword_wrap = normal
+ij_java_extends_list_wrap = normal
+ij_java_field_annotation_wrap = normal
+ij_java_throws_keyword_wrap = normal
+ij_java_throws_list_wrap = normal
+
+# specifies a space should be inserted before the left brace in array initializers
+ij_java_space_before_array_initializer_left_brace = true
+
+# specifies whether spaces should be inserted within the braces of array initializers
+ij_java_spaces_within_array_initializer_braces = true
+
+# specifies the preferred wrapping style for variable annotations
+ij_java_variable_annotation_wrap = split_into_lines
+
+# References
+# [1](Clean Code / Chapter 5 / Indentation)
+# [2](Clean Code / Chapter 5 / Horizontal Formatting)
+# [3](Clean Code / Chapter 5 / Horizontal Openness and Density )
+# [4](Clean Code / Chapter 5 / Vertical Openness Between Concepts )
+# [5](Clean Code / Chapter 17 / J1: Avoid Long Import Lists by Using Wildcards)

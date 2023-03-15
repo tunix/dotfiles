@@ -1,0 +1,27 @@
+- name: Ensure flathub repo is enabled
+  flatpak_remote:
+    name: "{{ item.name }}"
+    method: "{{ item.method | default('user') }}"
+    flatpakrepo_url: "{{ item.url }}"
+  loop: "{{ flatpak.repos }}"
+
+# ansible 2.10 cannot accept lists inside flatpak plugin
+- name: Install external flatpaks
+  flatpak:
+    name: "{{ item.name }}"
+    method: "{{ item.method | default('user') }}"
+  loop: "{{ flatpak.external }}"
+  ignore_errors: true
+
+# ansible 2.10 cannot accept lists inside flatpak plugin
+- name: Install flatpaks
+  flatpak:
+    name: "{{ item.name }}"
+    method: "{{ item.method | default('user') }}"
+    remote: "{{ item.repo | default('flathub') }}"
+  loop: "{{ flatpak.packages }}"
+
+- name: Override flatpaks
+  command: "flatpak override --{{ item.method | default('user') }} {{ item.params | join(' ') }} {{ item.name }}"
+  loop: "{{ flatpak.overrides }}"
+

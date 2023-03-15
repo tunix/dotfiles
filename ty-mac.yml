@@ -1,0 +1,80 @@
+- hosts: localhost
+
+  vars:
+    work:
+      ty: true
+
+    shell:
+      font:
+        size: 12
+
+    brew:
+      repos:
+        - homebrew/cask
+        - homebrew/cask-fonts
+
+      packages:
+        - asciinema
+        - bash
+        - bat
+        - btop
+        - direnv
+        - exa
+        - fish
+        - fzf
+        - httpie
+        - jq
+        - neovim
+        - node@18
+        - openjdk@11
+        - openjdk@17
+        - podman
+        - podman-compose
+        - ripgrep
+        - rustup-init
+        - the_silver_searcher
+        - tmux
+        - uptimed
+        - watch
+        - wget
+        - z
+
+      casks:
+        - 1password
+        - brave-browser
+        - caffeine
+        - font-fira-code-nerd-font
+        - jetbrains-toolbox
+        - libreoffice
+        - obsidian
+        - postman
+        - scroll-reverser
+        - spotify
+        - tailscale
+        - telegram-desktop
+        - visual-studio-code
+        - wezterm
+        - zoom
+
+    installers:
+      - kind
+      - k9s
+      - kubectl
+      - kubectx
+      - kubens
+      - nvm
+      - rust
+      - zellij
+
+    abbrs:
+      open: open
+      rm: rm -i
+      l: exa -lh --group-directories-first --all
+      ll: exa -lh --group-directories-first
+      lt: exa -lh --group-directories-first --all --tree
+      lc: wc -l
+      port: lsof -i
+
+  roles:
+    - installers
+    - configuration

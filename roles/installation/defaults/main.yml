@@ -1,7 +1,0 @@
-system76:
-  enabled: false
-
-mirrors:
-  - path: /etc/apt/sources.list
-    pattern: http://archive.ubuntu.com
-    url: http://tr.archive.ubuntu.com

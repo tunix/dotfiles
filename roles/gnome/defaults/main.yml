@@ -1,0 +1,5 @@
+gnome:
+  extensions:
+    install:
+    enabled:
+    disabled:

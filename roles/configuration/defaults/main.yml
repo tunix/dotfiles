@@ -8,22 +8,3 @@ shell:
     width: 200
     height: 55
     opacity: 0.95
-  command: /usr/bin/env bash
-  args:
-    - --login
-
-tmux:
-  shell: /usr/bin/env bash
-
-fontconfig:
-  enabled: false
-  font_dir: "{{ ansible_user_dir }}/.local/share/fonts"
-
-commands:
-  rm:
-    params: "-I"
-  exa:
-    params: "-lh --group-directories-first"
-
-desktop:
-  enabled: false

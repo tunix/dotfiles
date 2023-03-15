@@ -1,3 +1,0 @@
-- name: Configure wezterm
-  include_tasks: common/wezterm.yml
-  when: "'wezterm' in gui_packages"

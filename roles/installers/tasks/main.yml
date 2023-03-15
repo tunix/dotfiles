@@ -1,0 +1,3 @@
+- name: Ensure that installer is executed
+  script: files/install_{{ item }}.sh
+  loop: "{{ installers }}"

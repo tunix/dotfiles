@@ -1,3 +1,0 @@
-- name: Ensure that static package is installed
-  script: files/static/install_{{ item }}.sh
-  loop: "{{ static_packages }}"

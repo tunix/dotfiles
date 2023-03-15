@@ -1,0 +1,2 @@
+fontconfig:
+  font_dir: "{{ ansible_user_dir }}/.local/share/fonts"

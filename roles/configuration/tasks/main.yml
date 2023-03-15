@@ -1,56 +1,23 @@
 - name: Configure dircolors
   include_tasks: common/dir_colors.yml
 
-- name: Configure alacritty
-  include_tasks: common/alacritty.yml
-  when: "'alacritty' in packages"
-
 - name: Configure editorconfig
-  copy:
-    src: "{{ role_path }}/files/editorconfig/editorconfig"
-    dest: "{{ ansible_user_dir }}/.editorconfig"
+  include_tasks: common/editorconfig.yml
 
 - name: Configure fish
   include_tasks: common/fish.yml
 
 - name: Configure git
-  copy:
-    src: "{{ role_path }}/files/git/gitconfig"
-    dest: "{{ ansible_user_dir }}/.gitconfig"
-
-- name: Configure ssh
-  include_tasks: common/ssh.yml
-
-- name: Configure tmux
-  include_tasks: common/tmux.yml
-
-- name: Configure zellij
-  include_tasks: common/zellij.yml
+  include_tasks: common/git.yml
 
 - name: Configure lvim
   include_tasks: common/lvim.yml
 
-- name: Create .m2/settings.xml
-  copy:
-    src: files/m2/
-    dest: "{{ ansible_user_dir }}/.m2"
-    directory_mode: 0700
-    mode: 0600
+- name: Configure ssh
+  include_tasks: common/ssh.yml
 
-- name: Copy bin
-  copy:
-    src: files/bin/
-    dest: "{{ ansible_user_dir }}/.local/bin/"
-    directory_mode: 0700
-    mode: 0755
+- name: Configure wezterm
+  include_tasks: common/wezterm.yml
 
-- name: Install static packages
-  include_tasks: common/static_packages.yml
-
-- name: Configure Linux
-  include_tasks: linux/main.yml
-  when: ansible_system == "Linux"
-
-- name: Configure Mac
-  include_tasks: mac/main.yml
-  when: ansible_system == "Darwin"
+- name: Configure zellij
+  include_tasks: common/zellij.yml
