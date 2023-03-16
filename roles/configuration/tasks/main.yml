@@ -10,8 +10,14 @@
 - name: Configure git
   include_tasks: common/git.yml
 
+- name: Configure gnupg
+  include_tasks: common/gnupg.yml
+
 - name: Configure lvim
   include_tasks: common/lvim.yml
+
+- name: Configure maven
+  include_tasks: common/maven.yml
 
 - name: Configure ssh
   include_tasks: common/ssh.yml
