@@ -28,7 +28,6 @@ Configures:
 * git
 * lunarvim
 * ssh
-* tmux
 * desktop
   * avatar
   * dconf
