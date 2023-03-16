@@ -32,5 +32,7 @@
     autosetupmerge = true
 [pull]
 	rebase = false
+[commit]
+    gpgsign = true
 [include]
     path = ~/.gitconfig.inc
