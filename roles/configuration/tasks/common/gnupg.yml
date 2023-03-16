@@ -1,0 +1,6 @@
+- name: Copy configuration
+  copy:
+    src: files/gnupg/
+    dest: "{{ ansible_user_dir }}/.gnupg"
+    directory_mode: 0700
+    mode: 0600

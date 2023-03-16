@@ -4,6 +4,7 @@ pane_frames false
 theme "nord"
 copy_on_select false
 // default_layout "compact"
+scrollback_editor "lvim"
 
 keybinds {
     unbind "Ctrl q"
