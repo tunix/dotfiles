@@ -8,3 +8,7 @@ shell:
     width: 200
     height: 55
     opacity: 0.95
+
+gpg:
+  bin: /usr/bin/gpg
+  pinentry: /usr/bin/pinentry

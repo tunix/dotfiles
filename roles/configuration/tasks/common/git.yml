@@ -1,4 +1,4 @@
 - name: Configure git
-  copy:
-    src: "{{ role_path }}/files/git/gitconfig"
+  template:
+    src: git/gitconfig.j2
     dest: "{{ ansible_user_dir }}/.gitconfig"

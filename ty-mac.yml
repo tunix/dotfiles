@@ -8,6 +8,19 @@
       font:
         size: 12
 
+    gpg:
+      bin: /usr/local/bin/gpg
+      pinentry: /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
+
+    abbrs:
+      open: open
+      rm: rm -i
+      l: exa -lh --group-directories-first --all
+      ll: exa -lh --group-directories-first
+      lt: exa -lh --group-directories-first --all --tree
+      lc: wc -l
+      port: lsof -i
+
     brew:
       repos:
         - homebrew/cask
@@ -67,15 +80,6 @@
       - nvm
       - rust
       - zellij
-
-    abbrs:
-      open: open
-      rm: rm -i
-      l: exa -lh --group-directories-first --all
-      ll: exa -lh --group-directories-first
-      lt: exa -lh --group-directories-first --all --tree
-      lc: wc -l
-      port: lsof -i
 
   roles:
     - brew

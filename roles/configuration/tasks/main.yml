@@ -11,7 +11,7 @@
   include_tasks: common/git.yml
 
 - name: Configure gnupg
-  include_tasks: common/gnupg.yml
+  include_tasks: common/gpg.yml
 
 - name: Configure lvim
   include_tasks: common/lvim.yml
