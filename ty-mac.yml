@@ -10,7 +10,9 @@
 
     gpg:
       bin: /usr/local/bin/gpg
-      pinentry: /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
+      pinentry:
+        bin: /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
+        mode: ask
 
     abbrs:
       open: open

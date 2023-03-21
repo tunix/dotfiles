@@ -11,4 +11,6 @@ shell:
 
 gpg:
   bin: /usr/bin/gpg
-  pinentry: /usr/bin/pinentry
+  pinentry:
+    bin: /usr/bin/pinentry
+    mode: loopback
