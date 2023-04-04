@@ -37,6 +37,7 @@
         - exa
         - fish
         - fzf
+        - golang
         - gpg
         - httpie
         - jq
