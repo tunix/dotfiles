@@ -116,7 +116,7 @@
 - name: Set tools shell custom key command
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
-    value: "'flatpak run --branch=stable --arch=x86_64 --command=wezterm org.wezfurlong.wezterm start toolbox run -c pengutool /usr/bin/fish -l'"
+    value: "'flatpak run org.wezfurlong.wezterm start distrobox enter pengutool -- /usr/bin/fish -l'"
 
 - name: Set tools shell custom key name
   dconf:
@@ -131,7 +131,7 @@
 - name: Set host shell custom key command
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command"
-    value: "'flatpak run --branch=stable --arch=x86_64 --command=wezterm org.wezfurlong.wezterm'"
+    value: "'flatpak run org.wezfurlong.wezterm'"
 
 - name: Set host shell custom key name
   dconf:
