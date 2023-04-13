@@ -99,6 +99,7 @@
             - --filesystem=~/.local/share/icons
 
     installers:
+      - golang
       - kind
       - k9s
       - kubectl
