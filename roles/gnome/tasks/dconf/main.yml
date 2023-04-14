@@ -196,7 +196,7 @@
 - name: Set favourite apps on dock
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['org.mozilla.firefox.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'org.wezfurlong.wezterm.desktop', 'org.gnome.Software.desktop', 'org.gnome.Settings.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'md.obsidian.Obsidian.desktop', 'com.ticktick.TickTick.desktop', 'com.jetbrains.IntelliJ-IDEA-Community.desktop']"
+    value: "['org.mozilla.firefox.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop', 'org.wezfurlong.wezterm.desktop', 'org.gnome.Software.desktop', 'org.gnome.Settings.desktop', 'org.telegram.desktop.desktop', 'com.slack.Slack.desktop', 'com.discordapp.Discord.desktop', 'md.obsidian.Obsidian.desktop', 'com.ticktick.TickTick.desktop', 'com.jetbrains.IntelliJ-IDEA-Ultimate.desktop']"
 
 - name: Enable automatic location for weather
   dconf:
