@@ -32,9 +32,6 @@
           - window-list@gnome-shell-extensions.gcampax.github.com
 
     flatpak:
-      external:
-        - name: https://downloads.1password.com/linux/flatpak/1Password.flatpakref
-
       packages:
         - name: org.gnome.Calculator
           method: system
