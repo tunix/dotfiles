@@ -104,6 +104,7 @@
       - kubens
       - nvm
       - rust
+      - starship
       - zellij
 
     aliases:

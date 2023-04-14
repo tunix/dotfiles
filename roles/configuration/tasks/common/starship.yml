@@ -1,0 +1,6 @@
+- name: Copy configuration
+  copy:
+    src: files/starship/
+    dest: "{{ ansible_user_dir }}/.config/"
+    directory_mode: 0700
+    mode: 0600
