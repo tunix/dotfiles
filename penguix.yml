@@ -96,6 +96,7 @@
             - --filesystem=~/.local/share/icons
 
     installers:
+      - dive
       - golang
       - kind
       - k9s
