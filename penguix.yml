@@ -97,6 +97,7 @@
 
     installers:
       - dive
+      - gh
       - golang
       - kind
       - k9s
