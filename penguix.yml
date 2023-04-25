@@ -1,6 +1,9 @@
 - hosts: localhost
 
   vars:
+    work:
+      ty: true
+
     gnome:
       extensions:
         install:
@@ -127,3 +130,4 @@
     - gnome
     - installers
     - configuration
+    - work
