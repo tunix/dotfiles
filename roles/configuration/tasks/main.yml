@@ -27,3 +27,6 @@
 
 - name: Configure zellij
   include_tasks: common/zellij.yml
+
+- name: Configure starship
+  include_tasks: common/starship.yml

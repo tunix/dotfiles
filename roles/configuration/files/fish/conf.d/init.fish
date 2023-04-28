@@ -3,5 +3,5 @@ if status --is-login
     set -U fish_greeting
 
     # add ~/.local/bin to PATH
-    fish_add_path ~/.local/bin
+    fish_add_path ~/.local/bin {{ shell.path }}
 end

@@ -11,4 +11,12 @@ return {
   font = wezterm.font "{{ shell.font.face }}",
   font_size = {{ shell.font.size }},
   default_cursor_style = "BlinkingUnderline",
+
+  {% if shell.program %}
+    {% if shell.arg %}
+      default_prog = { "{{ shell.program }}", "{{ shell.arg }}" }
+    {% else %}
+      default_prog = { "{{ shell.program }}" }
+    {% endif %}
+  {% endif %}
 }

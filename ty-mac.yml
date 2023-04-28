@@ -5,6 +5,9 @@
       ty: true
 
     shell:
+      program: /opt/homebrew/bin/fish
+      arg: -l
+      path: /opt/homebrew/bin
       font:
         size: 12
 
