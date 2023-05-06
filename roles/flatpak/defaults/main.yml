@@ -1,7 +1,0 @@
-flatpak:
-  repos:
-    - name: flathub
-      url: https://dl.flathub.org/repo/flathub.flatpakrepo
-  external:
-  packages:
-  overrides:

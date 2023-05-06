@@ -1,9 +1,6 @@
 - hosts: localhost
 
   vars:
-    work:
-      ty: true
-
     gnome:
       extensions:
         install:
@@ -34,70 +31,6 @@
           - places-menu@gnome-shell-extensions.gcampax.github.com
           - window-list@gnome-shell-extensions.gcampax.github.com
 
-    flatpak:
-      packages:
-        - name: org.gnome.Calculator
-          method: system
-        - name: org.gnome.Calendar
-          method: system
-        - name: org.gnome.clocks
-          method: system
-        - name: org.gnome.Characters
-          method: system
-        - name: org.gnome.Connections
-          method: system
-        - name: org.gnome.SoundRecorder
-          method: system
-        - name: org.gnome.TextEditor
-          method: system
-        - name: org.gnome.Mahjongg
-          method: system
-        - name: org.gnome.Mines
-          method: system
-        - name: org.gnome.Todo
-          method: system
-        - name: org.gnome.Weather
-          method: system
-        - name: org.gnome.seahorse.Application
-          method: system
-        - name: com.github.tchx84.Flatseal
-          method: system
-        - name: com.mattjakeman.ExtensionManager
-          method: system
-        - name: org.fedoraproject.MediaWriter
-          method: system
-        - name: org.libreoffice.LibreOffice
-          method: system
-        - name: org.mozilla.firefox
-          method: system
-
-        - name: com.belmoussaoui.Decoder
-        - name: com.belmoussaoui.Obfuscate
-        - name: com.brave.Browser
-        - name: com.discordapp.Discord
-        - name: com.getpostman.Postman
-        - name: com.github.huluti.Curtail
-        - name: com.slack.Slack
-        - name: com.spotify.Client
-        - name: com.visualstudio.code
-        - name: de.haeckerfelix.Fragments
-        - name: de.haeckerfelix.Shortwave
-        - name: md.obsidian.Obsidian
-        - name: org.gimp.GIMP
-        - name: org.gnome.Boxes
-        - name: org.gnome.gitlab.YaLTeR.VideoTrimmer
-        - name: org.remmina.Remmina
-        - name: org.telegram.desktop
-        - name: org.videolan.VLC
-        - name: org.wezfurlong.wezterm
-        - name: us.zoom.Zoom
-
-      overrides:
-        - name: com.brave.Browser
-          params:
-            - --filesystem=~/.local/share/applications
-            - --filesystem=~/.local/share/icons
-
     installers:
       - cosign
       - dive
@@ -126,9 +59,7 @@
       port: lsof -i
 
   roles:
-    - flatpak
     - fontconfig
     - gnome
     - installers
     - configuration
-    - work
