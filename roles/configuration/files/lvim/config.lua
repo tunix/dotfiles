@@ -2,7 +2,6 @@
  THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
  `lvim` is the global options object
 ]]
-
 -- vim options
 vim.opt.title = false
 vim.opt.shiftwidth = 4
@@ -56,7 +55,7 @@ lvim.builtin.treesitter.auto_install = true
 
 -- -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
 
-lvim.lsp.diagnostics.virtual_text = false
+vim.diagnostic.config({ virtual_text = false })
 
 -- --- disable automatic installation of servers
 -- lvim.lsp.installer.setup.automatic_installation = false

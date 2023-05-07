@@ -32,21 +32,21 @@
           - window-list@gnome-shell-extensions.gcampax.github.com
 
     installers:
+      - golang
+      - rust
+      - nvm
       - cosign
       - dive
       - gh
-      - golang
       - kind
       - k9s
       - kubectl
       - kubectx
       - kubens
-      - lazygit
-      - lunarvim
-      - nvm
-      - rust
       - starship
       - zellij
+      - lazygit
+      - lunarvim
 
     aliases:
       podman: podman --remote
@@ -63,5 +63,5 @@
   roles:
     - fontconfig
     - gnome
-    - installers
     - configuration
+    - installers
