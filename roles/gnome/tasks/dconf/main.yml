@@ -1,3 +1,33 @@
+- name: Set background color shading
+  dconf:
+    key: "/org/gnome/desktop/background/color-shading-type"
+    value: "'solid'"
+
+- name: Set background picture options
+  dconf:
+    key: "/org/gnome/desktop/background/picture-options"
+    value: "'zoom'"
+
+- name: Set light background
+  dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///usr/share/backgrounds/gnome/keys-l.webp'"
+
+- name: Set dark background
+  dconf:
+    key: "/org/gnome/desktop/background/picture-uri-dark"
+    value: "'file:///usr/share/backgrounds/gnome/keys-d.webp'"
+
+- name: Set background primary color
+  dconf:
+    key: "/org/gnome/desktop/background/primary-color"
+    value: "'#aaaaaa'"
+
+- name: Set background secondary color
+  dconf:
+    key: "/org/gnome/desktop/background/secondary-color"
+    value: "'#000000'"
+
 - name: Enable 24h clock format
   dconf:
     key: "/org/gnome/desktop/interface/clock-format"
@@ -216,7 +246,7 @@
 - name: Shown vitals
   dconf:
     key: "/org/gnome/shell/extensions/vitals/hot-sensors"
-    value: "['_processor_average_', '_memory_usage_', '__network-rx_max__', '__network-tx_max__']"
+    value: "['_processor_usage_', '_memory_usage_', '__network-rx_max__', '__network-tx_max__']"
 
 - name: Vitals position in panel
   dconf:
