@@ -276,9 +276,9 @@
 - name: Set icon size in Nautilus
   dconf:
     key: "/org/gnome/nautilus/icon-view/default-zoom-level"
-    value: "'small'"
+    value: "'small-plus'"
 
-- name: Set icon size in Nautilus
+- name: Set window size of Nautilus
   dconf:
     key: "/org/gnome/nautilus/window-state/initial-size"
     value: "(1096, 703)"
