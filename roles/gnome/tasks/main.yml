@@ -12,3 +12,6 @@
 
 - name: Configure xdg
   include_tasks: xdg/main.yml
+
+- name: Configure hidden for GNOME
+  include_tasks: common/hidden.yml
