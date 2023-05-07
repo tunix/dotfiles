@@ -8,6 +8,7 @@ shell:
     width: 200
     height: 55
     opacity: 0.95
+  path: ~/.cargo/bin
 
 gpg:
   bin: /usr/bin/gpg
