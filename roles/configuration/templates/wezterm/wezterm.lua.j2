@@ -12,8 +12,8 @@ return {
   font_size = {{ shell.font.size }},
   default_cursor_style = "BlinkingUnderline",
 
-  {% if shell.program %}
-    {% if shell.arg %}
+  {% if shell.program is defined %}
+    {% if shell.arg is defined %}
       default_prog = { "{{ shell.program }}", "{{ shell.arg }}" }
     {% else %}
       default_prog = { "{{ shell.program }}" }
