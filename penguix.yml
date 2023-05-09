@@ -11,9 +11,10 @@
           - 1319 # GSConnect
           - 545  # hide top bar
           - 2236 # night theme switcher
-          - 2182 # no annoyance v2
           - 5278 # pano
           - 1460 # vitals
+          - 5410 # grand theft focus
+          - 4158 # GNOME 4x UI Improvements
         enabled:
           - appindicatorsupport@rgcjonas.gmail.com
           - blur-my-shell@aunetx
@@ -24,6 +25,8 @@
           - nightthemeswitcher@romainvigier.fr
           - noannoyance@daase.net
           - Vitals@CoreCoding.com
+          - grand-theft-focus@zalckos.github.com
+          - gnome-ui-tune@itstime.tech
         disabled:
           - apps-menu@gnome-shell-extensions.gcampax.github.com
           - background-logo@fedorahosted.org
