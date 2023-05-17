@@ -1,13 +1,10 @@
 - hosts: localhost
 
   vars:
-    work:
-      ty: true
-
     shell:
       program: /opt/homebrew/bin/fish
       arg: -l
-      path: /opt/homebrew/bin
+      path: /opt/homebrew/bin ~/.cargo/bin
       font:
         size: 12
 
@@ -63,6 +60,8 @@
         - 1password
         - brave-browser
         - caffeine
+        - discord
+        - firefox
         - font-fira-code-nerd-font
         - gpg-suite
         - jetbrains-toolbox
@@ -70,6 +69,7 @@
         - obsidian
         - postman
         - scroll-reverser
+        - slack
         - spotify
         - tailscale
         - telegram-desktop
@@ -78,22 +78,23 @@
         - zoom
 
     installers:
+      - golang
+      - rust
+      - nvm
       - cosign
       - dive
       - gh
-      - golang
       - kind
       - k9s
       - kubectl
       - kubectx
       - kubens
-      - nvm
-      - rust
       - starship
       - zellij
+      - lazygit
+      - lunarvim
 
   roles:
     - brew
     - installers
     - configuration
-    - work

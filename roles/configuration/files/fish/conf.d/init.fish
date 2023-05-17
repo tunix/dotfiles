@@ -1,4 +1,4 @@
-if status --is-login
+if status
     # disable greeting
     set -U fish_greeting
 
