@@ -1,6 +1,9 @@
 - hosts: localhost
 
   vars:
+    work:
+      midas: true
+
     shell:
       program: /opt/homebrew/bin/fish
       arg: -l
@@ -98,3 +101,4 @@
     - brew
     - installers
     - configuration
+    - work
