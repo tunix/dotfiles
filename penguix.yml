@@ -12,7 +12,6 @@
           - 517  # caffeine
           - 1873 # Disable unredirect fullscreen windows
           - 1319 # GSConnect
-          - 545  # hide top bar
           - 2236 # night theme switcher
           - 5278 # pano
           - 1460 # vitals
@@ -24,9 +23,8 @@
           - caffeine@patapon.info
           - unredirect@vaina.lt
           - gsconnect@andyholmes.github.io
-          - hidetopbar@mathieu.bidon.ca
           - nightthemeswitcher@romainvigier.fr
-          - noannoyance@daase.net
+          - pano@elhan.io
           - Vitals@CoreCoding.com
           - grand-theft-focus@zalckos.github.com
           - gnome-ui-tune@itstime.tech
