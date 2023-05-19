@@ -1,6 +1,9 @@
 - hosts: localhost
 
   vars:
+    work:
+      midas: true
+
     gnome:
       extensions:
         install:
@@ -68,3 +71,4 @@
     - gnome
     - configuration
     - installers
+    - work
