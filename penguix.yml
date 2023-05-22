@@ -54,6 +54,8 @@
 
     aliases:
       podman: podman --remote
+      vim: lvim
+      v: lvim
 
     abbrs:
       open: xdg-open &> /dev/null
