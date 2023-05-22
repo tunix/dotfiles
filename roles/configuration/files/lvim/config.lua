@@ -19,6 +19,7 @@ vim.opt.wrap = true
 vim.opt.textwidth = 120
 vim.opt.colorcolumn = "120"
 vim.opt.icm = "nosplit"
+vim.opt.cursorline = false
 
 -- general
 lvim.log.level = "info"

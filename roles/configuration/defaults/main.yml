@@ -9,6 +9,9 @@ shell:
     height: 55
     opacity: 0.95
   path: ~/.cargo/bin
+  colors:
+    light: Builtin Solarized Light
+    dark: nord
 
 gpg:
   bin: /usr/bin/gpg

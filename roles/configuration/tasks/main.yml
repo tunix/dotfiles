@@ -1,5 +1,5 @@
 - name: Configure dircolors
-  include_tasks: common/dir_colors.yml
+  include_tasks: common/colors.yml
 
 - name: Configure editorconfig
   include_tasks: common/editorconfig.yml
