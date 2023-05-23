@@ -17,6 +17,12 @@ shell:
       light: solarized-light
       dark: nord
 
+editor:
+  colors:
+    lunarvim:
+      light: peachpuff
+      dark: lunar
+
 gpg:
   bin: /usr/bin/gpg
   pinentry:
