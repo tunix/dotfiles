@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+WEZTERM_LIGHT_THEME="{{ shell.colors.wezterm.light }}"
+WEZTERM_DARK_THEME="{{ shell.colors.wezterm.dark }}"
+ZELLIJ_LIGHT_THEME="{{ shell.colors.zellij.light }}"
+ZELLIJ_DARK_THEME="{{ shell.colors.zellij.dark }}"
+LUNARVIM_LIGHT_THEME="{{ editor.colors.lunarvim.light }}"
+LUNARVIM_DARK_THEME="{{ editor.colors.lunarvim.dark }}"
+
+COLOR_SCHEME_PREFERENCE="$1"
+
+SED_OPTS=""
+OS=$(uname -s)
+
+if [[ "$OS" == "Darwin" ]]; then
+    SED_OPTS="--"
+fi
+
+if [[ "$COLOR_SCHEME_PREFERENCE" == "dark" ]]; then
+    echo "Enabling dark mode..."
+
+    sed -i $SED_OPTS "s/color_scheme = \"$WEZTERM_LIGHT_THEME\"/color_scheme = \"$WEZTERM_DARK_THEME\"/" ~/.config/wezterm/wezterm.lua
+    sed -i $SED_OPTS "s/theme \"$ZELLIJ_LIGHT_THEME\"/theme \"$ZELLIJ_DARK_THEME\"/" ~/.config/zellij/config.kdl
+    sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/" ~/.config/lvim/config.lua
+else
+    echo "Enabling light mode..."
+
+    sed -i $SED_OPTS "s/color_scheme = \"$WEZTERM_DARK_THEME\"/color_scheme = \"$WEZTERM_LIGHT_THEME\"/" ~/.config/wezterm/wezterm.lua
+    sed -i $SED_OPTS "s/theme \"$ZELLIJ_DARK_THEME\"/theme \"$ZELLIJ_LIGHT_THEME\"/" ~/.config/zellij/config.kdl
+    sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/" ~/.config/lvim/config.lua
+fi

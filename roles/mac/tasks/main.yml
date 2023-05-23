@@ -1,0 +1,11 @@
+- name: Copy notify-color-preference-changes script
+  copy:
+    src: "{{ role_path }}/files/colors/notify-color-preference-changes.sh"
+    dest: "{{ ansible_user_dir }}/.local/bin/notify-color-preference-changes.sh"
+    mode: 0755
+
+- name: Install toggle-color-preferences plist
+  template:
+    src: colors/at.alperkan.toggle-color-preferences.plist.j2
+    dest: "{{ ansible_user_dir }}/Library/LaunchAgents/at.alperkan.toggle-color-preferences.plist"
+    mode: "0755"

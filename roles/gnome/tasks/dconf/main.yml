@@ -198,7 +198,7 @@
     key: "/org/gnome/mutter/center-new-windows"
     value: "true"
 
-- name: Enable night light core
+- name: Enable night light plugin
   dconf:
     key: "/org/gnome/settings-daemon/plugins/color/active"
     value: "true"

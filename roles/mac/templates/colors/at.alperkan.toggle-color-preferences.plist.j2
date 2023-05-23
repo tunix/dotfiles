@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>at.alperkan.toggle-color-preferences</string>
+        <key>KeepAlive</key>
+        <true />
+        <key>StandardErrorPath</key>
+        <string>/tmp/toggle-color-preferences-stderr.log</string>
+        <key>StandardOutPath</key>
+        <string>/tmp/toggle-color-preferences-stdout.log</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>{{ ansible_user_dir }}/.local/bin/notify-color-preference-changes.sh</string>
+        </array>
+    </dict>
+</plist>

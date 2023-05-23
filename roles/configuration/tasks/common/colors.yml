@@ -12,8 +12,8 @@
     block: |
       test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
-- name: Install toggle-shell-theme script
+- name: Install toggle-color-preferences script
   template:
-    src: colors/toggle-shell-theme.sh.j2
-    dest: "{{ ansible_user_dir }}/.local/bin/toggle-shell-theme.sh"
+    src: colors/toggle-color-preferences.sh.j2
+    dest: "{{ ansible_user_dir }}/.local/bin/toggle-color-preferences.sh"
     mode: "0755"
