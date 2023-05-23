@@ -70,11 +70,13 @@
         - discord
         - firefox
         - font-fira-code-nerd-font
+        - forticlient
         - gpg-suite
         - jetbrains-toolbox
         - libreoffice
         - logitech-options
         - obsidian
+        - openvpn-connect
         - postman
         - scroll-reverser
         - slack
