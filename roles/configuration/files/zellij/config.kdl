@@ -1,7 +1,7 @@
 simplified_ui true
 default_shell "fish"
 pane_frames false
-theme "nord"
+theme "solarized-light"
 copy_on_select false
 default_layout "compact"
 scrollback_editor "lvim"

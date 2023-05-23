@@ -17,6 +17,10 @@
         bin: /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
         mode: ask
 
+    aliases:
+      vim: lvim
+      v: lvim
+
     abbrs:
       open: open
       rm: rm -i

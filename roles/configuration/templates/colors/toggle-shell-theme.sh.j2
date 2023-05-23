@@ -1,16 +1,20 @@
 #!/usr/bin/env bash
 
-LIGHT_THEME="{{ shell.colors.light }}"
-DARK_THEME="{{ shell.colors.dark }}"
+WEZTERM_LIGHT_THEME="{{ shell.colors.wezterm.light }}"
+WEZTERM_DARK_THEME="{{ shell.colors.wezterm.dark }}"
+ZELLIJ_LIGHT_THEME="{{ shell.colors.zellij.light }}"
+ZELLIJ_DARK_THEME="{{ shell.colors.zellij.dark }}"
 
 COLOR_SCHEME_PREFERENCE="$1"
 
 if [[ "$COLOR_SCHEME_PREFERENCE" == "light" ]]; then
     echo "Enabling light mode..."
 
-    sed -i "s/color_scheme = \"$DARK_THEME\"/color_scheme = \"$LIGHT_THEME\"/" ~/.config/wezterm/wezterm.lua
+    sed -i "s/color_scheme = \"$WEZTERM_DARK_THEME\"/color_scheme = \"$WEZTERM_LIGHT_THEME\"/" ~/.config/wezterm/wezterm.lua
+    sed -i "s/theme \"$ZELLIJ_DARK_THEME\"/theme \"$ZELLIJ_LIGHT_THEME\"/" ~/.config/zellij/config.kdl
 else
     echo "Enabling dark mode..."
 
-    sed -i "s/color_scheme = \"$LIGHT_THEME\"/color_scheme = \"$DARK_THEME\"/" ~/.config/wezterm/wezterm.lua
+    sed -i "s/color_scheme = \"$WEZTERM_LIGHT_THEME\"/color_scheme = \"$WEZTERM_DARK_THEME\"/" ~/.config/wezterm/wezterm.lua
+    sed -i "s/theme \"$ZELLIJ_LIGHT_THEME\"/theme \"$ZELLIJ_DARK_THEME\"/" ~/.config/zellij/config.kdl
 fi

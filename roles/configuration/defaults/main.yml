@@ -10,8 +10,12 @@ shell:
     opacity: 0.95
   path: ~/.cargo/bin
   colors:
-    light: Builtin Solarized Light
-    dark: nord
+    wezterm:
+      light: Builtin Solarized Light
+      dark: nord
+    zellij:
+      light: solarized-light
+      dark: nord
 
 gpg:
   bin: /usr/bin/gpg
