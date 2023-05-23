@@ -9,7 +9,7 @@
       arg: -l
       path: /opt/homebrew/bin ~/.cargo/bin
       font:
-        size: 12
+        size: 13
 
     gpg:
       bin: /usr/local/bin/gpg
