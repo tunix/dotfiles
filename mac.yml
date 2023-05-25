@@ -56,6 +56,7 @@
         - podman-compose
         - ripgrep
         - rustup-init
+        - telnet
         - the_silver_searcher
         - tmux
         - uptimed
@@ -70,7 +71,6 @@
         - discord
         - firefox
         - font-fira-code-nerd-font
-        - forticlient
         - gpg-suite
         - jetbrains-toolbox
         - libreoffice
