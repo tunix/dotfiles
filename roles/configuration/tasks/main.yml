@@ -1,32 +1,35 @@
 - name: Configure dircolors
-  include_tasks: common/colors.yml
+  include_tasks: colors.yml
 
 - name: Configure editorconfig
-  include_tasks: common/editorconfig.yml
+  include_tasks: editorconfig.yml
 
 - name: Configure fish
-  include_tasks: common/fish.yml
+  include_tasks: fish.yml
 
 - name: Configure git
-  include_tasks: common/git.yml
+  include_tasks: git.yml
 
 - name: Configure gnupg
-  include_tasks: common/gpg.yml
+  include_tasks: gpg.yml
 
 - name: Configure lvim
-  include_tasks: common/lvim.yml
+  include_tasks: lvim.yml
 
 - name: Configure maven
-  include_tasks: common/maven.yml
+  include_tasks: maven.yml
 
 - name: Configure ssh
-  include_tasks: common/ssh.yml
+  include_tasks: ssh.yml
 
 - name: Configure wezterm
-  include_tasks: common/wezterm.yml
+  include_tasks: wezterm.yml
 
 - name: Configure zellij
-  include_tasks: common/zellij.yml
+  include_tasks: zellij.yml
 
 - name: Configure starship
-  include_tasks: common/starship.yml
+  include_tasks: starship.yml
+
+- name: Configure k9s
+  include_tasks: k9s.yml

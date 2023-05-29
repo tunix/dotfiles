@@ -1,0 +1,12 @@
+- name: Place k9s configuration
+  copy:
+    src: "{{ role_path }}/files/k9s"
+    dest: "{{ ansible_user_dir }}/.config"
+    directory_mode: 0700
+    mode: 0600
+
+- name: Set initial theme for k9s
+  file:
+    src: "{{ ansible_user_dir }}/.config/k9s/light.yml"
+    dest: "{{ ansible_user_dir }}/.config/k9s/skin.yml"
+    state: link
