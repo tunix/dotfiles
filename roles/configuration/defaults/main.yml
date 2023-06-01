@@ -23,6 +23,9 @@ editor:
       light: peachpuff
       dark: lunar
 
+onepassword:
+  enabled: false
+
 gpg:
   bin: /usr/bin/gpg
   pinentry:

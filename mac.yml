@@ -11,6 +11,10 @@
       font:
         size: 13
 
+    onepassword:
+      enabled: true
+      agent: ~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
     gpg:
       bin: /usr/local/bin/gpg
       pinentry:

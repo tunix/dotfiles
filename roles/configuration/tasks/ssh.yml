@@ -1,16 +1,11 @@
-- name: Copy ssh configuration
-  copy:
-    src: files/ssh/
-    dest: "{{ ansible_user_dir }}/.ssh"
-    directory_mode: 0700
-    mode: 0600
+- name: Create config directory
+  file:
+    path: "{{ ansible_user_dir }}/.ssh"
+    state: directory
+    recurse: true
 
-- name: Create authorized_keys
-  blockinfile:
-    path: "{{ ansible_user_dir }}/.ssh/authorized_keys"
-    create: true
+- name: Configure ssh
+  template:
+    src: ssh/config.j2
+    dest: "{{ ansible_user_dir }}/.ssh/config"
     mode: 0600
-    marker: "# {mark} MAIN"
-    block: "{{ lookup('file', '{{ item }}') }}"
-  with_fileglob:
-    - "{{ ansible_user_dir }}/.ssh/*.pub"
