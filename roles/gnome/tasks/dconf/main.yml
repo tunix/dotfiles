@@ -263,6 +263,26 @@
     key: "/org/gnome/shell/extensions/vitals/show-system"
     value: "true"
 
+- name: Set tray position for app indicators
+  dconf:
+    key: "/org/gnome/shell/extensions/appindicator/tray-pos"
+    value: "'left'"
+
+- name: Enable commands for Night Theme Switcher
+  dconf:
+    key: "/org/gnome/shell/extensions/nightthemeswitcher/commands/enabled"
+    value: "true"
+
+- name: Set sunrise command for Night Theme Switcher
+  dconf:
+    key: "/org/gnome/shell/extensions/nightthemeswitcher/commands/sunrise"
+    value: "'toggle-color-preferences.sh light'"
+
+- name: Set sunset command for Night Theme Switcher
+  dconf:
+    key: "/org/gnome/shell/extensions/nightthemeswitcher/commands/sunset"
+    value: "'toggle-color-preferences.sh dark'"
+
 - name: Automatically empty trash
   dconf:
     key: "/org/gnome/desktop/privacy/remove-old-trash-files"
@@ -297,11 +317,6 @@
   dconf:
     key: "/org/gnome/desktop/datetime/automatic-timezone"
     value: "true"
-
-- name: Set tray position for app indicators
-  dconf:
-    key: "/org/gnome/shell/extensions/appindicator/tray-pos"
-    value: "'left'"
 
 - name: Set icon size in Nautilus
   dconf:
