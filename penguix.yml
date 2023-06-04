@@ -4,6 +4,10 @@
     work:
       midas: true
 
+    onepassword:
+      enabled: true
+      agent: ~/.1password/agent.sock
+
     gnome:
       extensions:
         install:

@@ -33,6 +33,3 @@
 
 - name: Configure k9s
   include_tasks: k9s.yml
-
-- name: Configure 1Password
-  include_tasks: onepassword.yml
