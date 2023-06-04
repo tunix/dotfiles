@@ -14,9 +14,3 @@
   template:
     src: fish/alias.fish.j2
     dest: "{{ ansible_user_dir }}/.config/fish/conf.d/alias.fish"
-
-- name: Render 1Password variables
-  template:
-    src: fish/onepassword.fish.j2
-    dest: "{{ ansible_user_dir }}/.config/fish/conf.d/onepassword.fish"
-  when: onepassword.enabled
