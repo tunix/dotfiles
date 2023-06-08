@@ -1,3 +1,8 @@
+- name: Delete config directory
+  file:
+    path: "{{ ansible_user_dir }}/.ssh"
+    state: absent
+
 - name: Create config directory
   file:
     path: "{{ ansible_user_dir }}/.ssh"
