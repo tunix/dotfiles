@@ -176,7 +176,8 @@
 - name: Set 1Password custom key command
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command"
-    value: "'flatpak run com.onepassword.OnePassword --quick-access'"
+    # value: "'flatpak run com.onepassword.OnePassword --quick-access'"
+    value: "'/usr/share/1Password/1password --quick-access'"
 
 - name: Set 1Password custom key name
   dconf:
