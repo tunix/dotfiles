@@ -22,10 +22,12 @@ if [[ "$COLOR_SCHEME_PREFERENCE" == "dark" ]]; then
     sed -i $SED_OPTS "s/color_scheme = \"$WEZTERM_LIGHT_THEME\"/color_scheme = \"$WEZTERM_DARK_THEME\"/" ~/.config/wezterm/wezterm.lua
     sed -i $SED_OPTS "s/theme \"$ZELLIJ_LIGHT_THEME\"/theme \"$ZELLIJ_DARK_THEME\"/" ~/.config/zellij/config.kdl
     sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/" ~/.config/lvim/config.lua
+    ln -sf ~/.config/k9s/dark.yml ~/.config/k9s/skin.yml
 else
     echo "Enabling light mode..."
 
     sed -i $SED_OPTS "s/color_scheme = \"$WEZTERM_DARK_THEME\"/color_scheme = \"$WEZTERM_LIGHT_THEME\"/" ~/.config/wezterm/wezterm.lua
     sed -i $SED_OPTS "s/theme \"$ZELLIJ_DARK_THEME\"/theme \"$ZELLIJ_LIGHT_THEME\"/" ~/.config/zellij/config.kdl
     sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/" ~/.config/lvim/config.lua
+    ln -sf ~/.config/k9s/light.yml ~/.config/k9s/skin.yml
 fi
