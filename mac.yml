@@ -94,6 +94,7 @@
         - zoom
 
     installers:
+      - awscli
       - golang
       - rust
       - nvm
@@ -105,6 +106,7 @@
       - kubectl
       - kubectx
       - kubens
+      - mc
       - starship
       - zellij
       - lazygit
