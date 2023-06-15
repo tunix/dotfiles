@@ -70,6 +70,7 @@
 
       casks:
         - 1password
+        - 1password-cli
         - brave-browser
         - caffeine
         - discord
