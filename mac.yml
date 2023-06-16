@@ -62,6 +62,7 @@
         - podman-compose
         - ripgrep
         - rustup-init
+        - teleport
         - telnet
         - the_silver_searcher
         - tmux
