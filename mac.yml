@@ -24,6 +24,7 @@
     aliases:
       vim: lvim
       v: lvim
+      aws: op plugin run -- aws
 
     abbrs:
       open: open
@@ -41,6 +42,7 @@
 
       packages:
         - asciinema
+        - awscli
         - bash
         - bat
         - btop
@@ -96,7 +98,6 @@
         - zoom
 
     installers:
-      - awscli
       - golang
       - rust
       - nvm
