@@ -54,7 +54,9 @@
         - gpg
         - helm
         - httpie
+        - ipcalc
         - jq
+        - just
         - neovim
         - node@18
         - openjdk@11
