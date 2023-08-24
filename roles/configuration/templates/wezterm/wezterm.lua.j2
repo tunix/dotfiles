@@ -1,6 +1,7 @@
 local wezterm = require "wezterm"
 
 return {
+    window_decorations = "{{ shell.window.decorations }}",
     window_background_opacity = {{ shell.window.opacity }},
     hide_tab_bar_if_only_one_tab = true,
     color_scheme = "{{ shell.colors.wezterm.light }}",

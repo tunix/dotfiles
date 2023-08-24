@@ -8,6 +8,7 @@ shell:
     width: 200
     height: 55
     opacity: 0.95
+    decorations: "TITLE | RESIZE"
   path: ~/.cargo/bin
   colors:
     wezterm:

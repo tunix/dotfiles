@@ -4,6 +4,10 @@
     work:
       midas: true
 
+    shell:
+      window:
+        decorations: NONE
+
     onepassword:
       enabled: true
       agent: ~/.1password/agent.sock
