@@ -64,6 +64,7 @@
       podman: podman --remote
       vim: lvim
       v: lvim
+      aws: op plugin run -- aws
 
     abbrs:
       open: xdg-open &> /dev/null
