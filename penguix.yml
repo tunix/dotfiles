@@ -26,6 +26,7 @@
           - 5410 # grand theft focus
           - 4158 # GNOME 4x UI Improvements
           - 545  # Hide Top Bar
+          - 5112 # tailscale-status
         enabled:
           - appindicatorsupport@rgcjonas.gmail.com
           - blur-my-shell@aunetx
@@ -38,6 +39,7 @@
           - grand-theft-focus@zalckos.github.com
           - gnome-ui-tune@itstime.tech
           - hidetopbar@mathieu.bidon.ca
+          - tailscale-status@maxgallup.github.com
         disabled:
           - apps-menu@gnome-shell-extensions.gcampax.github.com
           - background-logo@fedorahosted.org
