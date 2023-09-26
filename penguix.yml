@@ -71,6 +71,7 @@
       vim: lvim
       v: lvim
       aws: op plugin run -- aws
+      just: just --unstable
 
     abbrs:
       open: xdg-open &> /dev/null
