@@ -25,6 +25,7 @@
       vim: lvim
       v: lvim
       aws: op plugin run -- aws
+      terraform: op plugin run -- terraform
 
     abbrs:
       open: open
@@ -39,6 +40,7 @@
       repos:
         - homebrew/cask
         - homebrew/cask-fonts
+        - homebrew/cask-versions
 
       packages:
         - asciinema
@@ -76,7 +78,7 @@
 
       casks:
         - 1password
-        - 1password-cli
+        - 1password-cli-beta
         - brave-browser
         - caffeine
         - discord
