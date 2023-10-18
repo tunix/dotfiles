@@ -25,7 +25,7 @@
       vim: lvim
       v: lvim
       aws: op plugin run -- aws
-      terraform: op plugin run -- terraform
+      # terraform: op plugin run -- terraform
 
     abbrs:
       open: open
@@ -41,6 +41,7 @@
         - homebrew/cask
         - homebrew/cask-fonts
         - homebrew/cask-versions
+        - esolitos/ipa # for sshpass
 
       packages:
         - asciinema
@@ -54,6 +55,7 @@
         - fzf
         - golang
         - gpg
+        - gnu-tar
         - helm
         - httpie
         - ipcalc
@@ -67,6 +69,7 @@
         - podman-compose
         - ripgrep
         - rustup-init
+        - sshpass
         - telnet
         - terraform
         - the_silver_searcher
@@ -91,6 +94,7 @@
         - logi-options-plus
         - microsoft-remote-desktop
         - microsoft-teams
+        - multipass
         - obsidian
         - openvpn-connect
         - protonvpn
