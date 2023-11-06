@@ -38,7 +38,6 @@
 
     brew:
       repos:
-        - homebrew/cask
         - homebrew/cask-fonts
         - homebrew/cask-versions
         - esolitos/ipa # for sshpass
