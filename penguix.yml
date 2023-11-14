@@ -19,7 +19,6 @@
           - 3193 # blur my shell
           - 517  # caffeine
           - 1873 # Disable unredirect fullscreen windows
-          - 1319 # GSConnect
           - 2236 # night theme switcher
           - 5278 # pano
           - 1460 # vitals
@@ -32,7 +31,6 @@
           - blur-my-shell@aunetx
           - caffeine@patapon.info
           - unredirect@vaina.lt
-          - gsconnect@andyholmes.github.io
           - nightthemeswitcher@romainvigier.fr
           - pano@elhan.io
           - Vitals@CoreCoding.com
