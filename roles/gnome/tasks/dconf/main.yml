@@ -328,3 +328,18 @@
   dconf:
     key: "/org/gnome/nautilus/window-state/initial-size"
     value: "(1096, 703)"
+
+- name: Disable GNOME Software updates
+  dconf:
+    key: "/org/gnome/software/allow-updates"
+    value: "false"
+
+- name: Disable GNOME Software downloading updates
+  dconf:
+    key: "/org/gnome/software/download-updates"
+    value: "false"
+
+- name: Disable GNOME Software update notification
+  dconf:
+    key: "/org/gnome/software/download-updates-notify"
+    value: "false"
