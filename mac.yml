@@ -15,12 +15,6 @@
       enabled: true
       agent: ~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
-    gpg:
-      bin: /usr/local/bin/gpg
-      pinentry:
-        bin: /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
-        mode: ask
-
     aliases:
       vim: lvim
       v: lvim
@@ -54,7 +48,6 @@
         - fish
         - fzf
         - golang
-        - gpg
         - gnu-tar
         - helm
         - httpie
@@ -88,7 +81,6 @@
         - discord
         - firefox
         - font-fira-code-nerd-font
-        - gpg-suite
         - handbrake
         - jetbrains-toolbox
         - libreoffice

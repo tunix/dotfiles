@@ -10,9 +10,6 @@
 - name: Configure git
   include_tasks: git.yml
 
-- name: Configure gnupg
-  include_tasks: gpg.yml
-
 - name: Configure lvim
   include_tasks: lvim.yml
 

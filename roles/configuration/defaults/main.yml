@@ -26,9 +26,3 @@ editor:
 
 onepassword:
   enabled: false
-
-gpg:
-  bin: /usr/bin/gpg
-  pinentry:
-    bin: /usr/bin/pinentry
-    mode: loopback
