@@ -1,9 +1,0 @@
-- name: Generate justfile
-  blockinfile:
-    path: "{{ ansible_user_dir }}/.justfile"
-    create: true
-    mode: 0600
-    marker: "# {mark} GENERATED"
-    block: "!include {{ item }}"
-  with_fileglob:
-    - "{{ ansible_user_dir }}/.just/*.just"
