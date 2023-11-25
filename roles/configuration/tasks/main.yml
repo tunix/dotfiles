@@ -30,3 +30,6 @@
 
 - name: Configure k9s
   include_tasks: k9s.yml
+
+- name: Configure just
+  include_tasks: just.yml
