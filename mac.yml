@@ -20,6 +20,7 @@
       v: lvim
       aws: op plugin run -- aws
       # terraform: op plugin run -- terraform
+      just: just --unstable
 
     abbrs:
       open: open
