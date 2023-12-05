@@ -100,6 +100,7 @@
         - ticktick
         - visual-studio-code
         - wezterm
+        - wireshark
         - zoom
 
     installers:
