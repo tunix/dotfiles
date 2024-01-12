@@ -1,0 +1,27 @@
+k9s:
+  refreshRate: 2
+  maxConnRetry: 5
+  enableMouse: false
+  headless: false
+  logoless: false
+  crumbsless: false
+  readOnly: false
+  noExitOnCtrlC: false
+  noIcons: false
+  skipLatestRevCheck: false
+  skin: dark
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: 300
+    textWrap: false
+    showTime: false
+  currentContext: ""
+  currentCluster: ""
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 80
+    memory:
+      critical: 90
+      warn: 80
