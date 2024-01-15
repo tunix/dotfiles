@@ -13,7 +13,7 @@ SED_OPTS=""
 OS=$(uname -s)
 
 if [[ "$OS" == "Darwin" ]]; then
-    SED_OPTS="--"
+    SED_OPTS="-"
 fi
 
 if [[ "$COLOR_SCHEME_PREFERENCE" == "dark" ]]; then
