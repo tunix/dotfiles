@@ -57,9 +57,8 @@
         - just
         - localsend
         - neovim
-        - node@18
-        - openjdk@11
         - openjdk@17
+        - openjdk@21
         - podman
         - podman-compose
         - ripgrep
