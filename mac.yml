@@ -75,6 +75,7 @@
       casks:
         - 1password
         - 1password-cli-beta
+        - balenaetcher
         - brave-browser
         - caffeine
         - discord
