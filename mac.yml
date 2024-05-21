@@ -31,8 +31,6 @@
 
     brew:
       repos:
-        - homebrew/cask-fonts
-        - homebrew/cask-versions
         - esolitos/ipa # for sshpass
         - localsend/localsend
         - hashicorp/tap
