@@ -6,10 +6,12 @@
 - name: Ensure that packages are installed
   homebrew:
     name: "{{ item }}"
+    install_options: formula
   loop: "{{ brew.packages }}"
   ignore_errors: true
 
 - name: Ensure that casks are installed
   homebrew_cask:
     name: "{{ item }}"
+    install_options: cask
   loop: "{{ brew.casks }}"

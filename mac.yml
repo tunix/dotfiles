@@ -71,6 +71,7 @@
         - ripgrep
         - rustup-init
         - sshpass
+        - starship
         - telnet
         - hashicorp/tap/terraform
         - the_silver_searcher
@@ -79,6 +80,7 @@
         - watch
         - wget
         - z
+        - zellij
 
       casks:
         - 1password
@@ -105,14 +107,12 @@
         - scroll-reverser
         - slack
         - spotify
-        - starship
         - tailscale
         - telegram-desktop
         - ticktick
         - visual-studio-code
         - wezterm
         - wireshark
-        - zellij
         - zoom
 
     installers:
