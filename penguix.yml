@@ -44,22 +44,6 @@
           - window-list@gnome-shell-extensions.gcampax.github.com
 
     installers:
-      - awscli
-      - golang
-      - rust
-      - nvm
-      - cosign
-      - dive
-      - gh
-      - kind
-      - k9s
-      - kubectl
-      - kubectx
-      - kubens
-      - mc
-      - starship
-      - zellij
-      - lazygit
       - lunarvim
 
     aliases:

@@ -41,10 +41,13 @@
         - bash
         - bat
         - btop
+        - cosign
         - direnv
+        - dive
         - exa
         - fish
         - fzf
+        - gh
         - golang
         - gnu-tar
         - helm
@@ -52,8 +55,15 @@
         - ipcalc
         - jq
         - just
+        - kind
+        - k9s
+        - kubectl
+        - kubectx
+        - lazygit
         - localsend
+        - minio-mc
         - neovim
+        - nvim
         - openjdk@17
         - openjdk@21
         - podman-desktop
@@ -94,30 +104,17 @@
         - scroll-reverser
         - slack
         - spotify
+        - starship
         - tailscale
         - telegram-desktop
         - ticktick
         - visual-studio-code
         - wezterm
         - wireshark
+        - zellij
         - zoom
 
     installers:
-      - golang
-      - rust
-      - nvm
-      - cosign
-      - dive
-      - gh
-      - kind
-      - k9s
-      - kubectl
-      - kubectx
-      - kubens
-      - mc
-      - starship
-      - zellij
-      - lazygit
       - lunarvim
 
   roles:
