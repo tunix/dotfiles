@@ -55,8 +55,9 @@
         - ipcalc
         - jq
         - just
-        - kind
         - k9s
+        - kind
+        - krew
         - kubectl
         - kubectx
         - lazygit
