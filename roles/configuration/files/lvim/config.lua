@@ -20,6 +20,8 @@ vim.opt.textwidth = 120
 vim.opt.colorcolumn = "120"
 vim.opt.icm = "nosplit"
 vim.opt.cursorline = false
+vim.opt.foldmethod = "indent"
+vim.opt.foldcolumn = 1
 
 -- general
 lvim.log.level = "info"
