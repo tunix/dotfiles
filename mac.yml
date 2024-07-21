@@ -64,7 +64,6 @@
         - localsend
         - minio-mc
         - neovim
-        - nvim
         - openjdk@17
         - openjdk@21
         - podman-desktop
@@ -75,7 +74,6 @@
         - telnet
         - hashicorp/tap/terraform
         - the_silver_searcher
-        - tmux
         - uptimed
         - watch
         - wget
@@ -124,4 +122,3 @@
     - configuration
     - mac
     - work
-    - cleanup

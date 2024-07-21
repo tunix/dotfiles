@@ -1,4 +1,0 @@
-- name: Configure hidden folders for GNOME
-  copy:
-    src: "{{ role_path }}/files/hidden"
-    dest: "{{ ansible_user_dir }}/.hidden"

@@ -4,14 +4,5 @@
 #     apply:
 #       become: true
 
-- name: Configure dconf
-  include_tasks: dconf/main.yml
-
 - name: Configure extensions
   include_tasks: extensions/main.yml
-
-- name: Configure xdg
-  include_tasks: xdg/main.yml
-
-- name: Configure hidden for GNOME
-  include_tasks: configuration/hidden.yml

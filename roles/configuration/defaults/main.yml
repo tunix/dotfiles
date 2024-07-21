@@ -1,8 +1,6 @@
-open_cmd: xdg-open
-
 shell:
   font:
-    size: 10
+    size: 12
     face: FiraCode Nerd Font
   window:
     width: 200

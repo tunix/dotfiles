@@ -1,3 +1,0 @@
-- name: Update font cache
-  command: fc-cache -f
-  ignore_errors: true

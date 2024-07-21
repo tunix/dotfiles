@@ -4,68 +4,65 @@
     work:
       midas: true
 
-    shell:
-      window:
-        decorations: NONE
-
     onepassword:
       enabled: true
       agent: ~/.1password/agent.sock
 
-    gnome:
-      extensions:
-        install:
-          - 615  # AppIndicator and KStatusNotifierItem Support
-          - 3193 # blur my shell
-          - 517  # caffeine
-          - 1873 # Disable unredirect fullscreen windows
-          - 2236 # night theme switcher
-          - 5278 # pano
-          - 1460 # vitals
-          - 5410 # grand theft focus
-          - 4158 # GNOME 4x UI Improvements
-          - 6139 # tailscale-gnome-qs
-        enabled:
-          - appindicatorsupport@rgcjonas.gmail.com
-          - blur-my-shell@aunetx
-          - caffeine@patapon.info
-          - unredirect@vaina.lt
-          - nightthemeswitcher@romainvigier.fr
-          - pano@elhan.io
-          - Vitals@CoreCoding.com
-          - grand-theft-focus@zalckos.github.com
-          - gnome-ui-tune@itstime.tech
-          - tailscale@joaophi.github.com
-        disabled:
-          - apps-menu@gnome-shell-extensions.gcampax.github.com
-          - background-logo@fedorahosted.org
-          - launch-new-instance@gnome-shell-extensions.gcampax.github.com
-          - places-menu@gnome-shell-extensions.gcampax.github.com
-          - window-list@gnome-shell-extensions.gcampax.github.com
+    aliases:
+      vim: lvim
+      v: lvim
+      aws: op plugin run -- aws
+
+    abbrs:
+      rm: rm -i
+      l: eza -lh --group-directories-first --all
+      ll: eza -lh --group-directories-first
+      lt: eza -lh --group-directories-first --all --tree
+      lc: wc -l
+      port: lsof -i
+
+    brew:
+      repos:
+        - hashicorp/tap
+
+      packages:
+        - asciinema
+        - awscli
+        - btop
+        - dive
+        - golang
+        - helm
+        - httpie
+        - k9s
+        - kubectl
+        - kubectx
+        - lazygit
+        - minio-mc
+        - neovim
+        - openjdk@17
+        - openjdk@21
+        - rustup-init
+        - telnet
+        - hashicorp/tap/terraform
+        - the_silver_searcher
+        - z
+        - zellij
 
     installers:
       - lunarvim
 
-    aliases:
-      podman: podman --remote
-      vim: lvim
-      v: lvim
-      aws: op plugin run -- aws
-      just: just --unstable
-
-    abbrs:
-      open: xdg-open &> /dev/null
-      rm: rm -i
-      l: exa -lh --group-directories-first --all
-      ll: exa -lh --group-directories-first
-      lt: exa -lh --group-directories-first --all --tree
-      lc: wc -l
-      port: lsof -i
+    gnome:
+      extensions:
+        install:
+          - 2236 # night theme switcher
+          - 1460 # vitals
+        enabled:
+          - nightthemeswitcher@romainvigier.fr
+          - pano@elhan.io
 
   roles:
-    - fontconfig
+    - brew
     - gnome
     - installers
     - configuration
     - work
-    - cleanup
