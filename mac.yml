@@ -21,11 +21,10 @@
       just: just --unstable
 
     abbrs:
-      open: open
       rm: rm -i
-      l: exa -lh --group-directories-first --all
-      ll: exa -lh --group-directories-first
-      lt: exa -lh --group-directories-first --all --tree
+      l: eza -lh --group-directories-first --all
+      ll: eza -lh --group-directories-first
+      lt: eza -lh --group-directories-first --all --tree
       lc: wc -l
       port: lsof -i
 
@@ -44,7 +43,7 @@
         - cosign
         - direnv
         - dive
-        - exa
+        - eza
         - fish
         - fzf
         - gh
