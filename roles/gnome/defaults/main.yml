@@ -2,4 +2,4 @@ gnome:
   extensions:
     install:
     enabled:
-    disabled:
+    disabled: []

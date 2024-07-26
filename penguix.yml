@@ -39,10 +39,10 @@
         - lazygit
         - minio-mc
         - neovim
+        - nvm
         - openjdk@17
         - openjdk@21
         - rustup-init
-        - telnet
         - hashicorp/tap/terraform
         - the_silver_searcher
         - z
@@ -58,7 +58,7 @@
           - 1460 # vitals
         enabled:
           - nightthemeswitcher@romainvigier.fr
-          - pano@elhan.io
+          - Vitals@CoreCoding.com
 
     flatpaks:
       - app.drey.Warp
@@ -97,6 +97,6 @@
     - brew
     - gnome
     - flatpak
-    - installers
     - configuration
+    - installers
     - work
