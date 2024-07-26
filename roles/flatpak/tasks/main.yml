@@ -1,0 +1,6 @@
+- name: Ensure that apps are installed
+  homebrew:
+    name: "{{ item }}"
+    method: user
+  loop: "{{ flatpaks }}"
+  ignore_errors: true

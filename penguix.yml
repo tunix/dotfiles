@@ -60,9 +60,43 @@
           - nightthemeswitcher@romainvigier.fr
           - pano@elhan.io
 
+    flatpaks:
+      - app.drey.Warp
+      - com.belmoussaoui.Decoder
+      - com.belmoussaoui.Obfuscate
+      - com.discordapp.Discord
+      - com.getpostman.Postman
+      - com.github.huluti.Curtail
+      - com.github.maoschanz.drawing
+      - com.gitlab.newsflash
+      - com.google.Chrome
+      - com.jetbrains.IntelliJ-IDEA-Community
+      - com.protonvpn.www
+      - com.rafaelmardojai.Blanket
+      - com.slack.Slack
+      - com.spotify.Client
+      - com.usebottles.bottles
+      - de.haeckerfelix.Fragments
+      - de.haeckerfelix.Shortwave
+      - fr.handbrake.ghb
+      - io.gitlab.liferooter.TextPieces
+      - io.github.seadve.Mousai
+      - md.obsidian.Obsidian
+      - org.gimp.GIMP
+      - org.gnome.design.Lorem
+      - org.gnome.gitlab.YaLTeR.VideoTrimmer
+      - org.gnome.Snapshot
+      - org.gnome.SoundRecorder
+      - org.libreoffice.LibreOffice
+      - org.telegram.desktop
+      - org.videolan.VLC
+      - org.wezfurlong.wezterm
+      - us.zoom.Zoom
+
   roles:
     - brew
     - gnome
+    - flatpak
     - installers
     - configuration
     - work
