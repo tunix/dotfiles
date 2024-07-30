@@ -56,9 +56,11 @@
         install:
           - 2236 # night theme switcher
           - 1460 # vitals
+          - 545  # hide top bar
         enabled:
           - nightthemeswitcher@romainvigier.fr
           - Vitals@CoreCoding.com
+          - hidetopbar@mathieu.bidon.ca
 
     flatpaks:
       - app.drey.Warp
