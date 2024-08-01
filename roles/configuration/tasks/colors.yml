@@ -12,6 +12,12 @@
     block: |
       test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
+- name: Create local directory
+  file:
+    path: "{{ ansible_user_dir }}/.local/bin"
+    state: directory
+    recurse: true
+
 - name: Install toggle-color-preferences script
   template:
     src: colors/toggle-color-preferences.sh.j2
