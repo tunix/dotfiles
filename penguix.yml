@@ -28,8 +28,10 @@
       packages:
         - asciinema
         - awscli
+        - bat
         - btop
         - dive
+        - eza
         - golang
         - helm
         - httpie
@@ -61,11 +63,16 @@
           - nightthemeswitcher@romainvigier.fr
           - Vitals@CoreCoding.com
           - hidetopbar@mathieu.bidon.ca
+          - caffeine@patapon.info
+        disabled:
+          - dash-to-dock@micxgx.gmail.com
+          - logomenu@aryan_k
 
     flatpaks:
       - app.drey.Warp
       - com.belmoussaoui.Decoder
       - com.belmoussaoui.Obfuscate
+      - com.brave.Browser
       - com.discordapp.Discord
       - com.getpostman.Postman
       - com.github.huluti.Curtail
