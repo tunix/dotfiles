@@ -1,5 +1,9 @@
 import? x'$HOME/.config/just/midas/main.just'
 
+update-skel:
+    #!/usr/bin/bash
+    rsync -avz /etc/skel $HOME
+
 install-lunarvim:
     #!/usr/bin/bash
     LV_BRANCH='release-1.4/neovim-0.9' \
