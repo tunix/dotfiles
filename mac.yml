@@ -111,12 +111,8 @@
         - wireshark
         - zoom
 
-    installers:
-      - lunarvim
-
   roles:
     - brew
-    - installers
     - configuration
     - mac
     - work

@@ -51,9 +51,6 @@
         - z
         - zellij
 
-    installers:
-      - lunarvim
-
     gnome:
       extensions:
         install:
@@ -97,6 +94,7 @@
       - org.gnome.Snapshot
       - org.gnome.SoundRecorder
       - org.libreoffice.LibreOffice
+      - org.localsend.localsend_app
       - org.raspberrypi.rpi-imager
       - org.telegram.desktop
       - org.videolan.VLC
@@ -108,5 +106,4 @@
     - gnome
     - flatpak
     - configuration
-    - installers
     - work

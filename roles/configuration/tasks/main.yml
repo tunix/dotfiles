@@ -33,3 +33,6 @@
 
 - name: Configure python
   include_tasks: python.yml
+
+- name: Configure just
+  include_tasks: just.yml

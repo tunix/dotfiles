@@ -1,0 +1,4 @@
+- name: Configure just
+  copy:
+    src: "{{ role_path }}/files/just/main.just"
+    dest: "{{ ansible_user_dir }}/.justfile"
