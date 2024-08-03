@@ -1,8 +1,5 @@
-# - name: Configure avatar
-#   include_tasks: avatar/main.yml
-#   args:
-#     apply:
-#       become: true
+- name: Configure avatar
+  include_tasks: avatar/main.yml
 
 - name: Configure extensions
   include_tasks: extensions/main.yml

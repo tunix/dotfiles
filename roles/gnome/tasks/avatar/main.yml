@@ -1,0 +1,4 @@
+- name: Copy avatar
+  copy:
+    src: avatar/avatar.jpg
+    dest: "{{ ansible_user_dir }}/.face"
