@@ -1,5 +1,8 @@
 import? x'$HOME/.config/just/midas/main.just'
 
+default:
+    just --list
+
 update-skel:
     #!/usr/bin/bash
     rsync -avz /etc/skel $HOME
