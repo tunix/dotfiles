@@ -67,6 +67,7 @@
         disabled:
           - dash-to-dock@micxgx.gmail.com
           - logomenu@aryan_k
+          - search-light@icedman.github.com
 
     flatpaks:
       - app.drey.Warp
