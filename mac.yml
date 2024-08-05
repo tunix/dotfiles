@@ -82,6 +82,7 @@
       casks:
         - 1password
         - 1password-cli
+        - anydesk
         - balenaetcher
         - beekeeper-studio
         - brave-browser
