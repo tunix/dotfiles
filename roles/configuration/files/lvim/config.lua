@@ -36,6 +36,8 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.visual_mode["be"] = "c<C-R>=trim(system('base64', @\"))<CR><ESC>"
+lvim.keys.visual_mode["bd"] = "c<C-R>=trim(system('base64 -d', @\"))<CR><ESC>"
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
