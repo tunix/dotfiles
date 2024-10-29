@@ -5,6 +5,11 @@
     directory_mode: 0700
     mode: 0600
 
+- name: Render fish initial config
+  template:
+    src: fish/init.fish.j2
+    dest: "{{ ansible_user_dir }}/.config/fish/conf.d/init.fish"
+
 - name: Render fish abbrevations
   template:
     src: fish/abbr.fish.j2

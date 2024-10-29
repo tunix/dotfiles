@@ -7,7 +7,7 @@
     shell:
       program: /opt/homebrew/bin/fish
       arg: -l
-      path: /opt/homebrew/bin ~/.cargo/bin
+      path: /opt/homebrew/bin /opt/homebrew/sbin ~/.cargo/bin
       font:
         size: 13
 
@@ -95,7 +95,7 @@
         - lens
         - libreoffice
         - logi-options-plus
-        - microsoft-remote-desktop
+        - windows-app
         - obsidian
         - openvpn-connect
         - protonvpn
