@@ -22,8 +22,9 @@
 
     abbrs:
       rm: rm -i
-      l: eza -lh --group-directories-first --all
+      la: eza -lh --group-directories-first --all
       ll: eza -lh --group-directories-first
+      ls: eza --group-directories-first
       lt: eza -lh --group-directories-first --all --tree
       lc: wc -l
       port: lsof -i
