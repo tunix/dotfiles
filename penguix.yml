@@ -21,6 +21,7 @@
       lt: eza -lh --group-directories-first --all --tree
       lc: wc -l
       port: lsof -i
+      pengudroid: scrcpy -eS --always-on-top --power-off-on-close
 
     brew:
       repos:
