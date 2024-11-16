@@ -7,6 +7,11 @@
     shell:
       bin: /bin/fish
 
+    abbrs:
+      l: exa -lh --group-directories-first --all
+      ll: exa -lh --group-directories-first
+      lt: exa -lh --group-directories-first --all --tree
+
     packages:
       - bat
       - btop
