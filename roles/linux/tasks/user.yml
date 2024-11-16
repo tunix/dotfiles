@@ -1,0 +1,5 @@
+- name: Configure shell
+  become: true
+  user:
+    name: "{{ ansible_user }}"
+    shell: "{{ shell.bin }}"

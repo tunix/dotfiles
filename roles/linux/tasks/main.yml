@@ -1,2 +1,5 @@
+- name: Configure users
+  include_tasks: user.yml
+
 - name: Install packages
   include_tasks: package.yml

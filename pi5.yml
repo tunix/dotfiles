@@ -1,16 +1,19 @@
-- hosts: all
+- hosts: localhost
 
   vars:
     configure:
       ssh: false
 
     shell:
-      bin: /bin/fish
+      bin: /usr/bin/fish
 
     abbrs:
       l: exa -lh --group-directories-first --all
       ll: exa -lh --group-directories-first
       lt: exa -lh --group-directories-first --all --tree
+
+    aliases:
+      bat: batcat
 
     packages:
       - bat
