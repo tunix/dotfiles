@@ -1,0 +1,26 @@
+- hosts: all
+
+  vars:
+    configure:
+      ssh: false
+
+    shell:
+      bin: /bin/fish
+
+    packages:
+      - bat
+      - btop
+      - exa
+      - fish
+      - htop
+      - httpie
+      - neovim
+      - podman
+      - podman-compose
+      - podman-docker
+      - silversearcher-ag
+      - zoxide
+
+  roles:
+    - linux
+    - configuration

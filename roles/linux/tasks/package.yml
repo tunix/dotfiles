@@ -1,0 +1,7 @@
+- name: Ensure that packages are installed
+  become: true
+  package:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ packages }}"
+  ignore_errors: true

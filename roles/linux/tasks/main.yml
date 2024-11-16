@@ -1,0 +1,2 @@
+- name: Install packages
+  include_tasks: package.yml

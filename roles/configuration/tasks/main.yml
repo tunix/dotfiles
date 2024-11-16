@@ -6,6 +6,7 @@
 
 - name: Configure fish
   include_tasks: fish.yml
+  when: '"fish" in shell.bin'
 
 - name: Configure git
   include_tasks: git.yml
@@ -15,15 +16,19 @@
 
 - name: Configure maven
   include_tasks: maven.yml
+  when: configure.maven
 
 - name: Configure ssh
   include_tasks: ssh.yml
+  when: configure.ssh
 
 - name: Configure wezterm
   include_tasks: wezterm.yml
+  when: terminal.app | default(omit) == 'wezterm'
 
 - name: Configure zellij
   include_tasks: zellij.yml
+  when: terminal.multiplexer == 'zellij'
 
 - name: Configure starship
   include_tasks: starship.yml

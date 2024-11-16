@@ -1,34 +1,31 @@
 - hosts: localhost
 
   vars:
+    configure:
+      maven: true
+
     work:
       midas: true
 
-    shell:
-      program: /opt/homebrew/bin/fish
-      arg: -l
-      path: /opt/homebrew/bin /opt/homebrew/sbin ~/.cargo/bin
+    terminal:
+      app: wezterm
       font:
         size: 13
+
+    shell:
+      bin: /opt/homebrew/bin/fish
+      arg: -l
+      path: /opt/homebrew/bin /opt/homebrew/sbin ~/.cargo/bin
 
     onepassword:
       enabled: true
       agent: ~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
-    aliases:
-      vim: lvim
-      v: lvim
-      just: just --unstable
+    abbrs:
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
 
-    abbrs:
-      rm: rm -i
-      la: eza -lh --group-directories-first --all
-      ll: eza -lh --group-directories-first
-      ls: eza --group-directories-first
-      lt: eza -lh --group-directories-first --all --tree
-      lc: wc -l
-      port: lsof -i
+    aliases:
+      just: just --unstable
 
     brew:
       repos:
@@ -78,7 +75,7 @@
         - uptimed
         - watch
         - wget
-        - z
+        - zoxide
         - zellij
 
       casks:

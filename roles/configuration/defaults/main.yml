@@ -1,13 +1,29 @@
-shell:
-  font:
-    size: 12
-    face: FiraCode Nerd Font
+configure:
+  maven: false
+  ssh: true
+
+abbrs:
+  rm: rm -i
+  l: exa -lh --group-directories-first --all
+  ll: exa -lh --group-directories-first
+  lt: exa -lh --group-directories-first --all --tree
+  lc: wc -l
+  port: lsof -i
+
+aliases:
+  vim: lvim
+  v: lvim
+
+terminal:
+  multiplexer: zellij
   window:
     width: 200
     height: 55
     opacity: 0.95
     decorations: "TITLE | RESIZE"
-  path: ~/.cargo/bin
+  font:
+    size: 12
+    face: FiraCode Nerd Font
   colors:
     wezterm:
       light: Builtin Solarized Light
@@ -16,10 +32,14 @@ shell:
       light: solarized-light
       dark: nord
 
+shell:
+  bin: /opt/homebrew/bin/fish
+  path: ~/.cargo/bin
+
 editor:
   colors:
     lunarvim:
-      light: peachpuff
+      light: tokyonight-day
       dark: lunar
 
 onepassword:

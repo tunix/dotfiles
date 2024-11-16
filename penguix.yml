@@ -9,18 +9,9 @@
       agent: ~/.1password/agent.sock
 
     aliases:
-      vim: lvim
-      v: lvim
       aws: op plugin run -- aws
 
     abbrs:
-      rm: rm -i
-      la: eza -lh --group-directories-first --all
-      ll: eza -lh --group-directories-first
-      ls: eza --group-directories-first
-      lt: eza -lh --group-directories-first --all --tree
-      lc: wc -l
-      port: lsof -i
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
 
     brew:
@@ -50,7 +41,7 @@
         - rustup-init
         - hashicorp/tap/terraform
         - the_silver_searcher
-        - z
+        - zoxide
         - zellij
 
     gnome:
