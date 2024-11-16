@@ -25,6 +25,8 @@
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
 
     aliases:
+      vim: lvim
+      v: lvim
       just: just --unstable
 
     brew:

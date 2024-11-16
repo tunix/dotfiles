@@ -10,10 +10,6 @@ abbrs:
   lc: wc -l
   port: lsof -i
 
-aliases:
-  vim: lvim
-  v: lvim
-
 terminal:
   multiplexer: zellij
   window:

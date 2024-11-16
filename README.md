@@ -8,8 +8,6 @@ my personal dot files
 Please install `ansible` in order to proceed.
 
 ```
-$ ansible-galaxy collection install community.general
-$ ansible-galaxy collection install containers.podman
-
+$ ansible-galaxy collection install -r requirements.yml
 $ ansible-playbook penguix.yml
 ```

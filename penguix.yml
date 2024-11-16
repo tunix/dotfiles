@@ -9,6 +9,8 @@
       agent: ~/.1password/agent.sock
 
     aliases:
+      vim: lvim
+      v: lvim
       aws: op plugin run -- aws
 
     abbrs:
