@@ -4,6 +4,10 @@
     configure:
       ssh: false
 
+    user:
+      groups:
+        - docker
+
     shell:
       bin: /usr/bin/fish
 
@@ -15,19 +19,27 @@
     aliases:
       bat: batcat
 
+    repositories:
+      - name: docker
+        gpg_key: https://download.docker.com/linux/debian/gpg
+        url: "deb [arch=arm64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm stable"
+
     packages:
       - bat
       - btop
       - exa
       - fish
+      - git
       - htop
       - httpie
       - neovim
-      - podman
-      - podman-compose
-      - podman-docker
       - silversearcher-ag
       - zoxide
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
 
   roles:
     - linux

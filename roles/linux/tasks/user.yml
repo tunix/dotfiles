@@ -1,5 +1,6 @@
-- name: Configure shell
+- name: Configure user
   become: true
   user:
     name: "{{ ansible_facts['user_id'] }}"
+    groups: "{{ user.groups }}"
     shell: "{{ shell.bin }}"

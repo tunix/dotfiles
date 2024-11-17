@@ -1,0 +1,13 @@
+- name: Configure GPG key for repository
+  become: true
+  get_url:
+    url: "{{ item.gpg_key }}"
+    dest: "/etc/apt/keyrings/{{ item.name }}.asc"
+  loop: "{{ repositories }}"
+
+- name: Configure repository
+  become: true
+  apt_repository:
+    repo: "{{ item.url }}"
+    state: present
+  loop: "{{ repositories }}"
