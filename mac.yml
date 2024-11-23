@@ -34,6 +34,7 @@
         - esolitos/ipa # for sshpass
         - localsend/localsend
         - hashicorp/tap
+        - pamburus/tap
 
       packages:
         - asciinema
@@ -52,6 +53,7 @@
         - gnu-tar
         - helm
         - httpie
+        - hl
         - ipcalc
         - jq
         - just
@@ -111,6 +113,7 @@
         - visual-studio-code
         - wezterm
         - wireshark
+        - zed
         - zoom
 
   roles:
