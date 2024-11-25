@@ -68,7 +68,6 @@
         - neovim
         - openjdk@17
         - openjdk@21
-        - podman-desktop
         - ripgrep
         - rustup-init
         - sshpass
