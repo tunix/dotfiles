@@ -51,12 +51,12 @@
         install:
           - 2236 # night theme switcher
           - 1460 # vitals
-          - 545  # hide top bar
+          # - 545  # hide top bar
           - 7065 # tiling shell
         enabled:
           - nightthemeswitcher@romainvigier.fr
           - Vitals@CoreCoding.com
-          - hidetopbar@mathieu.bidon.ca
+          # - hidetopbar@mathieu.bidon.ca
           - caffeine@patapon.info
           - tilingshell@ferrarodomenico.com
         disabled:
