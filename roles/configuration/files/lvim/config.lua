@@ -44,7 +44,7 @@ lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without f
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
-lvim.colorscheme = "tokyonight-day"
+lvim.colorscheme = "catppuccin-frappe"
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.alpha.active = true
@@ -120,6 +120,11 @@ lvim.plugins = {
         lazy = false,
         priority = 1000,
         opts = {},
+    },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000
     }
 }
 

@@ -25,8 +25,8 @@ terminal:
       light: Builtin Solarized Light
       dark: nord
     zellij:
-      light: solarized-light
-      dark: nord
+      light: catppuccin-latte
+      dark: catppuccin-frappe
 
 shell:
   bin: /opt/homebrew/bin/fish
@@ -35,8 +35,8 @@ shell:
 editor:
   colors:
     lunarvim:
-      light: tokyonight-day
-      dark: lunar
+      light: catppuccin-latte
+      dark: catppuccin-frappe
 
 onepassword:
   enabled: false
