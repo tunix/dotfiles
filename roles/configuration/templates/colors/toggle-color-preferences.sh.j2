@@ -6,6 +6,8 @@ ZELLIJ_LIGHT_THEME="{{ terminal.colors.zellij.light }}"
 ZELLIJ_DARK_THEME="{{ terminal.colors.zellij.dark }}"
 LUNARVIM_LIGHT_THEME="{{ editor.colors.lunarvim.light }}"
 LUNARVIM_DARK_THEME="{{ editor.colors.lunarvim.dark }}"
+K9S_LIGHT_THEME="{{ terminal.colors.k9s.light }}"
+K9S_DARK_THEME="{{ terminal.colors.k9s.dark }}"
 
 COLOR_SCHEME_PREFERENCE="$1"
 
@@ -22,12 +24,12 @@ if [[ "$COLOR_SCHEME_PREFERENCE" == "dark" ]]; then
     sed -i $SED_OPTS "s/color_scheme = \"$WEZTERM_LIGHT_THEME\"/color_scheme = \"$WEZTERM_DARK_THEME\"/" ~/.config/wezterm/wezterm.lua
     sed -i $SED_OPTS "s/theme \"$ZELLIJ_LIGHT_THEME\"/theme \"$ZELLIJ_DARK_THEME\"/" ~/.config/zellij/config.kdl
     sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/" ~/.config/lvim/config.lua
-    sed -i $SED_OPTS "s/skin:.*/skin: dark/g" ~/.config/k9s/config.yaml
+    sed -i $SED_OPTS "s/skin:.*/skin: $K9S_DARK_THEME/g" ~/.config/k9s/config.yaml
 else
     echo "Enabling light mode..."
 
     sed -i $SED_OPTS "s/color_scheme = \"$WEZTERM_DARK_THEME\"/color_scheme = \"$WEZTERM_LIGHT_THEME\"/" ~/.config/wezterm/wezterm.lua
     sed -i $SED_OPTS "s/theme \"$ZELLIJ_DARK_THEME\"/theme \"$ZELLIJ_LIGHT_THEME\"/" ~/.config/zellij/config.kdl
     sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/" ~/.config/lvim/config.lua
-    sed -i $SED_OPTS "s/skin:.*/skin: light/g" ~/.config/k9s/config.yaml
+    sed -i $SED_OPTS "s/skin:.*/skin: $K9S_LIGHT_THEME/g" ~/.config/k9s/config.yaml
 fi

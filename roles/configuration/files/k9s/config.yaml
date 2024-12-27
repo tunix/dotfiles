@@ -6,7 +6,7 @@ k9s:
   ui:
     enableMouse: true
     reactive: true
-    skin: light
+    skin: catppuccin-frappe
   logger:
     tail: 1000
     buffer: 10000
