@@ -53,14 +53,14 @@
           - 1460 # vitals
           # - 545  # hide top bar
           - 7065 # tiling shell
-          - 5410 # grand theft focus
+          - 6385 # steal my focus window
         enabled:
           - nightthemeswitcher@romainvigier.fr
           - Vitals@CoreCoding.com
           # - hidetopbar@mathieu.bidon.ca
           - caffeine@patapon.info
           - tilingshell@ferrarodomenico.com
-          - grand-theft-focus@zalckos.github.com
+          - steal-my-focus-window@steal-my-focus-window
         disabled:
           - dash-to-dock@micxgx.gmail.com
           - logomenu@aryan_k
