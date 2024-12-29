@@ -84,6 +84,7 @@
       - com.usebottles.bottles
       - de.haeckerfelix.Fragments
       - de.haeckerfelix.Shortwave
+      - dev.zed.Zed
       - fr.handbrake.ghb
       - in.srev.guiscrcpy
       - io.gitlab.liferooter.TextPieces
