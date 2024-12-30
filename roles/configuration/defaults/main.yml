@@ -4,9 +4,9 @@ configure:
 
 abbrs:
   rm: rm -i
-  l: eza -lh --group-directories-first --all
-  ll: eza -lh --group-directories-first
-  lt: eza -lh --group-directories-first --all --tree
+  l: eza -lgh --group-directories-first --all
+  ll: eza -lgh --group-directories-first
+  lt: eza -lgh --group-directories-first --all --tree
   lc: wc -l
   port: lsof -i
 
