@@ -1,10 +1,11 @@
-font-family = FiraCode Nerd Font
+font-size = {{ terminal.font.size }}
+font-family = {{ terminal.font.face }}
 cursor-style = underline
 shell-integration-features = no-cursor
-window-width = 200
-window-height = 55
-background-opacity = 0.90
-background-blur-radius = 20
+window-width = {{ terminal.window.width }}
+window-height = {{ terminal.window.height }}
+background-opacity = {{ terminal.window.opacity }}
+background-blur-radius = {{ terminal.window.blur }}
 keybind = alt+left=unbind
 keybind = alt+right=unbind
-theme = light:catppuccin-latte,dark:catppuccin-frappe
+theme = light:{{ terminal.colors.ghostty.light }},dark:{{ terminal.colors.ghostty.dark }}
