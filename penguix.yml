@@ -11,7 +11,7 @@
     aliases:
       vim: lvim
       v: lvim
-      aws: op plugin run -- aws
+      # aws: op plugin run -- aws
 
     abbrs:
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
