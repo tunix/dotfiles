@@ -16,7 +16,7 @@ terminal:
     width: 200
     height: 48
     opacity: 0.95
-    blur: 20
+    blur: true
     decorations: "TITLE | RESIZE"
   font:
     size: 10
