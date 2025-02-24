@@ -14,12 +14,12 @@ terminal:
   multiplexer: zellij
   window:
     width: 200
-    height: 55
+    height: 48
     opacity: 0.95
-    blur: 20
+    blur: true
     decorations: "TITLE | RESIZE"
   font:
-    size: 9
+    size: 10
     face: FiraCode Nerd Font
   colors:
     ghostty:
