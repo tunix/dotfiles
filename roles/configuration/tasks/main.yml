@@ -41,3 +41,6 @@
 
 - name: Configure just
   include_tasks: just.yml
+
+- name: Configure bat
+  include_tasks: bat.yml

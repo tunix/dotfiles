@@ -1,0 +1,8 @@
+- name: Place bat configuration
+  copy:
+    src: "{{ role_path }}/files/bat"
+    dest: "{{ ansible_user_dir }}/.config"
+    directory_mode: 0700
+    mode: 0600
+  notify:
+    - Rebuild bat cache
