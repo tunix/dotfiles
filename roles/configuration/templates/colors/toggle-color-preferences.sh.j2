@@ -27,8 +27,7 @@ if [[ "$COLOR_SCHEME_PREFERENCE" == "dark" ]]; then
     sed -i $SED_OPTS "s/theme \"$ZELLIJ_LIGHT_THEME\"/theme \"$ZELLIJ_DARK_THEME\"/" ~/.config/zellij/config.kdl
     sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/" ~/.config/lvim/config.lua
     sed -i $SED_OPTS "s/skin:.*/skin: $K9S_DARK_THEME/g" ~/.config/k9s/config.yaml
-
-    set -xU BAT_THEME $BAT_DARK_THEME
+    sed -i $SED_OPTS "s/$BAT_LIGHT_THEME/$BAT_DARK_THEME/g" ~/.config/bat/config
 else
     echo "Enabling light mode..."
 
@@ -36,6 +35,5 @@ else
     sed -i $SED_OPTS "s/theme \"$ZELLIJ_DARK_THEME\"/theme \"$ZELLIJ_LIGHT_THEME\"/" ~/.config/zellij/config.kdl
     sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/" ~/.config/lvim/config.lua
     sed -i $SED_OPTS "s/skin:.*/skin: $K9S_LIGHT_THEME/g" ~/.config/k9s/config.yaml
-
-    set -xU BAT_THEME $BAT_LIGHT_THEME
+    sed -i $SED_OPTS "s/$BAT_DARK_THEME/$BAT_LIGHT_THEME/g" ~/.config/bat/config
 fi
