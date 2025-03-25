@@ -5,6 +5,7 @@ theme "catppuccin-latte"
 copy_on_select false
 default_layout "compact"
 scrollback_editor "lvim"
+macos-option-as-alt true
 
 keybinds {
     unbind "Ctrl q"
