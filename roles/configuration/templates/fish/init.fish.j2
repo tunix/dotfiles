@@ -9,5 +9,6 @@ if status is-login
     set -Ux XDG_CONFIG_HOME $HOME/.config
 
     # set EDITOR
+    set -eg EDITOR
     set -Ux EDITOR {{ editor.name }}
 end
