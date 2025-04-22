@@ -43,6 +43,7 @@ shell:
   path: ~/.cargo/bin
 
 editor:
+  name: lvim
   colors:
     lunarvim:
       light: catppuccin-latte
