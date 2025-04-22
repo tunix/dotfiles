@@ -44,3 +44,6 @@
 
 - name: Configure bat
   include_tasks: bat.yml
+
+- name: Configure solaar
+  include_tasks: solaar.yml
