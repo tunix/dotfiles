@@ -13,14 +13,14 @@ abbrs:
 terminal:
   multiplexer: zellij
   window:
-    width: 200
-    height: 48
+    width: 150
+    height: 45
     opacity: 0.95
     blur: true
     decorations: "TITLE | RESIZE"
   font:
-    size: 10
-    face: FiraCode Nerd Font
+    size: 12
+    face: JetBrains Mono
   colors:
     ghostty:
       light: catppuccin-latte
