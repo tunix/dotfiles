@@ -47,6 +47,9 @@
         - zoxide
         - zellij
 
+      casks:
+        - font-hack-nerd-font
+
     gnome:
       extensions:
         install:
