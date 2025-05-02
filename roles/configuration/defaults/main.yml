@@ -13,8 +13,8 @@ abbrs:
 terminal:
   multiplexer: zellij
   window:
-    width: 150
-    height: 45
+    width: 160
+    height: 40
     opacity: 0.95
     blur: true
     decorations: "TITLE | RESIZE"
