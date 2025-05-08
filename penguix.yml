@@ -48,7 +48,7 @@
         - zellij
 
       casks:
-        - font-hack-nerd-font
+        - font-jetbrains-mono
 
     gnome:
       extensions:
