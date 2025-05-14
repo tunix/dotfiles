@@ -72,7 +72,6 @@
       - com.discordapp.Discord
       - com.getpostman.Postman
       - com.github.huluti.Curtail
-      - com.github.maoschanz.drawing
       - com.google.Chrome
       - com.protonvpn.www
       - com.rafaelmardojai.Blanket
