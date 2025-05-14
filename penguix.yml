@@ -11,7 +11,6 @@
     aliases:
       vim: lvim
       v: lvim
-      # aws: op plugin run -- aws
 
     abbrs:
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
@@ -54,13 +53,9 @@
       extensions:
         install:
           - 2236 # night theme switcher
-          # - 1460 # vitals
-          # - 545  # hide top bar
           - 7065 # tiling shell
         enabled:
           - nightthemeswitcher@romainvigier.fr
-          # - Vitals@CoreCoding.com
-          # - hidetopbar@mathieu.bidon.ca
           - caffeine@patapon.info
           - tilingshell@ferrarodomenico.com
         disabled:
@@ -69,6 +64,7 @@
           - search-light@icedman.github.com
 
     flatpaks:
+      - app.drey.Damask
       - app.drey.Warp
       - com.belmoussaoui.Decoder
       - com.belmoussaoui.Obfuscate
@@ -77,26 +73,31 @@
       - com.getpostman.Postman
       - com.github.huluti.Curtail
       - com.github.maoschanz.drawing
-      - com.gitlab.newsflash
       - com.google.Chrome
       - com.protonvpn.www
       - com.rafaelmardojai.Blanket
       - com.slack.Slack
       - com.spotify.Client
+      - com.stremio.Stremio
       - com.usebottles.bottles
       - de.haeckerfelix.Fragments
       - de.haeckerfelix.Shortwave
       - dev.zed.Zed
       - fr.handbrake.ghb
       - in.srev.guiscrcpy
-      - io.gitlab.liferooter.TextPieces
+      - io.beekeeperstudio.Studio
+      - io.github.nroduit.Weasis
       - io.github.seadve.Mousai
+      - io.gitlab.liferooter.TextPieces
+      - io.gitlab.news_flash.NewsFlash
+      - it.mijorus.gearlever
       - md.obsidian.Obsidian
       - org.gimp.GIMP
-      - org.gnome.design.Lorem
-      - org.gnome.gitlab.YaLTeR.VideoTrimmer
       - org.gnome.Snapshot
       - org.gnome.SoundRecorder
+      - org.gnome.design.Lorem
+      - org.gnome.gitlab.YaLTeR.VideoTrimmer
+      - org.gnome.seahorse.Application
       - org.libreoffice.LibreOffice
       - org.localsend.localsend_app
       - org.raspberrypi.rpi-imager
