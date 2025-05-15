@@ -8,6 +8,9 @@
       enabled: true
       agent: ~/.1password/agent.sock
 
+    ghostty:
+      config_path: .var/app/com.mitchellh.ghostty/config/ghostty
+
     aliases:
       vim: lvim
       v: lvim

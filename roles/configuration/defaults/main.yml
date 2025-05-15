@@ -51,3 +51,6 @@ editor:
 
 onepassword:
   enabled: false
+
+ghostty:
+  config_path: .config/ghostty
