@@ -1,8 +1,13 @@
 - name: Configure users
   include_tasks: user.yml
+  when: user | dict2items | length > 0
 
 - name: Configure repositories
   include_tasks: repo.yml
 
 - name: Install packages
   include_tasks: package.yml
+
+- name: Install AWS tools
+  include_tasks: aws.yml
+  when: lookup('pipe', 'which aws 2>/dev/null || echo ""') != ""
