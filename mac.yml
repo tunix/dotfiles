@@ -84,7 +84,6 @@
       casks:
         - 1password
         - 1password-cli
-        - anydesk
         - balenaetcher
         - beekeeper-studio
         - brave-browser
@@ -109,11 +108,9 @@
         - spotify
         - tailscale
         - telegram-desktop
-        - ticktick
         - visual-studio-code
         - wezterm
         - wireshark
-        - zed
         - zoom
 
   roles:
