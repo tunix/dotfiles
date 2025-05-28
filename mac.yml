@@ -8,7 +8,7 @@
       midas: true
 
     terminal:
-      app: wezterm
+      app: ghostty
       font:
         size: 13
 

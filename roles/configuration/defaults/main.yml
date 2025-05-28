@@ -11,6 +11,7 @@ abbrs:
   port: lsof -i
 
 terminal:
+  app: ghostty
   multiplexer: zellij
   window:
     width: 160

@@ -26,6 +26,10 @@
   include_tasks: wezterm.yml
   when: terminal.app | default(omit) == 'wezterm'
 
+- name: Configure ghostty
+  include_tasks: ghostty.yml
+  when: terminal.app | default(omit) == 'ghostty'
+
 - name: Configure zellij
   include_tasks: zellij.yml
   when: terminal.multiplexer == 'zellij'
