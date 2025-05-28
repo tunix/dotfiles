@@ -40,7 +40,8 @@ terminal:
       dark: Catppuccin Frappe
 
 shell:
-  bin: /opt/homebrew/bin/fish
+  bin: /usr/bin/fish
+  args: -l
   path: ~/.cargo/bin
 
 editor:

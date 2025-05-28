@@ -13,8 +13,8 @@ return {
     default_cursor_style = "BlinkingUnderline",
 
     {% if shell.bin is defined %}
-        {% if shell.arg is defined %}
-        default_prog = { "{{ shell.bin }}", "{{ shell.arg }}" }
+        {% if shell.args is defined %}
+        default_prog = { "{{ shell.bin }}", "{{ shell.args }}" }
         {% else %}
         default_prog = { "{{ shell.bin }}" }
         {% endif %}

@@ -14,7 +14,7 @@
 
     shell:
       bin: /opt/homebrew/bin/fish
-      arg: -l
+      args: -l
       path: /opt/homebrew/bin /opt/homebrew/sbin ~/.cargo/bin
 
     onepassword:
