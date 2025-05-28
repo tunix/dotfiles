@@ -1,6 +1,9 @@
 - hosts: localhost
 
   vars:
+    configure:
+      maven: true
+
     work:
       midas: true
 
@@ -30,12 +33,8 @@
         - dive
         - eza
         - golang
-        - helm
         - httpie
         - hugo
-        - k9s
-        - kubectl
-        - kubectx
         - lazygit
         - minio-mc
         - neovim
