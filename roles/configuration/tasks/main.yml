@@ -22,10 +22,6 @@
   include_tasks: ssh.yml
   when: configure.ssh
 
-- name: Configure wezterm
-  include_tasks: wezterm.yml
-  when: terminal.app | default(omit) == 'wezterm'
-
 - name: Configure ghostty
   include_tasks: ghostty.yml
   when: terminal.app | default(omit) == 'ghostty'
