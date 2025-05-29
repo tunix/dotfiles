@@ -1,0 +1,4 @@
+- name: Configure hidden files
+  copy:
+    src: hidden.txt
+    dest: "{{ ansible_user_dir }}/.hidden"

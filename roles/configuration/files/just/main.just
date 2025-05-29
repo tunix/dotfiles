@@ -5,7 +5,7 @@ default:
 
 update-skel:
     #!/usr/bin/bash
-    rsync -avz /etc/skel $HOME
+    rsync -avz /etc/skel/ $HOME
 
 install-lunarvim:
     #!/usr/bin/bash
