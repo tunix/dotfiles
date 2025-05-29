@@ -30,7 +30,7 @@ if [[ "$COLOR_SCHEME_PREFERENCE" == "dark" ]]; then
     sed -i $SED_OPTS "s/$BAT_LIGHT_THEME/$BAT_DARK_THEME/g" ~/.config/bat/config &> /dev/null
 
     if [[ "$OS" != "Darwin" ]]; then
-        dconf write /org/gnome/desktop/interface/color-scheme "''"
+        dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
     fi
 else
     echo "Enabling light mode..."
