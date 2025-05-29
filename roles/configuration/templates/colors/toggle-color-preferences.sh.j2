@@ -28,6 +28,10 @@ if [[ "$COLOR_SCHEME_PREFERENCE" == "dark" ]]; then
     sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/" ~/.config/lvim/config.lua
     sed -i $SED_OPTS "s/skin:.*/skin: $K9S_DARK_THEME/g" ~/.config/k9s/config.yaml
     sed -i $SED_OPTS "s/$BAT_LIGHT_THEME/$BAT_DARK_THEME/g" ~/.config/bat/config
+
+    if [[ "$OS" != "Darwin" ]]; then
+        dconf reset /org/gnome/desktop/interface/color-scheme
+    fi
 else
     echo "Enabling light mode..."
 
@@ -36,4 +40,8 @@ else
     sed -i $SED_OPTS "s/lvim.colorscheme = \"$LUNARVIM_DARK_THEME\"/lvim.colorscheme = \"$LUNARVIM_LIGHT_THEME\"/" ~/.config/lvim/config.lua
     sed -i $SED_OPTS "s/skin:.*/skin: $K9S_LIGHT_THEME/g" ~/.config/k9s/config.yaml
     sed -i $SED_OPTS "s/$BAT_DARK_THEME/$BAT_LIGHT_THEME/g" ~/.config/bat/config
+
+    if [[ "$OS" != "Darwin" ]]; then
+        dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+    fi
 fi
