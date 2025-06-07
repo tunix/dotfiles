@@ -102,8 +102,6 @@
       - org.gnome.gitlab.YaLTeR.VideoTrimmer
       - org.gnome.seahorse.Application
       - org.libreoffice.LibreOffice
-      - org.localsend.localsend_app
-      - org.raspberrypi.rpi-imager
       - org.telegram.desktop
       - org.videolan.VLC
       - us.zoom.Zoom
