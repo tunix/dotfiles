@@ -1,6 +1,7 @@
 - name: Place solaar configuration
   copy:
     src: "{{ role_path }}/files/solaar"
-    dest: "{{ ansible_user_dir }}/.var/app/io.github.pwr_solaar.solaar/config"
+    # dest: "{{ ansible_user_dir }}/.var/app/io.github.pwr_solaar.solaar/config"
+    dest: "{{ ansible_user_dir }}/.config"
     directory_mode: 0700
     mode: 0600
