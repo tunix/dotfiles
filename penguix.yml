@@ -26,6 +26,7 @@
         - hashicorp/tap
 
       packages:
+        - argocd
         - asciinema
         - awscli
         - bat
