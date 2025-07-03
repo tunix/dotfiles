@@ -39,7 +39,7 @@ terminal:
 shell:
   bin: /usr/bin/fish
   args: -l
-  path: ~/.cargo/bin
+  path: ~/.cargo/bin ~/.krew/bin
 
 editor:
   name: lvim
