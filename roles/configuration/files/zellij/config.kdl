@@ -6,6 +6,13 @@ copy_on_select false
 // default_layout "compact"
 scrollback_editor "lvim"
 
+ui {
+    pane_frames {
+        rounded_corners true
+        hide_session_name true
+    }
+}
+
 keybinds {
     unbind "Ctrl q"
 }
