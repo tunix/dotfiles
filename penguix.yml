@@ -37,6 +37,7 @@
         - hugo
         - kafkactl
         - lazygit
+        - lego
         - minio-mc
         - neovim
         - nvm
