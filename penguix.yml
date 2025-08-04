@@ -44,7 +44,7 @@
         - openjdk@17
         - openjdk@21
         - ripgrep
-        - rustup-init
+        - rustup
         - sd
         - hashicorp/tap/terraform
         - the_silver_searcher

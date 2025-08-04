@@ -69,7 +69,7 @@
         - openjdk@17
         - openjdk@21
         - ripgrep
-        - rustup-init
+        - rustup
         - sshpass
         - starship
         - telnet
