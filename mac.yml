@@ -21,13 +21,24 @@
       enabled: true
       agent: ~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
+    aliases:
+      l1: eza -1
+      ls: eza
+      ll: eza -l --icons=auto --group-directories-first
+
+      grep: ug
+      egrep: ug -E
+      fgrep: ug -F
+      xzgrep: ug -z
+      xzegrep: ug -zE
+      xzfgrep: ug -zF
+
+      cat: bat --style=plain --pager=never
+
+      v: lvim
+
     abbrs:
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
-
-    aliases:
-      vim: lvim
-      v: lvim
-      just: just --unstable
 
     brew:
       repos:
@@ -77,6 +88,7 @@
         - telnet
         - hashicorp/tap/terraform
         - the_silver_searcher
+        - ugrep
         - uptimed
         - watch
         - wget

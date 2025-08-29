@@ -15,7 +15,6 @@
     #   config_path: .var/app/com.mitchellh.ghostty/config/ghostty
 
     aliases:
-      vim: lvim
       v: lvim
 
     abbrs:
