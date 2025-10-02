@@ -20,6 +20,11 @@
     abbrs:
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
 
+    terminal:
+      window:
+        width: 185
+        height: 50
+
     brew:
       repos:
         - hashicorp/tap
