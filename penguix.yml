@@ -15,7 +15,7 @@
     #   config_path: .var/app/com.mitchellh.ghostty/config/ghostty
 
     aliases:
-      v: lvim
+      v: nvim
 
     abbrs:
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
