@@ -35,7 +35,7 @@
 
       cat: bat --style=plain --pager=never
 
-      v: lvim
+      v: nvim
 
     abbrs:
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
