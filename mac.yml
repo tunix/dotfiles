@@ -76,6 +76,7 @@
         - kubectx
         - lazygit
         - localsend
+        - luarocks
         - minio-mc
         - neovim
         - opencode
