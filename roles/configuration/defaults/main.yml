@@ -39,7 +39,7 @@ shell:
   path: ~/.cargo/bin ~/.krew/bin
 
 editor:
-  name: lvim
+  name: nvim
   colors:
     lunarvim:
       light: catppuccin-latte
