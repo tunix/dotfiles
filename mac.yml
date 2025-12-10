@@ -61,11 +61,12 @@
         - fish
         - fzf
         - gh
-        - golang
         - gnu-tar
+        - golang
+        - hashicorp/tap/terraform
         - helm
-        - httpie
         - hl
+        - httpie
         - ipcalc
         - jq
         - just
@@ -87,14 +88,13 @@
         - sshpass
         - starship
         - telnet
-        - hashicorp/tap/terraform
         - the_silver_searcher
         - ugrep
         - uptimed
         - watch
         - wget
-        - zoxide
         - zellij
+        - zoxide
 
       casks:
         - 1password
@@ -112,11 +112,10 @@
         - lens
         - libreoffice
         - logi-options-plus
-        - windows-app
         - obsidian
         - openvpn-connect
-        - protonvpn
         - postman
+        - protonvpn
         - rar
         - scroll-reverser
         - slack
@@ -124,7 +123,7 @@
         - tailscale
         - telegram-desktop
         - visual-studio-code
-        - wireshark
+        - windows-app
         - zoom
 
   roles:
