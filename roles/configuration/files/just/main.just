@@ -13,7 +13,7 @@ update-brew-casks:
     #/bin/bash
 
     for pkg in $(brew list --casks); do
-        brew upgrade --cask $pkg
+    brew upgrade --cask $pkg
     done
 
 alias ubc := update-brew-casks
