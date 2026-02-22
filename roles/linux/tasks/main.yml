@@ -1,7 +1,3 @@
-- name: Configure users
-  include_tasks: user.yml
-  when: user | dict2items | length > 0
-
 - name: Configure repositories
   include_tasks: repo.yml
 

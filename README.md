@@ -5,9 +5,8 @@ my personal dot files
 
 ## Installation
 
-Please install `ansible` in order to proceed.
+Please install `ansible` first before executing the following commands.
 
 ```
-$ ansible-galaxy collection install -r requirements.yml
 $ ansible-playbook penguix.yml
 ```

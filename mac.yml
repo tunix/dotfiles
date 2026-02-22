@@ -17,10 +17,6 @@
       args: -l
       path: /opt/homebrew/bin /opt/homebrew/sbin ~/.cargo/bin
 
-    onepassword:
-      enabled: true
-      agent: ~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock
-
     aliases:
       l1: eza -1
       ls: eza

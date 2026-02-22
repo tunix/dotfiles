@@ -1,6 +1,0 @@
-- name: Copy lvim configuration
-  copy:
-    src: files/lvim/
-    dest: "{{ ansible_user_dir }}/.config/lvim"
-    directory_mode: 0700
-    mode: 0600

@@ -7,13 +7,6 @@
     work:
       midas: true
 
-    onepassword:
-      enabled: true
-      agent: ~/.1password/agent.sock
-
-    # ghostty:
-    #   config_path: .var/app/com.mitchellh.ghostty/config/ghostty
-
     aliases:
       v: nvim
 
@@ -24,39 +17,6 @@
       window:
         width: 185
         height: 50
-
-    brew:
-      repos:
-        - hashicorp/tap
-
-      packages:
-        - argocd
-        - asciinema
-        - awscli
-        - bat
-        - btop
-        - dive
-        - golang
-        - httpie
-        - hugo
-        - kafkactl
-        - lazygit
-        - lego
-        - minio-mc
-        - neovim
-        - nvm
-        - openjdk@17
-        - openjdk@21
-        - ripgrep
-        - rustup
-        - sd
-        - hashicorp/tap/terraform
-        - the_silver_searcher
-        - zoxide
-        - zellij
-
-      casks:
-        - font-jetbrains-mono
 
     gnome:
       extensions:
@@ -76,50 +36,8 @@
           - logomenu@aryan_k
           - search-light@icedman.github.com
 
-    flatpaks:
-      - app.drey.Damask
-      - app.drey.Warp
-      - com.belmoussaoui.Decoder
-      - com.belmoussaoui.Obfuscate
-      - com.brave.Browser
-      - com.discordapp.Discord
-      - com.getpostman.Postman
-      - com.github.huluti.Curtail
-      - com.google.Chrome
-      - com.protonvpn.www
-      - com.rafaelmardojai.Blanket
-      - com.slack.Slack
-      - com.spotify.Client
-      - com.stremio.Stremio
-      - com.usebottles.bottles
-      - de.haeckerfelix.Fragments
-      - de.haeckerfelix.Shortwave
-      - dev.zed.Zed
-      - fr.handbrake.ghb
-      - in.srev.guiscrcpy
-      - io.beekeeperstudio.Studio
-      - io.github.nroduit.Weasis
-      - io.github.seadve.Mousai
-      - io.gitlab.liferooter.TextPieces
-      - io.gitlab.news_flash.NewsFlash
-      - io.github.pwr_solaar.solaar
-      - it.mijorus.gearlever
-      - md.obsidian.Obsidian
-      - org.gimp.GIMP
-      - org.gnome.Snapshot
-      - org.gnome.SoundRecorder
-      - org.gnome.design.Lorem
-      - org.gnome.gitlab.YaLTeR.VideoTrimmer
-      - org.gnome.seahorse.Application
-      - org.libreoffice.LibreOffice
-      - org.telegram.desktop
-      - org.videolan.VLC
-      - us.zoom.Zoom
-
   roles:
-    - brew
     - linux
     - gnome
-    - flatpak
     - configuration
     - work
