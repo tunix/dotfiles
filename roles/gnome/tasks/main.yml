@@ -1,2 +1,5 @@
 - name: Configure extensions
   include_tasks: extensions/main.yml
+
+- name: Configure GNOME files
+  include_tasks: files.yml
