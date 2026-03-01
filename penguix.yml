@@ -25,16 +25,6 @@
           - 7065 # tiling shell
           - 5410 # grand theft focus
           - 6162 # solaar extension
-        enabled:
-          - nightthemeswitcher@romainvigier.fr
-          - caffeine@patapon.info
-          - tilingshell@ferrarodomenico.com
-          - grand-theft-focus@zalckos.github.com
-          - solaar-extension@sidevesh
-        disabled:
-          - dash-to-dock@micxgx.gmail.com
-          - logomenu@aryan_k
-          - search-light@icedman.github.com
 
   roles:
     - linux
