@@ -1,4 +1,4 @@
 - name: Configure git
   template:
     src: git/gitconfig.j2
-    dest: "{{ ansible_user_dir }}/.gitconfig"
+    dest: "{{ ansible_facts.user_dir }}/.gitconfig"

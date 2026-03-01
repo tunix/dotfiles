@@ -1,6 +1,6 @@
 - name: Check if GNOME Shell extension is already installed - {{ gnome_extension_info.name }}
   stat:
-    path: "{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/{{ gnome_extension_info.uuid }}/metadata.json"
+    path: "{{ ansible_facts.user_dir }}/.local/share/gnome-shell/extensions/{{ gnome_extension_info.uuid }}/metadata.json"
   register: r_gnome_extension_check_existing
 
 - name: Install Gnome Shell extension - {{ gnome_extension_info.name }}

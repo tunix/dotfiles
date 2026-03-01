@@ -6,7 +6,7 @@
 
 - name: Ensure local bin directory exists
   file:
-    path: "{{ ansible_user_dir }}/.local/bin"
+    path: "{{ ansible_facts.user_dir }}/.local/bin"
     state: directory
     mode: '0755'
 
@@ -15,7 +15,7 @@
     mkdir -p /tmp/aws_session_manager
     cd /tmp/aws_session_manager
     rpm2cpio /tmp/session-manager-plugin.rpm | cpio -idmv
-    cp /tmp/aws_session_manager/usr/local/sessionmanagerplugin/bin/session-manager-plugin "{{ ansible_user_dir }}/.local/bin/"
-    chmod +x "{{ ansible_user_dir }}/.local/bin/session-manager-plugin"
+    cp /tmp/aws_session_manager/usr/local/sessionmanagerplugin/bin/session-manager-plugin "{{ ansible_facts.user_dir }}/.local/bin/"
+    chmod +x "{{ ansible_facts.user_dir }}/.local/bin/session-manager-plugin"
   args:
-    creates: "{{ ansible_user_dir }}/.local/bin/session-manager-plugin"
+    creates: "{{ ansible_facts.user_dir }}/.local/bin/session-manager-plugin"

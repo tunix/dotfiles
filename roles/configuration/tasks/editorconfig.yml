@@ -1,4 +1,4 @@
 - name: Configure editorconfig
   copy:
     src: "{{ role_path }}/files/editorconfig/editorconfig"
-    dest: "{{ ansible_user_dir }}/.editorconfig"
+    dest: "{{ ansible_facts.user_dir }}/.editorconfig"
