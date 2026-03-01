@@ -1,5 +1,0 @@
-- name: Copy avatar
-  become: true
-  copy:
-    src: avatar.jpg
-    dest: "/var/lib/AccountsService/users/{{ ansible_facts.user }}"

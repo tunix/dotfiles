@@ -1,5 +1,2 @@
-- name: Configure avatar
-  include_tasks: avatar.yml
-
 - name: Configure extensions
   include_tasks: extensions/main.yml
