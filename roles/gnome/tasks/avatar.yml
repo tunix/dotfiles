@@ -1,4 +1,5 @@
 - name: Copy avatar
+  become: true
   copy:
     src: avatar.jpg
-    dest: "{{ ansible_user_dir }}/.face"
+    dest: "/var/lib/AccountsService/users/{{ ansible_facts.user }}"
