@@ -11,9 +11,6 @@
 - name: Configure git
   include_tasks: git.yml
 
-- name: Configure lvim
-  include_tasks: lvim.yml
-
 - name: Configure maven
   include_tasks: maven.yml
   when: configure.maven

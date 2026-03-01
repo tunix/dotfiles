@@ -4,7 +4,7 @@ pane_frames false
 theme "catppuccin-latte"
 copy_on_select false
 // default_layout "compact"
-scrollback_editor "lvim"
+scrollback_editor "nvim"
 
 ui {
     pane_frames {
