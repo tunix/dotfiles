@@ -8,6 +8,7 @@
       midas: true
 
     aliases:
+      oc: opencode
       v: nvim
 
     abbrs:

@@ -31,6 +31,8 @@
 
       cat: bat --style=plain --pager=never
 
+      oc: opencode
+
       v: nvim
 
     abbrs:

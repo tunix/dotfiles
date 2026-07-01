@@ -17,6 +17,7 @@
       lt: exa -lh --group-directories-first --all --tree
 
     aliases:
+      oc: opencode
       bat: batcat
 
     repositories:
