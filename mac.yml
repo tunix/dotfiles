@@ -47,7 +47,6 @@
         - sst/tap
 
       packages:
-        - asciinema
         - awscli
         - bash
         - bat
@@ -81,6 +80,7 @@
         - opencode
         - openjdk@17
         - openjdk@21
+        - opentofu
         - ripgrep
         - rustup
         - sshpass
@@ -97,29 +97,18 @@
       casks:
         - 1password
         - 1password-cli@beta
-        - balenaetcher
         - beekeeper-studio
         - brave-browser
         - caffeine
-        - discord
-        - firefox
         - font-jetbrains-mono
         - ghostty
-        - handbrake
-        - jetbrains-toolbox
-        - lens
         - libreoffice
-        - logi-options-plus
         - obsidian
+        - openlogi
         - openvpn-connect
         - postman
-        - protonvpn
         - rar
-        - slack
         - spotify
-        - tailscale
-        - telegram-desktop
-        - visual-studio-code
         - windows-app
         - zoom
 
