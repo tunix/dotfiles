@@ -3,3 +3,6 @@
 
 - name: Configure GNOME files
   include_tasks: files.yml
+
+- name: Configure autostart
+  include_tasks: autostart.yml

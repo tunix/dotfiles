@@ -1,0 +1,9 @@
+- name: Ensure autostart directory exists
+  file:
+    path: "{{ ansible_facts.user_dir }}/.config/autostart"
+    state: directory
+
+- name: Deploy autostart desktop files
+  copy:
+    src: "autostart/"
+    dest: "{{ ansible_facts.user_dir }}/.config/autostart/"

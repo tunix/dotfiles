@@ -1,0 +1,32 @@
+[Desktop Entry]
+Name[ar]=Damask
+Name[bg]=Damask
+Name[de]=Damask
+Name[es]=Damask
+Name[et]=Damask
+Name[fi]=Damask
+Name[fr]=Damask
+Name[hi]=Damask
+Name[nl]=Damask
+Name[ru]=Damask
+Name[tr]=Damask
+Name=Damask
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=damask app.drey.Damask --background
+Icon=app.drey.Damask
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
+Keywords[ar]=خلفية;
+Keywords[bg]=wallpaper;тапет;
+Keywords[de]=Hintergrund;
+Keywords[es]=wallpaper;fondo;
+Keywords[et]=wallpaper;taustapilt;päevapilt;taustapildid;päevapildid;
+Keywords[fi]=wallpaper;taustakuva;
+Keywords[fr]=arrière-plan;fond d'écran;papier peint;
+Keywords[hi]=वॉलपेपर;
+Keywords[nl]=wallpaper;achtergrond;
+Keywords[ru]=обои;
+Keywords[tr]=wallpaper;duvar kağıdı;
+Keywords=wallpaper;
+X-Flatpak=app.drey.Damask
