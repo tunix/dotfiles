@@ -1,6 +1,5 @@
 configure:
   maven: false
-  ssh: true
 
 abbrs:
   rm: rm -i

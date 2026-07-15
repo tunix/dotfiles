@@ -1,3 +1,13 @@
+- name: Ensure just config folder is created
+  file:
+    path: "{{ ansible_facts.user_dir }}/.config/just/"
+    state: directory
+
+- name: Copy just modules
+  copy:
+    src: "{{ role_path }}/files/just/modules/"
+    dest: "{{ ansible_facts.user_dir }}/.config/just/"
+
 - name: Configure just
   copy:
     src: "{{ role_path }}/files/just/main.just"

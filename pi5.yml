@@ -1,9 +1,6 @@
 - hosts: all
 
   vars:
-    configure:
-      ssh: false
-
     user:
       groups:
         - docker

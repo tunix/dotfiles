@@ -22,8 +22,8 @@ Requires `ansible` installed first. All playbooks target `localhost`.
 - **Variables are merged** (not overridden) due to `hash_behaviour=merge`. A var in a playbook merges into the role default rather than replacing it.
 - **Templates (.j2)** for files needing variable substitution; static files live in `roles/<role>/files/`.
 - **Color management** uses `toggle-color-preferences.sh` (light/dark toggle across ghostty, zellij, k9s, bat, lunarvim). macOS also has a LaunchAgent for automatic toggle.
-- **SSH task** (`configuration/tasks/ssh.yml`) **deletes** `~/.ssh` then recreates it — be careful.
-- **Work role** (`midas.yml`) also **deletes** `~/.kube` before regenerating kubeconfigs.
+- **Destructive operations live in just, not Ansible.** `~/.ssh` reset is `just ssh-reset` (`roles/configuration/files/just/modules/ssh.just`); `~/.kube` reset/merge is `just kube-reset` / `kube-sync` / `kube-merge` (`roles/work/files/midas/just/kube.just`). Ansible never deletes these directories.
+- **just layout**: `main.just` → `~/.justfile`; everything in `files/just/modules/` is copied as-is to `~/.config/just/` (no list to maintain — drop a file in, add an import to `main.just`); work-role just files → `~/.config/just/midas/` (imported via `import?`).
 - **ignore_errors: true** on brew packages, flatpak apps, and linux package install — transient failures expected.
 - **bat cache rebuild** via handler triggered on config change.
 - **Maven config** is gated on `configure.maven: true` (set in `mac.yml`/`penguix.yml`).
