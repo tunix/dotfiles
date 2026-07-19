@@ -3,6 +3,13 @@
     path: "{{ ansible_facts.user_dir }}/.config/nvim/lua/plugins"
   register: lazyvim_plugins_dir
 
+- name: Install LazyVim core configuration
+  template:
+    src: lazyvim/core.lua.j2
+    dest: "{{ ansible_facts.user_dir }}/.config/nvim/lua/plugins/core.lua"
+    mode: "0644"
+  when: lazyvim_plugins_dir.stat.isdir | default(false)
+
 - name: Install catppuccin colorscheme configuration
   template:
     src: lazyvim/catppuccin.lua.j2

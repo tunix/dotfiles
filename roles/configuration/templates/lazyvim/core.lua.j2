@@ -1,0 +1,13 @@
+-- Managed by Ansible (dotfiles): roles/configuration/templates/lazyvim/core.lua.j2
+-- LazyVim core configuration: colorscheme and base settings.
+-- Plugin-specific configs go in their own files under plugins/.
+return {
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = vim.o.background == "light"
+        and "{{ editor.colors.lazyvim.light }}"
+        or "{{ editor.colors.lazyvim.dark }}",
+    },
+  },
+}

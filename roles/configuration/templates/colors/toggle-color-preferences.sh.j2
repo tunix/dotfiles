@@ -37,3 +37,6 @@ else
         dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
     fi
 fi
+
+mkdir -p ~/.cache
+echo "$COLOR_SCHEME_PREFERENCE" > ~/.cache/nvim-theme

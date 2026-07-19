@@ -21,7 +21,7 @@ Requires `ansible` installed first. All playbooks target `localhost`.
 
 - **Variables are merged** (not overridden) due to `hash_behaviour=merge`. A var in a playbook merges into the role default rather than replacing it.
 - **Templates (.j2)** for files needing variable substitution; static files live in `roles/<role>/files/`.
-- **Color management** uses `toggle-color-preferences.sh` (light/dark toggle across ghostty, zellij, k9s, bat, lunarvim). macOS also has a LaunchAgent for automatic toggle.
+- **Color management** uses `toggle-color-preferences.sh` (light/dark toggle across ghostty, zellij, k9s, bat). macOS also has a LaunchAgent for automatic toggle.
 - **Destructive operations live in just, not Ansible.** `~/.ssh` reset is `just ssh-reset` (`roles/configuration/files/just/modules/ssh.just`); `~/.kube` reset/merge is `just kube-reset` / `kube-sync` / `kube-merge` (`roles/work/files/midas/just/kube.just`). Ansible never deletes these directories.
 - **just layout**: `main.just` → `~/.justfile`; everything in `files/just/modules/` is copied as-is to `~/.config/just/` (no list to maintain — drop a file in, add an import to `main.just`); work-role just files → `~/.config/just/midas/` (imported via `import?`).
 - **ignore_errors: true** on brew packages, flatpak apps, and linux package install — transient failures expected.
@@ -38,6 +38,23 @@ Requires `ansible` installed first. All playbooks target `localhost`.
 | `pi5.yml` | Raspberry Pi 5 (roles: linux, configuration) |
 | `roles/configuration/tasks/main.yml` | Tool config orchestration (includes conditional sub-tasks) |
 | `roles/work/tasks/midas.yml` | Work-specific k8s, git, maven, aws, just config |
+
+## LazyVim ruleset
+
+Templates live in `roles/configuration/templates/lazyvim/` and deploy to `~/.config/nvim/lua/plugins/`.
+
+| File | Responsibility |
+|------|---------------|
+| `core.lua.j2` | LazyVim base: colorscheme selection, diagnostic settings, UI defaults |
+| `catppuccin.lua.j2` | Catppuccin plugin: flavour, background mapping, integrations |
+
+### Rules
+
+1. **`core.lua` is the single source of truth** for `colorscheme`. Plugin files never set it.
+2. **One file per plugin.** Plugin-specific opts/integrations go in a dedicated `plugins/<name>.lua`.
+3. **New plugin?** Add a template under `templates/lazyvim/` and a deploy task in `tasks/lazyvim.yml`. Keep the name matching the plugin (e.g., `tokyonight.lua.j2`).
+4. **`defaults/main.yml`** holds variable values (e.g., `editor.colors.lazyvim.light: latte`). Templates reference these; never hardcode colours in templates.
+5. **Theme switching** follows the chain: `toggle-color-preferences.sh` → `dconf`/`defaults` → Ghostty (DEC mode 2031) → `vim.o.background` → `core.lua` selects colourscheme → plugin applies flavour.
 
 ## Submodules
 
