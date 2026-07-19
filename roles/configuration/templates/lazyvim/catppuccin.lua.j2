@@ -1,0 +1,22 @@
+-- Managed by Ansible (dotfiles): roles/configuration/templates/lazyvim/catppuccin.lua.j2
+-- Follows the system color scheme: ghostty notifies nvim on theme changes
+-- (DEC mode 2031), nvim updates 'background', catppuccin picks the flavour.
+return {
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      flavour = "auto",
+      background = {
+        light = "{{ editor.colors.lazyvim.light }}",
+        dark = "{{ editor.colors.lazyvim.dark }}",
+      },
+    },
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
+  },
+}

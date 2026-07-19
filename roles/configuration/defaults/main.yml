@@ -40,9 +40,9 @@ shell:
 editor:
   name: nvim
   colors:
-    lunarvim:
-      light: catppuccin-latte
-      dark: catppuccin-frappe
+    lazyvim:
+      light: latte
+      dark: frappe
 
 onepassword:
   enabled: false

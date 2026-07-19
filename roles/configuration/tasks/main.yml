@@ -11,6 +11,10 @@
 - name: Configure git
   include_tasks: git.yml
 
+- name: Configure lazyvim
+  include_tasks: lazyvim.yml
+  when: editor.name == 'nvim'
+
 - name: Configure maven
   include_tasks: maven.yml
   when: configure.maven
