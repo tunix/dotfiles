@@ -11,8 +11,8 @@ terminal:
   multiplexer: zellij
   window:
     width: 160
-    height: 40
-    opacity: 0.95
+    height: 42
+    opacity: 0.7
     blur: true
     decorations: "TITLE | RESIZE"
   font:
