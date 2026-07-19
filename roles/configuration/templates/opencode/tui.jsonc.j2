@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+
+  "keybinds": {
+{% for group, binds in opencode.tui.keybinds.items() %}
+{% for action, key in binds.items() %}
+    "{{ group }}.{{ action }}": "{{ key }}"{% if not loop.last %},{% endif %}
+
+{% endfor %}
+{% endfor %}
+  },
+
+  "attention": {
+    "enabled": {{ opencode.tui.attention.enabled | lower }},
+    "notifications": {{ opencode.tui.attention.notifications | lower }},
+    "sound": {{ opencode.tui.attention.sound | lower }},
+    "volume": {{ opencode.tui.attention.volume }}
+  }
+}

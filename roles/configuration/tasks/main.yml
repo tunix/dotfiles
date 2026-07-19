@@ -44,3 +44,6 @@
 
 - name: Configure solaar
   include_tasks: solaar.yml
+
+- name: Configure opencode
+  include_tasks: opencode.yml

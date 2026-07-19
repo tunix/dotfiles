@@ -1,0 +1,14 @@
+- name: Remove legacy opencode TUI config
+  file:
+    path: "{{ ansible_facts.user_dir }}/.config/opencode/tui.json"
+    state: absent
+
+- name: Configure opencode
+  template:
+    src: opencode/opencode.jsonc.j2
+    dest: "{{ ansible_facts.user_dir }}/.config/opencode/opencode.jsonc"
+
+- name: Configure opencode TUI
+  template:
+    src: opencode/tui.jsonc.j2
+    dest: "{{ ansible_facts.user_dir }}/.config/opencode/tui.jsonc"

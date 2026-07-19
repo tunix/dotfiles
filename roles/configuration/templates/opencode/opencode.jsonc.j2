@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "mcp": {
+{% for name, server in opencode.mcp.items() %}
+    "{{ name }}": {
+      "type": "{{ server.type }}",
+      "command": [
+{% for arg in server.command %}
+        "{{ arg }}"{% if not loop.last %},{% endif %}
+
+{% endfor %}
+      ],
+      "enabled": {{ server.enabled | lower }}
+    }{% if not loop.last %},{% endif %}
+
+{% endfor %}
+  }
+}
