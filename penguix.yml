@@ -26,6 +26,12 @@
           - 7065 # tiling shell
           - 5410 # grand theft focus
           - 6162 # solaar extension
+          - 1319 # gsconnect
+          - 6139 # tailscale qs
+          - 5489 # search light
+          - 517 # caffeine
+          - 615 # appindicator support
+          - 3193 # blur my shell
 
   roles:
     - linux
