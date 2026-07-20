@@ -31,8 +31,6 @@
 
       cat: bat --style=plain --pager=never
 
-      oc: opencode
-
       v: nvim
 
     abbrs:
@@ -41,10 +39,7 @@
     brew:
       repos:
         - esolitos/ipa # for sshpass
-        - localsend/localsend
         - hashicorp/tap
-        - pamburus/tap
-        - sst/tap
 
       packages:
         - awscli
@@ -62,7 +57,6 @@
         - golang
         - hashicorp/tap/terraform
         - helm
-        - hl
         - httpie
         - ipcalc
         - jq
@@ -73,12 +67,7 @@
         - kubectl
         - kubectx
         - lazygit
-        - localsend
-        - luarocks
-        - minio-mc
         - neovim
-        - opencode
-        - openjdk@17
         - openjdk@21
         - opentofu
         - ripgrep
@@ -104,7 +93,6 @@
         - ghostty
         - libreoffice
         - obsidian
-        - openlogi
         - openvpn-connect
         - postman
         - rar
