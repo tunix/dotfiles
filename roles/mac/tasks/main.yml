@@ -5,7 +5,8 @@
     value: "65"
     state: present
     sysctl_set: true
-    reload: true
+    # macOS sysctl has no -p (Linux-only); live value is set via sysctl_set
+    reload: false
 
 - name: Copy notify-color-preference-changes script
   copy:
