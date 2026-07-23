@@ -1,3 +1,8 @@
+- name: Ensure opencode config directory exists
+  file:
+    path: "{{ ansible_facts.user_dir }}/.config/opencode"
+    state: directory
+
 - name: Remove legacy opencode TUI config
   file:
     path: "{{ ansible_facts.user_dir }}/.config/opencode/tui.json"
