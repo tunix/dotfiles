@@ -1,3 +1,12 @@
+- name: Set IPv4 TTL to 65
+  become: true
+  ansible.posix.sysctl:
+    name: net.inet.ip.ttl
+    value: "65"
+    state: present
+    sysctl_set: true
+    reload: true
+
 - name: Copy notify-color-preference-changes script
   copy:
     src: "{{ role_path }}/files/colors/notify-color-preference-changes.sh"
