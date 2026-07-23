@@ -3,6 +3,22 @@
     name: "{{ item }}"
   loop: "{{ brew.repos }}"
 
+- name: Get trusted Homebrew taps
+  ansible.builtin.command:
+    cmd: brew trust --json=v1
+  register: brew_trust_json
+  changed_when: false
+  check_mode: false
+  when: brew.repos | default([]) | length > 0
+
+- name: Trust Homebrew taps
+  ansible.builtin.command:
+    cmd: brew trust {{ item }}
+  loop: "{{ brew.repos }}"
+  when:
+    - brew.repos | default([]) | length > 0
+    - item not in (brew_trust_json.stdout | from_json).taps
+
 - name: Ensure that packages are installed
   homebrew:
     name: "{{ item }}"
@@ -14,4 +30,5 @@
   homebrew_cask:
     name: "{{ item }}"
     install_options: cask
+    sudo_password: "{{ ansible_become_password | default(omit, true) }}"
   loop: "{{ brew.casks }}"

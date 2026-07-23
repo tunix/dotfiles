@@ -25,6 +25,8 @@ Requires `ansible` installed first. All playbooks target `localhost`.
 - **Destructive operations live in just, not Ansible.** `~/.ssh` reset is `just ssh-reset` (`roles/configuration/files/just/modules/ssh.just`); `~/.kube` reset/merge is `just kube-reset` / `kube-sync` / `kube-merge` (`roles/work/files/midas/just/kube.just`). Ansible never deletes these directories.
 - **just layout**: `main.just` → `~/.justfile`; everything in `files/just/modules/` is copied as-is to `~/.config/just/` (no list to maintain — drop a file in, add an import to `main.just`); work-role just files → `~/.config/just/midas/` (imported via `import?`).
 - **ignore_errors: true** on brew packages, flatpak apps, and linux package install — transient failures expected.
+- **Homebrew tap trust (6.0+)**: after `homebrew_tap`, the brew role runs `brew trust <tap>` for each entry in `brew.repos` (idempotent via `brew trust --json=v1`). Required for third-party taps (`hashicorp/tap`, `esolitos/ipa`, …).
+- **Homebrew cask sudo**: `.pkg` casks need an admin password. `homebrew_cask` gets `sudo_password` from `ansible_become_password`. `mac.yml` prompts for it (`vars_prompt`); override with `-e ansible_become_password=…` to skip the prompt. Empty/omit skips `SUDO_ASKPASS`.
 - **bat cache rebuild** via handler triggered on config change.
 - **Maven config** is gated on `configure.maven: true` (set in `mac.yml`/`penguix.yml`).
 - **All commits must follow Conventional Commits**: `<type>(<scope>): <description>`. Types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `style`, `ci`.

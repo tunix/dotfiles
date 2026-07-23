@@ -1,5 +1,13 @@
 - hosts: localhost
 
+  # Needed for .pkg casks (openvpn-connect, windows-app, zoom, …).
+  # Skipped when already set via -e / inventory. Empty skips SUDO_ASKPASS.
+  vars_prompt:
+    - name: ansible_become_password
+      prompt: macOS admin password for Homebrew casks (Enter to skip)
+      private: true
+      default: ""
+
   vars:
     configure:
       maven: true
