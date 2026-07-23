@@ -3,3 +3,7 @@ disabled = true
 
 [kubernetes]
 disabled = false
+
+# gitoxide can false-positive untracked ([!]) on macOS (ignoreCase/precomposeUnicode).
+[git_status]
+use_git_executable = true
