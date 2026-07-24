@@ -1,0 +1,27 @@
+- name: Download AWS Session Manager Plugin
+  get_url:
+    url: "{{ aws.session_manager_plugin.url }}"
+    dest: /tmp/sessionmanager-bundle.zip
+    mode: "0644"
+
+- name: Ensure local bin directory exists
+  file:
+    path: "{{ ansible_facts.user_dir }}/.local/bin"
+    state: directory
+    mode: "0755"
+
+- name: Unzip AWS Session Manager Plugin
+  unarchive:
+    src: /tmp/sessionmanager-bundle.zip
+    dest: /tmp
+    remote_src: true
+    creates: /tmp/sessionmanager-bundle
+
+- name: Install AWS Session Manager Plugin
+  command: >-
+    ./sessionmanager-bundle/install
+    -i {{ ansible_facts.user_dir }}/.local/sessionmanagerplugin
+    -b {{ ansible_facts.user_dir }}/.local/bin/session-manager-plugin
+  args:
+    chdir: /tmp
+    creates: "{{ ansible_facts.user_dir }}/.local/bin/session-manager-plugin"

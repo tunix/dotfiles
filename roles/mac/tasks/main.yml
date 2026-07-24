@@ -8,11 +8,16 @@
     # macOS sysctl has no -p (Linux-only); live value is set via sysctl_set
     reload: false
 
+- name: Install AWS tools
+  include_tasks: aws.yml
+  when: lookup('pipe', 'which aws 2>/dev/null || echo ""') != ""
+
 - name: Copy notify-color-preference-changes script
   copy:
     src: "{{ role_path }}/files/colors/notify-color-preference-changes.sh"
     dest: "{{ ansible_facts.user_dir }}/.local/bin/notify-color-preference-changes.sh"
     mode: 0755
+
 
 - name: Ensure LaunchAgents directory exists
   file:
