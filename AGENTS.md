@@ -22,7 +22,7 @@ Requires `ansible` installed first. All playbooks target `localhost`.
 - **Variables are merged** (not overridden) due to `hash_behaviour=merge`. A var in a playbook merges into the role default rather than replacing it.
 - **Templates (.j2)** for files needing variable substitution; static files live in `roles/<role>/files/`.
 - **Color management** uses `toggle-color-preferences.sh` (light/dark toggle across ghostty, zellij, k9s, bat). macOS also has a LaunchAgent for automatic toggle.
-- **Destructive operations live in just, not Ansible.** `~/.ssh` reset is `just ssh-reset` (`roles/configuration/files/just/modules/ssh.just`); `~/.kube` reset/merge is `just kube-reset` / `kube-sync` / `kube-merge` (`roles/work/files/midas/just/kube.just`). Ansible never deletes these directories.
+- **Destructive operations live in just, not Ansible.** `~/.ssh` reset is `just ssh-reset` (`roles/configuration/files/just/modules/ssh.just`); merged kubeconfig rebuild is `just kube-reset` (`roles/work/files/midas/just/kube.just` — deletes only `~/.kube/config`, then re-merges). Ansible never deletes these directories.
 - **just layout**: `main.just` → `~/.justfile`; everything in `files/just/modules/` is copied as-is to `~/.config/just/` (no list to maintain — drop a file in, add an import to `main.just`); work-role just files → `~/.config/just/midas/` (imported via `import?`).
 - **ignore_errors: true** on brew packages, flatpak apps, and linux package install — transient failures expected.
 - **Homebrew tap trust (6.0+)**: after `homebrew_tap`, the brew role runs `brew trust <tap>` for each entry in `brew.repos` (idempotent via `brew trust --json=v1`). Required for third-party taps (`hashicorp/tap`, `esolitos/ipa`, …).
