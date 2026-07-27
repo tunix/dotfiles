@@ -99,6 +99,7 @@
         - claude
         - claude-code
         - cursor
+        - docker-desktop
         - font-jetbrains-mono
         - ghostty
         - libreoffice
