@@ -96,6 +96,9 @@
         - beekeeper-studio
         - brave-browser
         - caffeine
+        - claude
+        - claude-code
+        - cursor
         - font-jetbrains-mono
         - ghostty
         - libreoffice
