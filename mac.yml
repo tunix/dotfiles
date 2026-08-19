@@ -94,24 +94,9 @@
       casks:
         - 1password-cli
         - beekeeper-studio
-        - brave-browser
-        - caffeine
-        - claude
         - claude-code
-        - cursor
-        - docker-desktop
         - font-jetbrains-mono
-        - ghostty
-        - libreoffice
-        - logi-options+
-        - obsidian
-        - openvpn-connect
-        - postman
         - rar
-        - remote-desktop-manager
-        - spotify
-        - windows-app
-        - zoom
 
   roles:
     - brew
