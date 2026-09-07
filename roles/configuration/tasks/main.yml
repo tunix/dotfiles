@@ -30,6 +30,9 @@
 - name: Configure starship
   include_tasks: starship.yml
 
+- name: Configure atuin
+  include_tasks: atuin.yml
+
 - name: Configure k9s
   include_tasks: k9s.yml
 

@@ -12,3 +12,10 @@ if status is-login
     set -eg EDITOR
     set -Ux EDITOR {{ editor.name }}
 end
+
+if type -q atuin
+    if not test -f $HOME/.config/fish/conf.d/atuin.fish
+        atuin init fish > $HOME/.config/fish/conf.d/atuin.fish
+        source $HOME/.config/fish/conf.d/atuin.fish
+    end
+end
