@@ -80,6 +80,7 @@
         - opentofu
         - ripgrep
         - rustup
+        - sevenzip
         - sshpass
         - starship
         - telnet
@@ -96,7 +97,6 @@
         - beekeeper-studio
         - claude-code
         - font-jetbrains-mono
-        - rar
 
   roles:
     - brew
