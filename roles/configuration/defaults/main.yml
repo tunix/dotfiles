@@ -12,7 +12,7 @@ terminal:
   window:
     width: 160
     height: 42
-    opacity: 0.7
+    opacity: 0.95
     blur: true
     decorations: "TITLE | RESIZE"
   font:
