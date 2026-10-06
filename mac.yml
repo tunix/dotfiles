@@ -14,7 +14,6 @@
 
     work:
       midas: true
-      cursor: true
 
     terminal:
       app: ghostty
