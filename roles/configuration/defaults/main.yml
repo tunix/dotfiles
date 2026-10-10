@@ -53,7 +53,7 @@ ghostty:
 opencode:
   mcp:
     github:
-      enabled: true
+      disabled: false
       type: local
       command:
         - docker
@@ -66,10 +66,9 @@ opencode:
         - GITHUB_OAUTH_CALLBACK_PORT=8085
         - ghcr.io/github/github-mcp-server
 
-  tui:
+  cli:
     keybinds: {}
     attention:
-      enabled: true
       notifications: true
       sound: true
       volume: 1
