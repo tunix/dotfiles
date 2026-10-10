@@ -21,20 +21,9 @@
         width: 160
         height: 42
 
-    gnome:
-      extensions:
-        install:
-          - 2236 # night theme switcher
-          - 7065 # tiling shell
-          - 5410 # grand theft focus
-          - 6162 # solaar extension
-          - 1319 # gsconnect
-          - 6139 # tailscale qs
-          - 5489 # search light
-          - 517 # caffeine
-          - 615 # appindicator support
-          - 3193 # blur my shell
-
+    # GNOME extensions are not installed here: the penguix image ships them
+    # system-wide (/usr/share/gnome-shell/extensions). Role defaults keep
+    # gnome.extensions.{install,enabled,disabled} empty.
   roles:
     - linux
     - gnome
