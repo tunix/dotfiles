@@ -8,7 +8,7 @@
       midas: true
 
     aliases:
-      oc: opencode
+      oc: "op run --env-file=$HOME/.config/opencode/.env -- opencode"
       v: nvim
 
     abbrs:

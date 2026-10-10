@@ -52,8 +52,9 @@ ghostty:
 
 opencode:
   mcp:
-    # PAT is supplied via the environment ({env:...}); export
-    # GITHUB_PERSONAL_ACCESS_TOKEN in your shell before starting opencode.
+    # PAT is supplied via the environment ({env:...}). The `oc` alias launches
+    # opencode through `op run --env-file ~/.config/opencode/.env`, which resolves
+    # the 1Password secret references into env vars for the process only.
     github:
       disabled: false
       type: remote
