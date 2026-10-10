@@ -72,3 +72,11 @@ opencode:
       notifications: true
       sound: true
       volume: 1
+    session:
+      scrollbar: true
+      sidebar: hide
+    animations: true
+    tabs:
+      layout: horizontal
+    scroll:
+      speed: 1
