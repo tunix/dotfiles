@@ -53,8 +53,10 @@ ghostty:
 opencode:
   mcp:
     # PAT is supplied via the environment ({env:...}). The `oc` alias launches
-    # opencode through `op run --env-file ~/.config/opencode/.env`, which resolves
-    # the 1Password secret references into env vars for the process only.
+    # opencode through `op run --no-masking --env-file ~/.config/opencode/.env`,
+    # which resolves the 1Password secret references into env vars for the
+    # process only. --no-masking keeps the TTY intact; without it op run pipes
+    # stdout/stderr for secret masking and opencode's TUI renders broken/blank.
     github:
       disabled: false
       type: remote

@@ -8,7 +8,9 @@
       midas: true
 
     aliases:
-      oc: "op run --env-file=$HOME/.config/opencode/.env -- opencode"
+      # --no-masking is required: without it op run pipes stdout/stderr
+      # (for secret masking) and opencode's TUI renders broken/blank
+      oc: "op run --no-masking --env-file=$HOME/.config/opencode/.env -- opencode"
       v: nvim
 
     abbrs:
