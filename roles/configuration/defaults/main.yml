@@ -52,19 +52,19 @@ ghostty:
 
 opencode:
   mcp:
+    # PAT is supplied via the environment ({env:...}); export
+    # GITHUB_PERSONAL_ACCESS_TOKEN in your shell before starting opencode.
     github:
       disabled: false
-      type: local
-      command:
-        - docker
-        - run
-        - -i
-        - --rm
-        - "-p"
-        - 127.0.0.1:8085:8085
-        - "-e"
-        - GITHUB_OAUTH_CALLBACK_PORT=8085
-        - ghcr.io/github/github-mcp-server
+      type: remote
+      url: https://api.githubcopilot.com/mcp/
+      oauth: false
+      headers:
+        Authorization: "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+    context7:
+      disabled: false
+      type: remote
+      url: https://mcp.context7.com/mcp
 
   cli:
     keybinds: {}

@@ -6,12 +6,27 @@
 {% for name, server in opencode.mcp.items() %}
       "{{ name }}": {
         "type": "{{ server.type }}",
+{% if server.type == "remote" %}
+        "url": "{{ server.url }}",
+{% if server.oauth is defined %}
+        "oauth": {{ server.oauth | lower }},
+{% endif %}
+{% if server.headers is defined %}
+        "headers": {
+{% for key, value in server.headers.items() %}
+          "{{ key }}": "{{ value }}"{% if not loop.last %},{% endif %}
+
+{% endfor %}
+        },
+{% endif %}
+{% else %}
         "command": [
 {% for arg in server.command %}
           "{{ arg }}"{% if not loop.last %},{% endif %}
 
 {% endfor %}
         ],
+{% endif %}
         "disabled": {{ server.disabled | lower }}
       }{% if not loop.last %},{% endif %}
 
