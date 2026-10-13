@@ -18,8 +18,8 @@
 
     terminal:
       window:
-        width: 160
-        height: 42
+        width: 184
+        height: 52
 
     # GNOME extensions: add only extensions NOT already shipped by the
     # penguix image system-wide (/usr/share/gnome-shell/extensions). Empty
