@@ -51,6 +51,55 @@ ghostty:
   config_path: .config/ghostty
 
 opencode:
+  # Default model: VM'deki Hermes agent'ı (pi5.local hermes container'ı,
+  # OpenAI-uyumlu API server, port 8642). Credential auth store'da
+  # (`opencode auth`/credential tablosu); 1Password item:
+  # "Hermes API Server" (op://Private/Hermes API Server/credential).
+  model: hermes/hermes-agent
+
+  providers:
+    hermes:
+      name: Hermes
+      package: "@opencode/ai/providers/openai-compatible"
+      settings:
+        baseURL: "http://192.168.68.62:8642/v1"
+      models:
+        hermes-agent:
+          name: "Hermes Agent (VM default)"
+          body:
+            model_options:
+              reasoning_effort: high
+        glm-5.3-flash:
+          name: "Hermes Agent (GLM 5.3 Flash)"
+          modelID: "z-ai/glm-5.3-flash"
+          body:
+            model_options:
+              reasoning_effort: high
+        claude-opus-5.5:
+          name: "Hermes Agent (Claude Opus 5.5)"
+          modelID: "anthropic/claude-opus-5.5"
+          body:
+            model_options:
+              reasoning_effort: high
+        claude-sonnet-5.5:
+          name: "Hermes Agent (Claude Sonnet 5.5)"
+          modelID: "anthropic/claude-sonnet-5.5"
+          body:
+            model_options:
+              reasoning_effort: high
+        grok-4.7:
+          name: "Hermes Agent (Grok 4.7)"
+          modelID: "x-ai/grok-4.7"
+          body:
+            model_options:
+              reasoning_effort: high
+        gpt-6.1-sol:
+          name: "Hermes Agent (GPT 6.1 Sol)"
+          modelID: "openai/gpt-6.1-sol"
+          body:
+            model_options:
+              reasoning_effort: high
+
   mcp:
     # PAT is supplied via the environment ({env:...}). The `oc` alias launches
     # opencode through `op run --no-masking --env-file ~/.config/opencode/.env`,

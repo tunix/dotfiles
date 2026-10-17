@@ -1,6 +1,40 @@
 {
   "$schema": "https://opencode.ai/config.json",
 
+{% if opencode.model is defined %}
+  "model": "{{ opencode.model }}",
+
+{% endif %}
+{% if opencode.providers is defined and opencode.providers %}
+  "providers": {
+{% for pname, prov in opencode.providers.items() %}
+    "{{ pname }}": {
+      "name": "{{ prov.name }}",
+      "package": "{{ prov.package }}",
+      "settings": {
+{% for skey, sval in prov.settings.items() %}
+        "{{ skey }}": "{{ sval }}"{% if not loop.last %},{% endif %}
+
+{% endfor %}
+      },
+      "models": {
+{% for mkey, model in prov.models.items() %}
+        "{{ mkey }}": {
+          "name": "{{ model.name }}",
+{% if model.modelID is defined %}
+          "modelID": "{{ model.modelID }}",
+{% endif %}
+          "body": {{ model.body | to_json }}
+        }{% if not loop.last %},{% endif %}
+
+{% endfor %}
+      }
+    }{% if not loop.last %},{% endif %}
+
+{% endfor %}
+  },
+
+{% endif %}
   "mcp": {
     "servers": {
 {% for name, server in opencode.mcp.items() %}
