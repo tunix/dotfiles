@@ -26,3 +26,10 @@
     src: "{{ role_path }}/files/opencode/.env"
     dest: "{{ ansible_facts.user_dir }}/.config/opencode/.env"
     mode: "0600"
+
+# OpenCode loads ~/.config/opencode/AGENTS.md in every project, ahead of
+# each repository's own AGENTS.md.
+- name: Place opencode global agent rules
+  copy:
+    src: "{{ role_path }}/files/opencode/AGENTS.md"
+    dest: "{{ ansible_facts.user_dir }}/.config/opencode/AGENTS.md"
