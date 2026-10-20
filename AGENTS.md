@@ -65,4 +65,4 @@ Templates live in `roles/configuration/templates/lazyvim/` and deploy to `~/.con
 git submodule update --init
 ```
 
-`roles/work` is a private submodule. `work.common` defaults to true: it lays down `~/.config/work/drop.d` and composes it into Cursor config. `work.midas` copies `midas/drop.d` onto that foundation and is set in playbooks.
+`roles/work` is a private submodule. `work.common` defaults to true: it lays down `~/.config/work/drop.d`. Cursor config composition is gated by `work.cursor` (default true): when enabled, compose merges drop-ins into `~/.cursor/mcp.json`, `hooks.json`, rules, and Cursor IDE settings. `work.midas` copies `midas/drop.d` onto that foundation and is set in playbooks.
