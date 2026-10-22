@@ -28,7 +28,7 @@ Requires `ansible` installed first. All playbooks target `localhost`.
 - **Homebrew tap trust (6.0+)**: after `homebrew_tap`, the brew role runs `brew trust <tap>` for each entry in `brew.repos` (idempotent via `brew trust --json=v1`). Required for third-party taps (`hashicorp/tap`, `esolitos/ipa`, …).
 - **Homebrew cask sudo**: `.pkg` casks need an admin password. `homebrew_cask` gets `sudo_password` from `ansible_become_password`. `mac.yml` prompts for it (`vars_prompt`); override with `-e ansible_become_password=…` to skip the prompt. Empty/omit skips `SUDO_ASKPASS`.
 - **bat cache rebuild** via handler triggered on config change.
-- **Maven config** is gated on `configure.maven: true` (set in `mac.yml`/`penguix.yml`).
+- **Maven config** is gated on `configure.maven: true` (set in `mac.yml`).
 - **All commits must follow Conventional Commits**: `<type>(<scope>): <description>`. Types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `style`, `ci`.
 
 ## Key entrypoints
@@ -65,4 +65,4 @@ Templates live in `roles/configuration/templates/lazyvim/` and deploy to `~/.con
 git submodule update --init
 ```
 
-`roles/work` is a private submodule. `work.common` defaults to true: it lays down `~/.config/work/drop.d`. Cursor config composition is gated by `work.cursor` (default true): when enabled, compose merges drop-ins into `~/.cursor/mcp.json`, `hooks.json`, and Cursor IDE settings. `cursor/env/*.yml` holds 1Password `op://` references; compose reads them with `op read` and embeds the values into `~/.cursor/mcp.json` in place of `${env:...}` placeholders. `work.midas` copies `midas/drop.d` onto that foundation and is set in playbooks.
+`roles/work` is a private submodule. `work.common` defaults to true: it lays down `~/.config/work/drop.d`. Cursor config composition is gated by `work.cursor` (default false, enabled in `mac.yml`): when enabled, compose merges drop-ins into `~/.cursor/mcp.json`, `hooks.json`, and Cursor IDE settings. `cursor/env/*.yml` holds 1Password `op://` references; compose reads them with `op read` and embeds the values into `~/.cursor/mcp.json` in place of `${env:...}` placeholders. `work.midas` copies `midas/drop.d` onto that foundation and is set in playbooks.

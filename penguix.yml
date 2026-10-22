@@ -1,16 +1,6 @@
 - hosts: localhost
 
   vars:
-    configure:
-      maven: true
-
-    work:
-      midas: true
-      # Cursor config deployment is gated by work.cursor (work role
-      # default). Disabled here: Cursor agent CLI was removed from this
-      # machine — flip to true to redeploy ~/.cursor config.
-      cursor: false
-
     aliases:
       # --no-masking is required: without it op run pipes stdout/stderr
       # (for secret masking) and opencode's TUI renders broken/blank
