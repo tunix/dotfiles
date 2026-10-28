@@ -19,6 +19,8 @@ Requires `ansible` installed first. All playbooks target `localhost`.
 
 ## Important conventions
 
+- **PATH is owned by systemd `environment.d`, not shells.** Playbook `shell.path` / `shell.brew_prefix` / `shell.system_path` render `~/.config/environment.d/{10-path,30-path-system}.conf` (user dirs → brew → system last). User-added dirs go to `20-path-extra.conf` via `just add-path <dir>`; `just path-show` prints the resolved PATH. Shell configs never set PATH (fish only erases legacy `fish_user_paths`).
+
 - **Variables are merged** (not overridden) due to `hash_behaviour=merge`. A var in a playbook merges into the role default rather than replacing it.
 - **Templates (.j2)** for files needing variable substitution; static files live in `roles/<role>/files/`.
 - **Color management** uses `toggle-color-preferences.sh` (light/dark toggle across ghostty, zellij, k9s, bat). macOS also has a LaunchAgent for automatic toggle.

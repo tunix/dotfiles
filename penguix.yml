@@ -10,6 +10,11 @@
     abbrs:
       pengudroid: scrcpy -eS --always-on-top --power-off-on-close
 
+    shell:
+      # user dirs first, homebrew next; system dirs stay last (brew doctor)
+      path: ~/.local/bin ~/.cargo/bin ~/.krew/bin
+      brew_prefix: /home/linuxbrew/.linuxbrew
+
     terminal:
       window:
         width: 184

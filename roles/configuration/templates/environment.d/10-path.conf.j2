@@ -1,0 +1,2 @@
+# managed by ansible (dotfiles); user-added dirs live in 20-path-extra.conf (just add-path)
+PATH={{ ((shell.path if shell.path is string else shell.path | join(' ')) | split) | map('regex_replace', '^~/', ansible_facts.user_dir ~ '/') | map('regex_replace', '^~$', ansible_facts.user_dir) | join(':') }}{{ (':' ~ shell.brew_prefix ~ '/bin:' ~ shell.brew_prefix ~ '/sbin') if shell.brew_prefix | length > 0 else '' }}

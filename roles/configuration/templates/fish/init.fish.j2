@@ -2,8 +2,9 @@ if status is-login
     # disable greeting
     set -U fish_greeting
 
-    # add ~/.local/bin to PATH
-    fish_add_path ~/.local/bin {{ shell.path }}
+    # PATH is owned by ~/.config/environment.d (systemd user env) —
+    # shell-independent; drop fish's own PATH overrides if any remain
+    set -eU fish_user_paths
 
     # define XDG_CONFIG_HOME
     set -Ux XDG_CONFIG_HOME $HOME/.config

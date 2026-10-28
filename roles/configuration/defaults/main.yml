@@ -35,7 +35,12 @@ terminal:
 shell:
   bin: /usr/bin/fish
   args: -l
-  path: ~/.cargo/bin ~/.krew/bin
+  # user dirs — rendered into ~/.config/environment.d/10-path.conf (start of PATH)
+  path: ~/.local/bin
+  # homebrew prefix; its bin/sbin go after user dirs. Empty disables brew entries
+  brew_prefix: ''
+  # system dirs, always last — rendered into ~/.config/environment.d/30-path-system.conf
+  system_path: /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
 editor:
   name: nvim

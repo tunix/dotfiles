@@ -1,5 +1,6 @@
 import? x'$HOME/.config/just/lazyvim.just'
 import? x'$HOME/.config/just/ssh.just'
+import? x'$HOME/.config/just/path.just'
 import? x'$HOME/.config/just/midas/main.just'
 
 default:

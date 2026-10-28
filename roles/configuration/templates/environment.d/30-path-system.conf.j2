@@ -1,0 +1,2 @@
+# managed by ansible (dotfiles); system dirs always come last (brew doctor)
+PATH=${PATH}:{{ shell.system_path | split | join(':') }}

@@ -24,7 +24,8 @@
     shell:
       bin: /opt/homebrew/bin/fish
       args: -l
-      path: /opt/homebrew/bin /opt/homebrew/sbin ~/.cargo/bin
+      path: ~/.local/bin ~/.cargo/bin
+      brew_prefix: /opt/homebrew
 
     aliases:
       l1: eza -1
