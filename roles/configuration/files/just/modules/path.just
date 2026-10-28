@@ -2,12 +2,13 @@
 env_d := x'$HOME/.config/environment.d'
 extra := env_d + '/20-path-extra.conf'
 
-# adds a dir to 20-path-extra.conf as `PATH=<value>:<dir>`; the value starts as
-# the literal `${PATH}`, which systemd-environment-d-generator resolves against
-# 10-path.conf (files apply alphabetically, so extras precede 30-path-system.conf)
+# adds a dir to PATH extras (20-path-extra.conf); idempotent, ~-aware
 [positional-arguments]
 add-path dir:
     #!/bin/bash
+    # value starts as the literal ${PATH}: systemd-environment-d-generator
+    # resolves it against 10-path.conf (files apply alphabetically, so extras
+    # precede 30-path-system.conf)
     set -euo pipefail
     dir="$1"
     if [[ $dir == '~' ]]; then
@@ -32,10 +33,22 @@ add-path dir:
     fi
     grep '^PATH=' "$file"
 
+# no re-login needed after ansible-playbook: sets resolved PATH in running systemd user env
+path-apply:
+    #!/bin/bash
+    # GUI apps + new terminals inherit it; running shells keep their old PATH
+    # until restarted
+    #!/bin/bash
+    set -euo pipefail
+    value=$({{ just_executable() }} --justfile {{ justfile() }} _resolve-path)
+    systemctl --user set-environment "PATH=$value"
+    echo "systemd user env PATH updated; new sessions inherit it"
+    echo "note: running shells keep their old PATH until restarted"
+
 # computes the final PATH like systemd-environment-d-generator would:
 # apply each PATH= file in alphabetical order, replacing the `${PATH}` token
 # with the value accumulated so far (missing files are skipped)
-path-show:
+_resolve-path:
     #!/bin/bash
     set -euo pipefail
     value=
@@ -48,3 +61,7 @@ path-show:
         value=${line/\$\{PATH\}/$value}
     done
     printf '%s\n' "$value"
+
+# prints the resolved PATH (10 -> 20 -> 30, like the systemd generator)
+@path-show:
+    {{ just_executable() }} --justfile {{ justfile() }} _resolve-path
