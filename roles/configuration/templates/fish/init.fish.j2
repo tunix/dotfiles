@@ -2,8 +2,14 @@ if status is-login
     # disable greeting
     set -U fish_greeting
 
-    # add ~/.local/bin to PATH
-    fish_add_path ~/.local/bin {{ shell.path }}
+    # keep user + homebrew dirs ahead of system dirs (system binaries stay
+    # last, cf. brew doctor); non-existing entries are skipped and the order
+    # is deterministic on every login
+    set -l user_paths
+    for p in {{ shell.path }}
+        test -d $p; and set -a user_paths $p
+    end
+    set -U fish_user_paths $user_paths
 
     # define XDG_CONFIG_HOME
     set -Ux XDG_CONFIG_HOME $HOME/.config

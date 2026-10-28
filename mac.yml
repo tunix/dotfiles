@@ -24,7 +24,9 @@
     shell:
       bin: /opt/homebrew/bin/fish
       args: -l
-      path: /opt/homebrew/bin /opt/homebrew/sbin ~/.cargo/bin
+      # user dirs first, homebrew next; system dirs stay last (brew doctor)
+      path: ~/.local/bin ~/.cargo/bin /opt/homebrew/bin /opt/homebrew/sbin
+      brew_prefix: /opt/homebrew
 
     aliases:
       l1: eza -1

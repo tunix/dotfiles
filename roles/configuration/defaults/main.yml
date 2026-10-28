@@ -35,7 +35,11 @@ terminal:
 shell:
   bin: /usr/bin/fish
   args: -l
-  path: ~/.cargo/bin ~/.krew/bin
+  # fish_user_paths order: user dirs first, homebrew next; system dirs are
+  # always appended last by fish. ~/.local/bin must be listed explicitly.
+  path: ~/.local/bin ~/.cargo/bin ~/.krew/bin
+  # homebrew prefix for bash PATH ordering; empty disables the bash tweak
+  brew_prefix: ''
 
 editor:
   name: nvim

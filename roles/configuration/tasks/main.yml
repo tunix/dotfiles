@@ -8,6 +8,9 @@
   include_tasks: fish.yml
   when: '"fish" in shell.bin'
 
+- name: Configure bash
+  include_tasks: bash.yml
+
 - name: Configure git
   include_tasks: git.yml
 

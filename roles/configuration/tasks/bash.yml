@@ -1,0 +1,11 @@
+- name: Keep homebrew ahead of system paths in bash
+  blockinfile:
+    path: "{{ ansible_facts.user_dir }}/.bash_profile"
+    marker: "# {mark} ANSIBLE MANAGED - homebrew PATH order"
+    block: |
+      # homebrew ahead of system dirs (system binaries stay last, cf. brew
+      # doctor); setting HOMEBREW_PREFIX also keeps the image's
+      # /etc/profile.d/brew.sh from appending brew at the end
+      export HOMEBREW_PREFIX="{{ shell.brew_prefix }}"
+      export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+  when: shell.brew_prefix | length > 0
