@@ -122,6 +122,13 @@ opencode:
       disabled: false
       type: remote
       url: https://mcp.context7.com/mcp
+    # TCMB EVDS (ekonomik zaman serileri). OAuth kullanır: bağlantı sırasında
+    # EVDS API anahtarı tarayıcıda girilir ("Doğrula ve Giriş Yap"); anahtar
+    # config'de değil, OAuth kimlik deposunda saklanır.
+    tcmb:
+      disabled: false
+      type: remote
+      url: https://mcp.tcmb.gov.tr/tcmb-mcp/evds/mcp
 
   cli:
     keybinds: {}
