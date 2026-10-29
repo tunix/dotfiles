@@ -26,7 +26,12 @@
     lgf = log --graph --name-only
     ann = annotate
 [push]
-    default = tracking
+    # "tracking" pushed branches to their UPSTREAM, and autosetupmerge points
+    # every branch created from a remote-tracking branch (origin/main) at
+    # refs/heads/main — so `git push -u origin <fix-branch>` landed on main.
+    # "simple" is git's default: same-name branches, and a bare push against a
+    # differently-named upstream is rejected outright.
+    default = simple
 [merge]
     summary = true
 [branch]
