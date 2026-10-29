@@ -32,10 +32,18 @@
     # "simple" is git's default: same-name branches, and a bare push against a
     # differently-named upstream is rejected outright.
     default = simple
+    # A branch without upstream is pushed to the same-named remote branch on
+    # the first bare `git push`, which also sets its tracking — no -u needed,
+    # and new branches can never accidentally target another branch's ref.
+    autoSetupRemote = true
 [merge]
     summary = true
 [branch]
-    autosetupmerge = true
+    # Track a remote branch on new-branch creation ONLY when the names match
+    # (git >= 2.38). Branching fix/foo off origin/main therefore starts with
+    # NO upstream; the same-name upstream comes from push.autoSetupRemote on
+    # the first push instead.
+    autosetupmerge = simple
 [pull]
 	rebase = false
 [help]
