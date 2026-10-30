@@ -32,6 +32,7 @@ Requires `ansible` installed first. All playbooks target `localhost`.
 - **bat cache rebuild** via handler triggered on config change.
 - **Maven config** is gated on `configure.maven: true` (set in `mac.yml`).
 - **All commits must follow Conventional Commits**: `<type>(<scope>): <description>`. Types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `style`, `ci`.
+- **Comments are always English.** Never write code/config/template comments in Turkish. (Documentation files like README may be Turkish only when the file's audience demands it; commit messages follow Conventional Commits in English.)
 
 ## Key entrypoints
 
