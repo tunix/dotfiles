@@ -135,8 +135,14 @@ opencode:
     # Git repo references — OpenCode clones/pulls them itself; type "@plans"
     # in the TUI to add the repo to the prompt. Repo-based (not path) so it
     # works on every machine.
+    #
+    # Must use the SSH remote form: the repo is private and there is no git
+    # credential helper, so the "owner/repo" shorthand (cloned over HTTPS)
+    # fails non-interactively with "could not read Username". SSH is
+    # authenticated via the 1Password agent on every machine (same pattern
+    # as the work submodule).
     plans:
-      repository: "tunix/plans"
+      repository: "git@github.com:tunix/plans.git"
       branch: "main"
 
   cli:
