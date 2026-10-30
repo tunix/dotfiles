@@ -56,11 +56,12 @@ ghostty:
   config_path: .config/ghostty
 
 opencode:
-  # Default model: VM'deki Hermes agent'ı (pi5.local hermes container'ı,
-  # OpenAI-uyumlu API server, port 8642). Credential auth store'da
-  # (`opencode auth`/credential tablosu); 1Password item:
-  # "Hermes API Server" (op://Private/Hermes API Server/credential).
-  model: hermes/hermes-agent
+  # Default model: OpenRouter GLM. The VM Hermes agent (pi5.local hermes
+  # container, OpenAI-compatible API server, port 8642) remains selectable
+  # under providers (/models); credentials live in the auth store
+  # (`opencode auth`/credential table); 1Password item: "Hermes API Server"
+  # (op://Private/Hermes API Server/credential).
+  model: openrouter/z-ai/glm-5.3-flash
 
   providers:
     hermes:
@@ -122,13 +123,21 @@ opencode:
       disabled: false
       type: remote
       url: https://mcp.context7.com/mcp
-    # TCMB EVDS (ekonomik zaman serileri). OAuth kullanır: bağlantı sırasında
-    # EVDS API anahtarı tarayıcıda girilir ("Doğrula ve Giriş Yap"); anahtar
-    # config'de değil, OAuth kimlik deposunda saklanır.
+    # TCMB EVDS (economic time series). Uses OAuth: during connection the
+    # EVDS API key is entered in the browser ("Verify and Sign In"); the key
+    # lives in the OAuth identity store, not in the config.
     tcmb:
       disabled: false
       type: remote
       url: https://mcp.tcmb.gov.tr/tcmb-mcp/evds/mcp
+
+  references:
+    # Git repo references — OpenCode clones/pulls them itself; type "@plans"
+    # in the TUI to add the repo to the prompt. Repo-based (not path) so it
+    # works on every machine.
+    plans:
+      repository: "tunix/plans"
+      branch: "main"
 
   cli:
     keybinds: {}
