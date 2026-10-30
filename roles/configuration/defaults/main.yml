@@ -56,11 +56,12 @@ ghostty:
   config_path: .config/ghostty
 
 opencode:
-  # Default model: VM'deki Hermes agent'ı (pi5.local hermes container'ı,
-  # OpenAI-uyumlu API server, port 8642). Credential auth store'da
-  # (`opencode auth`/credential tablosu); 1Password item:
-  # "Hermes API Server" (op://Private/Hermes API Server/credential).
-  model: hermes/hermes-agent
+  # Default model: OpenRouter GLM. VM'deki Hermes agent (pi5.local hermes
+  # container'ı, OpenAI-uyumlu API server, port 8642) providers altında
+  # hâlâ seçilebilir (/models); credential auth store'da (`opencode
+  # auth`/credential tablosu); 1Password item: "Hermes API Server"
+  # (op://Private/Hermes API Server/credential).
+  model: openrouter/z-ai/glm-5.3-flash
 
   providers:
     hermes:
@@ -129,6 +130,14 @@ opencode:
       disabled: false
       type: remote
       url: https://mcp.tcmb.gov.tr/tcmb-mcp/evds/mcp
+
+  references:
+    # Git repo referanslari — OpenCode kendisi clone/pull eder; TUI'de
+    # "@plans" yazarak depoyu prompt'a eklemek icin. Path degil repo
+    # verildigi icin tum makinelerde calisir.
+    plans:
+      repository: "tunix/plans"
+      branch: "main"
 
   cli:
     keybinds: {}
