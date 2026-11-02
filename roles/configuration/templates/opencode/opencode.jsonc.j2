@@ -24,6 +24,9 @@
 {% if model.modelID is defined %}
           "modelID": "{{ model.modelID }}",
 {% endif %}
+{% if model.variants is defined %}
+          "variants": {{ model.variants | to_json }},
+{% endif %}
           "body": {{ model.body | to_json }}
         }{% if not loop.last %},{% endif %}
 
