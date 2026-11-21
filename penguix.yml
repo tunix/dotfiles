@@ -20,10 +20,6 @@
         width: 184
         height: 52
 
-    # GNOME extensions: add only extensions NOT already shipped by the
-    # penguix image system-wide (/usr/share/gnome-shell/extensions). Empty
-    # for now — the image provides everything we use. Role defaults keep
-    # gnome.extensions.{install,enabled,disabled} empty.
   roles:
     - linux
     - gnome

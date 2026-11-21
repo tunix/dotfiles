@@ -1,8 +1,2 @@
-- name: Configure extensions
-  include_tasks: extensions/main.yml
-
 - name: Configure GNOME files
   include_tasks: files.yml
-
-- name: Configure autostart
-  include_tasks: autostart.yml
