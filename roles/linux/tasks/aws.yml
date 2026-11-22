@@ -4,6 +4,18 @@
     dest: /tmp/session-manager-plugin.rpm
     mode: '0644'
 
+- name: Install rpm2cpio via Homebrew
+  command: "{{ shell.brew_prefix }}/bin/brew install rpm"
+  args:
+    creates: "{{ shell.brew_prefix }}/bin/rpm2cpio"
+  when: shell.brew_prefix is defined
+
+- name: Install cpio via Homebrew
+  command: "{{ shell.brew_prefix }}/bin/brew install cpio"
+  args:
+    creates: "{{ shell.brew_prefix }}/bin/cpio"
+  when: shell.brew_prefix is defined
+
 - name: Ensure local bin directory exists
   file:
     path: "{{ ansible_facts.user_dir }}/.local/bin"
@@ -11,11 +23,11 @@
     mode: '0755'
 
 - name: Install AWS Session Manager Plugin from RPM
-  # Extracts the plugin binary straight from the RPM cpio payload with
-  # plain Python — no rpm2cpio/cpio required on the target system.
-  script:
-    cmd: >-
-      extract_rpm.py /tmp/session-manager-plugin.rpm
-      usr/local/sessionmanagerplugin/bin/session-manager-plugin
-      "{{ ansible_facts.user_dir }}/.local/bin/session-manager-plugin"
+  shell: |
+    mkdir -p /tmp/aws_session_manager
+    cd /tmp/aws_session_manager
+    {{ shell.brew_prefix | default('') }}/bin/rpm2cpio /tmp/session-manager-plugin.rpm | {{ shell.brew_prefix | default('') }}/bin/cpio -idmv
+    cp /tmp/aws_session_manager/usr/local/sessionmanagerplugin/bin/session-manager-plugin "{{ ansible_facts.user_dir }}/.local/bin/"
+    chmod +x "{{ ansible_facts.user_dir }}/.local/bin/session-manager-plugin"
+  args:
     creates: "{{ ansible_facts.user_dir }}/.local/bin/session-manager-plugin"
