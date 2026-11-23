@@ -20,6 +20,9 @@
 # 5. A recipe body that runs sudo starts with `set -m` (see AGENTS.md): without
 #    job control Ctrl-C at sudo's fingerprint prompt aborts the whole run
 #    instead of falling back to the password.
+# 6. A file under a layer's home/.local/bin/ is executable. systemd units and
+#    hooks exec these directly; deploying one without its bit makes the unit
+#    fail with 203/EXEC on every tick, silently.
 set -uo pipefail
 
 root=${1:?usage: check.sh <repo-root>}
@@ -184,6 +187,15 @@ while IFS= read -r f; do
 done < <(sudo_recipe_files) > "$tmpj.sudo"
 while IFS= read -r line; do err "$line"; done < "$tmpj.sudo"
 rm -f "$tmpj.sudo"
+
+# ------------------------------------ 6. bin scripts are executable
+# A file under a layer's home/.local/bin/ is exec'd (systemd units, hooks,
+# LaunchAgents). Deploying one without its executable bit makes the unit fail
+# with 203/EXEC on every tick, silently. Git tracks 100755 for these, so a
+# working tree that lost the bit is a real error, not a style nit.
+while IFS= read -r f; do
+    [ -x "$f" ] || err "$f: not executable (chmod +x; units exec it)"
+done < <(find . -path '*/home/.local/bin/*' -type f | sort)
 
 # ssh reads the FIRST value it finds: precedence runs the other way there
 if find . -path ./.git -prune -o -path '*/home/.ssh/config.d/*' -type f -print 2>/dev/null | grep -q .; then
