@@ -5,7 +5,7 @@
 
 repo_root := parent_directory(source_directory())
 host_file := source_file()
-layers := "common linux gnome"
+layers := "common linux linux/gnome"
 
 # list this host's recipes
 default:
@@ -13,7 +13,7 @@ default:
 
 import "../common/recipes/main.just"
 import "../linux/recipes/main.just"
-import "../gnome/recipes/main.just"
+import "../linux/gnome/recipes/main.just"
 
 # Bring this machine to the repo state. Every step is idempotent.
 [linux]

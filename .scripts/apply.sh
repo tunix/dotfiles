@@ -1,7 +1,7 @@
 #!/bin/sh
-# lib/apply.sh — deploy the active layers into $HOME.
+# .scripts/apply.sh — deploy the active layers into $HOME.
 #
-#   lib/apply.sh <repo-root> <layer> [<layer> ...]
+#   .scripts/apply.sh <repo-root> <layer> [<layer> ...]
 #
 # Layers are applied in the order given (common first, work last). Each
 # layer may contain:

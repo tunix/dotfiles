@@ -4,12 +4,12 @@
 # Deploy every active layer's home/ and compose/ files into $HOME (idempotent).
 [group('dotfiles')]
 apply:
-    @sh "{{ repo_root }}/lib/apply.sh" "{{ repo_root }}" {{ layers }}
+    @sh "{{ repo_root }}/.scripts/apply.sh" "{{ repo_root }}" {{ layers }}
 
 # Validate the repo: layer rules, fragment numbering, every host file parses.
 [group('dotfiles')]
 check:
-    @bash "{{ repo_root }}/lib/check.sh" "{{ repo_root }}"
+    @bash "{{ repo_root }}/.scripts/check.sh" "{{ repo_root }}"
 
 # Make this host's recipes callable from anywhere under $HOME without -g:
 # writes a one-line ~/.justfile that imports the host file (no copies, so

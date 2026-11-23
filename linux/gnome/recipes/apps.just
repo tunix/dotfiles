@@ -1,7 +1,7 @@
 # vim: set ft=just :
 # Desktop applications that are not plain Brewfile entries.
 
-# Add the user-level Flathub remote that gnome/brew/flatpak.Brewfile
+# Add the user-level Flathub remote that linux/gnome/brew/flatpak.Brewfile
 # installs from (brew-sync runs after this in setup). Idempotent.
 [linux]
 [group('apps')]

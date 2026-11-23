@@ -3,34 +3,34 @@
 # (~/.config/dconf/user) — never the system db, so every setting stays
 # user-level and survives OS rebases/switches.
 #
-# gnome/dconf/ holds one keyfile per topic: desktop.ini, shell.ini,
+# linux/gnome/dconf/ holds one keyfile per topic: desktop.ini, shell.ini,
 # extensions.ini, apps.ini. All are applied by dconf-apply.
 
-# Apply every gnome/dconf/*.ini into the user database (idempotent).
+# Apply every linux/gnome/dconf/*.ini into the user database (idempotent).
 [linux]
 [group('desktop')]
 dconf-apply:
     #!/usr/bin/env bash
     set -euo pipefail
-    for f in "{{ repo_root }}"/gnome/dconf/*.ini; do
+    for f in "{{ repo_root }}"/linux/gnome/dconf/*.ini; do
         echo "==> dconf load: $(basename "$f")"
         dconf load / < "$f"
     done
     echo "dconf user settings applied. Log out/in (or restart apps) for some keys to take effect."
 
-# Dump the current user settings into gnome/dconf/proposals/ (gitignored),
+# Dump the current user settings into linux/gnome/dconf/proposals/ (gitignored),
 # so manual GUI tweaks can be reviewed and merged by hand.
 [linux]
 [group('desktop')]
 dconf-backup:
     #!/usr/bin/env bash
     set -euo pipefail
-    dest="{{ repo_root }}/gnome/dconf/proposals"
+    dest="{{ repo_root }}/linux/gnome/dconf/proposals"
     mkdir -p "$dest"
     out="$dest/proposal-$(date +%Y%m%d-%H%M%S).ini"
     dconf dump / > "$out"
     echo "Current user settings dumped to $out"
-    echo "Review the diff against gnome/dconf/*.ini and merge what you want to keep."
+    echo "Review the diff against linux/gnome/dconf/*.ini and merge what you want to keep."
 
 # Reset a single key back to the image factory default (undo a repo setting).
 # Usage: just dconf-reset /org/gnome/desktop/interface/cursor-theme
@@ -51,4 +51,4 @@ dconf-reset KEY:
 dconf-vs-defaults:
     #!/usr/bin/env bash
     set -euo pipefail
-    python3 "{{ repo_root }}/gnome/scripts/dconf-vs-defaults.py"
+    python3 "{{ repo_root }}/.scripts/dconf-vs-defaults.py"

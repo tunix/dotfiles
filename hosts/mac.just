@@ -1,6 +1,6 @@
 # vim: set ft=just :
 # Host: mac — the work MacBook (macOS, Homebrew, work layers).
-# First run:  hosts/mac.sh   (installs Homebrew + just, then runs `setup`)
+# First run:  .scripts/bootstrap-mac.sh   (installs Homebrew + just, then runs `setup`)
 # Afterwards: `just <recipe>` from anywhere under $HOME (see install-global).
 
 repo_root := parent_directory(source_directory())
