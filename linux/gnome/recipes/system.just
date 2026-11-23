@@ -27,6 +27,36 @@ clean-containers:
     podman volume prune -f
     echo "Cleanup complete!"
 
+# Install the Logitech udev rules Solaar needs so a user session can open the
+# receivers/keyboards: without uaccess tags on /dev/hidraw* and /dev/uinput,
+# neither the flatpak Solaar nor the solaar-extension backlight OSD can talk to
+# the hardware (key remapping and rule actions fail silently). The flatpak's
+# own --device=all cannot grant the shell, and Dakota is RPM-less so it ships
+# no Logitech udev rules at all. Root is required because udev only reads
+# rules from /etc/udev/rules.d. Fast-exits when the exact rule is already in
+# place. The rule is vendored (byte-for-byte) from pwr-Solaar/Solaar
+# rules.d-uinput (Wayland variant), pinned at
+# linux/gnome/udev/42-logitech-unify-permissions.rules
+# (sha256 b89e3105a1f2e6afb9a37081bead35e05b4f9e6db45394f68c59bd495fdbde44).
+[linux]
+[group('system')]
+solaar-udev:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    src="{{ repo_root }}/linux/gnome/udev/42-logitech-unify-permissions.rules"
+    dest="/etc/udev/rules.d/42-logitech-unify-permissions.rules"
+    if [ -f "$dest" ] && cmp -s "$src" "$dest"; then
+        echo "Logitech udev rules already installed ($dest); nothing to do."
+        exit 0
+    fi
+    if ! gum confirm "Install Solaar's Logitech udev rules to $dest? (sudo)"; then
+        exit 0
+    fi
+    sudo install -m 644 "$src" "$dest"
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger --subsystem-match=hidraw --subsystem-match=misc
+    echo "Installed $dest. Replug the Logitech receiver (or log out/in) to apply."
+
 # OPTIONAL, opt-in: anti-fingerprinting default TTL. Needs root because
 # sysctls are kernel-global; there is no userspace sysctl.
 # Fast-exits when the setting is already in place.

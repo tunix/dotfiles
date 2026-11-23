@@ -18,5 +18,5 @@ import "../linux/gnome/recipes/main.just"
 # Bring this machine to the repo state. Every step is idempotent.
 [linux]
 [group('dotfiles')]
-setup: flatpak-remote brew-sync apply change-shell sysctl-ttl bashrc-dircolors bat-cache lazyvim-config dconf-apply extensions theme-sync sun-scheduler bibata aws-session-manager install-global
+setup: flatpak-remote brew-sync apply change-shell sysctl-ttl bashrc-dircolors bat-cache lazyvim-config dconf-apply extensions solaar-udev theme-sync sun-scheduler bibata aws-session-manager install-global
     @echo "Done. Log out/in (or restart GNOME Shell) so extension and dconf changes fully apply."

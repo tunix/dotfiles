@@ -38,8 +38,8 @@ constraints, not suggestions.
    user database (`dconf load /`).
 2. **Everything targets `$HOME`**, except the explicit sudo recipes:
    `sysctl-ttl` (linux/gnome, macos), `change-shell` (linux),
-   `update-and-reboot` (linux/gnome). Do not add another without a reason in the
-   recipe comment.
+   `solaar-udev` (linux/gnome), `update-and-reboot` (linux/gnome). Do not add
+   another without a reason in the recipe comment.
 3. **Software comes from Homebrew (formula / cask / `flatpak` DSL) or
    Flathub.** Pinned, checksum-verified downloads are the fallback
    (Bibata). `brew bundle` only — never `brew bundle

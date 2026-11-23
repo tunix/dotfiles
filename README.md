@@ -119,8 +119,8 @@ recipes — otherwise the justfile would not even parse on the other OS.
 `dconf-vs-defaults`, `extensions`, `extension-install` / `-disable` /
 `-uninstall UUID`, `extensions-list`, `theme-sync`, `sun-scheduler`,
 `bibata`, `brave-1password-fix`, `flatpak-remote`,
-`install-jetbrains-toolbox`, `aws-session-manager`, `sysctl-ttl`,
-`update-and-reboot`, `clean-containers`, `status`
+`install-jetbrains-toolbox`, `aws-session-manager`, `solaar-udev`,
+`sysctl-ttl`, `update-and-reboot`, `clean-containers`, `status`
 
 **macos** — `sysctl-ttl`, `aws-session-manager`, `work-submodule`
 
