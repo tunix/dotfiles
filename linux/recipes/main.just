@@ -1,6 +1,8 @@
 # vim: set ft=just :
-# Linux layer: shared by every Linux host (desktop and Pi). Every recipe in
-# this layer carries [linux] (`just check` enforces it).
+# linux layer: every Linux host. OS-level, device-level and CLI state that any
+# desktop needs; nothing here reads or writes a desktop-environment interface.
+# Every recipe carries [linux] (`just check` enforces it).
 
 import "path.just"
 import "system.just"
+import "apps.just"

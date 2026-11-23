@@ -50,8 +50,9 @@ hosts/        one entry justfile per machine
 .scripts/     apply.sh (deploy engine), check.sh (rules), bootstrap-mac.sh,
               validate-brewfiles.sh, install-gnome-extension.sh, dconf-vs-defaults.py
 common/       every machine
-linux/        every Linux machine (PATH via environment.d, login shell, user units)
-  gnome/      GNOME desktop on top of linux: dconf, extensions, flatpaks, desktop services
+linux/        every Linux machine: OS/device/CLI state (Brewfiles, flatpaks,
+              PATH via environment.d, login shell, user units, udev rules)
+  gnome/      GNOME-only on top of linux: dconf, shell extensions, timers
 macos/        macOS: Homebrew packages, LaunchAgent, sysctl
 work/         private submodule (tunix/work): work/cursor, work/midas
 ```
@@ -59,6 +60,11 @@ work/         private submodule (tunix/work): work/cursor, work/midas
 A desktop environment is a layer nested in its OS layer (`linux/gnome`): a
 host lists both, and only hosts that import it see its recipes. A new
 machine is a new host file listing the layers it needs.
+
+A nested layer owns only what is specific to it: `linux/gnome/` holds only
+what reads or writes a GNOME-only interface (dconf/gsettings, GNOME Shell
+extensions, GNOME-integration helpers). A file that would work unchanged
+without GNOME belongs in `linux/`.
 
 Every layer has the same shape:
 
@@ -113,14 +119,14 @@ recipes — otherwise the justfile would not even parse on the other OS.
 `-remove` / `-reinstall`, `ssh-init`, `ssh-reset`
 
 **linux** — `add-path <dir>`, `path-show`, `path-apply`, `change-shell`
-(`chsh`), `user-unit <unit>`
+(`chsh`), `user-unit <unit>`, `solaar-udev`, `flatpak-remote`,
+`install-jetbrains-toolbox`, `aws-session-manager`, `brave-1password-fix`,
+`sysctl-ttl`, `update-and-reboot`, `clean-containers`, `status`
 
 **linux/gnome** — `dconf-apply`, `dconf-backup`, `dconf-reset KEY`,
 `dconf-vs-defaults`, `extensions`, `extension-install` / `-disable` /
 `-uninstall UUID`, `extensions-list`, `theme-sync`, `sun-scheduler`,
-`bibata`, `brave-1password-fix`, `flatpak-remote`,
-`install-jetbrains-toolbox`, `aws-session-manager`, `sysctl-ttl`,
-`update-and-reboot`, `clean-containers`, `status`
+`bibata`
 
 **macos** — `sysctl-ttl`, `aws-session-manager`, `work-submodule`
 

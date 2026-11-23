@@ -1,6 +1,7 @@
 # vim: set ft=just :
-# Desktop services and fixes that need more than a file copy (the files
-# themselves are deployed by `just apply` from linux/gnome/home/).
+# GNOME-integration services that need more than a file copy (the units and
+# helpers themselves are deployed by `just apply` from linux/gnome/home/).
+# Everything here reads or writes org.gnome.* gsettings.
 
 # Keep CLI themes (zellij/k9s/bat/nvim) in sync with GNOME color-scheme
 # (penguix-theme-sync user unit). The unit calls
@@ -56,34 +57,3 @@ bibata variant='Bibata-Modern-Ice':
         gsettings set org.gnome.desktop.interface cursor-theme '{{ variant }}'
         echo "cursor-theme -> {{ variant }} (log out/in for every app to pick it up)"
     fi
-
-# Enable 1Password desktop integration for the Brave flatpak. Requires the
-# 1Password GUI (linux/gnome/brew/apps.Brewfile). The talk-name override also
-# ships as a file (linux/gnome/home/.local/share/flatpak/overrides/com.brave.Browser)
-# deployed by `just apply`; this recipe re-asserts it via the flatpak CLI and
-# installs the native messaging host, which depends on the 1Password install.
-[linux]
-[group('desktop')]
-brave-1password-fix:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    SRC="$HOME/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts"
-    DEST="$HOME/.var/app/com.brave.Browser/config/BraveSoftware/Brave-Browser/NativeMessagingHosts"
-    OVERRIDE="$HOME/.local/share/flatpak/overrides/com.brave.Browser"
-    if [ ! -f "${SRC}/1PasswordWrapper.sh" ] || [ ! -f "${SRC}/com.1password.1password.json" ]; then
-        echo "1Password native messaging files not found in ${SRC}." >&2
-        echo "Install the GUI first: just brew-sync" >&2
-        exit 1
-    fi
-    if [ -f "${DEST}/1PasswordWrapper.sh" ] && [ -f "${DEST}/com.1password.1password.json" ] \
-        && grep -q 'talk-name=org.freedesktop.Flatpak' "$OVERRIDE" 2>/dev/null; then
-        echo "1Password integration for the Brave flatpak already in place; nothing to do."
-        exit 0
-    fi
-    flatpak override --user --talk-name=org.freedesktop.Flatpak com.brave.Browser
-    mkdir -p "${DEST}"
-    install -m 755 "${SRC}/1PasswordWrapper.sh" "${DEST}/1PasswordWrapper.sh"
-    sed -E "s|\"path\": \".*\"|\"path\": \"${DEST}/1PasswordWrapper.sh\"|" \
-        "${SRC}/com.1password.1password.json" >"${DEST}/com.1password.1password.json"
-    chmod 644 "${DEST}/com.1password.1password.json"
-    echo "Done. Restart Brave completely (flatpak kill com.brave.Browser) to activate."
