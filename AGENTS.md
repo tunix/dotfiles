@@ -10,7 +10,12 @@ constraints, not suggestions.
 - **Host files are the entry points.** `hosts/<name>.just` defines
   `repo_root`, `host_file`, `layers`, imports exactly the layers' recipes and
   defines `setup`. Host files are named by role, not by hostname. `setup`
-  must stay idempotent end to end.
+  must stay idempotent end to end. When the step list grows, `setup` depends
+  on `[private]` phase recipes (e.g. `base`, `shell`, `desktop`) that group
+  their members by intent — just expands dependencies depth-first in order,
+  so the effective order is unchanged, and `[private]` keeps `just -l` showing
+  only `setup`. Keep every dependency line short this way instead of letting
+  one line grow without bound.
 - **Layers** (`common`, `linux`, `linux/gnome`, `macos`, `work/cursor`,
   `work/midas`) share one shape: `home/`, `compose/`, `recipes/`, `brew/`,
   optional `secrets.env`. `.scripts/apply.sh` deploys them in the host's
