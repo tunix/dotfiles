@@ -1,0 +1,3 @@
+.DS_Store
+# dconf-backup output (review, then merge by hand)
+gnome/dconf/proposals/

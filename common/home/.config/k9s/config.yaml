@@ -1,0 +1,21 @@
+k9s:
+  liveViewAutoRefresh: true
+  refreshRate: 2
+  maxConnRetry: 5
+  skipLatestRevCheck: true
+  ui:
+    enableMouse: true
+    reactive: true
+    skin: catppuccin-frappe
+  logger:
+    tail: 1000
+    buffer: 10000
+    sinceSeconds: 300
+    textWrap: false
+    showTime: false
+  shellPod:
+    image: alpine
+    namespace: default
+    limits:
+      cpu: 100m
+      memory: 100Mi

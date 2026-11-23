@@ -1,0 +1,37 @@
+- 1.1.19
+- _NAME: MX Keys Mini
+  _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, scroll-ratchet-torque, smart-shift,
+    thumb-scroll-invert, thumb-scroll-mode, onboard_profiles, report_rate, report_rate_extended, pointer_speed, dpi, dpi_extended, speed-change, backlight-timed,
+    led_control, led_zone_, rgb_control, rgb_zone_, brightness_control, per-key-lighting, reprogrammable-keys, persistent-remappable-keys, force-sensing,
+    crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, haptic-level, haptic-play, sidetone,
+    equalizer, adc_power_management]
+  _battery: 4100
+  _modelId: B36900000000
+  _sensitive: {divert-keys: true, hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _unitId: 5D522771
+  backlight: 1
+  backlight_duration_hands_in: 30
+  backlight_duration_hands_out: 30
+  backlight_duration_powered: 300
+  backlight_level: 2
+  change-host: null
+  disable-keyboard-keys: {1: false, 8: false, 16: false}
+  divert-keys: {226: 0, 227: 0, 229: 0, 231: 0, 232: 0, 233: 0, 259: 0, 264: 1, 266: 1, 279: 0, 284: 1}
+  fn-swap: true
+  multiplatform: 0
+- _NAME: MX Vertical Wireless Mouse
+  _absent: [hi-res-scroll, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, scroll-ratchet-torque, smart-shift, thumb-scroll-invert,
+    thumb-scroll-mode, onboard_profiles, report_rate, report_rate_extended, pointer_speed, dpi_extended, speed-change, backlight, backlight_level, backlight_duration_hands_out,
+    backlight_duration_hands_in, backlight_duration_powered, backlight-timed, led_control, led_zone_, rgb_control, rgb_zone_, brightness_control, per-key-lighting,
+    fn-swap, disable-keyboard-keys, force-sensing, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert,
+    gesture2-params, haptic-level, haptic-play, sidetone, equalizer, adc_power_management]
+  _battery: 4096
+  _modelId: B020407BC08A
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _unitId: F793762B
+  change-host: null
+  divert-keys: {82: 0, 83: 0, 86: 0, 253: 0}
+  dpi: 1000
+  lowres-scroll-mode: false
+  persistent-remappable-keys: null
+  reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 253: 253}

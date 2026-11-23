@@ -1,0 +1,18 @@
+simplified_ui true
+default_shell "fish"
+pane_frames false
+theme "catppuccin-latte"
+copy_on_select false
+// default_layout "compact"
+scrollback_editor "nvim"
+
+ui {
+    pane_frames {
+        rounded_corners true
+        hide_session_name true
+    }
+}
+
+keybinds {
+    unbind "Ctrl q"
+}
