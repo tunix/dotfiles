@@ -40,6 +40,10 @@ just check        # validate the repo rules
   `just install-global` only if the machine's host file changes or the repo
   moves.
 - Outside `$HOME` (`/tmp`, `/opt`, …) use `just -g <recipe>`.
+- On GNOME the colour scheme follows local sunrise/sunset
+  (`penguix-sun-scheduler` user timer, located via Night Light). `setup` and
+  `just sun-scheduler` apply the current answer immediately, and the dconf
+  topic files never set `color-scheme`, so `just apply` cannot flip it back.
 
 ## Output
 
