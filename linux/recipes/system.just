@@ -10,6 +10,7 @@
 change-shell shell='/usr/bin/fish':
     #!/usr/bin/env bash
     set -euo pipefail
+    set -m  # job control: Ctrl-C at sudo's fingerprint prompt must reach sudo, not just
     . "{{ repo_root }}/.scripts/ui.sh"
     ui_init change-shell
     user="$(id -un)"
@@ -39,6 +40,7 @@ alias chsh := change-shell
 solaar-udev:
     #!/usr/bin/env bash
     set -euo pipefail
+    set -m  # job control: Ctrl-C at sudo's fingerprint prompt must reach sudo, not just
     . "{{ repo_root }}/.scripts/ui.sh"
     ui_init solaar-udev
     src="{{ repo_root }}/linux/udev/42-logitech-unify-permissions.rules"
@@ -86,6 +88,7 @@ user-unit unit:
 update-and-reboot:
     #!/usr/bin/env bash
     set -euo pipefail
+    set -m  # job control: Ctrl-C at sudo's fingerprint prompt must reach sudo, not just
     . "{{ repo_root }}/.scripts/ui.sh"
     ui_init update-and-reboot
     sudo bootc upgrade
@@ -115,6 +118,7 @@ clean-containers:
 sysctl-ttl:
     #!/usr/bin/env bash
     set -euo pipefail
+    set -m  # job control: Ctrl-C at sudo's fingerprint prompt must reach sudo, not just
     . "{{ repo_root }}/.scripts/ui.sh"
     ui_init sysctl-ttl
     conf="/etc/sysctl.d/99-penguix-ttl.conf"

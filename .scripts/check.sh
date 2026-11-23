@@ -14,6 +14,9 @@
 #    for the same target.
 # 4. Layers that are active together on a host never ship the same home/
 #    path (the later one would silently win).
+# 5. A recipe body that runs sudo starts with `set -m` (see AGENTS.md): without
+#    job control Ctrl-C at sudo's fingerprint prompt aborts the whole run
+#    instead of falling back to the password.
 set -uo pipefail
 
 root=${1:?usage: check.sh <repo-root>}
@@ -131,6 +134,40 @@ for h in hosts/*.just; do
         <(for l in $layers; do [ -d "$l/compose" ] && (cd "$l/compose" && find . -type f ! -name '.*' -exec dirname {} \;); done | sort -u))
     [ -z "$clash" ] || err "$h: path is both a home/ file and a compose target: $clash"
 done
+
+# ----------------------------------------- 5. sudo recipes need job control
+# A recipe body that runs sudo must `set -m` first. Checked per recipe, so a
+# body that lost it cannot hide behind another recipe's `set -m`.
+sudo_recipe_files() {
+    ls hosts/*.just 2>/dev/null
+    for l in $(layer_dirs); do
+        [ -d "$l/recipes" ] && find "$l/recipes" -name '*.just'
+    done
+}
+while IFS= read -r f; do
+    awk -v file="$f" '
+        /^[A-Za-z_][A-Za-z0-9_@-]*([[:space:]][^:]*)?:[[:space:]]*$/ {
+            if (name != "" && sd && !m)
+                printf "%s: recipe %s runs sudo without `set -m`\n", file, name
+            name = $0; sub(/:.*/, "", name); sub(/[[:space:]].*/, "", name); sd = 0; m = 0; next
+        }
+        /^[[:space:]]/ {
+            line = $0; sub(/^[[:space:]]+/, "", line)
+            sub(/[[:space:]]+$/, "", line)
+            if (line ~ /^#/) next
+            if (line ~ /(^|[|&;][[:space:]]*)sudo[[:space:]]/) sd = 1
+            if (line ~ /^set[[:space:]]+-[a-z]*m/) m = 1
+            next
+        }
+        { next }
+        END {
+            if (name != "" && sd && !m)
+                printf "%s: recipe %s runs sudo without `set -m`\n", file, name
+        }
+    ' "$f"
+done < <(sudo_recipe_files) > "$tmpj.sudo"
+while IFS= read -r line; do err "$line"; done < "$tmpj.sudo"
+rm -f "$tmpj.sudo"
 
 # ssh reads the FIRST value it finds: precedence runs the other way there
 if find . -path ./.git -prune -o -path '*/home/.ssh/config.d/*' -type f -print 2>/dev/null | grep -q .; then
