@@ -41,8 +41,12 @@ constraints, not suggestions.
   recipes with `import?` and must never list a work recipe as a dependency
   (the host file would not parse before the submodule is checked out); call
   work recipes from a recipe body only when `just --summary` lists them.
-- `~/.justfile` is a one-line import of the host file written by
-  `just install-global`. Never copy recipes into `$HOME`.
+- `~/.justfile` is written by `just install-global`: an import of the host
+  file plus a private `list` recipe; never copy recipes into `$HOME`. just
+  takes the default recipe from the root justfile only, never from an import,
+  so the stub needs a recipe of its own — `list` delegates to the host file's
+  `default`. Every host file therefore defines `default` (the recipe listing)
+  as its first recipe, and `list` is reserved by the stub.
 
 ## Red lines
 

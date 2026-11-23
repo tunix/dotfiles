@@ -23,9 +23,9 @@ target state is already in place, so it is safe to re-run at any time.
 
 ## Daily use
 
-`setup` ends with `just install-global`, which writes a one-line
-`~/.justfile` importing this machine's host file. After that, every recipe
-runs from anywhere under `$HOME` **without** `-g`:
+`setup` ends with `just install-global`, which writes a `~/.justfile` that
+imports this machine's host file and, run bare, lists its recipes. After that,
+every recipe runs from anywhere under `$HOME` **without** `-g`:
 
 ```sh
 just              # list this host's recipes
