@@ -25,6 +25,14 @@ constraints, not suggestions.
   layer is a layer of its own: hosts list both (`common linux linux/gnome`),
   and its recipes may depend on its parent's (e.g. `theme-sync` uses linux's
   `user-unit`), never the other way round.
+- **A layer owns only what is specific to it.** `linux/` holds OS state,
+  device state and CLI state — anything that works on any Linux desktop:
+  Brewfiles and flatpak apps, app configs, XDG autostart, systemd user units,
+  fish/PATH/environment.d files, udev rules. `linux/gnome/` may hold only what
+  reads or writes a GNOME-only interface: dconf/gsettings keys, GNOME Shell
+  extensions and their dbus, `gnome-extensions`, GNOME-integration helpers.
+  A file that would work unchanged without GNOME belongs in `linux/`, not in
+  `linux/gnome/`.
 - **Keep the tree flat and recipes parametric.** Repo-wide scripts live in
   `.scripts/`. When two recipes differ only in a value, write one recipe
   with a parameter (`user-unit <unit>`) and have the specific ones depend on
@@ -42,8 +50,8 @@ constraints, not suggestions.
    rpm-ostree, `/etc/skel` or `/etc/dconf` writes. dconf goes through the
    user database (`dconf load /`).
 2. **Everything targets `$HOME`**, except the explicit sudo recipes:
-   `sysctl-ttl` (linux/gnome, macos), `change-shell` (linux),
-   `solaar-udev` (linux), `update-and-reboot` (linux/gnome). Do not add
+   `sysctl-ttl` (linux, macos), `change-shell` (linux),
+   `solaar-udev` (linux), `update-and-reboot` (linux). Do not add
    another without a reason in the recipe comment.
 3. **Software comes from Homebrew (formula / cask / `flatpak` DSL) or
    Flathub.** Pinned, checksum-verified downloads are the fallback
@@ -77,7 +85,7 @@ constraints, not suggestions.
   for files that need an absolute path (LaunchAgent plist, environment.d).
   Per-host values are drop-in fragments, not variables.
 - **PATH is owned by systemd `environment.d`, not shells** (Linux):
-  `10-path.conf` (linux) → `20-path-brew.conf` (linux/gnome) → user extras in
+  `10-path.conf` (linux) → `15-path-brew.conf` (linux) → user extras in
   `20-path-extra.conf` (`just add-path`, never in the repo) →
   `90-path-system.conf` (system dirs last, brew doctor). `just path-show`
   prints the result; `just path-apply` pushes it into the running user

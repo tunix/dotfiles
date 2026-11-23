@@ -1,6 +1,6 @@
 # vim: set ft=just :
 # PATH lives in ~/.config/environment.d (systemd user env — shell-independent).
-# Layers drop numbered files there (10-path, 20-path-brew, 90-path-system);
+# Layers drop numbered files there (10-path, 15-path-brew, 90-path-system);
 # user-added dirs go to 20-path-extra.conf, which is never in the repo.
 env_d := x'$HOME/.config/environment.d'
 extra := env_d + '/20-path-extra.conf'
@@ -12,7 +12,7 @@ add-path dir:
     #!/bin/bash
     # value starts as the literal ${PATH}: systemd-environment-d-generator
     # resolves it against the files before it (files apply alphabetically,
-    # so extras follow 20-path-brew.conf and precede 90-path-system.conf)
+    # so extras follow 15-path-brew.conf and precede 90-path-system.conf)
     set -euo pipefail
     dir="$1"
     if [[ $dir == '~' ]]; then

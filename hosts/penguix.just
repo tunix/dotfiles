@@ -24,7 +24,7 @@ import "../linux/gnome/recipes/main.just"
 # unchanged. Add a step to the phase it belongs to, or add a phase here.
 [linux]
 [group('dotfiles')]
-setup: base shell desktop install-global
+setup: base shell gnome install-global
     @echo "Done. Log out/in (or restart GNOME Shell) so extension and dconf changes fully apply."
 
 # App sources and packages, the files, then the device rules the apps need.
@@ -32,12 +32,12 @@ setup: base shell desktop install-global
 [private]
 base: flatpak-remote brew-sync apply solaar-udev
 
-# Login shell, kernel tweak, bash/CLI colours and the editor config.
+# Login shell, kernel tweak, bash/CLI colours, editor config, CLI plugins.
 [linux]
 [private]
-shell: change-shell sysctl-ttl bashrc-dircolors bat-cache lazyvim-config
+shell: change-shell sysctl-ttl bashrc-dircolors bat-cache lazyvim-config aws-session-manager
 
-# GNOME desktop: user settings, extensions, timers and apps.
+# GNOME-only: user settings, shell extensions, colour-scheme timers, cursor.
 [linux]
 [private]
-desktop: dconf-apply extensions theme-sync sun-scheduler bibata aws-session-manager
+gnome: dconf-apply extensions theme-sync sun-scheduler bibata
