@@ -10,9 +10,13 @@
 [group('desktop')]
 theme-sync: (user-unit "penguix-theme-sync.service")
     #!/usr/bin/env bash
-    if ! [ -x "$HOME/.local/bin/toggle-color-preferences.sh" ]; then
-        echo "WARN: ~/.local/bin/toggle-color-preferences.sh missing (run 'just apply');" >&2
-        echo "      theme-sync only logs until the script appears." >&2
+    set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init theme-sync
+    if [ ! -x "$HOME/.local/bin/toggle-color-preferences.sh" ]; then
+        ui_warn "toggle-color-preferences.sh missing; run 'just apply' (the unit only logs until then)"
+    else
+        ui_ok "ready (toggle-color-preferences.sh in place)"
     fi
 
 # Re-evaluate color-scheme every minute from local sunrise/sunset
@@ -22,6 +26,11 @@ theme-sync: (user-unit "penguix-theme-sync.service")
 [linux]
 [group('desktop')]
 sun-scheduler: (user-unit "penguix-sun-scheduler.timer")
+    #!/usr/bin/env bash
+    set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init sun-scheduler
+    ui_ok "ready (color scheme follows sunrise/sunset)"
 
 # Install a Bibata cursor theme variant into ~/.local/share/icons (userspace)
 # and select it. Fast-exits when the variant is already installed.
@@ -32,28 +41,35 @@ sun-scheduler: (user-unit "penguix-sun-scheduler.timer")
 bibata variant='Bibata-Modern-Ice':
     #!/usr/bin/env bash
     set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init bibata
+    did=0
     dest="$HOME/.local/share/icons/{{ variant }}"
     if [ -f "$dest/index.theme" ]; then
-        echo "Bibata '{{ variant }}' already installed; nothing to do."
+        : # already installed
     else
         ver="v2.0.7"
         url="https://github.com/ful1e5/Bibata_Cursor/releases/download/${ver}/{{ variant }}.tar.xz"
         tmp="$(mktemp -d)"
         trap 'rm -rf "$tmp"' EXIT
-        echo "Downloading Bibata {{ variant }} (${ver})..."
-        curl -fsSL -o "$tmp/theme.tar.xz" "$url"
+        ui_run curl -fsSL -o "$tmp/theme.tar.xz" "$url"
         mkdir -p "$HOME/.local/share/icons"
         tar -xf "$tmp/theme.tar.xz" -C "$HOME/.local/share/icons/"
-        [ -f "$dest/index.theme" ] || {
-            echo "ERROR: unexpected tarball layout (no $dest/index.theme)" >&2
+        if [ ! -f "$dest/index.theme" ]; then
+            ui_fail "unexpected tarball layout (no $dest/index.theme)"
             exit 1
-        }
-        echo "Installed -> $dest"
+        fi
+        ui_note "installed {{ variant }} (${ver}) into ~/.local/share/icons"
+        did=1
     fi
     current="$(gsettings get org.gnome.desktop.interface cursor-theme 2>/dev/null || true)"
-    if [ "$current" = "'{{ variant }}'" ]; then
-        echo "cursor-theme already {{ variant }}; nothing to do."
-    else
+    if [ "$current" != "'{{ variant }}'" ]; then
         gsettings set org.gnome.desktop.interface cursor-theme '{{ variant }}'
-        echo "cursor-theme -> {{ variant }} (log out/in for every app to pick it up)"
+        ui_note "cursor-theme set; log out/in for every app to pick it up"
+        did=1
+    fi
+    if [ "$did" = 1 ]; then
+        ui_upd "{{ variant }} installed and selected"
+    else
+        ui_ok "{{ variant }} already installed and selected"
     fi

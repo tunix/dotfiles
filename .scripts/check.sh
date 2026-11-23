@@ -18,9 +18,14 @@ set -uo pipefail
 
 root=${1:?usage: check.sh <repo-root>}
 cd "$root"
+
+# shellcheck source=.scripts/ui.sh
+. "$root/.scripts/ui.sh"
+ui_init check
+
 errors=0
-err() { echo "ERROR: $*" >&2; errors=$((errors + 1)); }
-warn() { echo "WARN:  $*" >&2; }
+err() { ui_note "ERROR: $*"; errors=$((errors + 1)); }
+warn() { ui_note "WARN:  $*"; }
 
 # Layer -> number band. Plain functions instead of associative arrays:
 # macOS still ships bash 3.2 as /bin/bash.
@@ -133,7 +138,7 @@ if find . -path ./.git -prune -o -path '*/home/.ssh/config.d/*' -type f -print 2
 fi
 
 if [ "$errors" -gt 0 ]; then
-    echo "check: $errors error(s)" >&2
+    ui_fail "$errors error(s)"
     exit 1
 fi
-echo "check: OK ($(ls hosts/*.just | wc -l | tr -d ' ') hosts, $(layer_dirs | wc -l | tr -d ' ') layers)"
+ui_ok "$(ls hosts/*.just | wc -l | tr -d ' ') hosts, $(layer_dirs | wc -l | tr -d ' ') layers"

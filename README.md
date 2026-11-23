@@ -18,7 +18,7 @@ installer brings the Xcode Command Line Tools, and with them git), clones the
 repo and runs `setup`. On the Linux desktop brew and just ship with the
 image.
 
-`setup` is idempotent: every step fast-exits with "nothing to do" when its
+`setup` is idempotent: every step reports what it did and says so when its
 target state is already in place, so it is safe to re-run at any time.
 
 ## Daily use
@@ -41,13 +41,52 @@ just check        # validate the repo rules
   moves.
 - Outside `$HOME` (`/tmp`, `/opt`, …) use `just -g <recipe>`.
 
+## Output
+
+Every step prints one line — status, step, what happened — so a run reads
+top to bottom:
+
+```
+  ok   flatpak-remote      flathub user remote present
+  ok   brew-sync           66 packages in 8 Brewfiles, all present
+  ok   apply               nothing to do
+  upd  dconf-apply         4 dconf files loaded, settings changed
+  skip aws-session-manager AWS CLI not installed
+  upd  install-global      2 files written
+                           ~/.justfile -> ~/Projects/dotfiles/hosts/penguix.just
+
+setup  17 step(s) · 2 changed (dconf-apply, install-global) · 2 skipped
+       log out/in (or restart GNOME Shell) for the dconf and extension
+       changes to apply fully
+```
+
+| Status | Meaning |
+|---|---|
+| `ok` | the target is already in place, nothing changed |
+| `upd` | the step changed something |
+| `skip` | the step does not apply on this machine |
+| `warn` | something was off, the step carried on |
+| `fail` | the step failed (setup stops there) |
+
+Details (files deployed, packages installed, services enabled) are indented
+under their step, and the closing tally counts the run.
+
+- The output of the commands a step runs is kept in
+  `~/.cache/dotfiles/logs/<step>.log`, printed when a command fails, and
+  echoed live with `just setup-verbose` (or `DOTFILES_VERBOSE=1 just setup`).
+- A failing step prints its log and stops `setup`; the step's line in the
+  tally tells you what to re-run.
+- `just status`, `path-show`, `extensions-list` and `dconf-vs-defaults` print
+  reports of their own, not step lines.
+
 ## Layout
 
 ```
 hosts/        one entry justfile per machine
   penguix.just  layers: common linux linux/gnome
   mac.just      layers: common macos work/cursor work/midas
-.scripts/     apply.sh (deploy engine), check.sh (rules), bootstrap-mac.sh,
+.scripts/     apply.sh (deploy engine), check.sh (rules), ui.sh (output +
+              logs), summary.sh (setup tally), bootstrap-mac.sh,
               validate-brewfiles.sh, install-gnome-extension.sh, dconf-vs-defaults.py
 common/       every machine
 linux/        every Linux machine: OS/device/CLI state (Brewfiles, flatpaks,
@@ -132,6 +171,10 @@ recipes — otherwise the justfile would not even parse on the other OS.
 
 **work** — `cursor-legacy-cleanup`, plus the midas recipes (argo, aws, k8s,
 kube, teleport, vault, 1password)
+
+**host** — `setup` (bring the machine to the repo state, through its private
+`base`/`shell`/`gnome` phases), `setup-verbose` (the same, with every step's
+raw command output)
 
 ## Requirements
 

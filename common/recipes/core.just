@@ -20,19 +20,25 @@ check:
 install-global:
     #!/bin/sh
     set -eu
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init install-global
     line="import '{{ host_file }}'"
     marker="# managed by dotfiles (just install-global)"
+    written=0
     for f in "$HOME/.justfile" "$HOME/.config/just/justfile"; do
         want=$(printf '%s\n%s\n' "$marker" "$line")
-        if [ -f "$f" ] && [ "$(cat "$f")" = "$want" ]; then
-            echo "${f#"$HOME"/} already imports {{ host_file }}; nothing to do."
-            continue
-        fi
+        if [ -f "$f" ] && [ "$(cat "$f")" = "$want" ]; then continue; fi
         if [ -f "$f" ] && ! grep -qF "$marker" "$f"; then
             mv "$f" "$f.pre-dotfiles"
-            echo "kept the previous ${f#"$HOME"/} as ${f#"$HOME"/}.pre-dotfiles"
+            ui_note "kept the previous ~/${f#"$HOME"/} as ~/${f#"$HOME"/}.pre-dotfiles"
         fi
         mkdir -p "$(dirname "$f")"
-        printf '%s\n' "$want" > "$f"
-        echo "${f#"$HOME"/} -> {{ host_file }}"
+        printf '%s\n' "$want" >"$f"
+        ui_note "~/${f#"$HOME"/} -> {{ host_file }}"
+        written=$((written + 1))
     done
+    if [ "$written" = 0 ]; then
+        ui_ok "~/.justfile already imports the host file"
+    else
+        ui_upd "$(ui_plural "$written" file files) written"
+    fi

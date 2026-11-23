@@ -93,9 +93,25 @@ constraints, not suggestions.
 - **Secrets**: only `op://` references are committed (`secrets.env`,
   `.config/opencode/.env`). `apply` resolves `${env:NAME}` in compose
   fragments with `op read`; resolved values exist only in `$HOME`.
-- **Idempotency**: every recipe fast-exits 0 with a clear "nothing to do"
-  message before any prompt or privileged action when its target state is
-  already in place.
+- **Output goes through `.scripts/ui.sh`.** Every state-changing recipe
+  sources it, calls `ui_init <recipe>` and ends with exactly one status line:
+  `ui_ok` (already in place), `ui_upd` (changed something), `ui_skip` (does
+  not apply on this machine), `ui_warn` (was off, continued anyway) or
+  `ui_fail` (the recipe exits non-zero). A command's own output goes to the
+  step's log through `ui_run` / `ui_capture`
+  (`~/.cache/dotfiles/logs/<step>.log`; printed when the command fails, live
+  with `DOTFILES_VERBOSE=1`), details go to `ui_note` (buffered, printed
+  under the status line) or `ui_detail` (printed right away). Query recipes
+  that print a report (`status`, `path-show`, `extensions-list`,
+  `dconf-vs-defaults`) keep their own format.
+- **Never put `@` on a recipe with a shebang body**: just then echoes the
+  whole script. A shebang body is already quiet; plain command recipes need
+  `@` to be quiet.
+- **Idempotency**: every recipe fast-exits 0 with `ui_ok`/`ui_skip` before
+  any prompt or privileged action when its target state is already in place.
+  `setup` ends with the tally `.scripts/summary.sh` prints; the host file
+  exports `DOTFILES_RUN` (one id per invocation) so a step run on its own
+  never lands in a later tally.
 - **Destructive operations are explicit recipes with `[confirm]`**
   (`ssh-reset`, `lazyvim-reset`, `lazyvim-remove`, `kube-reset`).
 - **Brewfiles** must pass `just brew-check` (grep-only validator; never
@@ -128,6 +144,11 @@ clones the starter into an empty `~/.config/nvim` first).
 
 - `just check` must pass.
 - Test deployments against a scratch `$HOME` (`HOME=$(mktemp -d) just apply`),
-  never against a live session. A second `apply` must print "nothing to do".
+  never against a live session. A second `apply` must print
+  `ok apply nothing to do`, and a second `setup` must be all `ok`/`skip` — a
+  step that still reports `upd` is not idempotent. Stub the tools the machine
+  does not have (brew, flatpak, dconf, systemctl, gsettings,
+  gnome-extensions, gum, sudo) in a throwaway `PATH` and run `setup` end to
+  end against the scratch `$HOME`, then check `~/.cache/dotfiles/status.tsv`.
 - Never run `sysctl-ttl`, `change-shell` or `update-and-reboot` outside an
   explicit user request.
