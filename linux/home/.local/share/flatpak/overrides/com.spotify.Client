@@ -1,0 +1,10 @@
+# Spotify flatpak override — force the X11 socket.
+# Deployed into $HOME/.local/share/flatpak/overrides/com.spotify.Client by
+# 'just apply' (it is the persisted form of:
+#   flatpak override --user --socket=x11 com.spotify.Client
+# ). The Spotify flatpak declares only the Wayland socket, so on a Wayland
+# session its window/tray misbehave; granting the X11 socket lets it fall back
+# to XWayland. Note the flag is singular (--socket=) but the file key is the
+# plural 'sockets'.
+[Context]
+sockets=x11;
