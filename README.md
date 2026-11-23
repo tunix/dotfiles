@@ -11,7 +11,7 @@ the `linux/gnome` layer.
 | Machine | Command |
 |---|---|
 | macOS | `curl -fsSL https://raw.githubusercontent.com/tunix/dotfiles/main/.scripts/bootstrap-mac.sh \| bash` |
-| Linux desktop | `git clone https://github.com/tunix/dotfiles.git ~/dotfiles && just --justfile ~/dotfiles/hosts/penguix.just setup` |
+| Linux desktop | `git clone https://github.com/tunix/dotfiles.git ~/Projects/dotfiles && just -f ~/Projects/dotfiles/hosts/penguix.just setup` |
 
 `.scripts/bootstrap-mac.sh` installs only Homebrew and just (Homebrew's
 installer brings the Xcode Command Line Tools, and with them git), clones the

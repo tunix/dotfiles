@@ -9,7 +9,7 @@ layers := "common macos work/cursor work/midas"
 
 # list this host's recipes
 default:
-    @just --justfile "{{ host_file }}" --list
+    @just -f "{{ host_file }}" -l
 
 import "../common/recipes/main.just"
 import "../macos/recipes/main.just"
@@ -25,10 +25,10 @@ setup: work-submodule brew-sync apply sysctl-ttl bashrc-dircolors bat-cache lazy
     set -eu
     # work recipes are optional imports: call them only when present, so the
     # host file still parses before the submodule is checked out
-    recipes=$(just --justfile "{{ host_file }}" --summary)
+    recipes=$(just -f "{{ host_file }}" --summary)
     for r in cursor-legacy-cleanup; do
         case " $recipes " in
-            *" $r "*) just --justfile "{{ host_file }}" "$r" ;;
+            *" $r "*) just -f "{{ host_file }}" "$r" ;;
         esac
     done
 

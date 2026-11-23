@@ -1,6 +1,6 @@
 # vim: set ft=just :
 # Host: penguix — Linux desktop (Bluefin/Dakota, GNOME).
-# First run:  just --justfile hosts/penguix.just setup
+# First run:  just -f hosts/penguix.just setup
 # Afterwards: `just <recipe>` from anywhere under $HOME (see install-global).
 
 repo_root := parent_directory(source_directory())
@@ -9,7 +9,7 @@ layers := "common linux linux/gnome"
 
 # list this host's recipes
 default:
-    @just --justfile "{{ host_file }}" --list
+    @just -f "{{ host_file }}" -l
 
 import "../common/recipes/main.just"
 import "../linux/recipes/main.just"
