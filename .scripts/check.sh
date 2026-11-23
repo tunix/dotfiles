@@ -3,9 +3,12 @@
 #
 #   .scripts/check.sh <repo-root>
 #
-# 1. Every host file parses on this OS, and the common layer parses ALONE
-#    (a common recipe depending on an OS-specific one would break the other
-#    OS: the whole justfile then fails to load).
+# 1. Every host file parses on this OS, defines `default` (the recipe
+#    listing) as its first recipe — a bare `just -f hosts/<host>.just` runs
+#    that one, and the ~/.justfile stub `install-global` writes delegates to
+#    it — and the common layer parses ALONE (a common recipe depending on an
+#    OS-specific one would break the other OS: the whole justfile then fails
+#    to load).
 # 2. Every recipe in an OS layer carries that OS's attribute
 #    (linux, linux/gnome -> [linux]; macos -> [macos]).
 # 3. Numbered files (compose fragments and native drop-ins such as
@@ -51,6 +54,19 @@ for h in hosts/*.just; do
     if ! out=$(just -f "$h" --summary 2>&1); then
         err "$h does not parse: $out"
     fi
+    # the first recipe must be `default` (the listing): bare
+    # `just -f hosts/<host>.just` runs it, and the ~/.justfile stub delegates
+    # to it — anything else there would run on a bare invocation
+    first=$(awk '
+        /^[[:space:]]*#/ || /^[[:space:]]*$/ { next }
+        /^\[/ { next }
+        /^(import|set|alias|export|mod)[[:space:]]/ { next }
+        /^[A-Za-z_][A-Za-z0-9_-]*[[:space:]]*:=/ { next }
+        /^[[:space:]]/ { next }
+        { print $1; exit }
+    ' "$h")
+    [ "$first" = "default:" ] ||
+        err "$h: first recipe is '${first%:}', not 'default' (a bare just -f $h would run it)"
 done
 tmpj=$(mktemp)
 trap 'rm -f "$tmpj"' EXIT
