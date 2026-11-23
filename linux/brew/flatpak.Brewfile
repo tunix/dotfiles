@@ -27,8 +27,11 @@ flatpak "io.github.nozwock.Packet"
 flatpak "io.github.nroduit.Weasis"
 # Solaar: configures Logitech Unifying/bolt receivers, keyboards and mice.
 # Flatpak-only on Linux; it needs the host udev rules from `just solaar-udev`
-# (Dakota ships none) and its shell-side companion
-# (solaar-extension@sidevesh, see linux/gnome/recipes/extensions.just).
+# (Dakota ships none), its shell-side companion (solaar-extension@sidevesh,
+# see linux/gnome/recipes/extensions.just), and the config/tray-icon wiring
+# from `just solaar-config` (the sandbox cannot see the legacy
+# ~/.config/solaar, and the tray asks for an icon name the flatpak no longer
+# ships).
 flatpak "io.github.pwr_solaar.solaar"
 flatpak "io.github.tobagin.karere"
 flatpak "io.github.tunix.valhalla", remote: "flatpark", url: "https://dl.flatpark.org/flatpark.flatpakrepo"

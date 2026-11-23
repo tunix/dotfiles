@@ -36,7 +36,7 @@ setup: base shell gnome install-global
 # App sources and packages, the files, then the device rules the apps need.
 [linux]
 [private]
-base: flatpak-remote brew-sync apply solaar-udev
+base: flatpak-remote brew-sync apply solaar-udev solaar-config
 
 # Login shell, kernel tweak, bash/CLI colours, editor config, CLI plugins.
 [linux]
