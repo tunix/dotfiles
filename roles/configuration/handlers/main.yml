@@ -1,2 +1,0 @@
-- name: Rebuild bat cache
-  shell: bat cache --build

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "model": "openrouter/z-ai/glm-5.3-flash",
+
+  "providers": {
+    "hermes": {
+      "name": "Hermes",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "https://agent.alperkan.at/v1"
+      },
+      "models": {
+        "hermes-agent": {
+          "name": "Hermes Agent (VM default)",
+          "variants": [{"id": "medium", "body": {"model_options": {"reasoning_effort": "medium"}}}, {"id": "high", "body": {"model_options": {"reasoning_effort": "high"}}}],
+          "body": {"model_options": {"reasoning_effort": "low"}}
+        },
+        "glm-5.3-flash": {
+          "name": "Hermes Agent (GLM 5.3 Flash)",
+          "modelID": "z-ai/glm-5.3-flash",
+          "variants": [{"id": "medium", "body": {"model_options": {"reasoning_effort": "medium"}}}, {"id": "high", "body": {"model_options": {"reasoning_effort": "high"}}}],
+          "body": {"model_options": {"reasoning_effort": "low"}}
+        },
+        "claude-opus-5.5": {
+          "name": "Hermes Agent (Claude Opus 5.5)",
+          "modelID": "anthropic/claude-opus-5.5",
+          "variants": [{"id": "medium", "body": {"model_options": {"reasoning_effort": "medium"}}}, {"id": "high", "body": {"model_options": {"reasoning_effort": "high"}}}],
+          "body": {"model_options": {"reasoning_effort": "low"}}
+        },
+        "claude-sonnet-5.5": {
+          "name": "Hermes Agent (Claude Sonnet 5.5)",
+          "modelID": "anthropic/claude-sonnet-5.5",
+          "variants": [{"id": "medium", "body": {"model_options": {"reasoning_effort": "medium"}}}, {"id": "high", "body": {"model_options": {"reasoning_effort": "high"}}}],
+          "body": {"model_options": {"reasoning_effort": "low"}}
+        },
+        "grok-4.7": {
+          "name": "Hermes Agent (Grok 4.7)",
+          "modelID": "x-ai/grok-4.7",
+          "variants": [{"id": "medium", "body": {"model_options": {"reasoning_effort": "medium"}}}, {"id": "high", "body": {"model_options": {"reasoning_effort": "high"}}}],
+          "body": {"model_options": {"reasoning_effort": "low"}}
+        },
+        "gpt-6.1-sol": {
+          "name": "Hermes Agent (GPT 6.1 Sol)",
+          "modelID": "openai/gpt-6.1-sol",
+          "variants": [{"id": "medium", "body": {"model_options": {"reasoning_effort": "medium"}}}, {"id": "high", "body": {"model_options": {"reasoning_effort": "high"}}}],
+          "body": {"model_options": {"reasoning_effort": "low"}}
+        }
+      }
+    }
+  },
+
+  "references": {
+    "plans": {
+      "repository": "git@github.com:tunix/plans.git",
+      "branch": "main"
+    }
+  },
+
+  "mcp": {
+    "servers": {
+      "github": {
+        "type": "remote",
+        "url": "https://api.githubcopilot.com/mcp/",
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+        },
+        "disabled": false
+      },
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "disabled": false
+      },
+      "tcmb": {
+        "type": "remote",
+        "url": "https://mcp.tcmb.gov.tr/tcmb-mcp/evds/mcp",
+        "disabled": false
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+-- Managed by dotfiles: common/lazyvim/catppuccin.lua (deployed by `just lazyvim-config`)
+-- Catppuccin plugin configuration.
+-- Colorscheme is defined in core.lua.
+return {
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      flavour = "auto",
+      transparent_background = true,
+      float = {
+        transparent = true,
+      },
+      background = {
+        light = "latte",
+        dark = "frappe",
+      },
+    },
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+
+      local function switch_theme(new_bg)
+        if not (vim.g.colors_name and vim.g.colors_name:find("catppuccin")) then
+          return
+        end
+        if new_bg and vim.o.background ~= new_bg then
+          vim.g.colors_name = ""
+          vim.cmd.colorscheme(
+            new_bg == "light"
+              and "catppuccin-latte"
+              or "catppuccin-frappe"
+          )
+          vim.opt.background = new_bg
+        end
+      end
+
+      local uv = vim.loop
+
+      -- Watch signal file written by toggle-color-preferences.sh
+      local signal = vim.fn.expand("~/.cache/nvim-theme")
+      local watcher = uv.new_fs_event()
+      if watcher then
+        watcher:start(signal, {}, vim.schedule_wrap(function()
+          local f = io.open(signal, "r")
+          if f then
+            local content = f:read("*a")
+            f:close()
+            if content then
+              switch_theme(content:match("^%s*(.-)%s*$"))
+            end
+          end
+        end))
+      end
+    end,
+  },
+}

@@ -1,6 +1,0 @@
-- name: Ensure that apps are installed
-  flatpak:
-    name: "{{ item }}"
-    method: user
-  loop: "{{ flatpaks }}"
-  ignore_errors: true

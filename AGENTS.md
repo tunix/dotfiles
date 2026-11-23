@@ -1,71 +1,111 @@
 # AGENTS.md — dotfiles
 
-## Quickstart
-
-```bash
-ansible-playbook penguix.yml   # Linux desktop
-ansible-playbook mac.yml       # macOS
-ansible-playbook pi5.yml       # Raspberry Pi 5
-```
-
-Requires `ansible` installed first. All playbooks target `localhost`.
+Personal configuration for a Linux desktop (`penguix`, Bluefin/Dakota), a
+Raspberry Pi (`pi5`) and a Mac (`mac`), deployed with `just` + Homebrew.
+README.md has the user-facing overview; this file holds the rules. They are
+constraints, not suggestions.
 
 ## Architecture
 
-- **Ansible-based personal dotfiles**. Three playbooks (`penguix.yml`, `mac.yml`, `pi5.yml`) each set vars and include roles.
-- **7 roles**: `brew` (macOS Homebrew), `configuration` (shell, git, editor, etc.), `flatpak`, `gnome`, `linux`, `mac`, `work` (git submodule — private, `git@github.com:tunix/work.git`).
-- **`ansible.cfg`** sets `hash_behaviour=merge` — hash vars merge across playbook and role defaults instead of overriding.
-- **Playbooks are the source of truth** for which roles run and what vars differ from role defaults. Role defaults are in `roles/*/defaults/main.yml`.
+- **Host files are the entry points.** `hosts/<name>.just` defines
+  `repo_root`, `host_file`, `layers`, imports exactly the layers' recipes and
+  defines `setup`. Host files are named by role, not by hostname. `setup`
+  must stay idempotent end to end.
+- **Layers** (`common`, `linux`, `macos`, `gnome`, `pi`, `work/cursor`,
+  `work/midas`) share one shape: `home/`, `compose/`, `recipes/`, `brew/`,
+  optional `secrets.env`. `lib/apply.sh` deploys them in the host's `layers`
+  order; `lib/check.sh` (`just check`) enforces the rules below.
+- **`work/` is the private `tunix/work` submodule.** Host files import its
+  recipes with `import?` and must never list a work recipe as a dependency
+  (the host file would not parse before the submodule is checked out); call
+  work recipes from a recipe body only when `just --summary` lists them.
+- `~/.justfile` is a one-line import of the host file written by
+  `just install-global`. Never copy recipes into `$HOME`.
 
-## Important conventions
+## Red lines
 
-- **PATH is owned by systemd `environment.d`, not shells.** Playbook `shell.path` / `shell.brew_prefix` / `shell.system_path` render `~/.config/environment.d/{10-path,30-path-system}.conf` (user dirs → brew → system last). User-added dirs go to `20-path-extra.conf` via `just add-path <dir>`; `just path-show` prints the resolved PATH; `just path-apply` applies it to the running systemd user env without re-login. Shell configs never set PATH (fish only erases legacy `fish_user_paths`).
+1. **Nothing is layered into an OS image.** No Containerfile, RPM/COPR,
+   rpm-ostree, `/etc/skel` or `/etc/dconf` writes. dconf goes through the
+   user database (`dconf load /`).
+2. **Everything targets `$HOME`**, except the explicit sudo recipes:
+   `sysctl-ttl` (gnome, macos), `change-shell` (linux), `apt-*` (pi),
+   `update-and-reboot` (gnome). Do not add another without a reason in the
+   recipe comment.
+3. **Software comes from Homebrew (formula / cask / `flatpak` DSL), Flathub,
+   or apt on the Pi.** Pinned, checksum-verified downloads are the fallback
+   (just on the Pi, Bibata). `brew bundle` only — never `brew bundle
+   upgrade`.
+4. **No removal logic in `apply`.** It only creates and updates files.
+   Removing what the repo no longer ships is a separate, planned design.
 
-- **Variables are merged** (not overridden) due to `hash_behaviour=merge`. A var in a playbook merges into the role default rather than replacing it.
-- **Templates (.j2)** for files needing variable substitution; static files live in `roles/<role>/files/`.
-- **Color management** uses `toggle-color-preferences.sh` (light/dark toggle across ghostty, zellij, k9s, bat). macOS also has a LaunchAgent for automatic toggle.
-- **Destructive operations live in just, not Ansible.** `~/.ssh` reset is `just ssh-reset` (`roles/configuration/files/just/modules/ssh.just`); merged kubeconfig rebuild is `just kube-reset` (`roles/work/midas/files/just/kube.just` — deletes only `~/.kube/config`, then re-merges). Ansible never deletes these directories.
-- **just layout**: `main.just` → `~/.justfile`; everything in `files/just/modules/` is copied as-is to `~/.config/just/` (no list to maintain — drop a file in, add an import to `main.just`); work-role just files → `~/.config/just/midas/` (imported via `import?`).
-- **ignore_errors: true** on brew packages, flatpak apps, and linux package install — transient failures expected.
-- **Homebrew tap trust (6.0+)**: after `homebrew_tap`, the brew role runs `brew trust <tap>` for each entry in `brew.repos` (idempotent via `brew trust --json=v1`). Required for third-party taps (`hashicorp/tap`, `esolitos/ipa`, …).
-- **Homebrew cask sudo**: `.pkg` casks need an admin password. `homebrew_cask` gets `sudo_password` from `ansible_become_password`. `mac.yml` prompts for it (`vars_prompt`); override with `-e ansible_become_password=…` to skip the prompt. Empty/omit skips `SUDO_ASKPASS`.
-- **bat cache rebuild** via handler triggered on config change.
-- **Maven config** is gated on `configure.maven: true` (set in `mac.yml`).
-- **All commits must follow Conventional Commits**: `<type>(<scope>): <description>`. Types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `style`, `ci`.
-- **Comments are always English.** Never write code/config/template comments in Turkish. (Documentation files like README may be Turkish only when the file's audience demands it; commit messages follow Conventional Commits in English.)
+## Layer rules (`just check` enforces 1–4)
 
-## Key entrypoints
+1. Every recipe in `linux/`, `gnome/`, `pi/` carries `[linux]`; every recipe
+   in `macos/` carries `[macos]`. Common recipes never depend on an OS
+   recipe — the justfile would not parse on the other OS.
+2. Numbered files use their layer's band: common `00–09`, linux/macos
+   `10–19`, gnome/pi `20–29`, work/cursor `50–59`, work/midas `70–79`; any
+   layer may use `90–99` for "must come last" files.
+3. A compose fragment name is unique per target across the active layers.
+4. Active layers never ship the same `home/` path, and a path is never both
+   a `home/` file and a compose target.
+5. ssh keeps the FIRST value per option: lower numbers win in
+   `.ssh/config.d/`, unlike everywhere else.
 
-| File | Purpose |
-|------|---------|
-| `penguix.yml` | Linux desktop (roles: linux, gnome, configuration, work) |
-| `mac.yml` | macOS (roles: brew, configuration, mac, work) |
-| `pi5.yml` | Raspberry Pi 5 (roles: linux, configuration) |
-| `roles/configuration/tasks/main.yml` | Tool config orchestration (includes conditional sub-tasks) |
-| `roles/work/tasks/main.yml` | Runs `common` foundation, enabled components, then compose |
-| `roles/work/midas/tasks/main.yml` | Midas kube, git, maven, aws, just; copies `midas/drop.d` |
+## Conventions
+
+- **Drop-in first.** If a program reads a directory (fish `conf.d`,
+  `environment.d`, ssh `config.d`), give each layer its own numbered file in
+  `home/`. Only programs that need a single file get `compose/` fragments.
+  JSON fragments are deep-merged with jq; everything else is concatenated,
+  which only works for formats where a later value wins (git, ghostty, ini).
+- **No templating.** The only substitution is `@HOME@` in `*.tmpl` files,
+  for files that need an absolute path (LaunchAgent plist, environment.d).
+  Per-host values are drop-in fragments, not variables.
+- **PATH is owned by systemd `environment.d`, not shells** (Linux):
+  `10-path.conf` (linux) → `20-path-brew.conf` (gnome) → user extras in
+  `20-path-extra.conf` (`just add-path`, never in the repo) →
+  `90-path-system.conf` (system dirs last, brew doctor). `just path-show`
+  prints the result; `just path-apply` pushes it into the running user
+  session. Shell configs never set PATH.
+- **Secrets**: only `op://` references are committed (`secrets.env`,
+  `.config/opencode/.env`). `apply` resolves `${env:NAME}` in compose
+  fragments with `op read`; resolved values exist only in `$HOME`.
+- **Idempotency**: every recipe fast-exits 0 with a clear "nothing to do"
+  message before any prompt or privileged action when its target state is
+  already in place.
+- **Destructive operations are explicit recipes with `[confirm]`**
+  (`ssh-reset`, `lazyvim-reset`, `lazyvim-remove`, `kube-reset`).
+- **Brewfiles** must pass `just brew-check` (grep-only validator; never
+  evaluate Brewfiles as Ruby). Third-party taps need `trusted: true`. A
+  package used on both Homebrew hosts goes to `common/brew/`.
+- Before adding a GNOME Shell extension, verify its `shell_version_map` on
+  extensions.gnome.org covers the target GNOME major.
+- dconf edits: change the topic file in `gnome/dconf/`, never dump raw user
+  state into the repo (`just dconf-backup` writes to the gitignored
+  `gnome/dconf/proposals/`).
+- **All commits follow Conventional Commits**: `<type>(<scope>):
+  <description>` with `feat`, `fix`, `docs`, `chore`, `refactor`, `test`,
+  `style`, `ci`.
+- **Comments are always English.**
 
 ## LazyVim ruleset
 
-Templates live in `roles/configuration/templates/lazyvim/` and deploy to `~/.config/nvim/lua/plugins/`.
+`common/lazyvim/*.lua` deploy to `~/.config/nvim/lua/plugins/` through
+`just lazyvim-config`, only when LazyVim is installed (`lazyvim-install`
+clones the starter into an empty `~/.config/nvim` first).
 
-| File | Responsibility |
-|------|---------------|
-| `core.lua.j2` | LazyVim base: colorscheme selection, diagnostic settings, UI defaults |
-| `catppuccin.lua.j2` | Catppuccin plugin: flavour, background mapping, integrations |
+1. **`core.lua` is the single source of truth** for `colorscheme`. Plugin
+   files never set it.
+2. **One file per plugin** in `common/lazyvim/`, named after the plugin.
+3. **Theme switching** follows the chain: `toggle-color-preferences.sh` →
+   `dconf`/`defaults` → Ghostty (DEC mode 2031) → `vim.o.background` →
+   `core.lua` selects the colourscheme → the plugin applies the flavour.
 
-### Rules
+## Verification
 
-1. **`core.lua` is the single source of truth** for `colorscheme`. Plugin files never set it.
-2. **One file per plugin.** Plugin-specific opts/integrations go in a dedicated `plugins/<name>.lua`.
-3. **New plugin?** Add a template under `templates/lazyvim/` and a deploy task in `tasks/lazyvim.yml`. Keep the name matching the plugin (e.g., `tokyonight.lua.j2`).
-4. **`defaults/main.yml`** holds variable values (e.g., `editor.colors.lazyvim.light: latte`). Templates reference these; never hardcode colours in templates.
-5. **Theme switching** follows the chain: `toggle-color-preferences.sh` → `dconf`/`defaults` → Ghostty (DEC mode 2031) → `vim.o.background` → `core.lua` selects colourscheme → plugin applies flavour.
-
-## Submodules
-
-```bash
-git submodule update --init
-```
-
-`roles/work` is a private submodule. `work.common` defaults to true: it lays down `~/.config/work/drop.d`. Cursor config composition is gated by `work.cursor` (default false, enabled in `mac.yml`): when enabled, compose merges drop-ins into `~/.cursor/mcp.json`, `hooks.json`, and Cursor IDE settings. `cursor/env/*.yml` holds 1Password `op://` references; compose reads them with `op read` and embeds the values into `~/.cursor/mcp.json` in place of `${env:...}` placeholders. Compose also deletes the legacy `~/.config/cursor/mcp-secrets/` tree (old `*.headers` / token files) and points `~/.cursorignore` plus `~/.config/git/ignore` at the rendered `~/.cursor/mcp.json` instead. `work.midas` copies `midas/drop.d` onto that foundation and is set in playbooks.
+- `just check` must pass.
+- Test deployments against a scratch `$HOME` (`HOME=$(mktemp -d) just apply`),
+  never against a live session. A second `apply` must print "nothing to do".
+- Never run `sysctl-ttl`, `change-shell` or `update-and-reboot` outside an
+  explicit user request.

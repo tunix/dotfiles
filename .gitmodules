@@ -1,3 +1,3 @@
-[submodule "roles/work"]
-	path = roles/work
+[submodule "work"]
+	path = work
 	url = git@github.com:tunix/work.git

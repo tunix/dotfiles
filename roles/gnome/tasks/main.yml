@@ -1,2 +1,0 @@
-- name: Configure GNOME files
-  include_tasks: files.yml

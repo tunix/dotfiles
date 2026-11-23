@@ -1,0 +1,69 @@
+# vim: set ft=just :
+# GNOME Shell extensions, user-installed (Extension Manager equivalent).
+# Image-shipped extensions (tilingshell, tailscale-qs, appindicator,
+# blur-my-shell, gsconnect, caffeine, ...) are NOT listed here: they come
+# with the base image on Dakota/Bluefin and stay image-owned.
+
+# Extensions that must be installed at user level on a fresh system.
+# Settings for these live in gnome/dconf/extensions.ini.
+#
+# Derived from the 2026-11 `dconf dump` + EGO shell_version_map checks:
+# - grand-theft-focus: supports GNOME 50 natively.
+# - solaar-extension: supports GNOME 50/51 (EGO v12); talks to flatpak
+#   solaar over its exported session dbus interface.
+# - theme-scheduler was dropped: color-scheme scheduling is handled by the
+#   penguix-sun-scheduler systemd user timer (sun-based with a fixed
+#   09:00/18:00 fallback).
+# - search-light is intentionally NOT in this list: the dump shows it
+#   disabled on the source machine; its tuned settings are kept in
+#   extensions.ini for when it is re-enabled.
+GNOME_USER_EXTENSIONS := "grand-theft-focus@zalckos.github.com solaar-extension@sidevesh"
+
+# Install + enable every user extension (idempotent). A per-extension
+# failure warns and continues, so one dead extension cannot block setup.
+[linux]
+[group('desktop')]
+extensions:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    status=0
+    for uuid in {{ GNOME_USER_EXTENSIONS }}; do
+        if ! bash "{{ repo_root }}/gnome/scripts/install-gnome-extension.sh" "$uuid"; then
+            echo "WARN: $uuid not installed — setup continues." >&2
+            status=1
+        fi
+    done
+    exit $status
+
+# Install one extension from extensions.gnome.org for the running GNOME
+# Shell version, into ~/.local/share/gnome-shell/extensions/, then enable it.
+[linux]
+[group('desktop')]
+extension-install UUID:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    exec bash "{{ repo_root }}/gnome/scripts/install-gnome-extension.sh" "{{ UUID }}"
+
+# Disable a user extension without uninstalling it.
+[linux]
+[group('desktop')]
+extension-disable UUID:
+    #!/usr/bin/env bash
+    gnome-extensions disable "{{ UUID }}" && echo "Disabled {{ UUID }}"
+
+# Uninstall a user extension entirely.
+[linux]
+[group('desktop')]
+extension-uninstall UUID:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    rm -rf "$HOME/.local/share/gnome-shell/extensions/{{ UUID }}"
+    echo "Removed {{ UUID }} (log out/in for the shell to forget it)."
+
+# List installed extensions and their enabled state.
+[linux]
+[group('desktop')]
+extensions-list:
+    #!/usr/bin/env bash
+    gnome-extensions list --enabled | sed 's/^/enabled:  /'
+    gnome-extensions list --disabled | sed 's/^/disabled: /'
