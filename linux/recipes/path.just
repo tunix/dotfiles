@@ -14,6 +14,8 @@ add-path dir:
     # resolves it against the files before it (files apply alphabetically,
     # so extras follow 15-path-brew.conf and precede 90-path-system.conf)
     set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init add-path
     dir="$1"
     if [[ $dir == '~' ]]; then
         dir="$HOME"
@@ -27,15 +29,22 @@ add-path dir:
         printf 'PATH=${PATH}\n' > "$file"
     fi
     value=$(sed -n 's/^PATH=//p' "$file")
+    added=0
     # idempotent: skip if the dir is already in the value
     if [[ ":$value:" != *":$dir:"* ]]; then
         printf 'PATH=%s:%s\n' "$value" "$dir" > "$file.tmp"
         mv "$file.tmp" "$file"
+        added=1
     fi
     if [[ ! -d $dir ]]; then
-        echo "warning: $dir is not an existing directory (added anyway)" >&2
+        ui_note "warning: $dir is not an existing directory (added anyway)"
     fi
-    grep '^PATH=' "$file"
+    if [ "$added" = 1 ]; then
+        ui_upd "added $dir"
+    else
+        ui_ok "$dir already in PATH extras"
+    fi
+    ui_detail "$(grep '^PATH=' "$file")"
 
 # no re-login needed after `just apply`: sets resolved PATH in running systemd user env
 [linux]
@@ -44,10 +53,12 @@ path-apply:
     # GUI apps + new terminals inherit it; running shells keep their old PATH
     # until restarted
     set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init path-apply
     value=$({{ just_executable() }} -f {{ justfile() }} _resolve-path)
     systemctl --user set-environment "PATH=$value"
-    echo "systemd user env PATH updated; new sessions inherit it"
-    echo "note: running shells keep their old PATH until restarted"
+    ui_note "running shells keep their old PATH until restarted"
+    ui_upd "systemd user env PATH updated; new sessions inherit it"
 
 # computes the final PATH like systemd-environment-d-generator would:
 # apply each PATH= file in alphabetical order, replacing the `${PATH}` token

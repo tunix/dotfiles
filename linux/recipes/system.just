@@ -10,13 +10,16 @@
 change-shell shell='/usr/bin/fish':
     #!/usr/bin/env bash
     set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init change-shell
     user="$(id -un)"
     current="$(getent passwd "$user" | cut -d: -f7)"
     if [ "$current" = "{{ shell }}" ]; then
-        echo "Login shell already {{ shell }}; nothing to do."
+        ui_ok "already {{ shell }}"
         exit 0
     fi
     sudo usermod --shell {{ shell }} "$user"
+    ui_upd "login shell $current -> {{ shell }}"
 
 alias chsh := change-shell
 
@@ -36,19 +39,23 @@ alias chsh := change-shell
 solaar-udev:
     #!/usr/bin/env bash
     set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init solaar-udev
     src="{{ repo_root }}/linux/udev/42-logitech-unify-permissions.rules"
     dest="/etc/udev/rules.d/42-logitech-unify-permissions.rules"
     if [ -f "$dest" ] && cmp -s "$src" "$dest"; then
-        echo "Logitech udev rules already installed ($dest); nothing to do."
+        ui_ok "Logitech udev rules already installed ($dest)"
         exit 0
     fi
     if ! gum confirm "Install Solaar's Logitech udev rules to $dest? (sudo)"; then
+        ui_skip "declined"
         exit 0
     fi
     sudo install -m 644 "$src" "$dest"
     sudo udevadm control --reload-rules
     sudo udevadm trigger --subsystem-match=hidraw --subsystem-match=misc
-    echo "Installed $dest. Replug the Logitech receiver (or log out/in) to apply."
+    ui_note "replug the Logitech receiver (or log out/in) to apply"
+    ui_upd "installed $dest"
 
 # Enable and start a systemd user unit that a layer ships in home/
 # (~/.config/systemd/user/). Fast-exits when the unit is already enabled;
@@ -59,17 +66,19 @@ solaar-udev:
 user-unit unit:
     #!/usr/bin/env bash
     set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init user-unit
     state="$(systemctl --user is-enabled "{{ unit }}" 2>/dev/null || true)"
     if [ "$state" = "enabled" ]; then
-        echo "{{ unit }} already enabled; nothing to do."
+        ui_ok "{{ unit }} already enabled"
         exit 0
     fi
     if ! systemctl --user daemon-reload 2>/dev/null; then
-        echo "WARN: no user systemd session available; run 'just user-unit {{ unit }}' from a desktop session later." >&2
+        ui_warn "no user systemd session; run 'just user-unit {{ unit }}' from a desktop session"
         exit 0
     fi
     systemctl --user enable --now "{{ unit }}"
-    echo "{{ unit }} enabled."
+    ui_upd "{{ unit }} enabled"
 
 # Update the OS (bootc) and offer a reboot.
 [linux]
@@ -77,12 +86,13 @@ user-unit unit:
 update-and-reboot:
     #!/usr/bin/env bash
     set -euo pipefail
-    echo "Updating system..."
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init update-and-reboot
     sudo bootc upgrade
     if gum confirm "Reboot now to apply updates?"; then
         systemctl reboot
     else
-        echo "Update staged; apply on next reboot."
+        ui_upd "update staged; apply on next reboot"
     fi
 
 # Clean up podman images/containers/volumes.
@@ -90,10 +100,12 @@ update-and-reboot:
 [group('system')]
 clean-containers:
     #!/usr/bin/env bash
-    echo "Cleaning up Podman containers, images, and volumes..."
+    set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init clean-containers
     podman system prune -af
     podman volume prune -f
-    echo "Cleanup complete!"
+    ui_upd "podman images, containers and volumes pruned"
 
 # OPTIONAL, opt-in: anti-fingerprinting default TTL. Needs root because
 # sysctls are kernel-global; there is no userspace sysctl.
@@ -103,17 +115,21 @@ clean-containers:
 sysctl-ttl:
     #!/usr/bin/env bash
     set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init sysctl-ttl
     conf="/etc/sysctl.d/99-penguix-ttl.conf"
     if [ -f "$conf" ] && [ "$(cat "$conf")" = "net.ipv4.ip_default_ttl=65" ]; then
-        echo "sysctl TTL already configured ($conf); nothing to do."
+        ui_ok "already configured ($conf)"
         exit 0
     fi
     if ! gum confirm "Write net.ipv4.ip_default_ttl=65 to $conf? (sudo)"; then
+        ui_skip "declined"
         exit 0
     fi
     printf 'net.ipv4.ip_default_ttl=65\n' | sudo tee "$conf" >/dev/null
-    sudo sysctl --system
-    echo "TTL applied. Reversal: sudo rm $conf && sudo sysctl --system"
+    sudo sysctl --system >/dev/null
+    ui_note "reversal: sudo rm $conf && sudo sysctl --system"
+    ui_upd "net.ipv4.ip_default_ttl=65 written to $conf and applied"
 
 # Show what of the repo state is already applied on this machine.
 [linux]

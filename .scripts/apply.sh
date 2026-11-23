@@ -30,11 +30,18 @@
 #
 # Idempotent: unchanged files are not rewritten; prints "nothing to do"
 # when everything already matches.
+#
+# Output: one status line plus one detail line per changed file, through
+# .scripts/ui.sh.
 set -eu
 
 root=${1:?usage: apply.sh <repo-root> <layer>...}
 shift
 [ $# -gt 0 ] || { echo "apply.sh: no layers given" >&2; exit 2; }
+
+# shellcheck source=.scripts/ui.sh
+. "$root/.scripts/ui.sh"
+ui_init apply
 
 home=${HOME:?}
 # Paths may contain spaces (macOS "Application Support"): split lists on
@@ -47,6 +54,7 @@ tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 changed=0
 failed=0
+: >"$tmp/changes"
 
 # install <src-file> <dest-path>: write only when content or mode differs
 install_file() {
@@ -56,7 +64,7 @@ install_file() {
         want=$(mode_string "$mode")
         [ "$cur" = "$want" ] && return 0
         chmod "$mode" "$dest"
-        echo "mode   ~/${dest#"$home"/} ($mode)"
+        printf 'mode\t%s\t%s\n' "${dest#"$home"/}" "$mode" >>"$tmp/changes"
         changed=$((changed + 1))
         return 0
     fi
@@ -64,7 +72,7 @@ install_file() {
     cp "$src" "$dest.dotfiles-new"
     chmod "$mode" "$dest.dotfiles-new"
     mv "$dest.dotfiles-new" "$dest"
-    echo "update ~/${dest#"$home"/}"
+    printf 'update\t%s\t\n' "${dest#"$home"/}" >>"$tmp/changes"
     changed=$((changed + 1))
 }
 
@@ -201,11 +209,18 @@ while IFS= read -r target; do
 done < "$tmp/targets"
 
 if [ $failed = 1 ]; then
-    echo "apply: finished with errors (see above)" >&2
+    ui_fail "finished with errors (see above)"
     exit 1
 fi
 if [ $changed = 0 ]; then
-    echo "already up to date; nothing to do."
-else
-    echo "applied: $changed file(s) changed."
+    ui_ok "nothing to do"
+    exit 0
 fi
+ui_upd "$(ui_plural "$changed" file files) changed"
+while IFS='	' read -r kind rel mode; do
+    if [ "$kind" = mode ]; then
+        ui_detail "~/$rel (mode $mode)"
+    else
+        ui_detail "~/$rel"
+    fi
+done <"$tmp/changes"

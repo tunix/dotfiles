@@ -6,6 +6,10 @@
 repo_root := parent_directory(source_directory())
 host_file := source_file()
 layers := "common macos work/cursor work/midas"
+# One id per just invocation: every step tags its report line with it, so the
+# tally at the end of `setup` counts exactly this run (see .scripts/ui.sh).
+# A work recipe called below inherits it through the environment.
+export DOTFILES_RUN := env_var_or_default('DOTFILES_RUN', uuid())
 
 # list this host's recipes
 default:
@@ -17,7 +21,8 @@ import "../macos/recipes/main.just"
 import? "../work/cursor/recipes/main.just"
 import? "../work/midas/recipes/main.just"
 
-# Bring this machine to the repo state. Every step is idempotent.
+# Bring this machine to the repo state. Every step is idempotent; one line per
+# step, plus the tally from .scripts/summary.sh.
 [macos]
 [group('dotfiles')]
 setup: work-submodule brew-sync apply sysctl-ttl bashrc-dircolors bat-cache lazyvim-config aws-session-manager install-global
@@ -25,12 +30,21 @@ setup: work-submodule brew-sync apply sysctl-ttl bashrc-dircolors bat-cache lazy
     set -eu
     # work recipes are optional imports: call them only when present, so the
     # host file still parses before the submodule is checked out
-    recipes=$(just -f "{{ host_file }}" --summary)
+    recipes=$({{ just_executable() }} -f "{{ host_file }}" --summary)
     for r in cursor-legacy-cleanup; do
         case " $recipes " in
-            *" $r "*) just -f "{{ host_file }}" "$r" ;;
+            *" $r "*) {{ just_executable() }} -f "{{ host_file }}" "$r" ;;
         esac
     done
+    sh "{{ repo_root }}/.scripts/summary.sh"
+
+# `setup` with every step's raw command output (DOTFILES_VERBOSE=1).
+[macos]
+[group('dotfiles')]
+setup-verbose:
+    #!/bin/sh
+    set -eu
+    DOTFILES_VERBOSE=1 exec {{ just_executable() }} -f "{{ host_file }}" setup
 
 # Check out the private work submodule (needs the 1Password SSH agent).
 [macos]
@@ -38,9 +52,11 @@ setup: work-submodule brew-sync apply sysctl-ttl bashrc-dircolors bat-cache lazy
 work-submodule:
     #!/bin/sh
     set -eu
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init work-submodule
     if [ -f "{{ repo_root }}/work/midas/recipes/main.just" ]; then
-        echo "work submodule present; nothing to do."
+        ui_ok "work submodule present"
         exit 0
     fi
-    git -C "{{ repo_root }}" submodule update --init work
-    echo "work submodule checked out. Re-run setup so its recipes are imported."
+    ui_run git -C "{{ repo_root }}" submodule update --init work
+    ui_upd "work submodule checked out; re-run setup so its recipes are imported"

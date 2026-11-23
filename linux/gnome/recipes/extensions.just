@@ -19,21 +19,42 @@
 #   extensions.ini for when it is re-enabled.
 GNOME_USER_EXTENSIONS := "grand-theft-focus@zalckos.github.com solaar-extension@sidevesh"
 
-# Install + enable every user extension (idempotent). A per-extension
-# failure warns and continues, so one dead extension cannot block setup.
+# Install + enable every user extension (idempotent). A per-extension failure
+# warns and setup continues, so one dead extension cannot block it; the
+# extension's own output goes to the step's log.
 [linux]
 [group('desktop')]
 extensions:
     #!/usr/bin/env bash
     set -euo pipefail
-    status=0
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init extensions
+    installed=0
+    inplace=0
+    failed=0
     for uuid in {{ GNOME_USER_EXTENSIONS }}; do
-        if ! bash "{{ repo_root }}/.scripts/install-gnome-extension.sh" "$uuid"; then
-            echo "WARN: $uuid not installed — setup continues." >&2
-            status=1
+        if out=$(ui_capture bash "{{ repo_root }}/.scripts/install-gnome-extension.sh" "$uuid"); then
+            case $out in
+                *"already installed"*) inplace=$((inplace + 1)) ;;
+                *)
+                    installed=$((installed + 1))
+                    ui_note "installed $uuid"
+                    ;;
+            esac
+        else
+            failed=$((failed + 1))
+            ui_note "$uuid could not be installed (log: $DOTFILES_LOGS/extensions.log)"
         fi
     done
-    exit $status
+    total=$((installed + inplace + failed))
+    if [ "$failed" -gt 0 ]; then
+        ui_warn "$failed of $(ui_plural "$total" extension extensions) failed; setup continues"
+    elif [ "$installed" -gt 0 ]; then
+        ui_note "log out/in if a new extension does not load (Wayland)"
+        ui_upd "$installed installed, $inplace already in place"
+    else
+        ui_ok "$(ui_plural "$inplace" extension extensions) installed and enabled"
+    fi
 
 # Install one extension from extensions.gnome.org for the running GNOME
 # Shell version, into ~/.local/share/gnome-shell/extensions/, then enable it.
@@ -42,14 +63,24 @@ extensions:
 extension-install UUID:
     #!/usr/bin/env bash
     set -euo pipefail
-    exec bash "{{ repo_root }}/.scripts/install-gnome-extension.sh" "{{ UUID }}"
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init extension-install
+    out=$(ui_capture bash "{{ repo_root }}/.scripts/install-gnome-extension.sh" "{{ UUID }}")
+    case $out in
+        *"already installed"*) ui_ok "{{ UUID }} already installed and enabled" ;;
+        *) ui_upd "{{ UUID }} installed and enabled" ;;
+    esac
 
 # Disable a user extension without uninstalling it.
 [linux]
 [group('desktop')]
 extension-disable UUID:
     #!/usr/bin/env bash
-    gnome-extensions disable "{{ UUID }}" && echo "Disabled {{ UUID }}"
+    set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init extension-disable
+    ui_run gnome-extensions disable "{{ UUID }}"
+    ui_upd "disabled {{ UUID }}"
 
 # Uninstall a user extension entirely.
 [linux]
@@ -57,8 +88,11 @@ extension-disable UUID:
 extension-uninstall UUID:
     #!/usr/bin/env bash
     set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init extension-uninstall
     rm -rf "$HOME/.local/share/gnome-shell/extensions/{{ UUID }}"
-    echo "Removed {{ UUID }} (log out/in for the shell to forget it)."
+    ui_note "log out/in for the shell to forget it"
+    ui_upd "removed {{ UUID }}"
 
 # List installed extensions and their enabled state.
 [linux]
