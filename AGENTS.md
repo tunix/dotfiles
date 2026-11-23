@@ -60,7 +60,7 @@ constraints, not suggestions.
 4. **No removal logic in `apply`.** It only creates and updates files.
    Removing what the repo no longer ships is a separate, planned design.
 
-## Layer rules (`just check` enforces 1–4)
+## Layer rules (`just check` enforces 1–4 and 6; 5 is a warning)
 
 1. Every recipe in `linux/` and `linux/gnome/` carries `[linux]`; every
    recipe in `macos/` carries `[macos]`. Common recipes never depend on an OS
@@ -73,6 +73,13 @@ constraints, not suggestions.
    a `home/` file and a compose target.
 5. ssh keeps the FIRST value per option: lower numbers win in
    `.ssh/config.d/`, unlike everywhere else.
+6. A recipe body that runs `sudo` starts with `set -m`. Without job control
+   the `sudo` child shares just's process group, so cancelling the fingerprint
+   prompt with Ctrl-C — the normal move in clamshell mode, where the reader is
+   unreachable — sends SIGINT to just and aborts the whole run with
+   `interrupted by SIGINT`, even though PAM fell back to the password and the
+   step succeeded. `set -m` puts each foreground command in its own process
+   group, so Ctrl-C reaches sudo and the step completes.
 
 ## Conventions
 

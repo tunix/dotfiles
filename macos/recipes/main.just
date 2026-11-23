@@ -9,6 +9,7 @@
 sysctl-ttl:
     #!/bin/sh
     set -eu
+    set -m  # job control: Ctrl-C at sudo's fingerprint prompt must reach sudo, not just
     . "{{ repo_root }}/.scripts/ui.sh"
     ui_init sysctl-ttl
     live=$(sysctl -n net.inet.ip.ttl)
