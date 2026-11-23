@@ -14,6 +14,13 @@ brew-sync:
             [ -f "$f" ] || continue
             found=1
             echo "==> brew bundle: $layer/brew/$(basename "$f")"
+            # Trust the Brewfile's `trusted: true` taps first: older brew
+            # loads casks before it applies that option ("Refusing to load
+            # cask ... from untrusted tap"). `brew trust` is idempotent.
+            if brew trust --help >/dev/null 2>&1; then
+                sed -nE 's/^[[:space:]]*tap[[:space:]]+["'"'"']([^"'"'"']+)["'"'"'].*trusted:[[:space:]]*true.*/\1/p' "$f" |
+                    while read -r tap; do brew trust --tap "$tap" | grep -v '^Already trusted' || true; done
+            fi
             brew bundle --file="$f"
         done
     done

@@ -43,7 +43,7 @@ layer_dirs() {
 
 # ---------------------------------------------------------------- 1. parse
 for h in hosts/*.just; do
-    if ! out=$(just --justfile "$h" --summary 2>&1); then
+    if ! out=$(just -f "$h" --summary 2>&1); then
         err "$h does not parse: $out"
     fi
 done
@@ -55,7 +55,7 @@ host_file := "$tmpj"
 layers := "common"
 import "$root/common/recipes/main.just"
 EOF
-if ! out=$(just --justfile "$tmpj" --summary 2>&1); then
+if ! out=$(just -f "$tmpj" --summary 2>&1); then
     err "common layer does not parse on its own (depends on an OS layer?): $out"
 fi
 

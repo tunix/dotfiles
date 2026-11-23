@@ -44,7 +44,7 @@ path-apply:
     # GUI apps + new terminals inherit it; running shells keep their old PATH
     # until restarted
     set -euo pipefail
-    value=$({{ just_executable() }} --justfile {{ justfile() }} _resolve-path)
+    value=$({{ just_executable() }} -f {{ justfile() }} _resolve-path)
     systemctl --user set-environment "PATH=$value"
     echo "systemd user env PATH updated; new sessions inherit it"
     echo "note: running shells keep their old PATH until restarted"
@@ -69,4 +69,4 @@ _resolve-path:
 # prints the resolved PATH (files in name order, like the systemd generator)
 [linux]
 @path-show:
-    {{ just_executable() }} --justfile {{ justfile() }} _resolve-path
+    {{ just_executable() }} -f {{ justfile() }} _resolve-path

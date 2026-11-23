@@ -13,14 +13,14 @@
 # Idempotent: every step is skipped when already in place.
 set -euo pipefail
 
-DOTFILES_DIR=${DOTFILES_DIR:-$HOME/dotfiles}
+DOTFILES_DIR=${DOTFILES_DIR:-$HOME/Projects/dotfiles}
 REPO_URL=https://github.com/tunix/dotfiles.git
 
 say() { printf '==> %s\n' "$*"; }
 
 if [ "$(uname -s)" != "Darwin" ]; then
     echo "bootstrap-mac.sh is for macOS only. On Linux, brew and just ship with the image:" >&2
-    echo "  just --justfile hosts/<host>.just setup    (e.g. hosts/penguix.just)" >&2
+    echo "  just -f hosts/<host>.just setup    (e.g. hosts/penguix.just)" >&2
     exit 1
 fi
 
@@ -68,4 +68,4 @@ if [ ! -f "$hostfile" ]; then
     exit 1
 fi
 say "Running setup for host '$host'..."
-exec just --justfile "$hostfile" setup
+exec just -f "$hostfile" setup
