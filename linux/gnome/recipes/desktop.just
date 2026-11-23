@@ -20,7 +20,11 @@ theme-sync: (user-unit "penguix-theme-sync.service")
     fi
 
 # Re-evaluate color-scheme every minute from local sunrise/sunset
-# (penguix-sun-scheduler user timer). Location comes from
+# (penguix-sun-scheduler user timer) and apply the current answer right away,
+# so `setup`/`apply` never leaves the session in the wrong mode while the
+# timer waits for its next tick. This recipe is the ONLY writer of
+# color-scheme — it is deliberately absent from linux/gnome/dconf/desktop.ini,
+# so a dconf-apply cannot flip it back to a fixed scheme. Location comes from
 # night-light-last-coordinates (gsd writes it when Night Light follows the
 # system location); fallback: fixed 09:00 light / 18:00 dark.
 [linux]
@@ -30,7 +34,28 @@ sun-scheduler: (user-unit "penguix-sun-scheduler.timer")
     set -euo pipefail
     . "{{ repo_root }}/.scripts/ui.sh"
     ui_init sun-scheduler
-    ui_ok "ready (color scheme follows sunrise/sunset)"
+    bin="$HOME/.local/bin/penguix-sun-scheduler"
+    if [ ! -f "$bin" ]; then
+        ui_fail "$bin missing; run 'just apply' first"
+        exit 1
+    fi
+    # A script in ~/.local/bin is exec'd by the unit: without its executable
+    # bit systemd fails every tick with 203/EXEC, silently. Restore it and
+    # say so (a lost bit in the repo itself is caught by `just check`).
+    if [ ! -x "$bin" ]; then
+        chmod +x "$bin"
+        ui_note "restored the executable bit on ~/.local/bin/penguix-sun-scheduler"
+    fi
+    # Decide now instead of leaving the dconf default in place until the next
+    # minute tick: light during local daytime, dark otherwise.
+    if out=$("$bin" 2>&1); then
+        case $out in
+            *"already active"*) ui_ok "color scheme follows sunrise/sunset" ;;
+            *) ui_note "$out"; ui_upd "color scheme set from sunrise/sunset" ;;
+        esac
+    else
+        ui_warn "could not evaluate the sun schedule now (no session bus?); the timer will set it"
+    fi
 
 # Install a Bibata cursor theme variant into ~/.local/share/icons (userspace)
 # and select it. Fast-exits when the variant is already installed.
