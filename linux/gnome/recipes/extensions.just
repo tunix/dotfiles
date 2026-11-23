@@ -5,7 +5,7 @@
 # with the base image on Dakota/Bluefin and stay image-owned.
 
 # Extensions that must be installed at user level on a fresh system.
-# Settings for these live in gnome/dconf/extensions.ini.
+# Settings for these live in linux/gnome/dconf/extensions.ini.
 #
 # Derived from the 2026-11 `dconf dump` + EGO shell_version_map checks:
 # - grand-theft-focus: supports GNOME 50 natively.
@@ -28,7 +28,7 @@ extensions:
     set -euo pipefail
     status=0
     for uuid in {{ GNOME_USER_EXTENSIONS }}; do
-        if ! bash "{{ repo_root }}/gnome/scripts/install-gnome-extension.sh" "$uuid"; then
+        if ! bash "{{ repo_root }}/.scripts/install-gnome-extension.sh" "$uuid"; then
             echo "WARN: $uuid not installed — setup continues." >&2
             status=1
         fi
@@ -42,7 +42,7 @@ extensions:
 extension-install UUID:
     #!/usr/bin/env bash
     set -euo pipefail
-    exec bash "{{ repo_root }}/gnome/scripts/install-gnome-extension.sh" "{{ UUID }}"
+    exec bash "{{ repo_root }}/.scripts/install-gnome-extension.sh" "{{ UUID }}"
 
 # Disable a user extension without uninstalling it.
 [linux]

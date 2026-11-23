@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# lib/check.sh — validate the layer rules (`just check`).
+# .scripts/check.sh — validate the layer rules (`just check`).
 #
-#   lib/check.sh <repo-root>
+#   .scripts/check.sh <repo-root>
 #
 # 1. Every host file parses on this OS, and the common layer parses ALONE
 #    (a common recipe depending on an OS-specific one would break the other
 #    OS: the whole justfile then fails to load).
 # 2. Every recipe in an OS layer carries that OS's attribute
-#    (linux/gnome/pi -> [linux], macos -> [macos]).
+#    (linux, linux/gnome -> [linux]; macos -> [macos]).
 # 3. Numbered files (compose fragments and native drop-ins such as
 #    fish/conf.d, environment.d) use their layer's number band or the
 #    shared final band 90-99, and no compose fragment name is used twice
@@ -24,15 +24,17 @@ warn() { echo "WARN:  $*" >&2; }
 
 # Layer -> number band. Plain functions instead of associative arrays:
 # macOS still ships bash 3.2 as /bin/bash.
-LAYERS="common linux macos gnome pi work/cursor work/midas"
+# A layer nested in another one (linux/gnome: a desktop environment on top
+# of linux) is a layer of its own; hosts list both.
+LAYERS="common linux linux/gnome macos work/cursor work/midas"
 band_of() {
     case $1 in
-        common) echo 00-09 ;; linux | macos) echo 10-19 ;; gnome | pi) echo 20-29 ;;
+        common) echo 00-09 ;; linux | macos) echo 10-19 ;; linux/gnome) echo 20-29 ;;
         work/cursor) echo 50-59 ;; work/midas) echo 70-79 ;; *) echo "" ;;
     esac
 }
 osattr_of() {
-    case $1 in linux | gnome | pi) echo linux ;; macos) echo macos ;; *) echo "" ;; esac
+    case $1 in linux | linux/gnome) echo linux ;; macos) echo macos ;; *) echo "" ;; esac
 }
 
 layer_dirs() {
@@ -107,7 +109,7 @@ for h in hosts/*.just; do
     layers=$(sed -n 's/^layers := "\(.*\)"/\1/p' "$h")
     [ -n "$layers" ] || { err "$h: no layers line"; continue; }
     for l in $layers; do
-        [ -n "$(band_of "$l")" ] || err "$h: unknown layer '$l' (add it to band_of in lib/check.sh)"
+        [ -n "$(band_of "$l")" ] || err "$h: unknown layer '$l' (add it to band_of in .scripts/check.sh)"
     done
     dup_frag=$(for l in $layers; do
         [ -d "$l/compose" ] && (cd "$l/compose" && find . -type f ! -name '.*')

@@ -24,10 +24,9 @@ brew-sync:
 brew-check:
     #!/bin/sh
     set -eu
-    for d in "{{ repo_root }}"/*/brew "{{ repo_root }}"/work/*/brew; do
-        [ -d "$d" ] || continue
-        echo "==> ${d#"{{ repo_root }}"/}"
-        bash "{{ repo_root }}/lib/validate-brewfiles.sh" "$d"
+    for d in $(cd "{{ repo_root }}" && find . -path ./.git -prune -o -type d -name brew -print | sed 's|^\./||' | sort); do
+        echo "==> $d"
+        bash "{{ repo_root }}/.scripts/validate-brewfiles.sh" "{{ repo_root }}/$d"
     done
 
 # Upgrade every installed cask (casks are not covered by `brew upgrade`'s

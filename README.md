@@ -1,24 +1,22 @@
 # dotfiles
 
-Personal configuration for every machine I use — Linux desktop (Bluefin /
-Dakota), Raspberry Pi and macOS — deployed with [`just`](https://just.systems)
-and Homebrew. No Ansible, no image layering. The former
+Personal configuration for my machines — Linux desktop (Bluefin / Dakota)
+and macOS — deployed with [`just`](https://just.systems) and Homebrew. No
+Ansible, no image layering. The former
 [penguix](https://github.com/tunix/penguix) repo (Linux desktop) lives here as
-the `gnome` layer.
+the `linux/gnome` layer.
 
 ## First run
 
 | Machine | Command |
 |---|---|
-| macOS | `curl -fsSL https://raw.githubusercontent.com/tunix/dotfiles/main/hosts/mac.sh \| bash` |
-| Raspberry Pi 5 | `git clone https://github.com/tunix/dotfiles.git ~/dotfiles && ~/dotfiles/hosts/pi5.sh` |
+| macOS | `curl -fsSL https://raw.githubusercontent.com/tunix/dotfiles/main/.scripts/bootstrap-mac.sh \| bash` |
 | Linux desktop | `git clone https://github.com/tunix/dotfiles.git ~/dotfiles && just --justfile ~/dotfiles/hosts/penguix.just setup` |
 
-`hosts/mac.sh` installs only Homebrew and just (Homebrew's installer brings
-the Xcode Command Line Tools, and with them git), clones the repo and runs
-`setup`. `hosts/pi5.sh` installs a pinned, checksum-verified just release
-into `~/.local/bin` (the Pi has no Homebrew). On the Linux desktop brew and
-just ship with the image.
+`.scripts/bootstrap-mac.sh` installs only Homebrew and just (Homebrew's
+installer brings the Xcode Command Line Tools, and with them git), clones the
+repo and runs `setup`. On the Linux desktop brew and just ship with the
+image.
 
 `setup` is idempotent: every step fast-exits with "nothing to do" when its
 target state is already in place, so it is safe to re-run at any time.
@@ -46,19 +44,21 @@ just check        # validate the repo rules
 ## Layout
 
 ```
-hosts/        one entry justfile per machine (+ first-run scripts)
-  penguix.just  layers: common linux gnome
-  pi5.just      layers: common linux pi
+hosts/        one entry justfile per machine
+  penguix.just  layers: common linux linux/gnome
   mac.just      layers: common macos work/cursor work/midas
-  mac.sh, pi5.sh
-lib/          apply.sh (deploy engine), check.sh (rules), validate-brewfiles.sh
+.scripts/     apply.sh (deploy engine), check.sh (rules), bootstrap-mac.sh,
+              validate-brewfiles.sh, install-gnome-extension.sh, dconf-vs-defaults.py
 common/       every machine
-linux/        every Linux machine (PATH via environment.d, login shell)
-gnome/        Linux desktop: dconf, GNOME extensions, flatpaks, desktop services
-pi/           Raspberry Pi: apt packages and repositories
+linux/        every Linux machine (PATH via environment.d, login shell, user units)
+  gnome/      GNOME desktop on top of linux: dconf, extensions, flatpaks, desktop services
 macos/        macOS: Homebrew packages, LaunchAgent, sysctl
 work/         private submodule (tunix/work): work/cursor, work/midas
 ```
+
+A desktop environment is a layer nested in its OS layer (`linux/gnome`): a
+host lists both, and only hosts that import it see its recipes. A new
+machine is a new host file listing the layers it needs.
 
 Every layer has the same shape:
 
@@ -79,7 +79,7 @@ numbered by layer, so later layers override earlier ones:
 |---|---|
 | `common` | `00`–`09` |
 | `linux`, `macos` | `10`–`19` |
-| `gnome`, `pi` | `20`–`29` |
+| `linux/gnome` | `20`–`29` |
 | `work/cursor` | `50`–`59` |
 | `work/midas` | `70`–`79` |
 | any layer, "must come last" | `90`–`99` |
@@ -113,16 +113,14 @@ recipes — otherwise the justfile would not even parse on the other OS.
 `-remove` / `-reinstall`, `ssh-init`, `ssh-reset`
 
 **linux** — `add-path <dir>`, `path-show`, `path-apply`, `change-shell`
-(`chsh`)
+(`chsh`), `user-unit <unit>`
 
-**gnome** — `dconf-apply`, `dconf-backup`, `dconf-reset KEY`,
+**linux/gnome** — `dconf-apply`, `dconf-backup`, `dconf-reset KEY`,
 `dconf-vs-defaults`, `extensions`, `extension-install` / `-disable` /
 `-uninstall UUID`, `extensions-list`, `theme-sync`, `sun-scheduler`,
 `bibata`, `brave-1password-fix`, `flatpak-remote`,
 `install-jetbrains-toolbox`, `aws-session-manager`, `sysctl-ttl`,
 `update-and-reboot`, `clean-containers`, `status`
-
-**pi** — `apt-repos`, `apt-packages`
 
 **macos** — `sysctl-ttl`, `aws-session-manager`, `work-submodule`
 
@@ -131,6 +129,6 @@ kube, teleport, vault, 1password)
 
 ## Requirements
 
-- just ≥ 1.27 (`source_directory()`); the Pi pins 1.59.0
-- jq (JSON fragments) — in `common/brew/cli.Brewfile` and the Pi's apt list
+- just ≥ 1.27 (`source_directory()`)
+- jq (JSON fragments) — in `common/brew/cli.Brewfile`
 - The work layers need the 1Password CLI (`op`) signed in for `just apply`

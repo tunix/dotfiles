@@ -1,52 +1,26 @@
 # vim: set ft=just :
 # Desktop services and fixes that need more than a file copy (the files
-# themselves are deployed by `just apply` from gnome/home/).
+# themselves are deployed by `just apply` from linux/gnome/home/).
 
-# Keep CLI themes (zellij/k9s/bat/nvim) in sync with GNOME color-scheme by
-# enabling the penguix-theme-sync systemd user unit. The unit calls
-# ~/.local/bin/toggle-color-preferences.sh (common layer).
-# Fast-exits when the unit is already enabled.
+# Keep CLI themes (zellij/k9s/bat/nvim) in sync with GNOME color-scheme
+# (penguix-theme-sync user unit). The unit calls
+# ~/.local/bin/toggle-color-preferences.sh from the common layer.
 [linux]
 [group('desktop')]
-theme-sync:
+theme-sync: (user-unit "penguix-theme-sync.service")
     #!/usr/bin/env bash
-    set -euo pipefail
     if ! [ -x "$HOME/.local/bin/toggle-color-preferences.sh" ]; then
         echo "WARN: ~/.local/bin/toggle-color-preferences.sh missing (run 'just apply');" >&2
-        echo "      theme-sync will start but only log until the script appears." >&2
+        echo "      theme-sync only logs until the script appears." >&2
     fi
-    state="$(systemctl --user is-enabled penguix-theme-sync.service 2>/dev/null || true)"
-    if [ "$state" = "enabled" ]; then
-        echo "penguix-theme-sync already enabled; nothing to do."
-        exit 0
-    fi
-    if ! systemctl --user daemon-reload 2>/dev/null; then
-        echo "WARN: no user systemd session available; run 'just theme-sync' from a desktop session later." >&2
-        exit 0
-    fi
-    systemctl --user enable --now penguix-theme-sync.service
-    echo "penguix-theme-sync enabled (CLI themes now follow GNOME color-scheme)."
 
-# Re-evaluate color-scheme every minute from local sunrise/sunset. Location
-# comes from night-light-last-coordinates (gsd writes it when Night Light
-# follows the system location); fallback: fixed 09:00 light / 18:00 dark.
-# Fast-exits when the timer is already enabled.
+# Re-evaluate color-scheme every minute from local sunrise/sunset
+# (penguix-sun-scheduler user timer). Location comes from
+# night-light-last-coordinates (gsd writes it when Night Light follows the
+# system location); fallback: fixed 09:00 light / 18:00 dark.
 [linux]
 [group('desktop')]
-sun-scheduler:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    state="$(systemctl --user is-enabled penguix-sun-scheduler.timer 2>/dev/null || true)"
-    if [ "$state" = "enabled" ]; then
-        echo "penguix-sun-scheduler already enabled; nothing to do."
-        exit 0
-    fi
-    if ! systemctl --user daemon-reload 2>/dev/null; then
-        echo "WARN: no user systemd session available; run 'just sun-scheduler' from a desktop session later." >&2
-        exit 0
-    fi
-    systemctl --user enable --now penguix-sun-scheduler.timer
-    echo "penguix-sun-scheduler enabled (color-scheme follows local sunrise/sunset)."
+sun-scheduler: (user-unit "penguix-sun-scheduler.timer")
 
 # Install a Bibata cursor theme variant into ~/.local/share/icons (userspace)
 # and select it. Fast-exits when the variant is already installed.
@@ -84,8 +58,8 @@ bibata variant='Bibata-Modern-Ice':
     fi
 
 # Enable 1Password desktop integration for the Brave flatpak. Requires the
-# 1Password GUI (gnome/brew/apps.Brewfile). The talk-name override also
-# ships as a file (gnome/home/.local/share/flatpak/overrides/com.brave.Browser)
+# 1Password GUI (linux/gnome/brew/apps.Brewfile). The talk-name override also
+# ships as a file (linux/gnome/home/.local/share/flatpak/overrides/com.brave.Browser)
 # deployed by `just apply`; this recipe re-asserts it via the flatpak CLI and
 # installs the native messaging host, which depends on the 1Password install.
 [linux]

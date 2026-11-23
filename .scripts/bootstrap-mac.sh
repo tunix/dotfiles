@@ -1,13 +1,14 @@
 #!/bin/bash
-# hosts/mac.sh — first-time setup for macOS — installs the bare minimum (Homebrew + just),
-# fetches the repo, then hands off to the host's justfile. Everything else
-# (fish, git config, apps ...) is installed by `just setup` via Brewfiles.
+# .scripts/bootstrap-mac.sh — first-time setup for macOS. Installs the bare
+# minimum (Homebrew + just), fetches the repo, then hands off to the host's
+# justfile. Everything else (fish, git config, apps ...) is installed by
+# `just setup` via Brewfiles.
 #
 # Fresh Mac:
-#   curl -fsSL https://raw.githubusercontent.com/tunix/dotfiles/main/hosts/mac.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/tunix/dotfiles/main/.scripts/bootstrap-mac.sh | bash
 # Existing checkout:
-#   hosts/mac.sh           (uses hosts/mac.just)
-#   hosts/mac.sh <host>    (uses hosts/<host>.just)
+#   .scripts/bootstrap-mac.sh          (uses hosts/mac.just)
+#   .scripts/bootstrap-mac.sh <host>   (uses hosts/<host>.just)
 #
 # Idempotent: every step is skipped when already in place.
 set -euo pipefail
@@ -18,7 +19,7 @@ REPO_URL=https://github.com/tunix/dotfiles.git
 say() { printf '==> %s\n' "$*"; }
 
 if [ "$(uname -s)" != "Darwin" ]; then
-    echo "mac.sh is for macOS only. On Linux, brew and just ship with the image:" >&2
+    echo "bootstrap-mac.sh is for macOS only. On Linux, brew and just ship with the image:" >&2
     echo "  just --justfile hosts/<host>.just setup    (e.g. hosts/penguix.just)" >&2
     exit 1
 fi
@@ -57,7 +58,7 @@ fi
 
 # 4) Hand off to the host file. Host files are named by role, not by
 #    hostname (macOS hostnames are asset tags). Default: hosts/mac.just;
-#    override with an argument (hosts/mac.sh <host>) or DOTFILES_HOST.
+#    override with an argument (bootstrap-mac.sh <host>) or DOTFILES_HOST.
 host=${1:-${DOTFILES_HOST:-mac}}
 hostfile="$DOTFILES_DIR/hosts/$host.just"
 if [ ! -f "$hostfile" ]; then
