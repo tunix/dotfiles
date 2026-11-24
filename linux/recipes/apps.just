@@ -108,3 +108,49 @@ brave-1password-fix:
     chmod 644 "${DEST}/com.1password.1password.json"
     ui_note "restart Brave completely (flatpak kill com.brave.Browser) to activate"
     ui_upd "1Password integration installed for the Brave flatpak"
+
+# Install the flatpak Solaar's config so it keeps the settings and key-remap
+# rules from the pre-flatpak native install. The sandbox maps
+# ~/.var/app/io.github.pwr_solaar.solaar/config to $HOME/.config, so its state
+# lives at .../config/solaar/ and it can neither see nor write the legacy
+# ~/.config/solaar/ — a fresh flatpak silently starts with default device
+# settings and no rules. rules.yaml (the user-authored remaps) is dotfiles-
+# owned and deployed by `just apply` from linux/home/.var/app/...; config.yaml
+# is per-device state Solaar rewrites at runtime, so this recipe only copies
+# it across when the flatpak has no config yet (e.g. first setup). Also
+# refreshes the user icon cache for the vendored "solaar" tray icon
+# (linux/home/.local/share/icons/hicolor/scalable/apps/solaar.svg): the
+# flatpak renamed its icons to io.github.pwr_solaar.solaar* while the tray
+# still asks for legacy "solaar", which otherwise falls back to
+# image-loading-symbolic — the three-dot icon. Idempotent.
+[linux]
+[group('apps')]
+solaar-config:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    . "{{ repo_root }}/.scripts/ui.sh"
+    ui_init solaar-config
+    fc="$HOME/.var/app/io.github.pwr_solaar.solaar/config/solaar"
+    legacy="$HOME/.config/solaar"
+    did=0
+    if [ -f "$legacy/config.yaml" ] && [ ! -f "$fc/config.yaml" ]; then
+        mkdir -p "$fc"
+        install -m 644 "$legacy/config.yaml" "$fc/config.yaml"
+        ui_note "migrated legacy ~/.config/solaar/config.yaml into the flatpak config"
+        did=1
+    fi
+    icon="$HOME/.local/share/icons/hicolor/scalable/apps/solaar.svg"
+    cache="$HOME/.local/share/icons/hicolor/icon-theme.cache"
+    if [ -f "$icon" ] && { [ ! -f "$cache" ] || [ "$icon" -nt "$cache" ]; }; then
+        gtk-update-icon-cache -f -t "$HOME/.local/share/icons/hicolor" >/dev/null 2>&1 || true
+        ui_note "user icon cache refreshed for the Solaar tray icon"
+        did=1
+    elif [ ! -f "$icon" ]; then
+        ui_warn "tray icon missing; run 'just apply' (deploys linux/home/.local/share/icons/hicolor/scalable/apps/solaar.svg)"
+    fi
+    if [ "$did" = 1 ]; then
+        ui_note "restart Solaar (flatpak kill io.github.pwr_solaar.solaar) to pick up the config"
+        ui_upd "Solaar flatpak config and tray icon in place"
+    else
+        ui_ok "Solaar flatpak config and tray icon already in place"
+    fi

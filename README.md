@@ -162,9 +162,10 @@ recipes — otherwise the justfile would not even parse on the other OS.
 `-remove` / `-reinstall`, `ssh-init`, `ssh-reset`
 
 **linux** — `add-path <dir>`, `path-show`, `path-apply`, `change-shell`
-(`chsh`), `user-unit <unit>`, `solaar-udev`, `flatpak-remote`,
-`install-jetbrains-toolbox`, `aws-session-manager`, `brave-1password-fix`,
-`sysctl-ttl`, `update-and-reboot`, `clean-containers`, `status`
+(`chsh`), `user-unit <unit>`, `solaar-udev`, `solaar-config`,
+`flatpak-remote`, `install-jetbrains-toolbox`, `aws-session-manager`,
+`brave-1password-fix`, `sysctl-ttl`, `update-and-reboot`,
+`clean-containers`, `status`
 
 **linux/gnome** — `dconf-apply`, `dconf-backup`, `dconf-reset KEY`,
 `dconf-vs-defaults`, `extensions`, `extension-install` / `-disable` /
